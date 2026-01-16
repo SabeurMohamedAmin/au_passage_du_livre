@@ -26,7 +26,7 @@ export default defineNuxtConfig({
     plugins: [
       vuetify({ autoImport: true }),
       Icons({
-        compiler: 'vue3',
+        // compiler: 'vue3',
         autoInstall: true, // auto-installs icon sets on demand
       }),
     ],

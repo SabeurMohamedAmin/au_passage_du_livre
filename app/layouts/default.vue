@@ -258,7 +258,6 @@ const baseMenu: MenuItem[] = [
     padding-top: 24px;
     min-height: calc(100vh - 64px);
   }
-
   .back-transparent{
     backdrop-filter: blur(12px);
   }

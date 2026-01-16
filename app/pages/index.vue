@@ -274,7 +274,9 @@ const drawer = ref(false)
 .bg-gradient-to-t {
   background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
 }
-.grayscale { filter: grayscale(100%); }
+.grayscale {
+  filter: grayscale(100%);
+}
 
 .event-img-reight-section{
   backdrop-filter: blur(12px);
