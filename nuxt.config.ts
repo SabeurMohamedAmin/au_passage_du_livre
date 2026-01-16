@@ -9,7 +9,6 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/image',
     '@vueuse/nuxt',
-    '@nuxt/icon',
     '@pinia/nuxt',
     '@nuxtjs/i18n',
   ],
@@ -25,10 +24,6 @@ export default defineNuxtConfig({
   vite: {
     plugins: [
       vuetify({ autoImport: true }),
-      Icons({
-        // compiler: 'vue3',
-        autoInstall: true, // auto-installs icon sets on demand
-      }),
     ],
     vue: {
       template: {
