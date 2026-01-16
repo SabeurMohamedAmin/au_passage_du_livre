@@ -1,0 +1,75 @@
+{
+  "home": "Início",
+  "blog": "Blog",
+  "press": "Imprensa",
+  "sponsors": "Patrocinadores",
+  "contact us": "Contacte-nos",
+  "events": "Eventos",
+  "upcoming events": "Próximos eventos",
+
+
+  "events heading": "Eventos futuros e passados.",
+  "events description": "Descubra todos os nossos eventos e atividades literárias, passados e futuros — conversas, leituras e experiências culturais para explorar e revisitar.",
+  "upcoming events heading": "Eventos futuros",
+  "upcoming events description": "Descubra os nossos próximos encontros literários, incluindo leituras, debates e experiências culturais para desfrutar e partilhar.",
+  "intervenants": "Oradores",
+
+
+  "login": "Entrar",
+  "logout": "Sair",
+  "register": "Registrar-se",
+
+  "login here": "Entrar aqui",
+
+  "create account": "Criar uma conta",
+  "create account using your credentials": "Criar uma conta com suas credenciais",
+  "create account using your facebook": "Criar uma conta com Facebook",
+  "create account using your google mail": "Criar uma conta com Google",
+  "create account using your microsoft mail": "Criar uma conta com Microsoft",
+
+  "login page": "Página de login",
+  "signup page": "Página de registo",
+  "recover password": "Recuperar palavra-passe",
+  "password reset email sent": "Foi enviado um e-mail com instruções sobre como redefinir a sua palavra-passe.",
+  "no reset email received": "Se não receber o e-mail, verifique a pasta de spam. Se ainda assim não o receber, significa que não tem uma conta.",
+  "false alert": "Ups! Falso alarme?",
+  "follow the instuctions sent to your email address": "Siga as instruções enviadas para o seu endereço de e-mail",
+  "for authentication and create new user": "Para autenticação e criação de um novo utilizador",
+  "login to account": "Entrar na sua conta",
+  "login using your credentials": "Entrar com suas credenciais",
+  "login using your facebook account": "Entrar com Facebook",
+  "login using your google mail account": "Entrar com Google",
+  "login using your microsoft mail account": "Entrar com Microsoft",
+
+  "user": "Usuário",
+  "first name": "Nome",
+  "last name": "Sobrenome",
+  "display name": "Nome de exibição",
+  "email address": "Endereço de e-mail",
+  "password": "Senha",
+  "confirm password": "Confirmar senha",
+
+  "back to home": "Voltar ao início",
+  "already have account ?": "Já tem uma conta?",
+
+  "welcome to": "Bem-vindo ao",
+  "or continue with": "Ou continue com",
+  "let's start by creating your account": "Vamos começar criando sua conta",
+
+  "no need to waste time on this page, let's take you back to your account": "Não perca tempo nesta página, vamos levá-lo de volta à sua conta",
+
+  "for authentication and sign in": "Para autenticação e login",
+
+  "a valid email is required": "Um endereço de e-mail válido é obrigatório",
+  "a password is required": "Uma senha é obrigatória",
+
+  "authentication error": "Erro de autenticação",
+  "Please create an account before logging in and try again.": "Crie uma conta antes de fazer login e tente novamente.",
+
+  "already have an account": "Já tem uma conta",
+  "login with credentials or your social media": "Entre com suas credenciais ou redes sociais",
+
+  "or": "ou",
+  "forgot your password ?": "Esqueceu sua senha?",
+  "don't have an account ?": "Não tem uma conta?"
+}

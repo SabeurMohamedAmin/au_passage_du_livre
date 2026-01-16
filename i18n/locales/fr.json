@@ -1,0 +1,73 @@
+{
+  "home": "Accueil",
+  "blog": "Blog",
+  "press": "Presse",
+  "sponsors": "Sponsors",
+  "contact us": "Contactez-nous",
+  "upcoming": "Évènements",
+  "upcoming events": "Évènements à venir",
+  
+  "events heading": "Événements à venir et passés.",
+  "events description": "Découvrez tous nos événements et activités littéraires, passés et à venir — conversations, lectures et expériences culturelles à explorer et revisiter.",
+  "upcoming events heading": "Événements à venir",
+  "upcoming events description": "Découvrez nos prochains rendez-vous littéraires, notamment des lectures, des discussions et des expériences culturelles à apprécier et à partager.",
+  "intervenants": "Intervenants",
+
+  "login": "Connexion",
+  "logout": "Déconnexion",
+  "register": "Inscription",
+  
+  "login here": "Se connecter ici",
+
+  "create account": "Créer un compte",
+  "create account using your credentials": "Créer un compte avec vos identifiants",
+  "create account using your facebook": "Créer un compte avec Facebook",
+  "create account using your google mail": "Créer un compte avec Google",
+  "create account using your microsoft mail": "Créer un compte avec Microsoft",
+
+  "login page": "Page de connexion",
+  "signup page": "Page d’inscription",
+  "password reset email sent": "Un e-mail vous a été envoyé avec des instructions pour réinitialiser votre mot de passe.",
+  "no reset email received": "Si vous ne recevez pas d’e-mail, veuillez vérifier votre dossier spam. Si vous ne recevez toujours rien, cela signifie que vous n’avez pas de compte.",
+  "false alert": "Oups ! Fausse alerte ?",
+  "recover password": "Récupérer le mot de passe",
+  "follow the instuctions sent to your email address": "Suivez les instructions envoyées à votre adresse e-mail",
+  "for authentication and create new user": "Pour l’authentification et la création d’un nouvel utilisateur",
+  "login to account": "Connexion à votre compte",
+  "login using your credentials": "Connectez-vous avec vos identifiants",
+  "login using your facebook account": "Connectez-vous avec Facebook",
+  "login using your google mail account": "Connectez-vous avec Google",
+  "login using your microsoft mail account": "Connectez-vous avec Microsoft",
+
+  "user": "Utilisateur",
+  "first name": "Prénom",
+  "last name": "Nom",
+  "display name": "Nom d’affichage",
+  "email address": "Adresse e-mail",
+  "password": "Mot de passe",
+  "confirm password": "Confirmer le mot de passe",
+
+  "back to home": "Retour à l’accueil",
+  "already have account ?": "Vous avez déjà un compte ?",
+
+  "welcome to": "Bienvenue sur",
+  "or continue with": "Ou continuer avec",
+  "let's start by creating your account": "Commençons par créer votre compte",
+
+  "no need to waste time on this page, let's take you back to your account": "Inutile de perdre du temps sur cette page, retournons à votre compte",
+
+  "for authentication and sign in": "Page d’authentification et de connexion",
+
+  "a valid email is required": "Une adresse e-mail valide est requise",
+  "a password is required": "Un mot de passe est requis",
+
+  "authentication error": "Erreur d’authentification",
+  "Please create an account before logging in and try again.": "Veuillez créer un compte avant de vous connecter et réessayer.",
+
+  "already have an account": "Vous avez déjà un compte",
+  "login with credentials or your social media": "Connectez-vous avec vos identifiants ou vos réseaux sociaux",
+
+  "or": "ou",
+  "forgot your password ?": "Mot de passe oublié ?",
+  "don't have an account ?": "Vous n’avez pas de compte ?"
+}

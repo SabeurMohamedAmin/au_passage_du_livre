@@ -1,0 +1,42 @@
+{
+  "name": "nuxt-au-passage-du-livre",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.15.15",
+    "@mdi/font": "^7.4.47",
+    "@nuxt/icon": "2.1.1",
+    "@nuxt/image": "2.0.0",
+    "@nuxtjs/i18n": "^10.2.1",
+    "@pinia/nuxt": "0.11.3",
+    "@typescript-eslint/eslint-plugin": "^8.50.1",
+    "@typescript-eslint/parser": "^8.50.1",
+    "@vueuse/core": "^14.1.0",
+    "@vueuse/nuxt": "14.1.0",
+    "better-sqlite3": "^12.5.0",
+    "drizzle-kit": "^0.31.8",
+    "drizzle-orm": "^0.45.1",
+    "eslint-plugin-drizzle": "^0.2.3",
+    "nuxt": "^4.2.2",
+    "pinia": "^3.0.4",
+    "vue": "^3.5.25",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@iconify-json/mdi": "^1.2.3",
+    "@iconify/json": "^2.2.421",
+    "@nuxt/eslint": "1.12.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.50.0",
+    "unplugin-icons": "^22.5.0",
+    "vite-plugin-vuetify": "^2.1.2",
+    "vuetify": "^3.11.4"
+  }
+}

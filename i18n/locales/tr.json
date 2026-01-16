@@ -1,0 +1,73 @@
+{
+  "home": "Ana sayfa",
+  "blog": "Blog",
+  "press": "Basın",
+  "sponsors": "Sponsorlar",
+  "contact us": "Bize ulaşın",
+  "events": "Etkinlikler",
+  "upcoming events": "Yaklaşan etkinlikler",
+
+  "events heading": "Gelecek ve Geçmiş Etkinlikler.",
+  "events description": "Geçmiş ve gelecekteki tüm edebi etkinliklerimizi ve faaliyetlerimizi keşfedin — keşfedilecek ve yeniden ziyaret edilecek sohbetler, okumalar ve kültürel deneyimler.",
+  "upcoming events heading": "Yaklaşan Etkinlikler",
+  "upcoming events description": "Okumalar, söyleşiler ve birlikte keyfini çıkarıp paylaşabileceğiniz kültürel deneyimler dahil olmak üzere yaklaşan edebiyat buluşmalarımızı keşfedin.",
+  "intervenants": "Konuşmacılar",
+  
+  "login": "Giriş yap",
+  "logout": "Çıkış yap",
+  "register": "Kayıt ol",
+
+  "login here": "Buradan giriş yap",
+
+  "create account": "Hesap oluştur",
+  "create account using your credentials": "Bilgilerinizle hesap oluşturun",
+  "create account using your facebook": "Facebook ile hesap oluştur",
+  "create account using your google mail": "Google ile hesap oluştur",
+  "create account using your microsoft mail": "Microsoft ile hesap oluştur",
+
+  "login page": "Giriş sayfası",
+  "signup page": "Kayıt sayfası",
+  "recover password": "Şifreyi kurtar",
+  "password reset email sent": "Şifrenizi sıfırlamanız için gerekli talimatları içeren bir e-posta size gönderildi.",
+  "no reset email received": "E-posta almadıysanız lütfen spam klasörünüzü kontrol edin. Hâlâ bir e-posta almadıysanız, bu bir hesabınız olmadığı anlamına gelir.",
+  "false alert": "Hoppala! Yanlış alarm mı?",
+  "follow the instuctions sent to your email address": "E-posta adresinize gönderilen talimatları takip edin",
+  "for authentication and create new user": "Kimlik doğrulama ve yeni kullanıcı oluşturma için",
+  "login to account": "Hesabınıza giriş yapın",
+  "login using your credentials": "Bilgilerinizle giriş yapın",
+  "login using your facebook account": "Facebook ile giriş yap",
+  "login using your google mail account": "Google ile giriş yap",
+  "login using your microsoft mail account": "Microsoft ile giriş yap",
+
+  "user": "Kullanıcı",
+  "first name": "Ad",
+  "last name": "Soyad",
+  "display name": "Görünen ad",
+  "email address": "E-posta adresi",
+  "password": "Şifre",
+  "confirm password": "Şifreyi onayla",
+
+  "back to home": "Ana sayfaya dön",
+  "already have account ?": "Zaten bir hesabınız var mı?",
+
+  "welcome to": "Tairo’ya hoş",
+  "or continue with": "Veya devam et",
+  "let's start by creating your account": "Hesabınızı oluşturarak başlayalım",
+
+  "no need to waste time on this page, let's take you back to your account": "Bu sayfada zaman kaybetmeyin, sizi hesabınıza geri götürelim",
+
+  "for authentication and sign in": "Kimlik doğrulama ve giriş için",
+
+  "a valid email is required": "Geçerli bir e-posta adresi gereklidir",
+  "a password is required": "Şifre gereklidir",
+
+  "authentication error": "Kimlik doğrulama hatası",
+  "Please create an account before logging in and try again.": "Giriş yapmadan önce lütfen bir hesap oluşturun ve tekrar deneyin.",
+
+  "already have an account": "Zaten bir hesabınız var",
+  "login with credentials or your social media": "Bilgilerinizle veya sosyal medya ile giriş yapın",
+
+  "or": "veya",
+  "forgot your password ?": "Şifrenizi mi unuttunuz?",
+  "don't have an account ?": "Hesabınız yok mu?"
+}

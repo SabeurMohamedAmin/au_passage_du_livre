@@ -1,0 +1,76 @@
+{
+  "home": "Startseite",
+  "blog": "Blog",
+  "press": "Presse",
+  "sponsors": "Sponsoren",
+  "contact us": "Kontakt",
+  "events": "Veranstaltungen",
+  "upcoming events": "Kommende Veranstaltungen",
+  
+  
+  "events description": "Entdecken Sie alle unsere literarischen Veranstaltungen und Aktivitäten, vergangene und kommende — Gespräche, Lesungen und kulturelle Erlebnisse zum Erkunden und Wiederentdecken.",
+  "events heading": "Kommende und vergangene Veranstaltungen.",
+  "upcoming events heading": "Kommende Veranstaltungen",
+  "upcoming events description": "Entdecken Sie unsere kommenden literarischen Treffen, darunter Lesungen, Diskussionen und kulturelle Erlebnisse zum Genießen und Teilen.",
+  "intervenants": "Referenten",
+
+
+  "login": "Anmelden",
+  "logout": "Abmelden",
+  "register": "Registrieren",
+
+  "login here": "Hier anmelden",
+
+  "create account": "Konto erstellen",
+  "create account using your credentials": "Konto mit Ihren Zugangsdaten erstellen",
+  "create account using your facebook": "Konto mit Facebook erstellen",
+  "create account using your google mail": "Konto mit Google erstellen",
+  "create account using your microsoft mail": "Konto mit Microsoft erstellen",
+
+  "login page": "Anmeldeseite",
+  "signup page": "Registrierungsseite",
+  "recover password": "Passwort wiederherstellen",
+  "password reset email sent": "Eine E-Mail mit Anweisungen zum Zurücksetzen Ihres Passworts wurde an Sie gesendet.",
+  "no reset email received": "Wenn Sie keine E-Mail erhalten, überprüfen Sie bitte Ihren Spam-Ordner. Wenn Sie weiterhin keine E-Mail erhalten, bedeutet das, dass Sie kein Konto haben.",
+  "false alert": "Ups! Fehlalarm?",
+  "follow the instuctions sent to your email address": "Folgen Sie den Anweisungen, die an Ihre E-Mail-Adresse gesendet wurden",
+  "for authentication and create new user": "Zur Authentifizierung und Erstellung eines neuen Benutzers",
+
+  "login to account": "Bei Ihrem Konto anmelden",
+  "login using your credentials": "Mit Ihren Zugangsdaten anmelden",
+  "login using your facebook account": "Mit Facebook anmelden",
+  "login using your google mail account": "Mit Google anmelden",
+  "login using your microsoft mail account": "Mit Microsoft anmelden",
+
+  "user": "Benutzer",
+  "first name": "Vorname",
+  "last name": "Nachname",
+  "display name": "Anzeigename",
+  "email address": "E-Mail-Adresse",
+  "password": "Passwort",
+  "confirm password": "Passwort bestätigen",
+
+  "back to home": "Zurück zur Startseite",
+  "already have account ?": "Haben Sie bereits ein Konto?",
+
+  "welcome to": "Willkommen bei",
+  "or continue with": "Oder fortfahren mit",
+  "let's start by creating your account": "Beginnen wir mit der Erstellung Ihres Kontos",
+
+  "no need to waste time on this page, let's take you back to your account": "Keine Zeit verlieren – wir bringen Sie zurück zu Ihrem Konto",
+
+  "for authentication and sign in": "Zur Authentifizierung und Anmeldung",
+
+  "a valid email is required": "Eine gültige E-Mail-Adresse ist erforderlich",
+  "a password is required": "Ein Passwort ist erforderlich",
+
+  "authentication error": "Authentifizierungsfehler",
+  "Please create an account before logging in and try again.": "Bitte erstellen Sie ein Konto, bevor Sie sich anmelden, und versuchen Sie es erneut.",
+
+  "already have an account": "Sie haben bereits ein Konto",
+  "login with credentials or your social media": "Melden Sie sich mit Ihren Zugangsdaten oder sozialen Medien an",
+
+  "or": "oder",
+  "forgot your password ?": "Passwort vergessen?",
+  "don't have an account ?": "Noch kein Konto?"
+}

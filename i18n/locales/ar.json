@@ -1,0 +1,76 @@
+{
+  "home": "الرئيسية",
+  "blog": "المدونة",
+  "press": "الصحافة",
+  "sponsors": "الرعاة",
+  "contact us": "اتصل بنا",
+  "events": "الفعاليات",
+  "upcoming events": "الفعاليات القادمة",
+
+
+  "events heading": "الفعاليات القادمة والماضية.",
+  "events description": "اكتشف جميع فعالياتنا وأنشطتنا الأدبية، الماضية والقادمة — محادثات وقراءات وتجارب ثقافية لاستكشافها وإعادة زيارتها.",
+  "upcoming events heading": "الفعاليات القادمة",
+  "upcoming events description": "اكتشف لقاءاتنا الأدبية القادمة، بما في ذلك قراءات ونقاشات وتجارب ثقافية للاستمتاع بها ومشاركتها.",
+  "intervenants": "المتحدثون",
+
+
+  "login": "تسجيل الدخول",
+  "logout": "تسجيل الخروج",
+  "register": "إنشاء حساب",
+
+  "login here": "سجل الدخول هنا",
+
+  "create account": "إنشاء حساب",
+  "create account using your credentials": "إنشاء حساب باستخدام بيانات الاعتماد الخاصة بك",
+  "create account using your facebook": "إنشاء حساب باستخدام فيسبوك",
+  "create account using your google mail": "إنشاء حساب باستخدام جوجل",
+  "create account using your microsoft mail": "إنشاء حساب باستخدام مايكروسوفت",
+
+  "login page": "صفحة تسجيل الدخول",
+  "signup page": "صفحة التسجيل",
+  "recover password": "استعادة كلمة المرور",
+  "follow the instuctions sent to your email address": "اتبع التعليمات المرسلة إلى عنوان بريدك الإلكتروني",
+  "password reset email sent": "تم إرسال بريد إلكتروني إليك يحتوي على تعليمات حول كيفية إعادة تعيين كلمة المرور.",
+  "no reset email received": "إذا لم تستلم البريد الإلكتروني، يرجى التحقق من مجلد الرسائل غير المرغوب فيها. إذا لم تستلم البريد الإلكتروني بعد ذلك، فهذا يعني أنه ليس لديك حساب.",
+  "false alert": "عفواً! إنذار خاطئ؟",
+
+  "for authentication and create new user": "للمصادقة وإنشاء مستخدم جديد",
+  "login to account": "تسجيل الدخول إلى حسابك",
+  "login using your credentials": "تسجيل الدخول باستخدام بيانات الاعتماد الخاصة بك",
+  "login using your facebook account": "تسجيل الدخول باستخدام فيسبوك",
+  "login using your google mail account": "تسجيل الدخول باستخدام جوجل",
+  "login using your microsoft mail account": "تسجيل الدخول باستخدام مايكروسوفت",
+
+  "user": "المستخدم",
+  "first name": "الاسم الأول",
+  "last name": "اسم العائلة",
+  "display name": "اسم العرض",
+  "email address": "عنوان البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "confirm password": "تأكيد كلمة المرور",
+
+  "back to home": "العودة إلى الرئيسية",
+  "already have account ?": "هل لديك حساب بالفعل؟",
+
+  "welcome to": "مرحباً بك في",
+  "or continue with": "أو المتابعة باستخدام",
+  "let's start by creating your account": "لنبدأ بإنشاء حسابك",
+
+  "no need to waste time on this page, let's take you back to your account": "لا داعي لإضاعة الوقت في هذه الصفحة - دعنا نعيدك إلى حسابك",
+
+  "for authentication and sign in": "للمصادقة وتسجيل الدخول",
+
+  "a valid email is required": "يجب إدخال عنوان بريد إلكتروني صالح",
+  "a password is required": "كلمة المرور مطلوبة",
+
+  "authentication error": "خطأ في المصادقة",
+  "Please create an account before logging in and try again.": "يرجى إنشاء حساب قبل تسجيل الدخول والمحاولة مرة أخرى.",
+
+  "already have an account": "هل لديك حساب بالفعل",
+  "login with credentials or your social media": "سجل الدخول باستخدام بيانات الاعتماد أو وسائل التواصل الاجتماعي",
+
+  "or": "أو",
+  "forgot your password ?": "هل نسيت كلمة المرور؟",
+  "don't have an account ?": "ليس لديك حساب؟"
+}

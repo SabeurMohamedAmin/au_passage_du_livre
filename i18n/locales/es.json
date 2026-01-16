@@ -1,0 +1,73 @@
+{
+  "home": "Inicio",
+  "blog": "Blog",
+  "press": "Prensa",
+  "sponsors": "Patrocinadores",
+  "contact us": "Contáctanos",
+  "events": "Eventos",
+  "upcoming events": "Próximos eventos",
+
+  "events heading": "Eventos próximos y pasados.",
+  "events description": "Descubre todos nuestros eventos y actividades literarias, pasados y próximos — conversaciones, lecturas y experiencias culturales para explorar y revisitar.",
+  "upcoming events heading": "Próximos eventos",
+  "upcoming events description": "Descubre nuestros próximos encuentros literarios, incluidas lecturas, debates y experiencias culturales para disfrutar y compartir.",
+  "intervenants": "Ponentes",
+
+  "login": "Iniciar sesión",
+  "logout": "Cerrar sesión",
+  "register": "Registrarse",
+
+  "login here": "Inicia sesión aquí",
+
+  "create account": "Crear una cuenta",
+  "create account using your credentials": "Crear una cuenta con tus credenciales",
+  "create account using your facebook": "Crear una cuenta con Facebook",
+  "create account using your google mail": "Crear una cuenta con Google",
+  "create account using your microsoft mail": "Crear una cuenta con Microsoft",
+
+  "login page": "Página de inicio de sesión",
+  "signup page": "Página de registro",
+  "recover password": "Recuperar contraseña",
+  "password reset email sent": "Se te ha enviado un correo electrónico con instrucciones para restablecer tu contraseña.",
+  "no reset email received": "Si no recibes el correo, revisa tu carpeta de spam. Si aún así no lo recibes, significa que no tienes una cuenta.",
+  "false alert": "¡Ups! ¿Falsa alarma?",
+  "follow the instuctions sent to your email address": "Sigue las instrucciones enviadas a tu dirección de correo electrónico",
+  "for authentication and create new user": "Para autenticación y creación de un nuevo usuario",
+  "login to account": "Inicia sesión en tu cuenta",
+  "login using your credentials": "Inicia sesión con tus credenciales",
+  "login using your facebook account": "Inicia sesión con Facebook",
+  "login using your google mail account": "Inicia sesión con Google",
+  "login using your microsoft mail account": "Inicia sesión con Microsoft",
+
+  "user": "Usuario",
+  "first name": "Nombre",
+  "last name": "Apellido",
+  "display name": "Nombre visible",
+  "email address": "Correo electrónico",
+  "password": "Contraseña",
+  "confirm password": "Confirmar contraseña",
+
+  "back to home": "Volver al inicio",
+  "already have account ?": "¿Ya tienes una cuenta?",
+
+  "welcome to": "Bienvenido a",
+  "or continue with": "O continuar con",
+  "let's start by creating your account": "Comencemos creando tu cuenta",
+
+  "no need to waste time on this page, let's take you back to your account": "No pierdas tiempo en esta página, volvamos a tu cuenta",
+
+  "for authentication and sign in": "Para autenticación e inicio de sesión",
+
+  "a valid email is required": "Se requiere un correo electrónico válido",
+  "a password is required": "Se requiere una contraseña",
+
+  "authentication error": "Error de autenticación",
+  "Please create an account before logging in and try again.": "Crea una cuenta antes de iniciar sesión e inténtalo de nuevo.",
+
+  "already have an account": "Ya tienes una cuenta",
+  "login with credentials or your social media": "Inicia sesión con tus credenciales o redes sociales",
+
+  "or": "o",
+  "forgot your password ?": "¿Olvidaste tu contraseña?",
+  "don't have an account ?": "¿No tienes una cuenta?"
+}

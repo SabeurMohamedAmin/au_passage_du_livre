@@ -1,0 +1,76 @@
+{
+  "home": "Home",
+  "blog": "Blog",
+  "press": "Press",
+  "sponsors": "Sponsors",
+  "contact us": "Contact us",
+  "events": "Events",
+  "upcoming events": "Upcoming events",
+
+  "events heading": "Upcoming and Past Events.",
+  "events description": "Discover all of our literary events and activities, past and upcoming — conversations, readings, and cultural experiences to explore and revisit.",
+  "upcoming events heading": "Upcoming Events",
+  "upcoming events description": "Discover our upcoming literary gatherings, including readings, discussions, and cultural experiences to enjoy and share.",
+  "intervenants": "Speakers",
+
+
+  "login": "Log in",
+  "logout": "Log out",
+  "register": "Sign up",
+
+  "login here": "Log in here",
+
+  "create account": "Create an account",
+  "create account using your credentials": "Create an account using your credentials",
+  "create account using your facebook": "Create an account with Facebook",
+  "create account using your google mail": "Create an account with Google",
+  "create account using your microsoft mail": "Create an account with Microsoft",
+
+  "login page": "Login page",
+  "signup page" : "Signup page",
+  "recover password": "Recover password",
+  "follow the instuctions sent to your email address": "Follow the instructions sent to your email address",
+  "password reset email sent": "An email has been sent to you with instructions on how to reset your password.",
+  "no reset email received": "If you don't receive an email, please check your spam folder. If you still don't receive an email, that means you don't have an account.",
+  "false alert": "Oops! False alert?",
+
+  "for authentication and create new user": "For authentication and create new user",
+  "login to account": "Log in to your account",
+  "login using your credentials": "Log in using your credentials",
+  "login using your facebook account": "Log in with Facebook",
+  "login using your google mail account": "Log in with Google",
+  "login using your microsoft mail account": "Log in with Microsoft",
+
+  "user": "User",
+  "first name": "First name",
+  "last name": "Last name",
+  "display name": "Display name",
+  "email address": "Email address",
+  "password": "Password",
+  "confirm password": "Confirm password",
+
+  "back to home": "Back to home",
+  "already have account ?": "Already have an account?",
+
+  "welcome to": "Welcome to",
+  "or continue with": "Or continue with",
+  "let's start by creating your account": "Let’s start by creating your account",
+
+  "no need to waste time on this page, let's take you back to your account": "No need to waste time on this page — let’s take you back to your account",
+
+  "for authentication and sign in": "For authentication and sign-in",
+
+  "a valid email is required": "A valid email address is required",
+  "a password is required": "A password is required",
+
+  "authentication error": "Authentication error",
+  "Please create an account before logging in and try again.": "Please create an account before logging in and try again.",
+
+  "already have an account": "Already have an account",
+  "login with credentials or your social media": "Log in with your credentials or social media",
+
+  "or": "or",
+  "forgot your password ?": "Forgot your password?",
+  "don't have an account ?": "Don’t have an account?"
+  
+}
