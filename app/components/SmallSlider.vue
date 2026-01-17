@@ -76,7 +76,7 @@
 
 <template>
   <!-- 5. REPLACED: BLOG SLIDER SECTION -->
-  <section class="my-5 my-md-10 scroll-mt-6 bg_surface_variant">
+  <section class="my-5 my-md-10">
     <v-container class="my-5 my-md-10">
       
       <!-- Section Header -->
@@ -101,8 +101,9 @@
       <!-- Swiper Slider -->
       <Swiper
         :modules="modules"
-        :slides-per-view="3"
+        :slides-per-view="1"
         :space-between="32"
+        mousewheel-force-to-axis="true"
         :breakpoints="swiperBreakpoints"
         :pagination="{ clickable: true, dynamicBullets: true }"
         :navigation="{
@@ -112,11 +113,15 @@
         :autoplay="{ delay: 5000, disableOnInteraction: false }"
         class="pb-12 py-2 px-1"
       >
-        <SwiperSlide v-for="article in articles" :key="article.id">
+        <SwiperSlide
+          v-for="article in articles"
+          :key="article.id"
+          v-cloak="true"
+          
+        >
           <v-card
             class="rounded-xl h-100 border transition-swing elevation-2 hover-up"
             flat
-            color="white"
           >
             <!-- Image Area -->
             <div class="position-relative">

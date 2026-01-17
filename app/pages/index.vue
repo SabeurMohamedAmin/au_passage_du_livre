@@ -63,7 +63,7 @@ const blogPosts = [
 
 <template>          
       <!-- 2. HERO SECTION: Split Layout -->
-      <section class="position-relative mb-10 pt-2 pt-md-4 pb-md-24 overflow-hidden">
+      <section class="position-relative mb-5 mb-md-10 pt-2 pt-md-4 pb-md-24 overflow-hidden">
         <!-- Abstract Bg Shape -->
         <div
           style="border-bottom-left-radius: 50% !important;"
@@ -162,100 +162,28 @@ const blogPosts = [
       <section class="my-5 my-md-10 scroll-mt-6 bg_surface_variant">
         <we-do-best id="we_doo_best"/>
       </section>
-      <!-- 4. SPEAKERS GRID -->
+
+      <!-- 3. INTERVENANTS ET ARTISTES -->
       <section class="my-5 my-md-10 scroll-mt-6">
         <speakers-grid/>
       </section>
 
       <!-- 5. ARTICLES et ACTUALITIES -->
       <section class="my-5 my-md-10 scroll-mt-6 bg_surface_variant">
-        <v-container>
-          <v-row class="mb-2" align="center" justify="space-between">
-            <!-- Title -->
-            <v-col class="text-left" cols="12" md="8">
-              <h2 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70">
-                Articles & Actualités
-              </h2>
-            </v-col>
-
-            <!-- Button -->
-            <v-col class="d-flex justify-start justify-md-end mt-0" cols="12" md="4">
-              <v-btn
-                color="primary"
-                variant="outlined"
-                rounded="pill"
-                class="font-weight-bold px-6"
-                :to="$localePath('/blog')"
-              >
-                Voir tous les articles
-                <v-icon end icon="mdi-arrow-right" />
-              </v-btn>
-            </v-col>
-            <v-col>
-              <p class="text-body-1 text-medium-emphasis">
-                Découvrez nos réflexions, projets et temps forts culturels.
-              </p>
-            </v-col>
-          </v-row>
-          <v-carousel
-            hide-delimiters
-            show-arrows
-            cycle
-            height="420"
-            class="rounded-xl"
-          >
-            <v-carousel-item
-              v-for="(post, i) in blogPosts"
-              :key="i"
-            >
-              <v-card
-                class="fill-height rounded-xl overflow-hidden elevation-6"
-              >
-                <v-img
-                  :src="post.image"
-                  cover
-                  class="fill-height"
-                >
-                  <!-- Overlay -->
-                  <div class="bg-gradient-to-t fill-height d-flex align-end pa-8">
-                    <div class="text-white">
-                      <h3 class="text-h4 font-weight-black mb-2">
-                        {{ post.title }}
-                      </h3>
-                      <p class="text-body-1 opacity-90 mb-6 max-w-600">
-                        {{ post.excerpt }}
-                      </p>
-                      <v-btn
-                        color="primary"
-                        rounded="pill"
-                        class="font-weight-bold"
-                        :to="$localePath(post.slug)"
-                      >
-                        Lire l’article
-                      </v-btn>
-                    </div>
-                  </div>
-                </v-img>
-              </v-card>
-            </v-carousel-item>
-          </v-carousel>
-        </v-container>
+        <articles-slider :blogPosts="blogPosts"/>
       </section>
       
       <!-- 6. SCHEDULE SECTION -->
-      <section id="schedule" class="my-5 my-md-10 scroll-mt-6 bg_surface_variant">
+      <section id="schedule" class="my-5 my-md-10 scroll-mt-6 ">
         <v-container>
-          <v-row class="mb-12 align-end">
+          <v-row class="mb-12 align-start">
             <v-col cols="12" md="8">
-              <span class="text-primary font-weight-bold text-overline text-h6">
-                Time Table
-              </span>
               <h2 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70">
                 Event Schedule
               </h2>
             </v-col>
             <v-col cols="12" md="4" class="text-md-right">
-              <v-btn variant="outlined" rounded="pill" class="font-weight-bold px-6 border-opacity-25">
+              <v-btn append-icon="mdi-download" variant="outlined" rounded="pill" class="font-weight-bold px-6 border-opacity-25">
                 Download PDF
               </v-btn>
             </v-col>
@@ -264,75 +192,17 @@ const blogPosts = [
           <v-col cols="12" class="px-0">
              <!-- TABBED COMPONENT -->
              <v-card class="elevation-0 rounded-xl border bg-white">
-                <div class="sticky-top bg-white z-10 px-4 pt-4 border-b">
-                  <v-tabs v-model="selectedDay" color="primary" align-tabs="start" height="60" slider-color="primary">
-                    <v-tab v-for="(day, i) in scheduleDays" :key="i" :value="i" class="text-none px-6 rounded-t-lg" :ripple="false">
-                       <span class="text-h6 font-weight-bold me-2">
-                        {{ day.day }}
-                      </span> 
-                       <span class="text-body-2 text-medium-emphasis">
-                        {{ day.month }}
-                      </span>
-                    </v-tab>
-                  </v-tabs>
-                </div>
-
-                <v-window v-model="selectedDay" class="pa-0">
-                  <v-window-item v-for="(day, i) in scheduleDays" :key="i" :value="i">
-                    <div
-                      v-for="(event, j) in day.schedules"
-                      :key="j"
-                      class="d-flex flex-column flex-md-row pa-6 pa-md-8 border-b hover-bg-light transition-fast"
-                    >
-                       <!-- Time -->
-                       <div
-                        class="me-md-8 mb-4 mb-md-0 d-flex flex-md-column align-center align-md-start"
-                        style="min-width: 120px"
-                      >
-                        <span
-                          class="text-h6 font-weight-bold text-grey-darken-3"
-                        >
-                          {{ event.startTime }}
-                        </span>
-                        <span class="d-none d-md-block h-25 w-0 border-s my-2 ms-4 border-dashed bg-grey-lighten-2">
-                        </span>
-                        <span class="text-body-2 text-medium-emphasis ms-3 ms-md-0">
-                          {{ event.endTime }}
-                        </span>
-                       </div>
-                       
-                       <!-- Content -->
-                       <div class="flex-grow-1">
-                          <h3 class="text-h5 font-weight-bold text-grey-darken-3 mb-2">
-                            {{ event.title }}
-                          </h3>
-                          <p class="text-body-1 text-medium-emphasis mb-4 mw-800">
-                            {{ event.description }}
-                          </p>
-                          <div class="d-flex align-center gap-4">
-                             <v-chip size="small" variant="tonal" color="primary" class="font-weight-bold">
-                                <v-icon start icon="mdi-map-marker" size="x-small"/>
-                                {{ event.location }}
-                             </v-chip>
-                             <div class="d-flex ms-auto">
-                                <v-avatar v-for="spk in event.speakers" :key="spk" size="32" class="border border-white ms-n2">
-                                  <v-img :src="`https://picsum.photos/200/300/?blur=2&random=${spk}`" cover/>
-                                </v-avatar>
-                             </div>
-                          </div>
-                       </div>
-                    </div>
-                  </v-window-item>
-                </v-window>
              </v-card>
           </v-col>
         </v-container>
       </section>
 
       <!-- 5. ARTICLES et ACTUALITIES -->
-      <section class="my-5 my-md-10 scroll-mt-6 bg_surface_variant">
-        <small-slider/>
-      </section>
+       <!--
+        <section class="my-5 my-md-10 scroll-mt-6 bg_surface_variant">
+          <small-slider/>
+        </section>
+      -->
       <!-- 7. FOOTER -->
       <v-footer class="pt-16 text-center text-md-left">
         <footer-section/>
@@ -384,5 +254,8 @@ const blogPosts = [
   text-shadow:
     0 1px 2px rgba(0, 0, 0, 0.08),
     0 4px 12px rgba(0, 0, 0, 0.12);   
+}
+.tt{
+  border: solid 2px red !important
 }
 </style>

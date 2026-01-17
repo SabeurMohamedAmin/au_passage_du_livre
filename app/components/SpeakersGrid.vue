@@ -7,15 +7,37 @@
 </script>
 
 <template>
-  <v-container id="speakers_grid" class="my-5 my-md-10 scroll-mt-6">
-    <div class="mb-16">
-      <h2 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70">
-        Intervenants et artistes
-      </h2>
-      <p class="text-h6 text-medium-emphasis mt-4 font-weight-regular">
-        Découvrez les intervenants et artistes qui participent à nos événements culturels.
-      </p>
-    </div>
+  <v-container id="speakers_grid" class="my-5 my-md-10">
+    <!-- Header (same UX as Articles) -->
+    <v-row class="mb-6" justify="space-between">
+      <!-- Title -->
+      <v-col cols="12" md="8">
+        <h2 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70">
+          Intervenants et artistes
+        </h2>
+        <p class="text-body-1 text-medium-emphasis">
+          Découvrez les intervenants et artistes qui participent à nos événements culturels.
+        </p>
+      </v-col>
+
+      <!-- Button -->
+      <v-col
+        cols="12"
+        md="4"
+        class="d-flex justify-start justify-md-end mt-4 mt-md-0"
+      >
+        <v-btn
+          color="primary"
+          variant="outlined"
+          rounded="pill"
+          class="font-weight-bold text-body-1"
+          :to="$localePath('/artistes-et-intervenants')"
+        >
+          Voir tous les intervenants
+          <v-icon end icon="mdi-arrow-right" />
+        </v-btn>
+      </v-col>
+    </v-row>
 
     <v-row>
       <v-col v-for="(speaker, i) in speakers" :key="i" cols="12" sm="6" md="3">
@@ -52,18 +74,6 @@
         </v-hover>
       </v-col>
     </v-row>
-    
-    <div class="text-center mt-12">
-      <v-btn
-        size="large"
-        variant="outlined"
-        rounded="pill"
-        class="px-8 border-grey-darken-1 text-grey-darken-3"
-        :to="$localePath('/artistes-et-intervenants')"
-      >
-        View All Speakers
-      </v-btn>
-    </div>
   </v-container>
 </template>
 
