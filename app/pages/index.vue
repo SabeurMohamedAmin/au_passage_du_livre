@@ -58,9 +58,14 @@ const drawer = ref(false)
                     </span>
                   </div>
                   
-                  <h1 class="text-h4 text-sm-h3 text-lg-h2 font-weight-black text-grey-darken-4 lh-1 mb-6">
-                    Unite. <br> Create. <br>
-                    <span class="text-primary">Innovate.</span>
+                  <h1 class="d-flex flex-column gap-5 text-lg-h4 text-sm-h3 text-h4 font-weight-black text-transparent-4 lh-1 mb-6">
+                    <span>
+                      Relier les imaginaires.
+                    </span><br>
+                    <span>
+                      Faire naître des rencontres.
+                    </span><br>
+                    <span class="text-primary">Transmettre la culture.</span>
                   </h1>
                   
                   <p class="text-h6 text-medium-emphasis font-weight-regular mb-10 line-height-lg">
@@ -281,5 +286,12 @@ const drawer = ref(false)
 .event-img-reight-section{
   backdrop-filter: blur(12px);
   border: 1px solid #46444420;
+}
+.text-transparent-4{
+  opacity: 80%;
+  letter-spacing: -0.02em;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.12);   
 }
 </style>

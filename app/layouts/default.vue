@@ -1,6 +1,7 @@
 <script setup lang="ts">
-  import { useDisplay } from 'vuetify'
+  import { useTheme, useDisplay } from 'vuetify'
 
+  const theme = useTheme();
   const {mdAndUp} = useDisplay();
 
   const localePath = useLocalePath()
@@ -58,7 +59,13 @@ const baseMenu: MenuItem[] = [
     show: false,
     title: '',
     text: '',
-  })
+  });
+
+  const logoSrc = computed(() =>
+    theme.global.current.value.dark
+      ? '/img/logos/main/logo_aupassagedulivre-dark.svg'
+      : '/img/logos/main/logo_aupassagedulivre.svg'
+  );
 
 </script>
 
@@ -92,7 +99,15 @@ const baseMenu: MenuItem[] = [
             class="topnav-logo-link  v-btn--variant-tonal"
           >
             <!-- Replace with your logo component or v-img -->
-            <v-icon size="28" class="topnav-logo-icon" icon="mdi-triangle"/>
+          <nuxt-img
+            :src="logoSrc"
+            alt="Au Passage du Livre – Association culturelle"
+            class="topnav-logo-icon"
+            height="90"
+            width="90"
+            contain
+            eager
+          />
           </NuxtLink>
         </v-col>
         
@@ -246,8 +261,15 @@ const baseMenu: MenuItem[] = [
 
   .topnav-logo-icon {
     color: rgb(var(--v-theme-primary));
+    transition: all 150ms ease-in-out;
   }
-
+  .topnav-logo-icon:hover{
+    filter: brightness(105%);
+    transform: scale(1.04);
+  }
+  .topnav-logo-icon:active{
+    transform: scale(1.02);
+  }
   /* Drawer active item similar to underline + stronger text */
   .drawer-item--active {
     font-weight: 600;
