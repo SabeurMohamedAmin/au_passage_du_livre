@@ -176,25 +176,30 @@ const sponsors = ref<Sponsor[]>([
 
             <!-- Sharp Action Bar -->
             <v-card-actions class="px-4 pb-4">
-              <div v-if="sponsor.address" class="d-flex align-center text-caption opacity-60">
-                <v-icon icon="mdi-map-marker-outline" size="small" class="mr-2"></v-icon>
-                <span class="text-truncate" style="max-width: 200px;">{{ sponsor.address }}</span>
-              </div>
-              
-              <v-spacer></v-spacer>
-
-              <v-btn
-                v-if="sponsor.website"
-                :href="sponsor.website"
-                size="x-large"
-                target="_blank"
-                variant="outlined"
-                rounded="lg"
-                density="comfortable"
-                :color="isHovering ? sponsor.color : 'medium-emphasis'"
-                icon="mdi-arrow-top-right-thin"
-                text="viste website"
-              />
+              <v-row dense align="center" justify="space-between">
+                <v-col cols="9">
+                  <div v-if="sponsor.address" class="d-flex align-start text-caption opacity-60">
+                    <v-icon icon="mdi-map-marker-outline" size="small" class="mr-1"/>
+                      {{ sponsor.address }}
+                  </div>
+                </v-col>
+                <v-col cols="2" class="text-end">
+                  <v-btn
+                    
+                    v-if="sponsor.website"
+                    :href="sponsor.website"
+                    size="large"
+                    target="_blank"
+                    variant="outlined"
+                    rounded="lg"
+                    density="compact"
+                    :color="isHovering ? sponsor.color : 'medium-emphasis'"
+                    icon="mdi-arrow-top-right-thin"
+                    text="viste website"
+                  />
+                </v-col>                
+  
+              </v-row>
             </v-card-actions>
           </v-card>
         </v-hover>
