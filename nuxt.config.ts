@@ -1,6 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
-import Icons from 'unplugin-icons/vite'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -11,6 +10,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@pinia/nuxt',
     '@nuxtjs/i18n',
+    'nuxt-swiper'
   ],
   runtimeConfig: {
     public: {
@@ -41,6 +41,7 @@ export default defineNuxtConfig({
   },
   
   i18n: {
+    strategy: 'prefix_except_default',
     defaultLocale: 'fr',
     locales: [
       {
@@ -94,7 +95,6 @@ export default defineNuxtConfig({
         dir: 'rtl' 
       }, 
 
-    ],
+    ]    
   }
-
 })

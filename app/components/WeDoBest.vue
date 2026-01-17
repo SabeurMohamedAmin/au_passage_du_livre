@@ -8,7 +8,7 @@
     <v-row class="mb-12">
       <v-col cols="12">
         <h2 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70">
-          What we do – Mission principale
+          Notre mission – Actions principales
         </h2>
       </v-col>
       <v-col cols="12" md="9" lg="6">

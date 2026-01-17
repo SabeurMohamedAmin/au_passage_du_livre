@@ -9,8 +9,12 @@
 <template>
   <v-container id="speakers_grid" class="my-5 my-md-10 scroll-mt-6">
     <div class="mb-16">
-      <h2 class="text-h3 font-weight-black opacity-70">World Class Speakers</h2>
-      <p class="text-h6 text-medium-emphasis mt-4 font-weight-regular">Learn from the experts behind your favorite technologies.</p>
+      <h2 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70">
+        Intervenants et artistes
+      </h2>
+      <p class="text-h6 text-medium-emphasis mt-4 font-weight-regular">
+        Découvrez les intervenants et artistes qui participent à nos événements culturels.
+      </p>
     </div>
 
     <v-row>
