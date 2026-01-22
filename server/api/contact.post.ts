@@ -7,6 +7,7 @@ export default defineEventHandler(async (event) => {
   // ✅ THIS is where your Netlify env var is available
   const resendKey = config.resendApiKey
   const resend = new Resend(resendKey);
+  console.log("resendKey", resendKey)
   // 🔒 1. Check API key
   if (!config.resendApiKey) {
     throw new Error('RESEND_API_KEY is missing')
