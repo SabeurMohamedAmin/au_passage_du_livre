@@ -21,6 +21,9 @@ export default defineNuxtConfig({
       // NEVER put secrets here
     }
   },
+  nitro: {
+    preset: 'netlify',
+  },
   build: {
     transpile: ['vuetify'],
   },
