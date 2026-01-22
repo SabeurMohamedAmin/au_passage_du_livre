@@ -104,7 +104,7 @@ const sponsors = ref<Sponsor[]>([
 <template>
   <v-container class="py-6">
     <!-- Sharp Modern Header -->
-    <div class="mb-16">
+    <div class="mb-10">
       <div class="d-flex mb-4">
         <h2 class="w-100 text-h5 text-sm-h4 font-weight-black opacity-70">
           Nos Sponsors
@@ -116,7 +116,7 @@ const sponsors = ref<Sponsor[]>([
     </div>
 
     <!-- Bento-style Grid -->
-    <v-row dense>
+    <v-row >
       <v-col
         v-for="sponsor in sponsors"
         :key="sponsor.id"

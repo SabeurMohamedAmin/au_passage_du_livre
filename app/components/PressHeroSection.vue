@@ -1,23 +1,22 @@
 <script setup lang="ts">
   /* ============================================================
-    PRESSE & ACTUALITÉS - FINAL MERGE
-    - Clean Editorial Hero
-    - Rich Data Cards (Chips, Logos)
-    - Stats & Contact sections included
-    ============================================================ */
+     PRESSE & ACTUALITÉS - REFACTORED HERO
+     - Implements "EventHeroSection" style overlay
+     - Full height visibility without scrolling
+     ============================================================ */
+
   // Press articles data definition
   interface PressArticle {
     id: number
     title: string
     excerpt: string
     publisher: string
-    publisherLogo: string // Using placeholder text for logos
+    publisherLogo: string
     date: string
     category: 'Article' | 'Interview' | 'Review' | 'Event Coverage'
     image: string
     url: string
   }
-
 
   // Content Configuration
   const content = {
@@ -29,21 +28,15 @@
       id: 0,
       title: 'Au Passage du Livre, un acteur culturel qui rassemble',
       publisher: 'Dernières Nouvelles d’Alsace',
-      publisherLogo: "mdi-map-marker-radius-outline" ,
+      publisherLogo: "mdi-newspaper-variant-outline",
       excerpt: 'À Strasbourg, l’association développe des événements littéraires et artistiques ouverts à tous, favorisant le dialogue et la création.',
       date: 'Avril 2026',
       image: 'https://images.unsplash.com/photo-1457694587812-e8bf29a43845?q=80&w=2400&auto=format&fit=crop',
       url: '#'
-    },
-    stats: [
-      { value: '50+', label: 'Mentions dans la presse' },
-      { value: '15+', label: 'Publications partenaires' },
-      { value: '200k+', label: 'Lecteurs touchés' }
-    ]
+    }
   }
 
-
-  // Sample Data
+  // Sample Data for Grid
   const pressArticles: PressArticle[] = [
     {
       id: 1,
@@ -113,8 +106,7 @@
     }
   ]
 
-
-  // Helper for chip colors
+  // Helper for chip colors in grid
   const getCategoryColor = (category: string) => {
     switch(category) {
       case 'Article': return 'blue-darken-1'
@@ -124,117 +116,125 @@
       default: return 'grey'
     }
   }
+
+  // COMPUTED: Featured Hero Style (Dynamic Background)
+  const featuredHeroStyle = computed(() => ({
+    backgroundImage: `url(${content.featured.image})`
+  }))
 </script>
 
 <template>
-  <v-container class="py-6">
-    <!-- Sharp Modern Header -->
-    <div class="mb-10">
-      <div class="d-flex mb-4">
-        <h2 class="w-100 text-h5 text-sm-h4 font-weight-black opacity-70">
-          {{ content.hero.title }}
-        </h2>
-      </div>
-      <p class="text-subtitle-1 text-medium-emphasis max-w-lg mx-auto">
-        {{ content.hero.subtitle }}
-      </p>
-    </div>
-    
-    <!-- FEATURED PRESS ARTICLE -->
-    <section class="mb-14">
-      <press-hero-section/>
-    </section>
+  <!-- FEATURED PRESS ARTICLE (Hero Style) -->
+  <section class="mb-14">
+    <v-card
+      class="hero-card rounded-xl overflow-hidden elevation-10"
+      height="460"
+      :style="featuredHeroStyle"
+    >
+      <!-- Layer 1: Glass Overlay -->
+      <div class="glass-overlay"></div>
 
+      <!-- Layer 2: Content -->
+      <div class="content-layer pa-6 h-100 d-flex flex-column">
+        <v-row dense>
+          <v-col cols="12">
 
-    <!-- PRESS GRID -->
-    <v-row>
-      <v-col
-        v-for="article in pressArticles"
-        :key="article.id"
-        cols="12"
-        sm="6"
-        md="4"
-      >
-        <!-- Replaced .hover-lift with 'hover' prop -->
-        <v-card
-          hover
-          class="rounded-xl overflow-hidden h-100 d-flex flex-column border-0"
-          elevation="2"
-        >
-          <!-- Card Image -->
-          <v-img
-            :src="article.image"
-            height="220"
-            cover
-            class="align-end"
-            gradient="to top, rgba(0,0,0,0.05), transparent"
-          ></v-img>
- 
-          <div class="d-flex flex-column flex-grow-1">
-            <!-- Title & Category Area -->
-            <v-card-title class="pt-5 pb-2" style="line-height: 1.5rem;">
-              <div class="mb-3">
-                <v-chip
-                  :color="getCategoryColor(article.category)"
-                  size="x-small"
-                  label
-                  class="font-weight-bold text-uppercase"
-                >
-                  {{ article.category }}
-                </v-chip>
-              </div>
-              <div class="text-h6 font-weight-bold text-wrap" style="line-height: 1.3;">
-                {{ article.title }}
-              </div>
-            </v-card-title>
- 
-            <!-- Publisher & Date Row -->
-            <v-card-subtitle class="pb-3 pt-1">
-              <div class="d-flex align-center">
-                <v-avatar size="24" class="mr-2 border">
-                  <v-img :src="article.publisherLogo" :alt="article.publisher"></v-img>
-                </v-avatar>
-                <span class="font-weight-medium text-grey-darken-2">{{ article.publisher }}</span>
-                <v-spacer></v-spacer>
-                <span class="text-caption text-medium-emphasis font-weight-medium">{{ article.date }}</span>
-              </div>
-            </v-card-subtitle>
- 
-            <!-- Excerpt: Replaced .line-clamp-3 with inline style -->
-            <v-card-text class="pt-0 pb-2">
-              <p
-                class="text-body-2 text-medium-emphasis mb-0"
-                style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"
-              >
-                {{ article.excerpt }}
+            <!-- Publisher Badge -->
+            <v-chip
+              class="mb-4 font-weight-bold"
+              size="large"
+              rounded="pill"
+              elevation="2"
+            >
+              <v-icon :icon="content.featured.publisherLogo" start class="mr-2" />
+              {{ content.featured.publisher }} — {{ content.featured.date }}
+            </v-chip>
+          </v-col>
+          <v-col cols="12">
+
+            <!-- Title & Excerpt -->
+            <div class="max-w-xl">
+              <h1 class="text-h5 text-md-h4 font-weight-black line-height-tight mb-2">
+                {{ content.featured.title }}
+              </h1>
+              
+              <p class="text-h6 opacity-90 font-weight-light mb-4 text-shadow-sm">
+                {{ content.featured.excerpt }}
               </p>
-            </v-card-text>
- 
-            <v-spacer></v-spacer>
- 
-            <!-- Action Button -->
-            <v-card-actions class="px-4 pb-4 pt-2">
-              <v-btn
-                :href="article.url"
-                target="_blank"
-                variant="tonal"
-                color="#143c28"
-                size="small"
-                class="font-weight-bold px-4"
-                rounded="pill"
-                block
-              >
-                Lire la suite
-                <v-icon end icon="mdi-open-in-new" size="small" class="ml-2"></v-icon>
-              </v-btn>
-            </v-card-actions>
-          </div>
-        </v-card>
-      </v-col>
-    </v-row>
- 
-    <!-- BOTTOM ACTIONS -->
-    <v-row class="mt-16">
-    </v-row>
-  </v-container>
+            </div>
+          </v-col>
+
+          <v-col>
+            <!-- CTA Button -->
+            <v-btn
+              variant="outlined"
+              color="white"
+              size="large"
+              rounded="xl"
+              prepend-icon="mdi-information-outline"
+            >
+              Lire l’article
+              <v-icon end icon="mdi-arrow-right" />
+            </v-btn>
+          </v-col>
+        </v-row>
+      </div>
+    </v-card>
+  </section>
 </template>
+
+<style scoped>
+/**
+ * CSS Variables for Glassmorphism
+ * Controls the hover "reveal" effect
+ */
+.hero-card {
+  --overlay-opacity-start: 0.3; /* Darker start for text readability */
+  --overlay-opacity-hover: 0.85; /* Darken significantly on hover */
+  --glass-blur: 8px;
+
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: white; /* Text color inside Hero */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25) !important;
+}
+
+/* --- Utilities --- */
+.max-w-lg { max-width: 800px; }
+.max-w-xl { max-width: 650px; }
+.line-height-tight { line-height: 1.1; }
+.content-layer { position: relative; z-index: 2; }
+.text-shadow-sm { text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
+
+/* --- Glassmorphism Overlay Logic --- */
+.glass-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: var(--overlay-opacity-start);
+  transition: opacity 0.4s ease, backdrop-filter 0.4s ease;
+  
+  /* Gradient for text contrast */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8));
+}
+
+.hero-card:hover .glass-overlay {
+  opacity: var(--overlay-opacity-hover);
+  /* Darker overlay on hover for dramatic effect */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.95));
+}
+
+/* Blur Support */
+@supports (backdrop-filter: blur(var(--glass-blur))) {
+  .hero-card:hover .glass-overlay {
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+  }
+}
+</style>

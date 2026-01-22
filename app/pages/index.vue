@@ -123,32 +123,28 @@ const blogPosts = [
                <!-- Image Composition -->
                <v-row dense justify="space-between">
                  <v-col cols="6" class="mt-2 mt-md-12">
-                   <v-img 
-                    src="https://picsum.photos/200/300/?blur=2&random=1" 
-                    class="rounded-xl mb-4 elevation-5 hover-up transition-swing"
+                   <nuxt-img 
+                    src="./img/home/des-dedicaces.png" 
+                    class="hero-img-top-left w-100 rounded-xl mb-4 elevation-5 hover-up transition-swing"
                     aspect-ratio="0.75" 
-                    cover
+                    fit="cover"
                    />
-                   <v-img 
-                    src="https://picsum.photos/200/300/?blur=2&random=5" 
-                    class="rounded-xl mb-4 elevation-5 hover-up transition-swing"
+                   <nuxt-img 
+                    src="./img/home/diffrents-directions.png"
+                    class="hero-img-bottom-left w-100 rounded-xl mb-4 elevation-5 hover-up transition-swing"
                     aspect-ratio="1" 
-                    cover
+                    fit="cover"
                   />
                  </v-col>
                  <v-col cols="6">
-                   <v-img 
-                     src="https://picsum.photos/200/300/?blur=2&random=2" 
-                     class="rounded-xl mb-4 elevation-5 hover-up transition-swing"
-                     aspect-ratio="0.75" 
-                     cover
+                   <nuxt-img 
+                     src="./img/home/comic.png" 
+                     class="hero-img-top-right w-100 rounded-xl mb-4 elevation-5 hover-up transition-swing"
                    />
-                   <v-img 
-                     src="https://picsum.photos/200/300/?blur=2&random=3" 
-                     class="rounded-xl mb-4 elevation-5 hover-up transition-swing"
-                     aspect-ratio="1" 
-                     cover
-                   />
+                  <nuxt-img
+                    src="./img/home/assemblage-de-livre.png"
+                    class="hero-img-bottom-right w-100 rounded-xl mb-4 elevation-5 hover-up transition-swing"
+                  />
                  </v-col>
                </v-row>
             </v-col>
@@ -255,7 +251,13 @@ const blogPosts = [
     0 1px 2px rgba(0, 0, 0, 0.08),
     0 4px 12px rgba(0, 0, 0, 0.12);   
 }
-.tt{
-  border: solid 2px red !important
+.hero-img-bottom-right, .hero-img-bottom-left {
+  aspect-ratio: 1;   /* width / height */
+  object-fit: fill;
+}
+.hero-img-top-right, .hero-img-top-left{
+  aspect-ratio: .75;   /* width / height */
+  object-fit: fill;
+
 }
 </style>

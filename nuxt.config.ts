@@ -10,14 +10,12 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@pinia/nuxt',
     '@nuxtjs/i18n',
-    'nuxt-swiper'
+    'nuxt-swiper',
+    'nuxt-protected-mailto',
   ],
   runtimeConfig: {
-    public: {
-      //
-    },
+    resendApiKey: process.env.RESEND_API_KEY,
   },
-  
   build: {
     transpile: ['vuetify'],
   },
