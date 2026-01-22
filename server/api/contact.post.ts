@@ -4,8 +4,13 @@ import { randomUUID } from 'node:crypto' // Ensure this is imported
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
-  const resend = new Resend(config.resendApiKey)
-
+  // ✅ THIS is where your Netlify env var is available
+  const resendKey = config.resendApiKey
+  const resend = new Resend(resendKey);
+  // 🔒 1. Check API key
+  if (!config.resendApiKey) {
+    throw new Error('RESEND_API_KEY is missing')
+  }
   // ... validation ...
   const { name, email, subject, message,company, website } = await readBody(event)
 
