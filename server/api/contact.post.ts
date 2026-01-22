@@ -3,14 +3,13 @@ import { Resend } from 'resend'
 import { randomUUID } from 'node:crypto' // Ensure this is imported
 
 export default defineEventHandler(async (event) => {
-  const config = useRuntimeConfig()
   // ✅ THIS is where your Netlify env var is available
-  console.log('runtime config', config)
-  const resendKey = config.resendApiKey
-  const resend = new Resend(resendKey);
-  console.log("resendKey", resendKey)
+    const { resendApiKey } = useRuntimeConfig()
+
+  const resend = new Resend(resendApiKey);
+  console.log("resendKey", resendApiKey)
   // 🔒 1. Check API key
-  if (!config.resendApiKey) {
+  if (!resendApiKey) {
     throw new Error('RESEND_API_KEY is missing')
   }
   // ... validation ...
