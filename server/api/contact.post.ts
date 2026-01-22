@@ -5,6 +5,7 @@ import { randomUUID } from 'node:crypto' // Ensure this is imported
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
   // ✅ THIS is where your Netlify env var is available
+  console.log('runtime config', config)
   const resendKey = config.resendApiKey
   const resend = new Resend(resendKey);
   console.log("resendKey", resendKey)
@@ -36,7 +37,7 @@ export default defineEventHandler(async (event) => {
 
   // 3. Pass the SAME unique subject to the email headers
   await resend.emails.send({
-    from: 'onboarding@resend.dev',
+    from: 'Au Passage du Livre <contact@nuxt.aupassagedulivre.fr>',
     to: 'aupassagedulivre@hotmail.com',
     replyTo: email,
     subject: uniqueSubject,    
