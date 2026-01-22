@@ -123,14 +123,14 @@ const blogPosts = [
                <!-- Image Composition -->
                <v-row dense justify="space-between">
                  <v-col cols="6" class="mt-2 mt-md-12">
-                   <nuxt-img 
-                    src="./img/home/des-dedicaces.png" 
+                  <nuxt-img
+                    src="/img/home/des-dedicaces.png"
                     class="hero-img-top-left w-100 rounded-xl mb-4 elevation-5 hover-up transition-swing"
-                    aspect-ratio="0.75" 
+                    aspect-ratio="0.75"
                     fit="cover"
-                   />
+                  /> 
                    <nuxt-img 
-                    src="./img/home/diffrents-directions.png"
+                    src="/img/home/diffrents-directions.png"
                     class="hero-img-bottom-left w-100 rounded-xl mb-4 elevation-5 hover-up transition-swing"
                     aspect-ratio="1" 
                     fit="cover"
@@ -138,11 +138,11 @@ const blogPosts = [
                  </v-col>
                  <v-col cols="6">
                    <nuxt-img 
-                     src="./img/home/comic.png" 
+                     src="/img/home/comic.png" 
                      class="hero-img-top-right w-100 rounded-xl mb-4 elevation-5 hover-up transition-swing"
                    />
                   <nuxt-img
-                    src="./img/home/assemblage-de-livre.png"
+                    src="/img/home/assemblage-de-livre.png"
                     class="hero-img-bottom-right w-100 rounded-xl mb-4 elevation-5 hover-up transition-swing"
                   />
                  </v-col>
