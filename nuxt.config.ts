@@ -14,7 +14,9 @@ export default defineNuxtConfig({
     'nuxt-protected-mailto',
   ],
   runtimeConfig: {
-    resendApiKey: process.env.RESEND_API_KEY,
+    runtimeConfig: {
+      resendApiKey: '', // DO NOT put process.env here
+    }
   },
   build: {
     transpile: ['vuetify'],
