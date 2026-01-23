@@ -7,6 +7,7 @@ export default defineEventHandler(async (event) => {
     const { resendApiKey } = useRuntimeConfig()
 
   const resend = new Resend(resendApiKey);
+  console.log("resendKey", resendApiKey)
   // 🔒 1. Check API key
   if (!resendApiKey) {
     throw new Error('RESEND_API_KEY is missing')
