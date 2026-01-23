@@ -14,15 +14,7 @@ export default defineNuxtConfig({
     'nuxt-protected-mailto',
   ],
   runtimeConfig: {
-    // server-only (Netlify injects this at runtime)
-    resendApiKey: '',
-
-    public: {
-      // NEVER put secrets here
-    }
-  },
-  nitro: {
-    preset: 'netlify',
+    resendApiKey: process.env.RESEND_API_KEY,
   },
   build: {
     transpile: ['vuetify'],
