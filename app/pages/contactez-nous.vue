@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
-
 /* ─────────────────────────────────────────────
    FORM STATE
    ───────────────────────────────────────────── */
@@ -75,10 +73,20 @@ const handleSubmit = async () => {
     console.error(error)
     alert('Erreur lors de l’envoi du message')
   } finally {
+    formReset();
     loading.value = false
   }
 }
 
+const formReset = ()=>{
+  form.company = ''
+  form.consent = false
+  form.email = ''
+  form.message = ''
+  form.name= ''
+  form.subject= ''
+  form.website= ''
+}
 
 /* ─────────────────────────────────────────────
    SOCIAL LINKS
@@ -89,6 +97,9 @@ const socials = {
   youtube: 'https://www.facebook.com/profile.php?id=61577974919681',
 }
 
+definePageMeta({
+  layout: "only-topnav"
+})
 </script>
 
 <template>
@@ -164,16 +175,22 @@ const socials = {
           </div>
 
           <!-- SOCIALS -->
-          <div class="d-flex ga-4 mt-8" style="z-index: 1">
-            <v-btn
+          <div class="d-flex ga-4 mt-8 " style="z-index: 1">
+            <nuxt-link
               v-for="(url, key) in socials"
               :key="key"
               :to="url"
-              :icon="`mdi-${key}`"
-              variant="outlined"
-              rounded="lg"
-              size="small"
-            />
+              target="_blank"
+              referrerpolicy="no-referrer"
+              class=""
+            >
+              <v-icon 
+                class="border pa-5 rounded-lg"
+                rounded="lg"
+                size="small"
+                :icon="`mdi-${key}`"
+              />
+            </nuxt-link>
           </div>
         </v-col>
 
