@@ -1,63 +1,66 @@
 <script setup lang="ts">
+  import { useFetch } from '@vueuse/core'
+  import { useDisplay } from 'vuetify'
+  const { mdAndUp } = useDisplay()
 
-import { useDisplay } from 'vuetify'
+  // --- MOCK DATA (In real app, use your composable) ---
+  const selectedDay = ref(0)
+  const scheduleDays = ref([
+    { title: 'Day 01', day: '20', month: 'Nov', schedules: [
+        { startTime: '09:00', endTime: '10:00', title: 'Registration & Coffee', author: 'Front Desk', description: 'Pick up your badge and grab a coffee.', location: 'Lobby', speakers: [1] },
+        { startTime: '10:00', endTime: '11:30', title: 'The Future of Vue.js', author: 'Evan You', description: 'Deep dive into the new reactivity system.', location: 'Main Hall', speakers: [2, 3] },
+      ] 
+    },
+    { title: 'Day 02', day: '21', month: 'Nov', schedules: [
+        { startTime: '09:00', endTime: '10:30', title: 'State of CSS 2026', author: 'Adam Argyle', description: 'What is new in the CSS world?', location: 'Room A', speakers: [4] },
+      ] 
+    },
+    { title: 'Day 03', day: '22', month: 'Nov', schedules: [
+        { startTime: '11:00', endTime: '12:00', title: 'Closing Ceremony', author: 'Organizers', description: 'Final remarks and networking.', location: 'Main Hall', speakers: [1, 2, 3, 4] },
+      ] 
+    },
+  ])
 
-// --- MOCK DATA (In real app, use your composable) ---
-const selectedDay = ref(0)
-const scheduleDays = ref([
-  { title: 'Day 01', day: '20', month: 'Nov', schedules: [
-      { startTime: '09:00', endTime: '10:00', title: 'Registration & Coffee', author: 'Front Desk', description: 'Pick up your badge and grab a coffee.', location: 'Lobby', speakers: [1] },
-      { startTime: '10:00', endTime: '11:30', title: 'The Future of Vue.js', author: 'Evan You', description: 'Deep dive into the new reactivity system.', location: 'Main Hall', speakers: [2, 3] },
-    ] 
-  },
-  { title: 'Day 02', day: '21', month: 'Nov', schedules: [
-      { startTime: '09:00', endTime: '10:30', title: 'State of CSS 2026', author: 'Adam Argyle', description: 'What is new in the CSS world?', location: 'Room A', speakers: [4] },
-    ] 
-  },
-  { title: 'Day 03', day: '22', month: 'Nov', schedules: [
-      { startTime: '11:00', endTime: '12:00', title: 'Closing Ceremony', author: 'Organizers', description: 'Final remarks and networking.', location: 'Main Hall', speakers: [1, 2, 3, 4] },
-    ] 
-  },
-])
-
-const stats = [
-  { value: '35', label: 'Speakers', icon: 'mdi-microphone' },
-  { value: '12', label: 'Workshops', icon: 'mdi-laptop' },
-  { value: '5k', label: 'Attendees', icon: 'mdi-account-group' },
-]
+  const stats = [
+    { value: '35', label: 'Speakers', icon: 'mdi-microphone' },
+    { value: '12', label: 'Workshops', icon: 'mdi-laptop' },
+    { value: '5k', label: 'Attendees', icon: 'mdi-account-group' },
+  ]
 
 
 
-const tickets = [
-  { type: 'Standard', price: '$150', features: ['Access to all talks', 'Lunch included', 'Conference Swag'], color: 'grey-lighten-4', btnColor: 'grey-darken-3', dark: false },
-  { type: 'Premium', price: '$299', features: ['Everything in Standard', 'VIP Dinner', 'Front Row Seats'], color: 'primary', btnColor: 'white', dark: true },
-  { type: 'Virtual', price: '$49', features: ['Live Stream Access', 'Recorded Sessions', 'Digital Swag'], color: 'grey-lighten-4', btnColor: 'grey-darken-3', dark: false },
-]
+  const tickets = [
+    { type: 'Standard', price: '$150', features: ['Access to all talks', 'Lunch included', 'Conference Swag'], color: 'grey-lighten-4', btnColor: 'grey-darken-3', dark: false },
+    { type: 'Premium', price: '$299', features: ['Everything in Standard', 'VIP Dinner', 'Front Row Seats'], color: 'primary', btnColor: 'white', dark: true },
+    { type: 'Virtual', price: '$49', features: ['Live Stream Access', 'Recorded Sessions', 'Digital Swag'], color: 'grey-lighten-4', btnColor: 'grey-darken-3', dark: false },
+  ]
 
-const drawer = ref(false);
+  const drawer = ref(false);
 
-const { mdAndUp } = useDisplay()
 
-const blogPosts = [
-  {
-    title: 'La littérature comme espace de dialogue',
-    excerpt: 'Rencontres, lectures et échanges autour des mots et des idées.',
-    image: 'https://picsum.photos/800/600?random=11',
-    slug: 'litterature-espace-dialogue',
-  },
-  {
-    title: 'Soutenir les artistes locaux',
-    excerpt: 'Un engagement fort pour la création indépendante.',
-    image: 'https://picsum.photos/800/600?random=12',
-    slug: 'soutenir-artistes',
-  },
-  {
-    title: 'Transmettre la culture aux nouvelles générations',
-    excerpt: 'Actions culturelles, ateliers et médiation artistique.',
-    image: 'https://picsum.photos/800/600?random=13',
-    slug: 'transmettre-culture',
-  },
-]
+  const blogPosts = [
+    {
+      title: 'La littérature comme espace de dialogue',
+      excerpt: 'Rencontres, lectures et échanges autour des mots et des idées.',
+      image: 'https://picsum.photos/800/600?random=11',
+      slug: 'litterature-espace-dialogue',
+    },
+    {
+      title: 'Soutenir les artistes locaux',
+      excerpt: 'Un engagement fort pour la création indépendante.',
+      image: 'https://picsum.photos/800/600?random=12',
+      slug: 'soutenir-artistes',
+    },
+    {
+      title: 'Transmettre la culture aux nouvelles générations',
+      excerpt: 'Actions culturelles, ateliers et médiation artistique.',
+      image: 'https://picsum.photos/800/600?random=13',
+      slug: 'transmettre-culture',
+    },
+  ]
+
+  // Utilisation du composable
+  const { downloadFile } = useDownload()
 
 </script>
 
@@ -126,23 +129,21 @@ const blogPosts = [
                   <nuxt-img
                     src="/img/home/des-dedicaces.png"
                     class="hero-img-top-left w-100 rounded-xl mb-4 elevation-5 hover-up transition-swing"
-                    aspect-ratio="0.75"
                     fit="cover"
                   /> 
                    <nuxt-img 
                     src="/img/home/diffrents-directions.png"
                     class="hero-img-bottom-left w-100 rounded-xl mb-4 elevation-5 hover-up transition-swing"
-                    aspect-ratio="1" 
                     fit="cover"
                   />
                  </v-col>
                  <v-col cols="6">
                    <nuxt-img 
-                     src="/img/home/comic.png" 
+                     src="/img/home/assemblage-de-livre.png" 
                      class="hero-img-top-right w-100 rounded-xl mb-4 elevation-5 hover-up transition-swing"
                    />
                   <nuxt-img
-                    src="/img/home/assemblage-de-livre.png"
+                    src="/img/home/comic.png"
                     class="hero-img-bottom-right w-100 rounded-xl mb-4 elevation-5 hover-up transition-swing"
                   />
                  </v-col>
@@ -177,11 +178,24 @@ const blogPosts = [
               <h2 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70">
                 Event Schedule
               </h2>
+              <p>
+                To download the full events catalog please click on download PDF.
+              </p>
             </v-col>
             <v-col cols="12" md="4" class="text-md-right">
-              <v-btn append-icon="mdi-download" variant="outlined" rounded="pill" class="font-weight-bold px-6 border-opacity-25">
-                Download PDF
-              </v-btn>
+              <nuxt-link
+                @click.prevent="downloadFile('/documents/events/event-2025.pdf', 'Programme-event-2025')"
+                target="_blank"
+                download="Programme-event-2025.pdf"
+              >
+                <v-btn
+                  append-icon="mdi-download" 
+                  variant="outlined" rounded="pill" 
+                  class="font-weight-bold px-6 border-opacity-25"
+                >
+                  Download PDF
+                </v-btn>
+              </nuxt-link>
             </v-col>
           </v-row>
 
@@ -247,12 +261,12 @@ const blogPosts = [
     0 1px 2px rgba(0, 0, 0, 0.08),
     0 4px 12px rgba(0, 0, 0, 0.12);   
 }
-.hero-img-bottom-right, .hero-img-bottom-left {
-  aspect-ratio: 1;   /* width / height */
+.hero-img-top-right, .hero-img-bottom-left {
+  aspect-ratio: 1/1;   /* width / height */
   object-fit: fill;
 }
-.hero-img-top-right, .hero-img-top-left{
-  aspect-ratio: .75;   /* width / height */
+.hero-img-bottom-right, .hero-img-top-left{
+  aspect-ratio: 2/3;
   object-fit: fill;
 
 }
