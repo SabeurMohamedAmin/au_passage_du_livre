@@ -29,6 +29,7 @@ export interface EventHeroContent {
     title: string
     subtitle: string
     description: string
+    slug: string
     cta: string
   }
   logistics: {
@@ -65,6 +66,7 @@ export function useEventHeroContent() {
       title: 'Au Passage du Livre',
       subtitle: 'Goes European',
       description: 'Join our association for three unforgettable days of literature, culture, and exchange at the heart of Europe.',
+      slug: 'foire-europeenne-2026',
       cta: 'Learn More',
     },
     logistics: {
@@ -118,6 +120,15 @@ export function useEventHeroContent() {
         name: 'Pascal Graffica',
         slug: 'pascal-graffica',
         role: 'Comic',
+        image: '/img/events/autors/pascal_graffica.png',
+        facebook: 'https://www.facebook.com/pascal.graffica',
+        website: 'https://pascalgraffica.blogspot.com',
+      },
+      {
+        id: 4,
+        name: 'Amin Sab',
+        slug: 'amin-sab',
+        role: 'Author',
         image: '/img/events/autors/pascal_graffica.png',
         facebook: 'https://www.facebook.com/pascal.graffica',
         website: 'https://pascalgraffica.blogspot.com',

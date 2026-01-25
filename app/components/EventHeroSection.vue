@@ -46,7 +46,21 @@
       icon:20,
       avatar:40
     }}
-  })
+  });
+
+  /* ==============================
+    CAROUSEL DISPLAY LOGIC
+  ============================== */
+
+  const MAX_VISIBLE_AUTHORS = 4
+
+  const visibleAuthors = computed(() =>
+    featuredAuthors.value.slice(0, MAX_VISIBLE_AUTHORS)
+  )
+
+  const hasMoreAuthors = computed(() =>
+    featuredAuthors.value.length > MAX_VISIBLE_AUTHORS
+  )
 </script>
 
 <template>
@@ -109,16 +123,18 @@
                 </p>
               </v-col>
 
-              <v-col cols="12" class="mt-auto mb-4">
-                <v-btn
-                  variant="outlined"
-                  color="white"
-                  size="large"
-                  rounded="xl"
-                  prepend-icon="mdi-information-outline"
-                >
-                  {{ content.hero.cta }}
-                </v-btn>
+              <v-col cols="12" class="mt-auto mb-4">    
+                <nuxt-link :to="$localePath({ name: 'event-details', params: { slug: content.hero.slug } })">
+                  <v-btn
+                    variant="outlined"
+                    color="white"
+                    size="large"
+                    rounded="xl"
+                    prepend-icon="mdi-information-outline"
+                  >
+                    {{ content.hero.cta }}
+                  </v-btn>
+                </nuxt-link>
               </v-col>
             </v-row>
           </div>
@@ -221,13 +237,13 @@
       <div class="d-flex align-center justify-space-between mb-6">
         <h3 class="text-h5 font-weight-bold">Special Guests</h3>
         <v-btn rounded="lg" variant="text" append-icon="mdi-arrow-right">
-          View all guests
+          All guests in this Event
         </v-btn>
       </div>
 
       <v-slide-group show-arrows>
         <v-slide-group-item
-          v-for="author in featuredAuthors"
+          v-for="author in visibleAuthors"
           :key="author.id"
         >
           <v-card
@@ -238,7 +254,6 @@
             <v-responsive
               class="position-relative d-flex "
               style="height: 240px; width: 100%; height: 100%; aspect-ratio: 2/3; object-fit: cover;"
-s
             >
               <!-- Image is absolutely positioned to fill the parent -->
               <nuxt-img
@@ -262,6 +277,20 @@ s
                 </div>
               </div>
             </v-responsive>
+          </v-card>
+        </v-slide-group-item>
+        
+        <!-- 2️⃣ More authors indicator (⋯) -->
+        <v-slide-group-item v-if="hasMoreAuthors">
+          <v-card
+            class="ma-2 rounded-xl border-thin hover-lift d-flex align-center justify-center"
+            width="180"
+            height="95%"
+            flat
+          >
+            <v-icon size="48" class="opacity-60">
+              mdi-dots-horizontal
+            </v-icon>
           </v-card>
         </v-slide-group-item>
       </v-slide-group>

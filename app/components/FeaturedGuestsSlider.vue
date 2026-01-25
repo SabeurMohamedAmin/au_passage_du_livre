@@ -59,12 +59,21 @@ const guestsSeed: Guest[] = [
     featured: true
   },
   {
-    id: 5,
+    id: 4,
     name: 'Amélie Rousseau',
     role: 'Artiste',
     specialty: 'Illustration',
     bio: 'Illustratrice de livres jeunesse.',
     image: 'https://i.pravatar.cc/300?u=a042581f4e29026024e',
+    featured: true
+  },
+  {
+    id: 5,
+    name: 'Marc Dubois',
+    role: 'Historien',
+    specialty: 'Histoire Européenne',
+    bio: "Professeur et spécialiste de l'histoire contemporaine européenne.",
+    image: 'https://i.pravatar.cc/300?u=a042581f4e29026704d',
     featured: true
   }
 ]
@@ -83,7 +92,7 @@ const { xs, sm } = useDisplay()
    COMPUTED
    ========================================================================== */
 const featuredGuests = computed(() =>
-  guests.value.filter(g => g.featured)
+  guests.value.filter((guest) => guest.featured)
 )
 
 const slideCardWidth = computed(() => {
@@ -110,7 +119,7 @@ const activeSlide = ref(0)
 </script>
 
 <template>
-  <div>
+  <section>
     <!-- ==========================================
          SECTION 1: PAGE HEADER
     =========================================== -->
@@ -133,7 +142,7 @@ const activeSlide = ref(0)
         <h2 class="text-h5 text-md-h4 font-weight-bold">
           Invités Vedettes
         </h2>
-        <v-btn variant="text" color="primary" append-icon="mdi-arrow-right">
+        <v-btn :to="{ hash: '#all_guest' }" variant="text" color="primary" append-icon="mdi-arrow-right">
           Voir tous
         </v-btn>
       </div>
@@ -175,7 +184,7 @@ const activeSlide = ref(0)
           v-slot="{ isSelected, toggle }"
         >
           <v-card
-            class="my-4 rounded-xl overflow-hidden featured-card mx-2"
+            class="my-4 rounded-xl overflow-hidden featured-card mx-2 cursor-auto"
             :class="{ 'card-active': isSelected }"
             :width="slideCardWidth"
             elevation="2"
@@ -224,7 +233,7 @@ const activeSlide = ref(0)
         </v-slide-group-item>
       </v-slide-group>
     </section>
-  </div>
+  </section>
 </template>
 
 <style scoped>

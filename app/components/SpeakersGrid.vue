@@ -1,13 +1,27 @@
 <script lang="ts" setup>
-  const speakers = Array.from({ length: 4 }, (_, i) => ({
-    name: ['Sarah Connor', 'John Doe', 'Emily Smith', 'Michael Brown'][i],
-    role: ['Product Lead', 'Tech Lead', 'Designer', 'Developer'][i],
-    company: ['Google', 'Netflix', 'Airbnb', 'Spotify'][i],
-  }))
+  import { useDisplay } from 'vuetify'
+  const { xs, sm, md, lgAndUp } = useDisplay()
+  
+  const {authors} = useEventHeroContent().content;
+  const MAX_VISIBLE_AUTHORS = 3;
+  const visibleAuthors = computed(() =>{
+    console.log(authors);
+    return authors.slice(0, MAX_VISIBLE_AUTHORS)
+  });
+
+  const hasMoreAuthors = computed(()=>true)
+
+  const customDanse = computed(()=>{
+    if(lgAndUp.value){return false}
+    if(md.value){return true}
+    if(sm.value){return false}
+    else{return true}
+  });
 </script>
 
 <template>
   <v-container id="speakers_grid" class="my-5 my-md-10">
+
     <!-- Header (same UX as Articles) -->
     <v-row class="mb-6" justify="space-between">
       <!-- Title -->
@@ -29,8 +43,7 @@
         <v-btn
           color="primary"
           variant="outlined"
-          rounded="pill"
-          class="font-weight-bold text-body-1"
+          class="font-weight-bold text-body-1 rounded-xl"
           :to="$localePath('/artistes-et-intervenants')"
         >
           Voir tous les intervenants
@@ -39,38 +52,91 @@
       </v-col>
     </v-row>
 
-    <v-row>
-      <v-col v-for="(speaker, i) in speakers" :key="i" cols="12" sm="6" md="3">
+    <v-row :dense="customDanse" class="w-100 min-width-350">
+      <v-col
+        v-for="(author, index) in visibleAuthors"
+        :key="index" cols="6" md="3"
+      >
         <v-hover v-slot="{ isHovering, props }">
           <v-card 
             v-bind="props"
-            class="rounded-xl overflow-hidden cursor-pointer" 
+            class="rounded-xl overflow-hidden" 
             :elevation="isHovering ? 10 : 0"
             color="transparent"
           >
             <div class="overflow-hidden rounded-xl position-relative mb-4">
               <v-img 
-                :src="`https://picsum.photos/200/300/?blur=2&random=${i+10}`" 
-                height="350" 
-                cover 
                 class="transition-transform duration-500"
-                :class="{'scale-110': isHovering}"
-              ></v-img>
-              
+                :src="author.image" 
+                height="380" 
+                cover 
+              />
               <!-- Social Icons Overlay -->
               <v-expand-transition>
-                <div v-if="isHovering" class="position-absolute bottom-0 w-100 pa-4 d-flex justify-center gap-2 bg-gradient-to-t">
-                    <v-btn icon="mdi-twitter" variant="flat" color="white" size="small" density="comfortable"></v-btn>
-                    <v-btn icon="mdi-linkedin" variant="flat" color="white" size="small" density="comfortable"></v-btn>
-                    <v-btn icon="mdi-web" variant="flat" color="white" size="small" density="comfortable"></v-btn>
+                <div
+                  v-if="isHovering"
+                  class="position-absolute bottom-0 w-100 pa-4 d-flex justify-center gap-2 bg-gradient-to-t"
+                >
+
+                  <nuxt-link 
+                   :to="author.website"
+                    target="_blank"
+                  >
+                    <v-btn icon="mdi-twitter" variant="flat" color="white" density="comfortable"></v-btn>
+                  </nuxt-link>
+
+                  <nuxt-link 
+                   :to="author.facebook"
+                    target="_blank"
+                  >
+                    <v-btn icon="mdi-facebook" variant="flat" color="white" density="comfortable"></v-btn>
+                  </nuxt-link>
+
+                  <nuxt-link 
+                   :to="author.website"
+                    target="_blank"
+                  >
+                    <v-btn
+                      icon="mdi-web" variant="flat" 
+                      color="white" density="comfortable"
+                    />
+                  </nuxt-link>
                 </div>
               </v-expand-transition>
             </div>
             <div class="text-center">
-              <h3 class="text-h6 font-weight-bold text-grey-darken-3">{{ speaker.name }}</h3>
-              <div class="text-body-2 text-primary font-weight-bold">{{ speaker.company }}</div>
+              <h3 class="text-h6 font-weight-bold text-grey-darken-3">
+                {{ author.name }}
+              </h3>
+              <div class="text-body-2 text-primary font-weight-bold">
+                {{ author.role }}
+              </div>
             </div>
           </v-card>
+        </v-hover>
+      </v-col>
+
+      <!-- 2️⃣ More authors indicator (⋯) -->
+      <v-col cols="6" md="3">
+        <v-hover v-slot="{ isHovering, props }">
+            <v-card
+              v-bind="props"
+              :elevation="isHovering ? 10 : 0"
+              v-if="hasMoreAuthors"
+              class="h-100 rounded-xl d-flex align-center justify-center"
+              flat
+              >
+              <nuxt-link :to="$localePath('/artistes-et-intervenants')">
+                <v-icon
+                  class="rounded-lg pa-10 opacity-60"                                
+                  title="see all artistes and intervenants" 
+                  :class="{'border elevation-1': isHovering}" 
+                  size="72"
+                >
+                  mdi-arrow-right-bottom
+                </v-icon>
+              </nuxt-link>
+            </v-card>
         </v-hover>
       </v-col>
     </v-row>
@@ -96,5 +162,11 @@
 .hover-bg-light:hover {
   transform: scale(1.1);
 }
+.card-place>*{
+  flex-grow: 1;
+}
 
+.min-width-350{
+  min-width: 350px;
+}
 </style>
