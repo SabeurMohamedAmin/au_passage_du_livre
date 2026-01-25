@@ -2,18 +2,18 @@
 </script>
 
 <template>
-  <v-app class="page-height">
+  <v-app class="page-height theme-transition">
     <NuxtLayout>
       <v-main>
-        <NuxtPage />
+        <NuxtPage class="theme-transition"/>
       </v-main>
     </NuxtLayout>
   </v-app>
 </template>
 
 <style>
-  .page-height{
-    min-height: 160vh;
+  .theme-transition{
+    transition: background-color 0.7s ease, color 0.5s ease, border 0.5s ease ;
   }
   .scroll-mt-1{
     scroll-margin-top: .5rem;
