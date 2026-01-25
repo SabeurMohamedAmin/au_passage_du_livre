@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+
 import { useDisplay } from 'vuetify'
 
 // --- MOCK DATA (In real app, use your composable) ---
@@ -43,19 +43,19 @@ const blogPosts = [
     title: 'La littérature comme espace de dialogue',
     excerpt: 'Rencontres, lectures et échanges autour des mots et des idées.',
     image: 'https://picsum.photos/800/600?random=11',
-    slug: '/blog/litterature-espace-dialogue',
+    slug: 'litterature-espace-dialogue',
   },
   {
     title: 'Soutenir les artistes locaux',
     excerpt: 'Un engagement fort pour la création indépendante.',
     image: 'https://picsum.photos/800/600?random=12',
-    slug: '/blog/soutenir-artistes',
+    slug: 'soutenir-artistes',
   },
   {
     title: 'Transmettre la culture aux nouvelles générations',
     excerpt: 'Actions culturelles, ateliers et médiation artistique.',
     image: 'https://picsum.photos/800/600?random=13',
-    slug: '/blog/transmettre-culture',
+    slug: 'transmettre-culture',
   },
 ]
 
@@ -107,7 +107,7 @@ const blogPosts = [
                       color="primary" 
                       rounded="pill" 
                       class="font-weight-bold elevation-6 h-auto py-4 text-body-2 md-text-body-1"
-                      :to="$localePath('/contactez-nous')"
+                      :to="$localePath('/about-us')"
                     >
                       Decovrer l'association
                     </v-btn>
@@ -199,10 +199,6 @@ const blogPosts = [
           <small-slider/>
         </section>
       -->
-      <!-- 7. FOOTER -->
-      <v-footer class="pt-16 text-center text-md-left">
-        <footer-section/>
-      </v-footer>
 </template>
 
 <style scoped>
@@ -260,4 +256,5 @@ const blogPosts = [
   object-fit: fill;
 
 }
+
 </style>
