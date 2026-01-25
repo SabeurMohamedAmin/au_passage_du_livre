@@ -1,124 +1,129 @@
 <script setup lang="ts">
-import { useTheme } from 'vuetify'
+  import { useTheme } from 'vuetify'
 
-/* ====================
-   THEME LOGIC
-   ===================*/
-const theme = useTheme();
+  /* ====================
+    THEME LOGIC
+    ===================*/
+  const theme = useTheme();
 
-// Computed classes for text colors based on active theme
-const textColor = computed(() => theme.global.current.value.dark ? 'text-orange-lighten-4' : 'text-brown-darken-4')
-const subTextColor = computed(() => theme.global.current.value.dark ? 'text-grey-lighten-1' : 'text-brown-darken-3')
+  // Computed classes for text colors based on active theme
+  const textColor = computed(() => theme.global.current.value.dark ? 'text-orange-lighten-4' : 'text-brown-darken-4')
+  const subTextColor = computed(() => theme.global.current.value.dark ? 'text-grey-lighten-1' : 'text-brown-darken-3')
 
-/* =====================
-   DATA
-   ====================*/
-const missions = [
-  {
-    id: 1,
-    title: 'Notre mission',
-    text: 'Transmettre la culture, soutenir les artistes et rendre la création accessible à tous.',
-    btnLabel: "Rejoindre l'aventure",
-    btnColor: '#D97736', 
-    image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=800',
-    align: 'left'
-  },
-  {
-    id: 2,
-    title: 'Éducation & Jeunesse',
-    text: 'Des ateliers pédagogiques pour inspirer les nouvelles générations et éveiller leur créativité.',
-    btnLabel: 'Nos programmes',
-    btnColor: '#5C7C78', 
-    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800',
-    align: 'right'
-  },
-  {
-    id: 3,
-    title: 'Patrimoine Vivant',
-    text: 'Préserver et valoriser l’histoire locale à travers des expositions et des conférences inédites.',
-    btnLabel: "Explorer l'histoire",
-    btnColor: '#8A5A44', 
-    image: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&q=80&w=800',
-    align: 'left'
-  }
-]
+  /* =====================
+    DATA
+    ====================*/
+  const missions = [
+    {
+      id: 1,
+      title: 'Notre mission',
+      text: 'Transmettre la culture, soutenir les artistes et rendre la création accessible à tous.',
+      btnLabel: "Rejoindre l'aventure",
+      btnColor: '#D97736', 
+      image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=800',
+      align: 'left'
+    },
+    {
+      id: 2,
+      title: 'Éducation & Jeunesse',
+      text: 'Des ateliers pédagogiques pour inspirer les nouvelles générations et éveiller leur créativité.',
+      btnLabel: 'Nos programmes',
+      btnColor: '#5C7C78', 
+      image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800',
+      align: 'right'
+    },
+    {
+      id: 3,
+      title: 'Patrimoine Vivant',
+      text: 'Préserver et valoriser l’histoire locale à travers des expositions et des conférences inédites.',
+      btnLabel: "Explorer l'histoire",
+      btnColor: '#8A5A44', 
+      image: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&q=80&w=800',
+      align: 'left'
+    }
+  ]
 
-const stats = [
-  { value: '50+', label: 'événements culturels' },
-  { value: '120', label: 'artistes soutenus' },
-  { value: '10', label: 'ans d\'engagement' }
-]
+  const stats = [
+    { value: '50+', label: 'événements culturels' },
+    { value: '120', label: 'artistes soutenus' },
+    { value: '10', label: 'ans d\'engagement' }
+  ]
 
-const actions = [
-  {
-    title: 'Création',
-    text: 'Soutien aux auteurs, artistes et projets culturels locaux.',
-    icon: 'mdi-book-open-page-variant-outline',
-    color: '#D97736'
-  },
-  {
-    title: 'Transmission',
-    text: 'Rencontres, ateliers et médiation culturelle.',
-    icon: 'mdi-account-group-outline',
-    color: '#5C7C78'
-  },
-  {
-    title: 'Ancrage local',
-    text: 'Valorisation du patrimoine et des initiatives alsaciennes.',
-    icon: 'mdi-home-city-outline',
-    color: '#8A5A44'
-  }
-]
+  const actions = [
+    {
+      title: 'Création',
+      text: 'Soutien aux auteurs, artistes et projets culturels locaux.',
+      icon: 'mdi-book-open-page-variant-outline',
+      color: '#D97736'
+    },
+    {
+      title: 'Transmission',
+      text: 'Rencontres, ateliers et médiation culturelle.',
+      icon: 'mdi-account-group-outline',
+      color: '#5C7C78'
+    },
+    {
+      title: 'Ancrage local',
+      text: 'Valorisation du patrimoine et des initiatives alsaciennes.',
+      icon: 'mdi-home-city-outline',
+      color: '#8A5A44'
+    }
+  ]
 </script>
 
 <template>
   <div class="transition-all" :class="theme.global.current.value.dark ? 'bg-texture-dark' : 'bg-texture-paper'">
-    <!-- =============================================
-         1. ZIG-ZAG MISSIONS SECTION
-         ============================================= -->
-    <v-container class="py-16">
-      <div v-for="(mission, index) in missions" :key="mission.id" class="mb-16">
-        <v-row align="center" justify="space-between" :class="{'flex-row-reverse': mission.align === 'right'}">
-          
-          <!-- TEXT COLUMN -->
-          <v-col cols="12" md="5" lg="5">
-            <h2 class="text-h3 font-weight-black mb-4 serif-font transition-colors" :class="textColor">
-              {{ mission.title }}
-            </h2>
-            <p class="text-h6 font-weight-regular mb-8 transition-colors" :class="subTextColor" style="line-height: 1.6;">
-              {{ mission.text }}
-            </p>
-            <v-btn
-              :color="mission.btnColor"
-              class="text-white px-8"
-              rounded="pill"
-              size="large"
-              elevation="4"
-            >
-              {{ mission.btnLabel }}
-              <v-icon v-if="index === 2" end icon="mdi-arrow-right" />
-            </v-btn>
-          </v-col>
 
-          <!-- IMAGE COLUMN -->
-          <v-col cols="12" md="6" lg="6">
-            <v-card class="rounded-xl overflow-hidden elevation-6 border-image">
-              <v-img
-                :src="mission.image"
-                height="350"
-                cover
-                class="sepia-filter"
-              ></v-img>
-            </v-card>
-          </v-col>
-
-        </v-row>
-      </div>
+    <!-- Nos missions -->
+    <v-container class="py-18">
+      <v-row 
+        v-for="(mission, index) in missions" 
+        :key="mission.id"
+        class="mb-16" 
+        align="center" 
+        justify="space-between" 
+        :class="{'flex-row-reverse': mission.align === 'right'}"
+      >
+        <!-- TEXT COLUMN -->
+        <v-col cols="12" md="5" lg="5">
+          <h2 class="text-h3 font-weight-black mb-4 serif-font transition-colors" :class="textColor">
+            {{ mission.title }}
+          </h2>
+          <p class="text-h6 font-weight-regular mb-8 transition-colors" :class="subTextColor" style="line-height: 1.6;">
+            {{ mission.text }}
+          </p>
+          <v-btn
+            :color="mission.btnColor"
+            class="text-white px-8"
+            rounded="pill"
+            size="large"
+            elevation="4"
+          >
+            {{ mission.btnLabel }}
+            <v-icon v-if="index === 2" end icon="mdi-arrow-right" />
+          </v-btn>
+        </v-col>
+  
+        <!-- IMAGE COLUMN -->
+        <v-col cols="12" md="6" lg="6">
+          <v-card class="rounded-xl overflow-hidden elevation-6 border-image">
+            <v-img
+              :src="mission.image"
+              height="350"
+              cover
+              class="sepia-filter"
+            ></v-img>
+          </v-card>
+        </v-col>
+        <v-divider
+          v-if="index < missions.length - 1"
+          color="grey" opacity=".5"
+          thickness="3" gradient class="mt-8"
+        />
+      </v-row>
     </v-container>
 
-    <!-- =============================================
-         2. IMPACT STATS SECTION
-         ============================================= -->
+    <!-- Impact -->
     <section class="impact-section py-10 my-8">
       <v-container>
         <!-- Section Title (Centered with lines) -->
@@ -153,9 +158,7 @@ const actions = [
       </v-container>
     </section>
 
-    <!-- =============================================
-         3. HOW WE ACT (CARDS) SECTION
-         ============================================= -->
+    <!-- Comment nous agissons -->
     <section class="py-16">
       <v-container>
         <div class="text-center mb-12">
@@ -191,6 +194,7 @@ const actions = [
         </v-row>
       </v-container>
     </section>
+
   </div>
 </template>
 

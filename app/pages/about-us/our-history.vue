@@ -117,18 +117,6 @@ onUnmounted(() => {
               <p class="text-h6 text-brown-darken-3 font-weight-regular mb-8" style="line-height: 1.6; min-height: 80px;">
                 {{ activeMission.description }}
               </p>
-              
-              <v-btn
-                :color="activeMission.buttonColor"
-                class="text-white px-8 transition-colors"
-                rounded="pill"
-                size="large"
-                elevation="2"
-                flat
-              >
-                {{ activeMission.buttonText }}
-                <v-icon end icon="mdi-arrow-right" />
-              </v-btn>
             </div>
           </v-fade-transition>
         </v-col>
