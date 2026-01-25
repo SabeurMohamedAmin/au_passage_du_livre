@@ -184,10 +184,6 @@ const baseMenu: MenuItem[] = [
     </v-navigation-drawer>
     <!-- Page Content -->
     <slot />
-    <!-- 7. FOOTER -->
-    <v-footer class="pt-16 text-center text-md-left">
-      <footer-section/>
-    </v-footer>
 </template>
 
 <style scoped>
