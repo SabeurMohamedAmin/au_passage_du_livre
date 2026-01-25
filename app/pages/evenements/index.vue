@@ -33,7 +33,8 @@ const pageContent = {
     title: 'Au Passage du Livre',
     subtitle: 'Goes European',
     description: 'Join our association for three unforgettable days of literature, culture, and exchange at the heart of Europe.',
-    cta: 'Learn More'
+    slug: 'foire-europeenne-2026',
+    cta: 'Learn More',
   },
   logistics: {
     when: { title: 'When?', desc: 'September 4-14, 2026', sub: '10:00 AM - 8:00 PM' },
