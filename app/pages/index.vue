@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import { useFetch } from '@vueuse/core'
   import { useDisplay } from 'vuetify'
   const { mdAndUp } = useDisplay()
 
@@ -60,7 +59,7 @@
   ]
 
   // Utilisation du composable
-  const { downloadFile } = useDownload()
+  // const { downloadFile } = useDownload()
 
 </script>
 
@@ -184,7 +183,7 @@
             </v-col>
             <v-col cols="12" md="4" class="text-md-right">
               <nuxt-link
-                @click.prevent="downloadFile('/documents/events/event-2025.pdf', 'Programme-event-2025')"
+                to="/documents/events/event-2025.pdf"
                 target="_blank"
                 download="Programme-event-2025.pdf"
               >
