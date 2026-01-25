@@ -211,11 +211,15 @@
 <template>
   <v-container class="py-6">
     <featured-guests-slider/>
+  
     <!-- =============================================
-         SECTION 3: SEARCH + FILTERS
+         SECTION 4: ALL GUESTS GRID
     ============================================= -->
-    <section class="mb-8">
-      <v-card class="rounded-xl border-thin" elevation="0">
+    <section id="all_guest">
+    <!-- =============================================
+         CARD SEARCH + FILTERS
+    ============================================= -->
+      <v-card class="rounded-xl border-thin mb-8" elevation="0">
         <v-card-text class="pa-4 pa-md-6">
           <v-row align="center" dense>
             <!-- Search Field -->
@@ -251,11 +255,7 @@
           </v-row>
         </v-card-text>
       </v-card>
-    </section>
-    <!-- =============================================
-         SECTION 4: ALL GUESTS GRID
-    ============================================= -->
-    <section>
+      <!-- Title -->
       <div class="mb-6">
         <h2 class="text-h5 font-weight-bold mb-2">
           Tous les Invités
@@ -363,7 +363,7 @@
          SECTION 5: CTA
     ============================================= -->
     <section class="mt-12">
-      <v-card class="rounded-xl overflow-hidden" color="primary" elevation="8">
+      <v-card class="rounded-xl overflow-hidden" elevation="8">
         <v-card-text class="pa-8 pa-md-12 text-center">
           <v-icon size="48" class="mb-4">mdi-account-multiple-plus</v-icon>
           <h2 class="text-h5 text-md-h4 font-weight-bold mb-4">
