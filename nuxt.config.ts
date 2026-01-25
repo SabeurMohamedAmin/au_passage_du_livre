@@ -31,6 +31,14 @@ export default defineNuxtConfig({
         transformAssetUrls,
       },
     },
+    ssr: {
+      noExternal: ['@react-email/render', 'resend']
+    }
+  },
+  nitro: {
+    rollupConfig: {
+      external: ['@react-email/render']
+    }
   },
   eslint: {
     config: {
