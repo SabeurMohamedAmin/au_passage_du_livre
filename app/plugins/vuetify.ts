@@ -46,6 +46,18 @@ export default defineNuxtPlugin((nuxtApp) => {
     ssr: true,
     theme: {
       defaultTheme: themeCookie.value || 'dark',
+      themes: {
+        light: {
+          colors: {
+            dynamicText: '#6D4C41',
+          },
+        },
+        dark: {
+          colors: {
+            dynamicText: '#8D6E63',
+          },
+        },
+      },
     },
     locale: {
       // 2. Pass the imported messages here

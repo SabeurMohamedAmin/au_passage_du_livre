@@ -151,9 +151,7 @@
           </v-row>
         </v-container>
       </section>
-
-      <v-divider opacity=".1" thickness="1" gradient/>
-
+      
       <!-- 2. Our Missions and what we do -->
       <section class="my-5 my-md-10 scroll-mt-6 bg_surface_variant">
         <we-do-best id="we_doo_best"/>

@@ -372,15 +372,17 @@
           <p class="text-body-1 mb-6 mx-auto" style="max-width: 600px;">
             Rejoignez notre événement et partagez votre passion avec notre communauté.
           </p>
-          <v-btn
-            size="large"
-            color="white"
-            variant="flat"
-            rounded="xl"
-            prepend-icon="mdi-email-outline"
-          >
-            Proposer votre participation
-          </v-btn>
+          <nuxt-link :to="$localePath('/contactez-nous')" class="text-primary text-decoration-none opacity-70">
+            <v-btn
+              size="large"
+              color="white"
+              variant="flat"
+              rounded="xl"
+              prepend-icon="mdi-email-outline"
+            >
+              Proposer votre participation
+            </v-btn>
+          </nuxt-link>
         </v-card-text>
       </v-card>
     </section>

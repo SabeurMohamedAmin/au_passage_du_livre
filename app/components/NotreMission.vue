@@ -105,10 +105,10 @@
     <v-col cols="12" md="5" lg="5">
       <v-fade-transition mode="out-in">
         <div :key="activeMission?.id">
-          <h1 class="d-flex flex-column text-brown-darken-1 mb-2 gap-5 text-lg-h4 text-md-h5 text-sm-h3 text-h4 font-weight-black text-transparent-4 lh-1 mb-6">
+          <h1 class="d-flex flex-column text-dynamicText gap-4 text-h5 text-transparent-3 lh-1 mb-2">
             {{ activeMission?.title }}
           </h1>
-          <p class="text-h6 text-brown-darken-1 font-weight-regular mb-2 description-text">
+          <p class="text-h6 text-dynamicText font-weight-regular description-text">
             {{ activeMission?.description }}
           </p>
         </div>
@@ -142,7 +142,7 @@
                 :to="$localePath({name:'mission-details', params:{ slug: activeMission?.slug } })"
                 class="mb-6 text-brown-darken-3 text-decoration-none font-weight-bold d-inline-flex align-center feature-link"
               >
-              <v-btn variant="outlined" color="primary" rounded="xl">
+              <v-btn class="px-2" variant="outlined" color="primary" rounded="xl">
                 {{ activeMission?.card.cta }}
                 <v-icon icon="mdi-arrow-right" class="ms-1" size="small" />
               </v-btn>

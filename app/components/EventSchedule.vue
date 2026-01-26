@@ -12,8 +12,8 @@
   <!-- ============================================== -->
 
   <!-- events Upcoming -->
-  <v-row justify="start" class="gap-0 mb-15">
-    <v-col cols="12" lg="11" xl="10">
+  <v-row justify="start" class="gap-0 mb-15" >
+    <v-col cols="12" lg="11" xl="10" id="future_events">
       <h3 class="w-100 text-h5 font-weight-black opacity-70">
         {{ $t("upcoming events heading") }}
       </h3>
