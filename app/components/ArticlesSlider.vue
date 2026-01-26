@@ -39,6 +39,7 @@ const props = defineProps<{
       class="rounded-xl article-carousel"
       hide-delimiters
       show-arrows="hover"
+      crossfade
       cycle
     >
       <!-- 2️⃣ Removed the <template> slots for arrows -->

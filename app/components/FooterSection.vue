@@ -1,5 +1,12 @@
 <script setup lang="ts">
+  import { useTheme } from 'vuetify'
 
+  const theme = useTheme();
+  const logoSrc = computed(() =>
+    theme.global.current.value.dark
+      ? '/img/logos/main/logo_aupassagedulivre-dark.svg'
+      : '/img/logos/main/logo_aupassagedulivre.svg'
+  );
 </script>        
 
 <template>
@@ -8,14 +15,18 @@
     <v-row>
       <v-col cols="12" md="4" class="pe-md-12">
         <div class="d-flex align-center justify-center justify-md-start mb-6">
-          <v-icon icon="mdi-atom" color="primary" size="32" class="me-2"/>
+          <nuxt-img
+            :src="logoSrc" alt="Au passage du livre" 
+            class="me-4"
+            width="48"
+            height="48"
+          />
           <span class="text-h5 font-weight-black">
-            EVENTE
+            Au passage du livre
           </span>
         </div>
         <p class="text-grey-lighten-1 mb-6 text-body-2">
-          The premier conference for digital creators.
-          Connecting minds, sparking innovation, and building the future.
+          Évènements culturels Soutien aux artistes Transmettre la culture.
         </p>
         <div class="d-flex gap-4 justify-center justify-md-start">
           <!-- Link to socials media -->
@@ -115,7 +126,7 @@
     <v-divider class="my-12 border-opacity-25"/>
           
     <div class="text-center text-caption text-grey">
-      &copy; 2026 Evente Conference. All rights reserved.
+      &copy; {{new Date().getFullYear()}} Au passage du livre. Tous droits réservés.
     </div>
   </v-container>
           

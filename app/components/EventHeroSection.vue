@@ -86,7 +86,7 @@
       <v-col cols="12" class="mx-0">
         <v-card
           class="hero-card hover-effect rounded-xl overflow-hidden elevation-10"
-          min-width="346"
+          min-width="340"
           height="450"
           :style="heroStyle"
         >

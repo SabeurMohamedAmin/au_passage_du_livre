@@ -176,7 +176,7 @@
                 Event Schedule
               </h2>
               <p>
-                To download the full events catalog please click on download PDF.
+                To download the full 2025 events catalog please click on download PDF.
               </p>
             </v-col>
             <v-col cols="12" md="4" class="text-md-right">

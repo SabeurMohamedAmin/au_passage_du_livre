@@ -52,7 +52,7 @@
       </v-col>
     </v-row>
 
-    <v-row :dense="customDanse" class="w-100 min-width-350">
+    <v-row :dense="customDanse" class="w-100 min-width-340">
       <v-col
         v-for="(author, index) in visibleAuthors"
         :key="index" cols="6" md="3"
@@ -60,7 +60,7 @@
         <v-hover v-slot="{ isHovering, props }">
           <v-card 
             v-bind="props"
-            class="rounded-xl overflow-hidden" 
+            class="rounded-xl overflow-hidden pb-4" 
             :elevation="isHovering ? 10 : 0"
             color="transparent"
           >
@@ -105,9 +105,12 @@
               </v-expand-transition>
             </div>
             <div class="text-center">
-              <h3 class="text-h6 font-weight-bold text-grey-darken-3">
+              <nuxt-link 
+                :to="$localePath({name: 'guest-profile', params: {slug: author.slug}})"
+                class="text-decoration-none text-grey-darken-3 text-h6 font-weight-bold"
+                >
                 {{ author.name }}
-              </h3>
+              </nuxt-link>
               <div class="text-body-2 text-primary font-weight-bold">
                 {{ author.role }}
               </div>
@@ -166,7 +169,7 @@
   flex-grow: 1;
 }
 
-.min-width-350{
-  min-width: 350px;
+.min-width-340{
+  min-width: 340px;
 }
 </style>
