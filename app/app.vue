@@ -2,10 +2,10 @@
 </script>
 
 <template>
-  <v-app class="page-height theme-transition">
+  <v-app class="theme-transition">
     <NuxtLayout>
       <v-main>
-        <NuxtPage class="theme-transition"/>
+        <NuxtPage/>
       </v-main>
     </NuxtLayout>
   </v-app>

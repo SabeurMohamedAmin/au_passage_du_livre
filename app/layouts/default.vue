@@ -163,7 +163,7 @@ const baseMenu: MenuItem[] = [
   </v-app-bar>
 
   <!-- Mobile Drawer -->
-    <v-navigation-drawer v-if="!mdAndUp" v-model="isMobileOpen" temporary width="300" :class="{'the_drawer': isScrolled && isMobileOpen}">
+  <v-navigation-drawer v-if="!mdAndUp" v-model="isMobileOpen" temporary width="300" :class="{'the_drawer': isScrolled && isMobileOpen}">
       <v-list density="comfortable" class="d-flex flex-column mx-2 ga-2">
         <BaseThemeToggle class="justify-start mb-4" />
         <v-list-item
@@ -181,13 +181,15 @@ const baseMenu: MenuItem[] = [
         </v-list-item>
         <v-divider class="mt-12 mb-1" content-offset="2rem" opacity=".7" thickness="5" variant="dotted" gradient/>
       </v-list>
-    </v-navigation-drawer>
-    <!-- Page Content -->
-    <slot />
-    <!-- 7. FOOTER -->
-    <v-footer class="pt-16 text-center text-md-left">
-      <footer-section/>
-    </v-footer>
+  </v-navigation-drawer>
+  
+  <!-- Page Content -->
+  <slot class="w-100 px-0 mx-0"/>
+  
+  <!-- 7. FOOTER -->
+  <v-footer class="pt-16 text-center text-md-left">
+    <footer-section/>
+  </v-footer>
 </template>
 
 <style scoped>

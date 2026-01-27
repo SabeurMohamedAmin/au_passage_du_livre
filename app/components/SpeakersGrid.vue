@@ -20,8 +20,6 @@
 </script>
 
 <template>
-  <v-container id="speakers_grid" class="my-5 my-md-10">
-
     <!-- Header (same UX as Articles) -->
     <v-row class="mb-6" justify="space-between">
       <!-- Title -->
@@ -143,7 +141,6 @@
         </v-hover>
       </v-col>
     </v-row>
-  </v-container>
 </template>
 
 <style scoped>

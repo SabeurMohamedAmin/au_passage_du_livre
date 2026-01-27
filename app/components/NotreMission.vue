@@ -100,98 +100,91 @@
 </script>
 
 <template>
-  <v-row align="start" justify="space-between">
-    <!-- LEFT COLUMN -->
-    <v-col cols="12" md="5" lg="5">
-      <v-fade-transition mode="out-in">
-        <div :key="activeMission?.id">
-          <h1 class="d-flex flex-column text-dynamicText gap-4 text-h5 text-transparent-3 lh-1 mb-2">
-            {{ activeMission?.title }}
-          </h1>
-          <p class="text-h6 text-dynamicText font-weight-regular description-text">
-            {{ activeMission?.description }}
-          </p>
-        </div>
-      </v-fade-transition>
-    </v-col>
-
-    <!-- RIGHT COLUMN -->
-    <v-col
-      cols="12" md="6" lg="6"
-      @mouseenter="pauseTimer"
-      @mouseleave="startTimer"
-    >
-      <v-fade-transition mode="out-in">
-        <v-card
-          :key="activeMission?.id"
-          class="border-xl feature-card rounded-xl pa-6 pa-md-8 mb-5"
-          elevation="4"
-          border
-        >
-          <v-row align="center" no-gutters>
-            <v-col cols="12" sm="7" class="pr-sm-4">
-              <h3 class="text-h4 font-weight-bold text-brown-darken-4 mb-4">
-                {{ activeMission?.card.title }}
-              </h3>
-              <p class="text-body-1 text-brown-darken-2 mb-6 card-text-min-height">
-                {{ activeMission?.card.text }}
+  <section class="mission-section position-relative pb-10 d-flex align-center">
+    <!-- BACKGROUND & CONTAINER -->
+    <v-container>
+      <v-row align="stretch" justify="space-between">
+        <!-- LEFT COLUMN -->
+        <v-col cols="12" md="5" lg="5">
+          <v-fade-transition mode="out-in">
+            <div :key="activeMission?.id">
+              <h1 class="d-flex flex-column text-dynamicText gap-4 text-h5 text-transparent-3 lh-1 mb-2">
+                {{ activeMission?.title }}
+              </h1>
+              <p class="text-h6 text-dynamicText font-weight-regular description-text">
+                {{ activeMission?.description }}
               </p>
-              
-              <!-- NUXT FEATURE: NuxtLink for text links -->
-              <NuxtLink 
-                :to="$localePath({name:'mission-details', params:{ slug: activeMission?.slug } })"
-                class="mb-6 text-brown-darken-3 text-decoration-none font-weight-bold d-inline-flex align-center feature-link"
-              >
-              <v-btn class="px-2" variant="outlined" color="primary" rounded="xl">
-                {{ activeMission?.card.cta }}
-                <v-icon icon="mdi-arrow-right" class="ms-1" size="small" />
-              </v-btn>
-              </NuxtLink>
-            </v-col>
+            </div>
+          </v-fade-transition>
+        </v-col>
 
-            <v-col cols="12" sm="5" class="d-flex justify-end mt-4 mt-sm-0">
-              <v-img
-                :src="activeMission?.card.image"
-                :alt="activeMission?.card.title"
-                width="180"
-                height="240"
-                class="rounded-lg transform-rotate"
-                cover
-              />
-            </v-col>
-          </v-row>
-        </v-card>
-      </v-fade-transition>
-    </v-col>
-  </v-row>
-  
-  <!-- NAVIGATION DOTS -->
-  <div class="scroll-indicator position-absolute bottom-0 w-100 d-flex justify-center py-4 gap-2">
-    <button
-      v-for="(mission, index) in missions"
-      :key="mission.id"
-      @click="setMission(index)"
-      class="mission-dot"
-      :class="{ 'active': index === activeIndex }"
-      :aria-label="'Voir mission ' + (index + 1)"
-    ></button>
-  </div>
+        <!-- RIGHT COLUMN -->
+        <v-col
+          cols="12" md="6" lg="6"
+          @mouseenter="pauseTimer"
+          @mouseleave="startTimer"
+        >
+          <v-fade-transition mode="out-in">
+            <v-card
+              :key="activeMission?.id"
+              class="border-xl feature-card rounded-xl pa-6 pa-md-8 mb-5"
+              elevation="4"
+              border
+            >
+              <v-row align="center" no-gutters>
+                <v-col cols="12" sm="7" class="pr-sm-4">
+                  <h3 class="text-h4 font-weight-bold text-dynamicText mb-4">
+                    {{ activeMission?.card.title }}
+                  </h3>
+                  <p class="text-body-1 text-dynamicText mb-6 card-text-min-height">
+                    {{ activeMission?.card.text }}
+                  </p>
+                  
+                  <!-- NUXT FEATURE: Fixed Button Nesting -->
+                  <v-btn 
+                    :to="$localePath({name:'mission-details', params:{ slug: activeMission?.slug } })"
+                    class="px-5 mb-6 text-none font-weight-bold feature-link"
+                    rounded="xl"
+                    variant="outlined"
+                    color="primary"
+                  >
+                    {{ activeMission?.card.cta }}
+                    <v-icon icon="mdi-arrow-right" class="ms-2" size="small" />
+                  </v-btn>
+                </v-col>
+
+                <v-col cols="12" sm="5" class="d-flex justify-end mt-4 mt-sm-0">
+                  <v-img
+                    :src="activeMission?.card.image"
+                    :alt="activeMission?.card.title"
+                    width="180"
+                    height="240"
+                    class="rounded-lg transform-rotate"
+                    cover
+                  />
+                </v-col>
+              </v-row>
+            </v-card>
+          </v-fade-transition>
+        </v-col>
+      </v-row>
+    </v-container>
+    
+    <!-- NAVIGATION DOTS -->
+    <div class="position-absolute bottom-0 w-100 d-flex justify-center py-6">
+      <button
+        v-for="(mission, index) in missions"
+        :key="mission.id"
+        @click="setMission(index)"
+        class="mx-1 mission-dot"
+        :class="{ 'active': index === activeIndex }"
+        :aria-label="'Voir mission ' + (index + 1)"
+      ></button>
+    </div>
+  </section>
 </template>
 
 <style scoped>
-  /* BACKGROUND */
-  .mission-section {
-    min-height: 500px;
-    background-color: #FDF6E9;
-    /* Optimized noise using CSS variable or static asset in Nuxt public/ folder is better, 
-      but inline SVG is fine for portable components */
-    background-image: 
-      radial-gradient(at 10% 10%, rgba(255, 255, 255, 0.8) 0%, transparent 40%),
-      radial-gradient(at 90% 90%, rgba(230, 210, 190, 0.5) 0%, transparent 40%),
-      url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
-    background-size: cover, cover, 200px 200px;
-  }
-
   /* TYPOGRAPHY */
   .serif-font {
     /* Ensure these fonts are loaded in nuxt.config.ts via @nuxtjs/google-fonts */
@@ -210,15 +203,6 @@
   }
 
   /* COMPONENT STYLES */
-  .feature-card {
-    background: rgba(255, 255, 255, 0.6) !important;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 
-      0 4px 6px -1px rgba(0, 0, 0, 0.05),
-      0 2px 4px -1px rgba(0, 0, 0, 0.03),
-      inset 0 0 20px rgba(255, 248, 240, 0.8);
-  }
 
   .feature-link {
     transition: opacity 0.2s ease;
@@ -236,19 +220,14 @@
     transform: rotate(0deg) scale(1.05);
   }
 
-  .scroll-indicator {
-    display: flex;
-    gap: 12px;
-  }
 
   .mission-dot {
     width: 12px;
     height: 12px;
-    border-radius: 50%;
-    border: 2px solid rgba(121, 85, 72, 0.3);
-    background-color: transparent;
     cursor: pointer;
     transition: all 0.3s ease;
+    border: 2px solid rgba(121, 85, 72, 0.3);
+    background-color: transparent;
   }
 
   .mission-dot:hover {

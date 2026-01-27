@@ -12,7 +12,6 @@ const props = defineProps<{
 </script>
 
 <template>
-  <v-container>
   <v-row class="mb-2" align="center" justify="space-between">
       <v-col class="text-left" cols="12" md="8">
         <h2 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70">
@@ -70,7 +69,6 @@ const props = defineProps<{
         </v-card>
       </v-carousel-item>
     </v-carousel>
-  </v-container>
 </template>
 
 <style>
