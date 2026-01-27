@@ -236,12 +236,11 @@ const blogPosts = [
   </section>
   
   <!-- 5. ARTICLES et ACTUALITIES -->
-   <!--
-        <section class="my-5 my-md-10 scroll-mt-6 bg_surface_variant">
-          <small-slider/>
-        </section>
-      -->
-
+  <!--
+    <section class="my-5 my-md-10 scroll-mt-6 bg_surface_variant">
+      <small-slider/>
+    </section>
+  -->
 </template>
 
 <style scoped>
