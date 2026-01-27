@@ -113,7 +113,7 @@ const baseMenu: MenuItem[] = [
         </v-col>
 
         <!-- on desktop left / on Mobile Center: Logo -->
-        <v-col class="d-flex justify-center" cols="1">
+        <v-col class="d-flex justify-center" cols="2" md="1">
           <NuxtLink
             :to="localePath('/')"
             class="topnav-logo-link v-btn--variant-tonal"

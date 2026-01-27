@@ -1,15 +1,5 @@
 <script setup lang="ts">
   import { useDisplay } from 'vuetify'
-  /* ====================
-    INTERFACES
-    ==================== */
-  // interface GuestAuthor {
-  //   id: number
-  //   name: string
-  //   role: string
-  //   image: string
-  // }
-
   /* =====================
     CONFIGURATION
     =====================*/
@@ -235,10 +225,20 @@
     ============================== -->
     <div class="mb-15">
       <div class="d-flex align-center justify-space-between mb-6">
-        <h3 class="text-h5 font-weight-bold">Special Guests</h3>
-        <v-btn rounded="lg" variant="text" append-icon="mdi-arrow-right">
-          All guests in this Event
-        </v-btn>
+        <h3 class="text-h5 font-weight-bold">
+          Special Guests
+        </h3>
+        <nuxt-link 
+          :to="$localePath({ name: 'event-details', hash: '#guests', params: { slug: content.hero.slug } })"
+          class="decoration-none text-color-default"  
+        >
+          <v-btn 
+            rounded="lg" variant="flat" 
+            append-icon="mdi-arrow-right"
+          >
+            All guests in this Event
+          </v-btn>
+        </nuxt-link>
       </div>
 
       <v-slide-group show-arrows>
@@ -303,29 +303,31 @@
   * CSS Variables for Glassmorphism
   */
   .guest-image {
-    position: absolute;
     width: 100%;
     object-fit: cover;
+    position: absolute;
   }
+
  .guest-profil-link, .guest-profil-link:visited{
     text-decoration: none;
     color: rgba(255, 255, 255, 0.8);
     transition: all .5s ease-in-out;
- }
+  }
 
   .guest-profil-link:hover{
     text-decoration: underline;
- }
+  }
   .hero-card {
     --overlay-opacity-start: 0.2;
     --overlay-opacity-hover: 0.85;
     --glass-blur: 8px;
 
+    color: white;
+    position: relative;
     background-size: cover;
     background-position: center;
-    position: relative;
-    color: white;
   }
+  
   /* --- Utilities --- */
   .max-w-lg {
     max-width: 800px;
@@ -334,8 +336,8 @@
     line-height: 1.2;
   }
   .content-layer {
-    position: relative;
     z-index: 2;
+    position: relative;
   }
   .text-shadow-sm {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -357,13 +359,11 @@
 
   /* --- Glassmorphism Overlay Logic --- */
   .glass-overlay {
-    position: absolute;
     inset: 0;
     z-index: 1;
+    position: absolute;
     opacity: var(--overlay-opacity-start);
-    transition:
-      opacity 0.4s ease,
-      backdrop-filter 0.4s ease;
+    transition: opacity 0.3s ease, backdrop-filter 0.3s ease;
     background: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.3),

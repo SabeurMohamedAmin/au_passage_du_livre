@@ -1,8 +1,8 @@
 <script setup lang="ts">
-/* ==========================================================================
+/*==================================================
    1. INTERFACES
    Define data shapes for type safety and clarity.
-   ========================================================================== */
+  ==================================================*/
 
 interface StatMetric {
   value: string
@@ -16,10 +16,10 @@ interface GuestAuthor {
   image: string
 }
 
-/* ==========================================================================
+/* ===================================================================
    2. CONFIGURATION (MINI-CMS)
    Centralized content. Edit here without breaking the HTML structure.
-   ========================================================================== */
+  ==================================================================*/
 
 const HERO_IMAGE_URL = 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=2574&auto=format&fit=crop'
 
@@ -49,15 +49,15 @@ const pageContent = {
   ] as GuestAuthor[]
 }
 
-/* ==========================================================================
+/* =============================
    3. REACTIVE STATE
-   ========================================================================== */
+  =============================*/
 
 const featuredAuthors = ref<GuestAuthor[]>(pageContent.authors)
 
-/* ==========================================================================
+/* ===============================
    4. COMPUTED STYLES
-   ========================================================================== */
+  ===============================*/
 
 // Moves the background image out of CSS class to allow dynamic changes
 const heroStyle = computed(() => ({
@@ -67,16 +67,16 @@ const heroStyle = computed(() => ({
 
 <template>
   <v-container class="py-6">
-    <!-- ==========================================
+    <!-- =======================
       SECTION 1: PAGE HEADER
-    =============================================== -->
+    =============================-->
     <EventHeroSection />
 
     <v-divider class="mb-15"/>
 
-    <!-- ============================================
+    <!-- ======================================
       SECTION 5: SCHEDULE (External Component)
-    ================================================= -->
+    ===========================================-->
     <div class="mb-16">
       <div class="d-flex mb-4">
         <h2 class="w-100 text-h5 text-sm-h4 font-weight-black opacity-70">
@@ -93,9 +93,9 @@ const heroStyle = computed(() => ({
 
     <v-divider class="mb-15 mt-15"/>
 
-    <!-- =========================================
+    <!-- ======================
       SECTION 6: ARCHIVES
-    ============================================== -->
+    ===========================-->
     <v-row justify="start" class="gap-0 mb-15">
       <v-col cols="12" lg="11" xl="10">
         <h3 class="w-100 text-h5 font-weight-black opacity-70">
@@ -128,7 +128,7 @@ const heroStyle = computed(() => ({
     background-size: cover;
     background-position: center;
     position: relative;
-    color: white; /* Text color inside Hero */
+    color: white;
   }
 
   /* --- Utilities --- */

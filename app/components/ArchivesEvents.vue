@@ -18,7 +18,9 @@ type ArchiveEvent = {
 const windowSize = ref(5) // Default starting size
 const selectorContainerRef = ref<HTMLElement | null>(null)
 
-const allYears = Array.from({ length: 30 }, (_, i) => 2026 - i)
+const allYears = Array.from({ length: 15 }, (_, index) => {
+  return 2026 - index
+})
 
 const events: ArchiveEvent[] = [
   {

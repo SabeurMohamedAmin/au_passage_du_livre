@@ -1,5 +1,17 @@
+export interface Guest {
+  id: number
+  name: string
+  role: string
+  image: string
+  slug : string
+  facebook?: string
+  youtube?: string
+  x?: string
+  website?: string
+}
+
 export interface Schedule {
-  speakers: string[]
+  guests: Guest[]
   startTime: string
   startPeriod: 'Am' | 'Pm'
   endTime: string
@@ -19,21 +31,64 @@ export interface ScheduleDay {
   schedules: Schedule[]
 }
 
+const foireGuests :Guest[] = [
+  {
+    id: 1,
+    name: 'Pascal Badre',
+    slug: 'pascal-badre',
+    role: 'Comic',
+    image: '/img/events/autors/pascal_badre.png',
+    facebook: 'https://www.facebook.com/profile.php?id=100002835634820',
+    x: 'https://x.com/bigbohomme',
+    website: 'https://dessin-badre.over-blog.com',
+  },
+  {
+    id: 2,
+    name: 'Anne Siegel',
+    slug: 'anne-siegel',
+    role: 'Atelier',
+    image: '/img/events/autors/anne_siegel.jpg',
+    facebook: 'https://www.facebook.com/reliuresetcreations/',
+    website: 'https://reliures-creations.fr',
+  },
+  {
+    id: 3,
+    name: 'Christian Peultier',
+    slug: 'christian-peultier',
+    role: 'Comic',
+    image: '/img/events/autors/christian_peultier.jpg',
+    facebook: 'https://www.facebook.com/reliuresetcreations/',
+    website: 'https://reliures-creations.fr',
+  },
+  {
+    id: 4,
+    name: 'Pascal Graffica',
+    slug: 'pascal-graffica',
+    role: 'Comic',
+    image: '/img/events/autors/pascal_graffica.png',
+    facebook: 'https://www.facebook.com/pascal.graffica',
+    website: 'https://pascalgraffica.blogspot.com',
+  }
+]
+
 export const useEventSchedule = () => {
   const selectedDay = ref(0)
 
+  // Du 4 au 13 septembre 2026
+  // 10h - 20h (fermeture des stands à 20h)
+
   const scheduleDays = ref<ScheduleDay[]>([
     {
+      day: '4',
+      month: 'Sep',
+      year: '2026',
       title: 'First',
-      day: '29',
-      month: 'Nov',
-      year: '2021',
       schedules: [
         {
-          speakers: ['/img/speaker1.jpg'],
-          startTime: '09:00',
+          guests: [foireGuests[0], foireGuests[1], foireGuests[2], foireGuests[3]],
+          startTime: '10:00',
           startPeriod: 'Am',
-          endTime: '10:30',
+          endTime: '12:30',
           endPeriod: 'Am',
           title: 'Wait is Over! Stony Brook Captures Conference',
           author: 'Riaz Sagar',
@@ -42,7 +97,7 @@ export const useEventSchedule = () => {
           location: 'Hall 1, Building A, Golden Street, Southafrica'
         },
         {
-          speakers: ['/img/speaker2.jpg'],
+          guests: [foireGuests[3], foireGuests[1], foireGuests[2]],
           startTime: '10:30',
           startPeriod: 'Am',
           endTime: '11:30',
@@ -54,7 +109,7 @@ export const useEventSchedule = () => {
           location: 'Hall 1, Building A, Golden Street, Southafrica'
         },
         {
-          speakers: ['/img/speaker1.jpg', '/img/speaker2.jpg', '/img/speaker3.jpg', '/img/speaker4.jpg'],
+          guests: [foireGuests[1], foireGuests[3], foireGuests[2]],
           startTime: '11:30',
           startPeriod: 'Am',
           endTime: '01:30',
@@ -66,7 +121,7 @@ export const useEventSchedule = () => {
           location: 'Hall 1, Building A, Golden Street, Southafrica'
         },
         {
-          speakers: ['/img/speaker4.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '02:00',
           startPeriod: 'Pm',
           endTime: '03:30',
@@ -78,7 +133,7 @@ export const useEventSchedule = () => {
           location: 'Hall 1, Building A, Golden Street, Southafrica'
         },
         {
-          speakers: ['/img/speaker5.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '03:45',
           startPeriod: 'Pm',
           endTime: '04:00',
@@ -92,13 +147,13 @@ export const useEventSchedule = () => {
       ]
     },
     {
+      day: '5',
+      month: 'Sep',
+      year: '2026',
       title: 'Second',
-      day: '30',
-      month: 'Nov',
-      year: '2021',
       schedules: [
         {
-          speakers: ['/img/speaker1.jpg', '/img/speaker2.jpg', '/img/speaker3.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '09:00',
           startPeriod: 'Am',
           endTime: '10:30',
@@ -110,7 +165,7 @@ export const useEventSchedule = () => {
           location: 'Hall 1, Building A, Golden Street, Southafrica'
         },
         {
-          speakers: ['/img/speaker1.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '10:30',
           startPeriod: 'Am',
           endTime: '11:30',
@@ -122,7 +177,7 @@ export const useEventSchedule = () => {
           location: 'Hall 1, Building A, Golden Street, Southafrica'
         },
         {
-          speakers: ['/img/speaker3.jpg', '/img/speaker4.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '01:00',
           startPeriod: 'Pm',
           endTime: '02:30',
@@ -136,13 +191,13 @@ export const useEventSchedule = () => {
       ]
     },
     {
+      day: '6',
+      month: 'Sep',
+      year: '2026',
       title: 'Third',
-      day: '01',
-      month: 'Dec',
-      year: '2021',
       schedules: [
         {
-          speakers: ['/img/speaker2.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '09:00',
           startPeriod: 'Am',
           endTime: '10:30',
@@ -154,7 +209,7 @@ export const useEventSchedule = () => {
           location: 'Conference Room A, Tech Hub'
         },
         {
-          speakers: ['/img/speaker5.jpg'],
+          guests: [foireGuests[3] , foireGuests[1] , foireGuests[2] ],
           startTime: '11:00',
           startPeriod: 'Am',
           endTime: '12:30',
@@ -168,13 +223,13 @@ export const useEventSchedule = () => {
       ]
     },
     {
+      day: '7',
+      month: 'Sep',
+      year: '2026',
       title: 'Fourth',
-      day: '02',
-      month: 'Dec',
-      year: '2021',
       schedules: [
         {
-          speakers: ['/img/speaker1.jpg', '/img/speaker3.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '09:00',
           startPeriod: 'Am',
           endTime: '10:30',
@@ -186,7 +241,7 @@ export const useEventSchedule = () => {
           location: 'Security Lab, Building C'
         },
         {
-          speakers: ['/img/speaker4.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '02:00',
           startPeriod: 'Pm',
           endTime: '03:30',
@@ -200,13 +255,13 @@ export const useEventSchedule = () => {
       ]
     },
     {
+      day: '8',
+      month: 'Sep',
+      year: '2026',
       title: 'Fifth',
-      day: '03',
-      month: 'Dec',
-      year: '2021',
       schedules: [
         {
-          speakers: ['/img/speaker2.jpg', '/img/speaker5.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '09:30',
           startPeriod: 'Am',
           endTime: '11:00',
@@ -218,7 +273,7 @@ export const useEventSchedule = () => {
           location: 'Mobile Dev Lab, Building D'
         },
         {
-          speakers: ['/img/speaker1.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '01:00',
           startPeriod: 'Pm',
           endTime: '02:00',
@@ -232,13 +287,13 @@ export const useEventSchedule = () => {
       ]
     },
     {
+      day: '9',
+      month: 'Sep',
+      year: '2026',
       title: 'Sixth',
-      day: '04',
-      month: 'Dec',
-      year: '2021',
       schedules: [
         {
-          speakers: ['/img/speaker3.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '10:00',
           startPeriod: 'Am',
           endTime: '11:30',
@@ -250,7 +305,7 @@ export const useEventSchedule = () => {
           location: 'DevOps Center, Building E'
         },
         {
-          speakers: ['/img/speaker4.jpg', '/img/speaker5.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '02:30',
           startPeriod: 'Pm',
           endTime: '04:00',
@@ -264,13 +319,13 @@ export const useEventSchedule = () => {
       ]
     },
     {
+      day: '10',
+      month: 'Sep',
+      year: '2026',
       title: 'Seventh',
-      day: '05',
-      month: 'Dec',
-      year: '2021',
       schedules: [
         {
-          speakers: ['/img/speaker1.jpg', '/img/speaker2.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '09:00',
           startPeriod: 'Am',
           endTime: '10:30',
@@ -282,7 +337,7 @@ export const useEventSchedule = () => {
           location: 'Design Studio, Creative Building'
         },
         {
-          speakers: ['/img/speaker3.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '11:00',
           startPeriod: 'Am',
           endTime: '12:00',
@@ -296,13 +351,13 @@ export const useEventSchedule = () => {
       ]
     },
     {
+      day: '11',
+      month: 'Sep',
+      year: '2026',
       title: 'Eighth',
-      day: '06',
-      month: 'Dec',
-      year: '2021',
       schedules: [
         {
-          speakers: ['/img/speaker5.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '09:30',
           startPeriod: 'Am',
           endTime: '11:00',
@@ -314,7 +369,7 @@ export const useEventSchedule = () => {
           location: 'IoT Lab, Research Center'
         },
         {
-          speakers: ['/img/speaker2.jpg', '/img/speaker4.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '01:30',
           startPeriod: 'Pm',
           endTime: '03:00',
@@ -328,13 +383,13 @@ export const useEventSchedule = () => {
       ]
     },
     {
+      day: '12',
+      month: 'Sep',
+      year: '2026',
       title: 'Ninth',
-      day: '07',
-      month: 'Dec',
-      year: '2021',
       schedules: [
         {
-          speakers: ['/img/speaker1.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '10:00',
           startPeriod: 'Am',
           endTime: '11:30',
@@ -346,7 +401,7 @@ export const useEventSchedule = () => {
           location: 'API Workshop Room, Tech Campus'
         },
         {
-          speakers: ['/img/speaker3.jpg', '/img/speaker5.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '02:00',
           startPeriod: 'Pm',
           endTime: '03:30',
@@ -360,13 +415,13 @@ export const useEventSchedule = () => {
       ]
     },
     {
+      day: '13',
+      month: 'Sep',
+      year: '2026',
       title: 'Tenth',
-      day: '08',
-      month: 'Dec',
-      year: '2021',
       schedules: [
         {
-          speakers: ['/img/speaker4.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '09:00',
           startPeriod: 'Am',
           endTime: '10:30',
@@ -378,7 +433,7 @@ export const useEventSchedule = () => {
           location: 'Database Lab, Building G'
         },
         {
-          speakers: ['/img/speaker1.jpg', '/img/speaker2.jpg', '/img/speaker3.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '11:00',
           startPeriod: 'Am',
           endTime: '01:00',
@@ -392,166 +447,38 @@ export const useEventSchedule = () => {
       ]
     },
     {
+      day: '14',
+      month: 'Sep',
+      year: '2026',
       title: 'Eleventh',
-      day: '09',
-      month: 'Dec',
-      year: '2021',
       schedules: [
         {
-          speakers: ['/img/speaker2.jpg'],
-          startTime: '09:30',
-          startPeriod: 'Am',
-          endTime: '11:00',
-          endPeriod: 'Am',
-          title: 'E-Commerce Platform Development',
-          author: 'Joanna Smith',
-          company: 'Design Apple',
-          description: 'Building robust e-commerce platforms with payment integration, inventory management, and customer experience optimization strategies.',
-          location: 'E-Commerce Lab, Digital Center'
-        },
-        {
-          speakers: ['/img/speaker5.jpg'],
-          startTime: '02:00',
-          startPeriod: 'Pm',
-          endTime: '03:30',
-          endPeriod: 'Pm',
-          title: 'Quantum Computing: Present and Future',
-          author: 'Dr. Robert Martinez',
-          company: 'Quantum Research Institute',
-          description: 'Introduction to quantum computing principles, current state of quantum technology, and potential applications that could revolutionize computing.',
-          location: 'Quantum Lab, Research Tower'
-        }
-      ]
-    },
-    {
-      title: 'Twelfth',
-      day: '10',
-      month: 'Dec',
-      year: '2021',
-      schedules: [
-        {
-          speakers: ['/img/speaker3.jpg'],
-          startTime: '10:00',
-          startPeriod: 'Am',
-          endTime: '11:30',
-          endPeriod: 'Am',
-          title: 'Network Security and Penetration Testing',
-          author: 'Alex Thompson',
-          company: 'SecureNet Systems',
-          description: 'Practical approaches to network security assessment, ethical hacking techniques, and vulnerability management in enterprise environments.',
-          location: 'Security Training Center, Building H'
-        },
-        {
-          speakers: ['/img/speaker1.jpg', '/img/speaker4.jpg'],
-          startTime: '01:00',
-          startPeriod: 'Pm',
-          endTime: '02:30',
-          endPeriod: 'Pm',
-          title: 'Serverless Architecture and Cloud Functions',
-          author: 'Riaz Sagar & Emily Rodriguez',
-          company: 'Cloud Native Inc.',
-          description: 'Implementing serverless architectures, understanding function-as-a-service platforms, and optimizing costs in cloud-native applications.',
-          location: 'Cloud Computing Center, Tower 3'
-        }
-      ]
-    },
-    {
-      title: 'Thirteenth',
-      day: '11',
-      month: 'Dec',
-      year: '2021',
-      schedules: [
-        {
-          speakers: ['/img/speaker5.jpg', '/img/speaker2.jpg'],
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
           startTime: '09:00',
           startPeriod: 'Am',
           endTime: '10:30',
           endPeriod: 'Am',
-          title: 'Augmented Reality and Virtual Reality Applications',
-          author: 'Dr. Robert Martinez & Joanna Smith',
-          company: 'Immersive Tech Labs',
-          description: 'Exploring AR/VR technologies, development frameworks, and real-world applications in gaming, education, training, and enterprise solutions.',
-          location: 'VR Experience Center, Innovation Wing'
+          title: 'Cybersecurity Best Practices Workshop',
+          author: 'Riaz Sagar & Alex Thompson',
+          company: 'SecureNet Systems',
+          description: 'Hands-on workshop covering essential cybersecurity practices, threat detection, and incident response strategies for modern enterprises.',
+          location: 'Security Lab, Building C'
         },
         {
-          speakers: ['/img/speaker3.jpg'],
-          startTime: '02:30',
-          startPeriod: 'Pm',
-          endTime: '04:00',
-          endPeriod: 'Pm',
-          title: 'Leadership in Tech: Building High-Performance Teams',
-          author: 'Alex Thompson',
-          company: 'Leadership Academy',
-          description: 'Developing leadership skills, fostering team collaboration, and creating cultures of innovation and excellence in technology organizations.',
-          location: 'Leadership Forum, Executive Building'
-        }
-      ]
-    },
-    {
-      title: 'Fourteenth',
-      day: '12',
-      month: 'Dec',
-      year: '2021',
-      schedules: [
-        {
-          speakers: ['/img/speaker4.jpg'],
-          startTime: '10:00',
+          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          startTime: '11:00',
           startPeriod: 'Am',
-          endTime: '11:30',
-          endPeriod: 'Am',
-          title: 'Natural Language Processing and Chatbots',
+          endTime: '12:00',
+          endPeriod: 'Pm',
+          title: 'Data Analytics and Visualization',
           author: 'Emily Rodriguez',
-          company: 'AI Innovations Lab',
-          description: 'Building intelligent conversational interfaces using NLP techniques, understanding language models, and creating effective chatbot experiences.',
-          location: 'AI Lab, Research Building'
-        },
-        {
-          speakers: ['/img/speaker1.jpg', '/img/speaker5.jpg'],
-          startTime: '01:00',
-          startPeriod: 'Pm',
-          endTime: '02:30',
-          endPeriod: 'Pm',
-          title: 'Software Testing and Quality Assurance',
-          author: 'Riaz Sagar & Dr. Robert Martinez',
-          company: 'Quality Systems Inc.',
-          description: 'Comprehensive testing strategies, automated testing frameworks, continuous testing practices, and ensuring software quality at scale.',
-          location: 'QA Center, Building I'
-        }
-      ]
-    },
-    {
-      title: 'Fifteenth',
-      day: '13',
-      month: 'Dec',
-      year: '2021',
-      schedules: [
-        {
-          speakers: ['/img/speaker2.jpg', '/img/speaker3.jpg', '/img/speaker4.jpg'],
-          startTime: '09:00',
-          startPeriod: 'Am',
-          endTime: '11:00',
-          endPeriod: 'Am',
-          title: 'Closing Keynote: Technology and Human Connection',
-          author: 'Joanna Smith, Alex Thompson & Emily Rodriguez',
-          company: 'Tech for Humanity',
-          description: 'Reflecting on technology\'s role in bringing people together, ethical considerations in tech development, and building technology that serves humanity.',
-          location: 'Grand Hall, Convention Center'
-        },
-        {
-          speakers: ['/img/speaker1.jpg', '/img/speaker2.jpg', '/img/speaker3.jpg', '/img/speaker4.jpg', '/img/speaker5.jpg'],
-          startTime: '02:00',
-          startPeriod: 'Pm',
-          endTime: '04:00',
-          endPeriod: 'Pm',
-          title: 'Networking Reception and Closing Ceremony',
-          author: 'All Speakers',
-          company: 'Event Organizers',
-          description: 'Join us for the final networking reception where attendees can connect with speakers, share insights, and celebrate the success of this amazing conference journey.',
-          location: 'Rooftop Terrace, Main Building'
+          company: 'DataViz Pro',
+          description: 'Learn to transform raw data into meaningful insights through effective visualization techniques and analytical methodologies.',
+          location: 'Analytics Center, Tower 2'
         }
       ]
     }
-  ])
+  ]);
 
   // Computed properties
   const currentDay = computed(() => scheduleDays.value[selectedDay.value])
