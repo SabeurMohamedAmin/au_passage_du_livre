@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { p } from 'vue-router/dist/router-CWoNjPRp.mjs';
+
   // Local state (was in page)
   const selectedDay = ref(0)
 
@@ -10,9 +12,8 @@
   <!-- ============================================== -->
   <!-- ORIGINAL SECTION: SCHEDULE (EXTRACTED)         -->
   <!-- ============================================== -->
-
   <!-- events Upcoming -->
-  <v-row justify="start" class="gap-0 mb-15" >
+  <v-row  justify="start" class="mb-15" >
     <v-col cols="12" lg="11" xl="10" id="future_events">
       <h3 class="w-100 text-h5 font-weight-black opacity-70">
         {{ $t("upcoming events heading") }}
@@ -25,9 +26,8 @@
       </p>
     </v-col>
 
-    <v-col cols="12" lg="12" xl="10" class="mt-2">
+    <v-col  cols="12" lg="12" xl="10" class="mt-2 pa-0">
       <v-card class="elevation-8 rounded-lg overflow-hidden border-thin">
-
         <!-- STICKY DAY SELECTOR -->
         <div class="sticky-header border-b bg-surface">
           <v-tabs
@@ -126,16 +126,11 @@
                       {{ schedule.description }}
                     </p>
 
-                    <div class="d-flex flex-wrap gap-4 align-center">
-                      <v-chip
-                        color="primary"
-                        variant="tonal"
-                        size="large"
-                        prepend-icon="mdi-map-marker"
-                      >
-                        {{ schedule.location }}
-                      </v-chip>
-                      <div class="d-flex">
+                    <div class="d-flex flex-wrap gap-4 ">
+                      <div class="d-flex align-baseline mb-1">
+                        <p class="text-medium-emphasis align-self-center me-2 mb-md-1">
+                          {{ $t("guests") }}:
+                        </p>
                         <v-menu
                           v-for="(person, index) in schedule.guests"
                           :key="index"
@@ -159,6 +154,15 @@
                           <GuestProfileCard :guest="person" />
                         </v-menu>
                       </div>
+                      <v-spacer />
+                      <v-chip
+                        color="primary"
+                        variant="tonal"
+                        size="large"
+                        prepend-icon="mdi-map-marker"
+                      >
+                        {{ schedule.location }}
+                      </v-chip>
                     </div>
                   </v-expansion-panel-text>
                 </v-expansion-panel>
