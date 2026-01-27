@@ -224,19 +224,21 @@
       SECTION 4: GUESTS CAROUSEL
     ============================== -->
     <div class="mb-15">
-      <div class="d-flex align-center justify-space-between mb-6">
-        <h3 class="text-h5 font-weight-bold">
+      <div class="flex-column flex-sm-row d-flex align-start justify-space-between mb-6">
+        <h3 class="text-h5 font-weight-bold mb-2 mb-sm-0">
           Special Guests
         </h3>
         <nuxt-link 
           :to="$localePath({ name: 'event-details', hash: '#guests', params: { slug: content.hero.slug } })"
-          class="decoration-none text-color-default"  
+          class="decoration-none text-color-default"
         >
-          <v-btn 
-            rounded="lg" variant="flat" 
+          <v-btn
+            rounded="xl" variant="outlined"
+            color="primary" 
             append-icon="mdi-arrow-right"
+            class="px-2"
           >
-            All guests in this Event
+            Guests of the Event
           </v-btn>
         </nuxt-link>
       </div>
