@@ -88,8 +88,6 @@ const heroStyle = computed(() => ({
       </p>
     </div>
     
-    <!-- Assuming this component handles its own data fetching/props -->
-    <EventSchedule />
 
     <v-divider class="mb-15 mt-15"/>
 

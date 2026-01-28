@@ -1,41 +1,58 @@
 <script setup lang="ts">
-import { useEventSchedule } from '@/composables/useEventSchedule'
+  import { useEventSchedule } from '@/composables/useEventSchedule'
+  import { useTheme } from 'vuetify';
 
-const { scheduleDays, features } = useEventSchedule()
+  definePageMeta({
+    name: 'event-details',
+  });
 
-// Filter unique guests from all days
-const uniqueGuests = computed(() => {
-  const map = new Map()
-  scheduleDays.value.forEach(day =>
-    day.schedules.forEach(s =>
-      s.guests.forEach(g => map.set(g.id, g))
+  const theme = useTheme();
+  const { scheduleDays, features } = useEventSchedule();
+  // Filter unique guests from all days
+  const uniqueGuests = computed(() => {
+    const map = new Map()
+    scheduleDays.value.forEach(day =>
+      day.schedules.forEach(s =>
+        s.guests.forEach(g => map.set(g.id, g))
+      )
     )
-  )
-  return Array.from(map.values())
-})
+    return Array.from(map.values());
+  });
 
-// Mock data for the Archive section
-const archives = [
-  { title: 'Affiche Officielle 2026', src: '/img/home/affiche-officielle-2026.jpg', flex: 6 },
-  { title: 'Plan du Salon', src: '/img/home/plan-du-salon.jpg', flex: 6 },
-  { title: 'Brochure Programme PDF', src: 'https://picsum.photos/400/300', flex: 4 },
-  { title: 'Revue de Presse', src: 'https://picsum.photos/400/500', flex: 8 },
-]
+  // Mock data for the Archive section
+  const archives = [
+    { title: 'Affiche Officielle 2026', src: '/img/home/affiche-officielle-2026.jpg', flex: 6 },
+    { title: 'Plan du Salon', src: '/img/home/plan-du-salon.jpg', flex: 6 },
+    { title: 'Brochure Programme PDF', src: 'https://picsum.photos/400/300', flex: 4 },
+    { title: 'Revue de Presse', src: 'https://picsum.photos/400/500', flex: 8 },
+  ];
+
+
+  const heroGradient = computed(() => {
+    const rgb = theme.global.current.value.dark ? '0,0,0' : '255,255,255';
+    
+    // We fade from 100% (or 80%) opacity at the bottom to 0% opacity at the top
+    return `to top, rgba(${rgb}, 0.4) 0%, rgba(${rgb}, 0) 80%`;
+  })
 </script>
 
 <template>    
   <section class="hero-section">
     <v-img
       src="/img/home/diffrents-directions.png"
-      gradient="to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%"
+      :gradient="heroGradient"
       class="align-end"
       height="70vh"
       cover
     >
       <v-container>
-        <div class="mb-10">
-          <h1 class="text-h2 text-md-h1 font-weight-black serif mb-2">Rencontres & Ateliers</h1>
-          <p class="text-h5 font-weight-light mb-6">Livre, illustration et création en Alsace</p>
+        <div class="mb-10 bg-glassy rounded-xl" >
+          <h1 class=" w-100 text-h5 text-sm-h4 font-weight-black opacity-90">
+            Rencontres & Ateliers
+          </h1>
+          <p class="text-h6 font-weight-light mb-6">
+            Livre, illustration et création en Alsace
+          </p>
           
           <div class="d-flex flex-wrap ga-6 text-subtitle-1">
             <span class="d-flex align-center"><v-icon start>mdi-map-marker</v-icon> Strasbourg</span>
@@ -48,11 +65,15 @@ const archives = [
   </section>
 
   <v-container>
-    <section class="py-16">
-      <v-row juseify="space-between">
-        <v-col cols="12" md="7">
-          <h2 class="text-h4 serif mb-6">À propos de l’événement</h2>
-          <div class="text-body-1 text-justify editorial-text">
+    <!-- Event Info, simple when, where, what -->
+    <section class="py-2">
+      <v-row justify="space-between">
+        <!-- Main Content: Order 2 on mobile, Order 1 on desktop -->
+        <v-col cols="12" md="7" order="3" order-md="1">
+          <h2 class="mb-8 w-100 text-h5 text-sm-h4 font-weight-black opacity-70">
+            À propos de l’événement
+          </h2>
+          <div class="text-body-1 editorial-text">
             <p class="mb-4">
               Au Passage du Livre est une invitation à ralentir et à s'immerger dans l'univers de la création littéraire. 
               Né d'une volonté de partager la richesse du patrimoine écrit alsacien, cet événement transforme 
@@ -65,29 +86,52 @@ const archives = [
             </p>
           </div>
         </v-col>
-        <v-col cols="12" md="4" offset-md="1">
-          <div class="logistic-info pt-md-12">
+
+        <v-col cols="12" md="1" order="2" order-md="1" class="justify-end d-none d-md-flex">
+          <v-divider thickness="5" vertical >
+            <v-avatar class="" icon="mdi-chevron-right" size="24"/>
+          </v-divider>
+        </v-col>
+
+        <!-- Logistics Info: Order 1 on mobile, Order 2 on desktop -->
+        <v-col cols="12" md="4" order="2" order-md="2">
+          <div class="pt-md-2">
             <div class="mb-4">
-              <div class="text-caption text-uppercase font-weight-bold text-grey">Organisé par</div>
-              <div class="text-body-1">Au Passage du Livre</div>
+              <div class="text-caption text-uppercase font-weight-bold text-grey">
+                Organisé par
+              </div>
+              <div class="text-body-1">
+                Au Passage du Livre
+              </div>
             </div>
             <div class="mb-4">
-              <div class="text-caption text-uppercase font-weight-bold text-grey">Lieu</div>
-              <div class="text-body-1">Parc des Expositions, Strasbourg</div>
+              <div class="text-caption text-uppercase font-weight-bold text-grey">
+                Lieu
+              </div>
+              <div class="text-body-1">
+                Parc des Expositions, Strasbourg
+              </div>
             </div>
             <div class="mb-4">
-              <div class="text-caption text-uppercase font-weight-bold text-grey">Horaires</div>
-              <div class="text-body-1">Tous les jours : 10h – 20h</div>
+              <div class="text-caption text-uppercase font-weight-bold text-grey">
+                Horaires
+              </div>
+              <div class="text-body-1">
+                Tous les jours : 10h – 20h
+              </div>
             </div>
           </div>
         </v-col>
       </v-row>
     </section>
+    <v-divider class="mb-10 mx-2"/>
 
-    <v-divider class="mb-16"></v-divider>
 
-    <section class="mb-16">
-      <h2 class="text-h4 serif mb-8">Au programme du salon</h2>
+    <!-- Features of the event -->
+    <section class="mb-16 ">
+      <h2 class="mb-8 w-100 text-h5 text-sm-h4 font-weight-black opacity-70">
+        Au programme du salon
+      </h2>
       <v-row>
         <v-col v-for="feat in features" :key="feat.title" cols="12" sm="6" md="4">
           <h3 class="text-h6 font-weight-bold mb-2">
@@ -100,25 +144,29 @@ const archives = [
       </v-row>
     </section>
 
+    <!-- Event Schedule With Details Tabs -->
+    <section>
+      <!-- Assuming this component handles its own data fetching/props -->
+      <EventSchedule />
+    </section>
+
+    <!-- Event Schedule Details -->
     <section class="mb-16">
-      <h2 class="text-h3 serif mb-12 text-center">
+      <h2 class="mb-8 w-100 text-h5 text-start text-sm-h4 font-weight-black opacity-70">
         Programme détaillé
       </h2>
       
-      <div v-for="day in scheduleDays" :key="day.day" class="mb-16">
-        <div class="d-flex align-center mb-8">
+      <article v-for="day in scheduleDays" :key="day.day">
+        <div class="d-flex align-center mb-8 background-opacity rounded-xl">
           <div class="text-h4 font-weight-black mr-4">
             {{ day.day }}
           </div>
-          <div>
-            <div class="text-h6 text-uppercase font-weight-bold">
+          <div class="d-flex flex-grow-1 flex-0-0 flex-column py-5 pe-4">
+            <p class="d-inline-block text-h6 text-uppercase font-weight-bold">
               {{ day.month }} {{ day.year }}
-            </div>
-            <div class="text-subtitle-2">
-              Journée {{ day.title }}
-            </div>
+            </p>
           </div>
-          <v-divider class="ml-6"></v-divider>
+          <v-divider class="ml-6 flex-shrink-1"/>
         </div>
 
         <v-row
@@ -155,9 +203,11 @@ const archives = [
             </div>
           </v-col>
         </v-row>
-      </div>
+      </article>
     </section>
 
+    <!-- TODO improve this section-->
+    <!-- Intervenants et Artistes-->
     <section class="mb-16 py-12 bg-white rounded-lg px-6 border">
       <h2 class="text-h4 serif mb-10">
         Les Intervenants
@@ -244,6 +294,13 @@ const archives = [
 <style scoped>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Libre+Baskerville&display=swap');
 
+  .bg-glassy {
+    margin: 0 -10px;
+    padding: 10px;
+    background-color: rgba(100, 100, 100, 0.05);
+    backdrop-filter: blur(2px);
+  }
+
   .serif {
     font-family: 'Playfair Display', serif;
   }
@@ -251,7 +308,6 @@ const archives = [
   .editorial-text {
     font-family: 'Libre Baskerville', serif;
     line-height: 1.8;
-    color: #2c2c2c;
   }
 
   .border-bottom-soft {
@@ -271,17 +327,13 @@ const archives = [
     opacity: 0.6;
   }
 
-  .logistic-info {
-    border-left: 1px solid #e0e0e0;
-    padding-left: 24px;
-  }
-
-  @media (max-width: 960px) {
-    .logistic-info {
-      border-left: none;
-      padding-left: 0;
-      border-top: 1px solid #e0e0e0;
-      padding-top: 24px;
-    }
-  }
+  .background-opacity {
+    position: sticky;
+    top: 70px;
+    z-index: 5;
+    background-color: rgba(150, 150, 150, 0.04);
+    margin: 0 -10px;
+    padding: 10px;
+    backdrop-filter: blur(12px);
+}
 </style>  
