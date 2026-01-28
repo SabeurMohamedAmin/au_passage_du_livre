@@ -6,6 +6,7 @@
     <NuxtLayout>
       <v-main>
         <NuxtPage/>
+        <BackToTop />
       </v-main>
     </NuxtLayout>
   </v-app>
