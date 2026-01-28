@@ -1,4 +1,21 @@
 <script setup lang="ts">
+  useHead({
+    title: 'Au Passage du Livre',
+    link: [
+      {
+        rel: 'icon',
+        type: 'image/svg+xml',
+        href: '/favicon-svg.svg',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        rel: 'icon',
+        type: 'image/svg+xml',
+        href: '/favicon-svg-dark.svg',
+        media: '(prefers-color-scheme: dark)',
+      },
+    ],
+  })
 </script>
 
 <template>

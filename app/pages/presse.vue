@@ -13,8 +13,9 @@
     publisher: string
     publisherLogo: string // Using placeholder text for logos
     date: string
-    category: 'Article' | 'Interview' | 'Review' | 'Event Coverage'
+    category: 'Article' | 'Interview' | 'Review' | 'Culture'
     image: string
+    alt?: string
     url: string
   }
 
@@ -27,13 +28,16 @@
     },
     featured: <PressArticle>{
       id: 0,
-      title: 'Au Passage du Livre, un acteur culturel qui rassemble',
-      publisher: 'Dernières Nouvelles d’Alsace',
-      publisherLogo: "mdi-map-marker-radius-outline" ,
-      excerpt: 'À Strasbourg, l’association développe des événements littéraires et artistiques ouverts à tous, favorisant le dialogue et la création.',
-      date: 'Avril 2026',
-      image: 'https://images.unsplash.com/photo-1457694587812-e8bf29a43845?q=80&w=2400&auto=format&fit=crop',
-      url: '#'
+      title: 'Livres, jeux et figurines pour un vrai "Village culturel"',
+      excerpt: 'Après une première en 2024, le livre revient à la Foire européenne de Strasbourg. Cette fois entouré de jeux de société et de figurines… ',
+      publisher: 'DNA',
+      publisherLogo: 'https://ui-avatars.com/api/?name=DNA&background=e60000&color=fff&size=64',
+      date: '07 Sept 2025',
+      category: 'Culture',
+      image: 'https://cdn-s-www.dna.fr/images/125FCFE5-9691-406A-BAD5-0085D74BCED6/NW_raw/pour-que-le-salon-du-livre-devienne-village-culturel-des-figurines-sont-exposees-le-collectionneur-tintinophile-remy-waeldin-transporte-en-syldavie-photo-thomas-toussaint-1757270458.jpg',
+      alt: 'Livres, jeux et figurines pour un vrai "Village culturel"',
+      localUrl: 'livres-jeux-et-figurines-pour-un-vrai-village-culturel',
+      url: 'https://www.dna.fr/culture-loisirs/2025/09/07/livres-jeux-et-figurines-pour-un-vrai-village-culturel'
     },
     stats: [
       { value: '50+', label: 'Mentions dans la presse' },
@@ -47,14 +51,15 @@
   const pressArticles: PressArticle[] = [
     {
       id: 1,
-      title: 'Au Passage du Livre transforme la Place Kléber en bibliothèque',
-      excerpt: 'Retour sur cet événement majeur qui a rassemblé des milliers de lecteurs au cœur de Strasbourg...',
+      title: 'Livres, jeux et figurines pour un vrai "Village culturel"',
+      excerpt: 'Après une première en 2024, le livre revient à la Foire européenne de Strasbourg. Cette fois entouré de jeux de société et de figurines… ',
       publisher: 'DNA',
       publisherLogo: 'https://ui-avatars.com/api/?name=DNA&background=e60000&color=fff&size=64',
       date: '15 Jan 2026',
-      category: 'Event Coverage',
-      image: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=600&auto=format&fit=crop',
-      url: '#'
+      category: 'Culture',
+      image: 'https://cdn-s-www.dna.fr/images/125FCFE5-9691-406A-BAD5-0085D74BCED6/NW_raw/pour-que-le-salon-du-livre-devienne-village-culturel-des-figurines-sont-exposees-le-collectionneur-tintinophile-remy-waeldin-transporte-en-syldavie-photo-thomas-toussaint-1757270458.jpg',
+      alt: 'Livres, jeux et figurines pour un vrai "Village culturel"',
+      url: 'https://www.dna.fr/culture-loisirs/2025/09/07/livres-jeux-et-figurines-pour-un-vrai-village-culturel'
     },
     {
       id: 2,
@@ -107,7 +112,7 @@
       publisher: 'Strasbourg.eu',
       publisherLogo: 'https://ui-avatars.com/api/?name=SX&background=9c27b0&color=fff&size=64',
       date: '01 Sep 2025',
-      category: 'Event Coverage',
+      category: 'Culture',
       image: 'https://images.unsplash.com/photo-1544928147-79a2af1f3a94?q=80&w=600&auto=format&fit=crop',
       url: '#'
     }
@@ -210,23 +215,23 @@
               </p>
             </v-card-text>
  
-            <v-spacer></v-spacer>
+            <v-spacer/>
  
             <!-- Action Button -->
             <v-card-actions class="px-4 pb-4 pt-2">
-              <v-btn
-                :href="article.url"
-                target="_blank"
-                variant="tonal"
-                color="#143c28"
-                size="small"
-                class="font-weight-bold px-4"
-                rounded="pill"
-                block
-              >
-                Lire la suite
-                <v-icon end icon="mdi-open-in-new" size="small" class="ml-2"></v-icon>
-              </v-btn>
+                <v-btn
+                  :href="article.url"
+                  target="_blank"
+                  variant="tonal"
+                  color="#143c28"
+                  size="small"
+                  class="font-weight-bold px-4"
+                  rounded="pill"
+                  block
+                >
+                  Lire la suite
+                  <v-icon end icon="mdi-open-in-new" size="small" class="ml-2"></v-icon>
+                </v-btn>
             </v-card-actions>
           </div>
         </v-card>
