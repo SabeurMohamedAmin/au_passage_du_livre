@@ -72,7 +72,7 @@ export function useEventHeroContent() {
     logistics: {
       when: {
         title: 'When ?',
-        desc: 'September 4–14, 2026',
+        desc: 'September 4 jusque 14, 2026',
         sub: '10:00  – 20:00',
       },
       where: {

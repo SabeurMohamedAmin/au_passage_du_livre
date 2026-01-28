@@ -186,16 +186,6 @@ onUnmounted(() => {
 
 <template>
   <section class="archives-section mb-16 min-w-340">
-    <!-- ================= HEADER ================= -->
-    <header class="mb-10 text-center text-md-start">
-      <h2 class="text-h4 font-weight-black mb-2">
-        Archives des événements
-      </h2>
-      <p class="text-body-1 text-medium-emphasis max-w-lg">
-        Retrouvez nos événements passés, classés par année.
-      </p>
-    </header>
-
     <!-- ================= YEAR SELECTOR ================= -->
     <div class="d-flex mb-10">
       <!-- Wrapper div to get the container reference for ResizeObserver -->
@@ -325,75 +315,63 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* =========================================================
-   UTILITIES
-========================================================= */
-.max-w-lg {
-  max-width: 720px;
-}
+  .max-w-lg {
+    max-width: 720px;
+  }
 
-.min-w-340 {
-  min-width: 340px;
-}
+  .min-w-340 {
+    min-width: 340px;
+  }
 
-/* =========================================================
-   YEAR SELECTOR
-========================================================= */
-.year-selector-wrapper {
-  display: flex;
-  align-items: center;
-}
+  .year-selector-wrapper {
+    display: flex;
+    align-items: center;
+  }
 
-.year-btn {
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.15s ease,
-    opacity 0.15s ease;
-  flex-shrink: 0;
-}
+  .year-btn {
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.15s ease,
+      opacity 0.15s ease;
+    flex-shrink: 0;
+  }
 
-.year-btn:not(.v-btn--active) {
-  opacity: 0.65;
-}
+  .year-btn:not(.v-btn--active) {
+    opacity: 0.65;
+  }
 
-.year-btn.v-btn--active {
-  transform: scale(1.05);
-  opacity: 1;
-}
+  .year-btn.v-btn--active {
+    transform: scale(1.05);
+    opacity: 1;
+  }
 
-.year-dropdown {
-  max-height: 280px;
-  overflow-y: auto;
-}
+  .year-dropdown {
+    max-height: 280px;
+    overflow-y: auto;
+  }
 
-/* Sticky subheader */
-.dropdown-header {
-  top: -10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-  position: sticky;
-  z-index: 20;
-  background-color: rgb(var(--v-theme-surface));
-  border-bottom: 1px solid rgba(var(--v-border-color), 0.2);
-}
+  /* Sticky subheader */
+  .dropdown-header {
+    top: -10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    position: sticky;
+    z-index: 20;
+    background-color: rgb(var(--v-theme-surface));
+    border-bottom: 1px solid rgba(var(--v-border-color), 0.2);
+  }
 
-/* =========================================================
-   CONTENT ANIMATION
-========================================================= */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s ease;
-}
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.2s ease;
+  }
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
 
-/* =========================================================
-   TEXT
-========================================================= */
-.leading-tight {
-  line-height: 1.25;
-}
+  .leading-tight {
+    line-height: 1.25;
+  }
 </style>

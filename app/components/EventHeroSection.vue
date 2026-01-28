@@ -20,17 +20,17 @@
   const {sm, mdAndUp}= useDisplay()
 
   const responsiveSize= computed(()=>{
-    if(sm.value){
+    if(mdAndUp.value){
+      return {
+        icon:30,
+        avatar:60
+      }
+    }
+    else if(sm.value){
         return {
           icon:25,
           avatar:50
         }
-    }
-    else if(mdAndUp.value){
-      return {
-        icon:30,
-        avatar:60
-    }
     }
     else {return {
       icon:20,
@@ -137,85 +137,105 @@
     ======================= -->
     <v-row class="mb-10 mt-2 min-w-250" dense>
       <!-- When -->
-      <v-col cols="6" sm="4" md="4">
-        <v-sheet class="rounded-xl py-6 pa-ms-6 bg-surface-light border-thin h-100 d-flex flex-column align-center text-center">
-          <v-avatar
-            color="primary"
-            variant="tonal"
-            :size="responsiveSize.avatar"
-            class="mb-4 rounded-lg"
-          >
-            <v-icon
-              :size="responsiveSize.icon"
-              icon="mdi-calendar-clock"
-            />
-          </v-avatar>
-
-          <!-- title -->
-          <h3 class="text-subtitle-2 text-sm-h6 font-weight-bold">
-            {{ content.logistics.when.title }}
-          </h3>
-
-          <!-- main text -->
-          <p class="text-body-2 text-sm-body-1 font-weight-medium mt-1">
-            {{ content.logistics.when.desc }}<br />
-            <span class="text-caption text-medium-emphasis">
-              {{ content.logistics.when.sub }}
-            </span>
-          </p>
+      <v-col cols="6" sm="4">
+        <v-sheet class="rounded-xl pa-4 border-thin px-5">
+          <v-row dense align="center" justify="center">
+            <v-col cols="4" lg="3">
+              <v-avatar
+                color="primary"
+                variant="tonal"
+                :size="responsiveSize.avatar"
+                class="mb-4 rounded-lg"
+              >
+                <v-icon
+                  :size="responsiveSize.icon"
+                  icon="mdi-calendar-clock"
+                />
+              </v-avatar>
+            </v-col>
+            <v-col cols="8" lg="9">
+              <!-- title -->
+              <h3 class="text-subtitle-2 text-sm-h6 font-weight-bold">
+                {{ content.logistics.when.title }}
+              </h3>
+            </v-col>
+  
+            <!-- main text -->
+            <p class="w-100 text-body-2 text-sm-body-1 font-weight-medium mt-1">
+              {{ content.logistics.when.desc }}<br />
+              <span class="text-caption text-medium-emphasis">
+                {{ content.logistics.when.sub }}
+              </span>
+            </p>
+          </v-row>
         </v-sheet>
       </v-col>
 
       <!-- Where -->
       <v-col cols="6" sm="4">
-        <v-sheet class="rounded-xl py-6 pa-ms-6 bg-surface-light border-thin h-100 d-flex flex-column align-center text-center">
-          <v-avatar
-            color="secondary"
-            variant="tonal"
-            :size="responsiveSize.avatar"
-            class="mb-4 rounded-lg"
-          >
-            <v-icon :size="responsiveSize.icon" icon="mdi-map-marker-radius"/>
-          </v-avatar>
-
-          <h3 class="text-subtitle-2 text-sm-h6 font-weight-bold">
-            {{ content.logistics.where.title }}
-          </h3>
-
-          <p class="text-body-2 text-sm-body-1 font-weight-medium mt-1">
-            {{ content.logistics.where.desc }}<br />
-            <span class="text-caption text-medium-emphasis">
-              {{ content.logistics.where.sub }}
-            </span>
-          </p>
+        <v-sheet class="rounded-xl pa-4 border-thin px-5">
+          <v-row dense align="center" justify="center">
+            <v-col cols="4" lg="3">
+              <v-avatar
+                color="secondary"
+                variant="tonal"
+                :size="responsiveSize.avatar"
+                class="mb-4 rounded-lg"
+              >
+                <v-icon
+                  :size="responsiveSize.icon"
+                  icon="mdi-map-marker-radius"
+                />
+              </v-avatar>
+            </v-col>
+            <v-col cols="8" lg="9">
+              <!-- title -->
+              <h3 class="text-subtitle-2 text-sm-h6 font-weight-bold">
+                {{ content.logistics.where.title }}
+              </h3>
+            </v-col>
+  
+            <!-- main text -->
+            <p class="w-100 text-body-2 text-sm-body-1 font-weight-medium mt-1">
+              {{ content.logistics.where.desc }}<br />
+              <span class="text-caption text-medium-emphasis">
+                {{ content.logistics.where.sub }}
+              </span>
+            </p>
+          </v-row>
         </v-sheet>
       </v-col>
 
+
       <!-- What -->
       <v-col cols="6" sm="4">
-        <v-sheet class="rounded-xl py-6 pa-ms-6 bg-surface-light border-thin h-100 d-flex flex-column align-center text-center" >
-          <v-avatar
-            color="success"
-            variant="tonal"
-            :size="responsiveSize.avatar"
-            class="mb-4 rounded-lg"
-          >
-            <v-icon
-              :size="responsiveSize.icon"
-              icon="mdi-book-open-page-variant"
-            />
-          </v-avatar>
-
-          <h3 class="text-subtitle-2 text-sm-h6 font-weight-bold">
-            {{ content.logistics.what.title }}
-          </h3>
-
-          <p class="text-body-2 text-sm-body-1 font-weight-medium mt-1">
-            {{ content.logistics.what.desc }}<br />
-            <span class="text-caption text-medium-emphasis">
-              {{ content.logistics.what.sub }}
-            </span>
-          </p>
+        <v-sheet class="rounded-xl pa-4 border-thin px-5">
+          <v-row dense align="center" justify="center">
+            <v-col cols="4" lg="3">
+              <v-avatar
+                color="success"
+                variant="tonal"
+                :size="responsiveSize.avatar"
+                class="mb-4 rounded-lg"
+              >
+                <v-icon :size="responsiveSize.icon" icon="mdi-book-open-page-variant"/>
+              </v-avatar>
+            </v-col>
+            <v-col cols="8" lg="9">
+              <!-- title -->
+              <h3 class="text-subtitle-2 text-sm-h6 font-weight-bold">
+                {{ content.logistics.what.title }}
+              </h3>
+            </v-col>
+  
+            <!-- main text -->
+            <p class="w-100 text-body-2 text-sm-body-1 font-weight-medium mt-1">
+              {{ content.logistics.what.desc }}<br />
+              <span class="text-caption text-medium-emphasis">
+                {{ content.logistics.what.sub }}
+              </span>
+            </p>
+          </v-row>
         </v-sheet>
       </v-col>
     </v-row>

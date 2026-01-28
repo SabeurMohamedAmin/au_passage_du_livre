@@ -1,99 +1,12 @@
 <script setup lang="ts">
-/*==================================================
-   1. INTERFACES
-   Define data shapes for type safety and clarity.
-  ==================================================*/
-
-interface StatMetric {
-  value: string
-  label: string
-}
-
-interface GuestAuthor {
-  id: number
-  name: string
-  role: string
-  image: string
-}
-
-/* ===================================================================
-   2. CONFIGURATION (MINI-CMS)
-   Centralized content. Edit here without breaking the HTML structure.
-  ==================================================================*/
-
-const HERO_IMAGE_URL = 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=2574&auto=format&fit=crop'
-
-const pageContent = {
-  header: {
-    title: 'Our Next Event',
-    subtitle: 'We invite you all to visit us on our next event — if you are interested please check for more details.'
-  },
-  hero: {
-    badge: 'Foire Européenne 2026',
-    title: 'Au Passage du Livre',
-    subtitle: 'Goes European',
-    description: 'Join our association for three unforgettable days of literature, culture, and exchange at the heart of Europe.',
-    slug: 'foire-europeenne-2026',
-    cta: 'Learn More',
-  },
-  logistics: {
-    when: { title: 'When?', desc: 'September 4-14, 2026', sub: '10:00 AM - 8:00 PM' },
-    where: { title: 'Where?', desc: 'Parc des Expositions', sub: 'Hall 5, Stand B-24' },
-    what: { title: 'What?', desc: 'Book Signings, Panels &', sub: 'Exclusive Workshops' }
-  },
-  authors: [
-    { id: 1, name: 'Sarah Chen', role: 'Sci-Fi Novelist', image: 'https://i.pravatar.cc/150?u=a042581f4e29026024d' },
-    { id: 2, name: 'Marc Dubois', role: 'Historian', image: 'https://i.pravatar.cc/150?u=a042581f4e29026704d' },
-    { id: 3, name: 'Elena Silva', role: 'Poet', image: 'https://i.pravatar.cc/150?u=a04258114e29026302d' },
-    { id: 4, name: 'David Okafor', role: 'Journalist', image: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }
-  ] as GuestAuthor[]
-}
-
-/* =============================
-   3. REACTIVE STATE
-  =============================*/
-
-const featuredAuthors = ref<GuestAuthor[]>(pageContent.authors)
-
-/* ===============================
-   4. COMPUTED STYLES
-  ===============================*/
-
-// Moves the background image out of CSS class to allow dynamic changes
-const heroStyle = computed(() => ({
-  backgroundImage: `url(${HERO_IMAGE_URL})`
-}))
 </script>
 
 <template>
   <v-container class="py-6">
-    <!-- =======================
-      SECTION 1: PAGE HEADER
-    =============================-->
     <EventHeroSection />
-
     <v-divider class="mb-15"/>
 
-    <!-- ======================================
-      SECTION 5: SCHEDULE (External Component)
-    ===========================================-->
-    <div class="mb-16">
-      <div class="d-flex mb-4">
-        <h2 class="w-100 text-h5 text-sm-h4 font-weight-black opacity-70">
-          {{$t("events heading")}}
-        </h2>
-      </div>
-      <p class="text-h6 text-medium-emphasis max-w-lg">
-        {{ $t("events description") }}
-      </p>
-    </div>
-    
-
-    <v-divider class="mb-15 mt-15"/>
-
-    <!-- ======================
-      SECTION 6: ARCHIVES
-    ===========================-->
+    <!-- SECTION 6: ARCHIVES -->
     <v-row justify="start" class="gap-0 mb-15">
       <v-col cols="12" lg="11" xl="10">
         <h3 class="w-100 text-h5 font-weight-black opacity-70">
