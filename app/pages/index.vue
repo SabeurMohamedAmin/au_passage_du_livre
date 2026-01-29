@@ -212,9 +212,9 @@ const blogPosts = [
         </v-col>
         <v-col cols="12" md="4" class="text-md-right">
           <nuxt-link
-            to="/documents/events/event-2025.pdf"
+            to="/documents/events/aupassagedulivre-catalogue-2025.pdf"
             target="_blank"
-            download="Programme-event-2025.pdf"
+            download="aupassagedulivre-event-2025.pdf"
           >
             <v-btn
               append-icon="mdi-download" 
