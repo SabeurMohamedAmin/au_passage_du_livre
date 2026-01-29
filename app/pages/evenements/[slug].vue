@@ -157,7 +157,7 @@
       </h2>
       
       <article v-for="day in scheduleDays" :key="day.day">
-        <div class="d-flex align-center mb-8 background-opacity rounded-xl">
+        <div class="d-flex align-center mb-8 background-opacity-sticky rounded-xl">
           <div class="text-h4 font-weight-black mr-4">
             {{ day.day }}
           </div>
@@ -327,7 +327,7 @@
     opacity: 0.6;
   }
 
-  .background-opacity {
+  .background-opacity-sticky {
     position: sticky;
     top: 70px;
     z-index: 5;

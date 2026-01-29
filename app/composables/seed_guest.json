@@ -1,0 +1,103 @@
+[
+  {
+    "id": 1,
+    "name": "Sarah Chen",
+    "slug": "sarah-chen",
+    "role": "Artisan",
+    "specialty": "Science-Fiction",
+    "excerpt": "Auteure primée de la trilogie « Cosmos Éternel », traduite en 25 langues.",
+    "bio": "Auteure primée de la trilogie « Cosmos Éternel », traduite en 25 langues.",
+    "image": "https://i.pravatar.cc/300?u=a042581f4e29026024d",
+    "featured": true,
+    "socialLinks": {
+      "website": "#",
+      "twitter": "#"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Marc Dubois",
+    "slug": "marc-dubois",
+    "role": "Historien",
+    "specialty": "Histoire Européenne",
+    "excerpt": "Professeur et spécialiste de l'histoire contemporaine européenne.",
+    "bio": "Professeur et spécialiste de l'histoire contemporaine européenne.",
+    "image": "https://i.pravatar.cc/300?u=a042581f4e29026704d",
+    "featured": true,
+    "socialLinks": {
+      "website": "#"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Elena Silva",
+    "slug": "elena-silva",
+    "role": "Artisan",
+    "specialty": "Poésie",
+    "excerpt": "Poétesse et lauréate du Prix International de Poésie 2024.",
+    "bio": "Poétesse et lauréate du Prix International de Poésie 2024.",
+    "image": "https://i.pravatar.cc/300?u=a04258114e29026302d",
+    "featured": true,
+    "socialLinks": {
+      "instagram": "#",
+      "website": "#"
+    }
+  },
+  {
+    "id": 4,
+    "name": "David Okafor",
+    "slug": "david-okafor",
+    "role": "Conférencier",
+    "specialty": "Journalisme",
+    "excerpt": "Journaliste d'investigation reconnu internationalement.",
+    "bio": "Journaliste d'investigation reconnu internationalement.",
+    "image": "https://i.pravatar.cc/300?u=a04258114e29026708c",
+    "featured": false,
+    "socialLinks": {
+      "twitter": "#"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Amélie Rousseau",
+    "slug": "amelie-rousseau",
+    "role": "Artiste",
+    "specialty": "Illustration",
+    "excerpt": "Illustratrice de livres jeunesse, créatrice de « Les Aventures de Léo ».",
+    "bio": "Illustratrice de livres jeunesse, créatrice de « Les Aventures de Léo ».",
+    "image": "https://i.pravatar.cc/300?u=a042581f4e29026024e",
+    "featured": true,
+    "socialLinks": {
+      "instagram": "#",
+      "website": "#"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Thomas Weber",
+    "slug": "thomas-weber",
+    "role": "Auteur",
+    "specialty": "Thriller",
+    "excerpt": "Best-seller avec plus de 2 millions d'exemplaires vendus.",
+    "bio": "Best-seller avec plus de 2 millions d'exemplaires vendus.",
+    "image": "https://i.pravatar.cc/300?u=a042581f4e29026704e",
+    "featured": false,
+    "socialLinks": {
+      "website": "#"
+    }
+  },
+  {
+    "id": 8,
+    "name": "Luca Moretti",
+    "slug": "luca-moretti",
+    "role": "Artiste",
+    "specialty": "Calligraphie",
+    "excerpt": "Maître calligraphe spécialisé dans l'art manuscrit médiéval.",
+    "bio": "Maître calligraphe spécialisé dans l'art manuscrit médiéval.",
+    "image": "https://i.pravatar.cc/300?u=a04258114e29026708e",
+    "featured": true,
+    "socialLinks": {
+      "instagram": "#"
+    }
+  }
+]

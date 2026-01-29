@@ -4,10 +4,16 @@ export interface Guest {
   role: string
   image: string
   slug : string
-  facebook?: string
-  youtube?: string
-  x?: string
-  website?: string
+  bio: string
+  excerpt: string
+  specialty?: string
+  socialLinks?: {
+    website?: string
+    facebook?: string
+    youtube?: string
+    x?: string
+    instagram?: string
+  }
 }
 
 export interface Schedule {
@@ -37,19 +43,26 @@ const foireGuests :Guest[] = [
     name: 'Pascal Badre',
     slug: 'pascal-badre',
     role: 'Comic',
+    bio: 'Pascal Badre est un dessinateur et humoriste français.',
+    excerpt: 'Pascal Badre est un dessinateur et humoriste français.',
     image: '/img/events/autors/pascal_badre.png',
-    facebook: 'https://www.facebook.com/profile.php?id=100002835634820',
-    x: 'https://x.com/bigbohomme',
-    website: 'https://dessin-badre.over-blog.com',
+    socialLinks:{
+      facebook: 'https://www.facebook.com/profile.php?id=100002835634820',
+      x: 'https://x.com/bigbohomme',
+      website: 'https://dessin-badre.over-blog.com'
+    }
   },
   {
     id: 2,
     name: 'Anne Siegel',
     slug: 'anne-siegel',
     role: 'Atelier',
+    bio: 'Anne Siegel est une artiste et créatrice française.',
+    excerpt: 'Anne Siegel est une artiste et créatrice française.',
     image: '/img/events/autors/anne_siegel.jpg',
-    facebook: 'https://www.facebook.com/reliuresetcreations/',
-    website: 'https://reliures-creations.fr',
+    socialLinks:{
+      facebook: 'https://www.facebook.com/reliuresetcreations/',
+      website: 'https://reliures-creations.fr',}
   },
   {
     id: 3,
@@ -57,8 +70,12 @@ const foireGuests :Guest[] = [
     slug: 'christian-peultier',
     role: 'Comic',
     image: '/img/events/autors/christian_peultier.jpg',
-    facebook: 'https://www.facebook.com/reliuresetcreations/',
-    website: 'https://reliures-creations.fr',
+    bio: 'Christian Peultier est un dessinateur et humoriste français.',
+    excerpt: 'Christian Peultier est un dessinateur et humoriste français.',
+    socialLinks:{
+      facebook: 'https://www.facebook.com/reliuresetcreations/',
+      website: 'https://reliures-creations.fr',
+    }
   },
   {
     id: 4,
@@ -66,8 +83,10 @@ const foireGuests :Guest[] = [
     slug: 'pascal-graffica',
     role: 'Comic',
     image: '/img/events/autors/pascal_graffica.png',
-    facebook: 'https://www.facebook.com/pascal.graffica',
-    website: 'https://pascalgraffica.blogspot.com',
+    bio: 'Pascal Graffica est un dessinateur et humoriste français.',
+    excerpt: 'Pascal Graffica est un dessinateur et humoriste français.',
+    socialLinks:{facebook: 'https://www.facebook.com/pascal.graffica',
+    website: 'https://pascalgraffica.blogspot.com',}
   }
 ]
 
@@ -85,7 +104,7 @@ export const useEventSchedule = () => {
       title: 'First',
       schedules: [
         {
-          guests: [foireGuests[0], foireGuests[1], foireGuests[2], foireGuests[3]],
+          guests: [foireGuests[0]!, foireGuests[1]!, foireGuests[2]!, foireGuests[3]!],
           startTime: '10:00',
           startPeriod: 'Am',
           endTime: '12:30',
@@ -97,7 +116,7 @@ export const useEventSchedule = () => {
           location: 'Hall 1, Building A, Golden Street, Southafrica'
         },
         {
-          guests: [foireGuests[3], foireGuests[1], foireGuests[2]],
+          guests: [foireGuests[3]!, foireGuests[1]!, foireGuests[2]!],
           startTime: '10:30',
           startPeriod: 'Am',
           endTime: '11:30',
@@ -109,7 +128,7 @@ export const useEventSchedule = () => {
           location: 'Hall 1, Building A, Golden Street, Southafrica'
         },
         {
-          guests: [foireGuests[1], foireGuests[3], foireGuests[2]],
+          guests: [foireGuests[1]!, foireGuests[3]!, foireGuests[2]!],
           startTime: '11:30',
           startPeriod: 'Am',
           endTime: '01:30',
@@ -121,7 +140,7 @@ export const useEventSchedule = () => {
           location: 'Hall 1, Building A, Golden Street, Southafrica'
         },
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[1]!, foireGuests[2]!],
           startTime: '02:00',
           startPeriod: 'Pm',
           endTime: '03:30',
@@ -133,7 +152,7 @@ export const useEventSchedule = () => {
           location: 'Hall 1, Building A, Golden Street, Southafrica'
         },
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[1]!, foireGuests[2]!],
           startTime: '03:45',
           startPeriod: 'Pm',
           endTime: '04:00',
@@ -153,7 +172,7 @@ export const useEventSchedule = () => {
       title: 'Second',
       schedules: [
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[1]!, foireGuests[2]!],
           startTime: '09:00',
           startPeriod: 'Am',
           endTime: '10:30',
@@ -165,7 +184,7 @@ export const useEventSchedule = () => {
           location: 'Hall 1, Building A, Golden Street, Southafrica'
         },
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[1]!, foireGuests[2]!],
           startTime: '10:30',
           startPeriod: 'Am',
           endTime: '11:30',
@@ -177,7 +196,7 @@ export const useEventSchedule = () => {
           location: 'Hall 1, Building A, Golden Street, Southafrica'
         },
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[0]!, foireGuests[0]!],
           startTime: '01:00',
           startPeriod: 'Pm',
           endTime: '02:30',
@@ -197,7 +216,7 @@ export const useEventSchedule = () => {
       title: 'Third',
       schedules: [
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[0]!, foireGuests[0]!],
           startTime: '09:00',
           startPeriod: 'Am',
           endTime: '10:30',
@@ -209,7 +228,7 @@ export const useEventSchedule = () => {
           location: 'Conference Room A, Tech Hub'
         },
         {
-          guests: [foireGuests[3] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[3]!, foireGuests[0]!, foireGuests[0]!],
           startTime: '11:00',
           startPeriod: 'Am',
           endTime: '12:30',
@@ -229,7 +248,7 @@ export const useEventSchedule = () => {
       title: 'Fourth',
       schedules: [
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[0]!, foireGuests[0]!],
           startTime: '09:00',
           startPeriod: 'Am',
           endTime: '10:30',
@@ -241,7 +260,7 @@ export const useEventSchedule = () => {
           location: 'Security Lab, Building C'
         },
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[0]!, foireGuests[0]!],
           startTime: '02:00',
           startPeriod: 'Pm',
           endTime: '03:30',
@@ -261,7 +280,7 @@ export const useEventSchedule = () => {
       title: 'Fifth',
       schedules: [
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[0]!, foireGuests[0]!],
           startTime: '09:30',
           startPeriod: 'Am',
           endTime: '11:00',
@@ -273,7 +292,7 @@ export const useEventSchedule = () => {
           location: 'Mobile Dev Lab, Building D'
         },
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[0]!, foireGuests[0]!],
           startTime: '01:00',
           startPeriod: 'Pm',
           endTime: '02:00',
@@ -293,7 +312,7 @@ export const useEventSchedule = () => {
       title: 'Sixth',
       schedules: [
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[0]!, foireGuests[0]!],
           startTime: '10:00',
           startPeriod: 'Am',
           endTime: '11:30',
@@ -305,7 +324,7 @@ export const useEventSchedule = () => {
           location: 'DevOps Center, Building E'
         },
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[0]!, foireGuests[0]!],
           startTime: '02:30',
           startPeriod: 'Pm',
           endTime: '04:00',
@@ -325,7 +344,7 @@ export const useEventSchedule = () => {
       title: 'Seventh',
       schedules: [
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[0]!, foireGuests[0]!],
           startTime: '09:00',
           startPeriod: 'Am',
           endTime: '10:30',
@@ -337,7 +356,7 @@ export const useEventSchedule = () => {
           location: 'Design Studio, Creative Building'
         },
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[0]!, foireGuests[0]!],
           startTime: '11:00',
           startPeriod: 'Am',
           endTime: '12:00',
@@ -357,7 +376,7 @@ export const useEventSchedule = () => {
       title: 'Eighth',
       schedules: [
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[0]!, foireGuests[0]!],
           startTime: '09:30',
           startPeriod: 'Am',
           endTime: '11:00',
@@ -369,7 +388,7 @@ export const useEventSchedule = () => {
           location: 'IoT Lab, Research Center'
         },
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[0]!, foireGuests[0]!],
           startTime: '01:30',
           startPeriod: 'Pm',
           endTime: '03:00',
@@ -389,7 +408,7 @@ export const useEventSchedule = () => {
       title: 'Ninth',
       schedules: [
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[0]!, foireGuests[0]!],
           startTime: '10:00',
           startPeriod: 'Am',
           endTime: '11:30',
@@ -401,7 +420,7 @@ export const useEventSchedule = () => {
           location: 'API Workshop Room, Tech Campus'
         },
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[0]!, foireGuests[0]!],
           startTime: '02:00',
           startPeriod: 'Pm',
           endTime: '03:30',
@@ -421,7 +440,7 @@ export const useEventSchedule = () => {
       title: 'Tenth',
       schedules: [
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[0]!, foireGuests[0]!],
           startTime: '09:00',
           startPeriod: 'Am',
           endTime: '10:30',
@@ -433,7 +452,7 @@ export const useEventSchedule = () => {
           location: 'Database Lab, Building G'
         },
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[0]!, foireGuests[0]!],
           startTime: '11:00',
           startPeriod: 'Am',
           endTime: '01:00',
@@ -453,7 +472,7 @@ export const useEventSchedule = () => {
       title: 'Eleventh',
       schedules: [
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[0]!, foireGuests[0]!],
           startTime: '09:00',
           startPeriod: 'Am',
           endTime: '10:30',
@@ -465,7 +484,7 @@ export const useEventSchedule = () => {
           location: 'Security Lab, Building C'
         },
         {
-          guests: [foireGuests[0] , foireGuests[1] , foireGuests[2] ],
+          guests: [foireGuests[0]!, foireGuests[0]!, foireGuests[0]!],
           startTime: '11:00',
           startPeriod: 'Am',
           endTime: '12:00',

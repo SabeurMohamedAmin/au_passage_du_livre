@@ -1,14 +1,16 @@
 <script setup lang="ts">
   import { useDisplay } from 'vuetify'
 
-/* ==========================================================================
-   INTERFACES
-   ========================================================================== */
+  /* ==========================================================================
+  INTERFACES
+  ========================================================================== */
 interface Guest {
   id: number
   name: string
-  role: 'Auteur' | 'Artiste' | 'Conférencier' | 'Historien'
+  slug: string
+  role: 'Auteur' | 'Artiste' | 'Conférencier' | 'Historien' | 'Artisan'
   specialty: string
+  excerpt: string
   bio: string
   image: string
   featured: boolean
@@ -20,8 +22,8 @@ interface Guest {
 }
 
 /* ==========================================================================
-   CONTENT (self-contained)
-   ========================================================================== */
+  CONTENT (self-contained)
+  ========================================================================== */
 const pageContent = {
   header: {
     title: 'Artistes et Intervenants',
@@ -34,8 +36,10 @@ const guestsSeed: Guest[] = [
   {
     id: 1,
     name: 'Sarah Chen',
+    slug: 'sarah-chen',
     role: 'Auteur',
     specialty: 'Science-Fiction',
+    excerpt: 'Auteure primée de la trilogie « Cosmos Éternel », traduite en 25 langues.',
     bio: 'Auteure primée de la trilogie « Cosmos Éternel », traduite en 25 langues.',
     image: 'https://i.pravatar.cc/300?u=a042581f4e29026024d',
     featured: true
@@ -43,8 +47,10 @@ const guestsSeed: Guest[] = [
   {
     id: 2,
     name: 'Marc Dubois',
+    slug: 'marc-dubois',
     role: 'Historien',
     specialty: 'Histoire Européenne',
+    excerpt: 'Professeur et spécialiste de l\'histoire contemporaine européenne.',
     bio: "Professeur et spécialiste de l'histoire contemporaine européenne.",
     image: 'https://i.pravatar.cc/300?u=a042581f4e29026704d',
     featured: true
@@ -52,8 +58,10 @@ const guestsSeed: Guest[] = [
   {
     id: 3,
     name: 'Elena Silva',
+    slug: 'elena-silva',
     role: 'Auteur',
     specialty: 'Poésie',
+    excerpt: 'Poétesse et lauréate du Prix International de Poésie 2024.',
     bio: 'Poétesse et lauréate du Prix International de Poésie 2024.',
     image: 'https://i.pravatar.cc/300?u=a04258114e29026302d',
     featured: true
@@ -61,8 +69,10 @@ const guestsSeed: Guest[] = [
   {
     id: 4,
     name: 'Amélie Rousseau',
+    slug: 'amelie-rousseau',
     role: 'Artiste',
     specialty: 'Illustration',
+    excerpt: 'Illustratrice de livres jeunesse.',
     bio: 'Illustratrice de livres jeunesse.',
     image: 'https://i.pravatar.cc/300?u=a042581f4e29026024e',
     featured: true
@@ -70,8 +80,10 @@ const guestsSeed: Guest[] = [
   {
     id: 5,
     name: 'Marc Dubois',
+    slug: 'marc-dubois',
     role: 'Historien',
     specialty: 'Histoire Européenne',
+    excerpt: 'Professeur et spécialiste de l\'histoire contemporaine européenne.',
     bio: "Professeur et spécialiste de l'histoire contemporaine européenne.",
     image: 'https://i.pravatar.cc/300?u=a042581f4e29026704d',
     featured: true
@@ -109,7 +121,8 @@ const getRoleColor = (role: Guest['role']) => {
     Auteur: 'primary',
     Artiste: 'secondary',
     Conférencier: 'success',
-    Historien: 'info'
+    Historien: 'info',
+    Artisan: 'warning'
   }
   return map[role]
 }
