@@ -169,10 +169,10 @@ const activeSlide = ref(0)
         </template>
 
         <v-slide-group-item
-          v-for="(guest, index) in featuredGuests"
           :key="guest.id"
           :value="index"
           v-slot="{ isSelected, toggle }"
+          v-for="(guest, index) in featuredGuests"
         >
           <v-card
             class="my-4 rounded-xl overflow-hidden featured-card mx-2 cursor-auto"
@@ -180,11 +180,12 @@ const activeSlide = ref(0)
             :width="slideCardWidth"
             elevation="2"
             @click="toggle"
+            :ripple="false"
           >
             <v-img
-              :src="guest.image"
-              height="300"
               cover
+              height="300"
+              :src="guest.image"
               gradient="to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.9) 100%"
             >
               <div class="fill-height d-flex flex-column">
@@ -219,9 +220,8 @@ const activeSlide = ref(0)
               <v-btn
                 size="small" variant="tonal" color="primary" 
                 rounded="lg" block
-              >
-                Voir le profil
-              </v-btn>
+                text="Voir le profil"  
+              />
               </nuxt-link>
             </v-card-actions>
           </v-card>

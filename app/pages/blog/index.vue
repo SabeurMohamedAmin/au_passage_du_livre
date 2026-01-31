@@ -87,7 +87,6 @@
 
     <section v-if="heroArticle" class="mb-12">
       <v-card 
-        :to="$localePath(`/blog/${heroArticle.slug}`)"
         class="rounded-xl overflow-hidden" 
         elevation="4"
       >
@@ -106,8 +105,8 @@
             class=" d-flex flex-column justify-center pa-8"
           >
             <v-chip
-              color="secondary"
               class="mb-4 align-self-start font-weight-bold"
+              color="secondary"
             >
               FEATURED STORY
             </v-chip>
@@ -117,19 +116,29 @@
             <p class="text-body-1 mb-6">
               {{ heroArticle.summary }}
             </p>
-            <div class="d-flex align-center mt-auto">
+            <section class="d-flex align-center mt-auto">
               <v-avatar size="40" class="mr-3 border">
                 <v-img :src="heroArticle.authorImage" />
               </v-avatar>
               <div>
-                <div class="font-weight-bold">
+                <p class="font-weight-bold">
                   {{ heroArticle.author }}
-                </div>
-                <div class="text-caption">
+                </p>
+                <p class="text-caption">
                   Posted on {{ new Date(heroArticle.date).toLocaleDateString() }}
-                </div>
+                </p>
               </div>
-            </div>
+              <nuxt-link
+                class="ms-auto align-self-end text-decoration-none text-primary text-button text-capitalize font-weight-bold"
+                :to="$localePath(`/blog/${heroArticle.slug}`)"
+              >
+                Read
+                <v-icon 
+                  icon="mdi-arrow-right"
+                  size="small" class="ml-1"
+                />
+              </nuxt-link>
+            </section>
           </v-col>
         </v-row>
       </v-card>

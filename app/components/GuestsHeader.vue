@@ -1,13 +1,12 @@
 <script setup lang="ts">
-/**
- * Pure presentational component
- * No logic, no side effects
- */
-
-defineProps<{
-  title: string
-  subtitle: string
-}>()
+  /**
+   * Pure presentational component
+   * No logic, no side effects
+   */
+  defineProps<{
+    title: string
+    subtitle: string
+  }>();
 </script>
 
 <template>

@@ -1,21 +1,22 @@
 <script setup lang="ts">
-const props = defineProps<{
-  article: Article
-  loading?: boolean
-}>();
 
-// Calculate reading time (approx 200 words per minute)
-const readingTime = computed(() => {
-  const words = props.article.content.split(/\s+/).length
-  const minutes = Math.ceil(words / 200)
-  return `${minutes} min read`
-});
+  const props = defineProps<{
+    article: Article
+    loading?: boolean
+  }>();
 
-const formatDate = (dateString: string) => {
-  return new Date(dateString).toLocaleDateString('en-US', { 
-    month: 'short', day: 'numeric', year: 'numeric' 
-  })
-};
+  // Calculate reading time (approx 200 words per minute)
+  const readingTime = computed(() => {
+    const words = props.article.content.split(/\s+/).length
+    const minutes = Math.ceil(words / 200)
+    return `${minutes} min read`;
+  });
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', { 
+      month: 'short', day: 'numeric', year: 'numeric' 
+    })
+  };
 </script>
 
 <template>
@@ -75,12 +76,14 @@ const formatDate = (dateString: string) => {
           {{ article.author }}
         </span>
         <v-spacer/>        
-        <nuxt-link
-          :to="$localePath(`/blog/${article.slug}`)"
+        <nuxt-link :to="$localePath(`/blog/${article.slug}`)"
           class="px-2 text-decoration-none text-primary text-button text-capitalize font-weight-bold"
         >
           Read
-          <v-icon icon="mdi-arrow-right" size="small" class="ml-1"/>
+          <v-icon 
+            icon="mdi-arrow-right"
+            size="small" class="ml-1"
+          />
         </nuxt-link>
       </v-card-actions>
     </v-card>

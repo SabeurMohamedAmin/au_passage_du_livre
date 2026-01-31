@@ -248,19 +248,6 @@
         <h3 class="text-h5 font-weight-bold mb-2 mb-sm-0">
           Special Guests
         </h3>
-        <nuxt-link 
-          :to="$localePath({ name: 'event-details', hash: '#guests', params: { slug: content.hero.slug } })"
-          class="decoration-none text-color-default"
-        >
-          <v-btn
-            rounded="xl" variant="outlined"
-            color="primary" 
-            append-icon="mdi-arrow-right"
-            class="px-2"
-          >
-            Guests of the Event
-          </v-btn>
-        </nuxt-link>
       </div>
 
       <v-slide-group show-arrows>
@@ -310,9 +297,12 @@
             height="95%"
             flat
           >
-            <v-icon size="48" class="opacity-60">
-              mdi-dots-horizontal
-            </v-icon>
+          <nuxt-link
+            :to="$localePath({ name: 'event-details', hash: '#guests', params: { slug: content.hero.slug } })"
+            class="decoration-none text-color-default"
+          >
+            Voir tous les invités
+          </nuxt-link>
           </v-card>
         </v-slide-group-item>
       </v-slide-group>

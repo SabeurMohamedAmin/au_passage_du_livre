@@ -27,7 +27,7 @@ useHead({
 </script>
 
 <template>
-  <v-app class="theme-transition">
+  <v-app class="theme-transition min-width-app">
     <AppLoading v-model="loading" />
 
     <NuxtLayout v-show="!loading">
@@ -41,7 +41,9 @@ useHead({
 </template>
 
 <style>
-
+  .min-width-app{
+    min-width: 350px !important;
+  }
   .scroll-mt-1 { scroll-margin-top: .5rem; }
   .scroll-mt-2 { scroll-margin-top: 1rem; }
   .scroll-mt-3 { scroll-margin-top: 2rem; }
