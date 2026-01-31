@@ -5,23 +5,6 @@
   import GuestCard from '@/components/guest/GuestCard.vue';
   import seed_guest from '@/composables/seed_guest.json'
 
-  /* INTERFACES */
-  interface Guest {
-    id: number
-    name: string
-    slug: string
-    role: 'Auteur' | 'Artiste' | 'Conférencier' | 'Historien' | 'Artisan'
-    specialty: string
-    excerpt: string
-    bio: string
-    image: string
-    featured: boolean
-    socialLinks?: {
-      website?: string
-      twitter?: string
-      instagram?: string
-    }
-  }
 
   interface FilterCategory {
     label: string
@@ -62,8 +45,8 @@
     const q = searchQuery.value.trim().toLowerCase()
     if (q) {
       result = result.filter(g =>
+        g.specialty?.toLowerCase().includes(q) ||
         g.name.toLowerCase().includes(q) ||
-        g.specialty.toLowerCase().includes(q) ||
         g.bio.toLowerCase().includes(q)
       )
     }

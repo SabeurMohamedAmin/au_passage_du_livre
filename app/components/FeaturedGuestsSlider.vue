@@ -1,25 +1,6 @@
 <script setup lang="ts">
   import { useDisplay } from 'vuetify'
 
-  /* ==========================================================================
-  INTERFACES
-  ========================================================================== */
-interface Guest {
-  id: number
-  name: string
-  slug: string
-  role: 'Auteur' | 'Artiste' | 'Conférencier' | 'Historien' | 'Artisan'
-  specialty: string
-  excerpt: string
-  bio: string
-  image: string
-  featured: boolean
-  socialLinks?: {
-    website?: string
-    twitter?: string
-    instagram?: string
-  }
-}
 
 /* ==========================================================================
   CONTENT (self-contained)
@@ -113,9 +94,6 @@ const slideCardWidth = computed(() => {
   return 280
 })
 
-/* ==========================================================================
-   HELPERS
-   ========================================================================== */
 const getRoleColor = (role: Guest['role']) => {
   const map: Record<Guest['role'], string> = {
     Auteur: 'primary',
@@ -252,6 +230,7 @@ const activeSlide = ref(0)
 <style scoped>
 .line-clamp-2 {
   display: -webkit-box;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;

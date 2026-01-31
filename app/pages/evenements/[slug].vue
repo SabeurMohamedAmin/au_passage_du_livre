@@ -208,8 +208,8 @@
 
     <!-- TODO improve this section-->
     <!-- Intervenants et Artistes-->
-    <section class="mb-16 py-12 bg-white rounded-lg px-6 border">
-      <h2 class="text-h4 serif mb-10">
+    <section id="guests" class="mb-16 py-12 bg-white rounded-lg px-6 border">
+      <h2 class="text-h4 serif mb-10" >
         Les Intervenants
       </h2>
       <v-row>

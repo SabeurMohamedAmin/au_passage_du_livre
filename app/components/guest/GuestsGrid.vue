@@ -1,19 +1,4 @@
 <script setup lang="ts">
-  interface Guest {
-    id: number
-    name: string
-    slug: string
-    role: 'Auteur' | 'Artiste' | 'Conférencier' | 'Historien' | 'Artisan'
-    specialty: string
-    bio: string
-    image: string
-    socialLinks?: {
-      website?: string
-      twitter?: string
-      instagram?: string
-    }
-  }
-
   defineProps<{
     guests: Guest[]
   }>();

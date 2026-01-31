@@ -1,54 +1,16 @@
-export interface Guest {
-  id: number
-  name: string
-  role: string
-  image: string
-  slug : string
-  bio: string
-  excerpt: string
-  specialty?: string
-  socialLinks?: {
-    website?: string
-    facebook?: string
-    youtube?: string
-    x?: string
-    instagram?: string
-  }
-}
-
-export interface Schedule {
-  guests: Guest[]
-  startTime: string
-  startPeriod: 'Am' | 'Pm'
-  endTime: string
-  endPeriod: 'Am' | 'Pm'
-  title: string
-  author: string
-  company: string
-  description: string
-  location: string
-}
-
-export interface ScheduleDay {
-  title: string
-  day: string
-  month: string
-  year: string
-  schedules: Schedule[]
-}
-
 const foireGuests :Guest[] = [
   {
     id: 1,
     name: 'Pascal Badre',
     slug: 'pascal-badre',
-    role: 'Comic',
+    role: 'Auteur',
     bio: 'Pascal Badre est un dessinateur et humoriste français.',
     excerpt: 'Pascal Badre est un dessinateur et humoriste français.',
     image: '/img/events/autors/pascal_badre.png',
+    specialty: 'Humour',
     socialLinks:{
-      facebook: 'https://www.facebook.com/profile.php?id=100002835634820',
       x: 'https://x.com/bigbohomme',
+      facebook: 'https://www.facebook.com/profile.php?id=100002835634820',
       website: 'https://dessin-badre.over-blog.com'
     }
   },
@@ -56,7 +18,7 @@ const foireGuests :Guest[] = [
     id: 2,
     name: 'Anne Siegel',
     slug: 'anne-siegel',
-    role: 'Atelier',
+    role: 'Artiste',
     bio: 'Anne Siegel est une artiste et créatrice française.',
     excerpt: 'Anne Siegel est une artiste et créatrice française.',
     image: '/img/events/autors/anne_siegel.jpg',
@@ -68,7 +30,7 @@ const foireGuests :Guest[] = [
     id: 3,
     name: 'Christian Peultier',
     slug: 'christian-peultier',
-    role: 'Comic',
+    role: 'Artiste',
     image: '/img/events/autors/christian_peultier.jpg',
     bio: 'Christian Peultier est un dessinateur et humoriste français.',
     excerpt: 'Christian Peultier est un dessinateur et humoriste français.',
@@ -81,7 +43,7 @@ const foireGuests :Guest[] = [
     id: 4,
     name: 'Pascal Graffica',
     slug: 'pascal-graffica',
-    role: 'Comic',
+    role: 'Auteur',
     image: '/img/events/autors/pascal_graffica.png',
     bio: 'Pascal Graffica est un dessinateur et humoriste français.',
     excerpt: 'Pascal Graffica est un dessinateur et humoriste français.',

@@ -1,60 +1,82 @@
 [
-  {
+    {
     "id": 1,
-    "name": "Sarah Chen",
-    "slug": "sarah-chen",
-    "role": "Artisan",
-    "specialty": "Science-Fiction",
-    "excerpt": "Auteure primée de la trilogie « Cosmos Éternel », traduite en 25 langues.",
-    "bio": "Auteure primée de la trilogie « Cosmos Éternel », traduite en 25 langues.",
-    "image": "https://i.pravatar.cc/300?u=a042581f4e29026024d",
-    "featured": true,
+    "name": "Pascal Graffica",
+    "slug": "pascal-graffica",
+    "role": "Conférencier",
+    "bio": "Pascal Graffica est un dessinateur et humoriste français.",
+    "excerpt": "Pascal Graffica est un dessinateur et humoriste français.",
+    "image": "/img/events/autors/pascal-graffica.webp",
+    "specialty": "Journalisme",
+    "featured": false,
     "socialLinks": {
-      "website": "#",
-      "twitter": "#"
+      "facebook": "https://www.facebook.com/pascal.graffica",
+      "website": "https://pascalgraffica.blogspot.com",
+      "instagram": "https://pascalgraffica.blogspot.com",
+      "x": "https://pascalgraffica.blogspot.com"
     }
   },
   {
     "id": 2,
-    "name": "Marc Dubois",
-    "slug": "marc-dubois",
-    "role": "Historien",
+    "name": "Anne Siegel",
+    "slug": "anne-siegel",
+    "role": "Auteur",
     "specialty": "Histoire Européenne",
-    "excerpt": "Professeur et spécialiste de l'histoire contemporaine européenne.",
-    "bio": "Professeur et spécialiste de l'histoire contemporaine européenne.",
-    "image": "https://i.pravatar.cc/300?u=a042581f4e29026704d",
+    "excerpt": "Anne Siegel est une artiste et créatrice française.",
+    "bio": "Anne Siegel est une artiste et créatrice française.",
+    "image": "/img/events/autors/anne-siegel.webp",
     "featured": true,
     "socialLinks": {
-      "website": "#"
+      "facebook": "https://www.facebook.com/reliuresetcreations/",
+      "website": "https://reliures-creations.fr"
     }
   },
   {
     "id": 3,
-    "name": "Elena Silva",
-    "slug": "elena-silva",
-    "role": "Artisan",
-    "specialty": "Poésie",
-    "excerpt": "Poétesse et lauréate du Prix International de Poésie 2024.",
-    "bio": "Poétesse et lauréate du Prix International de Poésie 2024.",
-    "image": "https://i.pravatar.cc/300?u=a04258114e29026302d",
+    "name": "Pascal Badre",
+    "slug": "pascal-badre",
+    "role": "Auteur",
+    "specialty": "Humour",
+    "excerpt": "Pascal Badre est un dessinateur et humoriste français.",
+    "bio": "Pascal Badre est un dessinateur et humoriste français.",
+    "image": "/img/events/autors/pascal-badre.webp",
     "featured": true,
     "socialLinks": {
-      "instagram": "#",
-      "website": "#"
+      "x": "https://x.com/bigbohomme",
+      "facebook": "https://www.facebook.com/profile.php?id=100002835634820",
+      "website": "https://dessin-badre.over-blog.com",
+      "instagram": "#"
     }
   },
   {
     "id": 4,
-    "name": "David Okafor",
-    "slug": "david-okafor",
-    "role": "Conférencier",
-    "specialty": "Journalisme",
-    "excerpt": "Journaliste d'investigation reconnu internationalement.",
-    "bio": "Journaliste d'investigation reconnu internationalement.",
-    "image": "https://i.pravatar.cc/300?u=a04258114e29026708c",
-    "featured": false,
+    "name": "Christian Peultier",
+    "role": "Artisan",
+    "slug": "christian-peultier",
+    "bio": "Christian Peultier est un dessinateur et humoriste français.",
+    "excerpt": "Christian Peultier est un dessinateur et humoriste français.",
+    "image": "/img/events/autors/christian-peultier.webp",
+    "specialty": "Poésie",
+    "featured": true,
     "socialLinks": {
-      "twitter": "#"
+      "facebook": "https://www.facebook.com/reliuresetcreations/",
+      "website": "https://reliures-creations.fr",
+      "instagram": "#",
+      "x": "#"
+    }
+  },
+  {
+    "id": 8,
+    "name": "Luca Moretti",
+    "slug": "luca-moretti",
+    "role": "Artiste",
+    "specialty": "Calligraphie",
+    "excerpt": "Maître calligraphe spécialisé dans l'art manuscrit médiéval.",
+    "bio": "Maître calligraphe spécialisé dans l'art manuscrit médiéval.",
+    "image": "https://i.pravatar.cc/300?u=a04258114e29026708e",
+    "featured": true,
+    "socialLinks": {
+      "instagram": "#"
     }
   },
   {
@@ -70,34 +92,6 @@
     "socialLinks": {
       "instagram": "#",
       "website": "#"
-    }
-  },
-  {
-    "id": 6,
-    "name": "Thomas Weber",
-    "slug": "thomas-weber",
-    "role": "Auteur",
-    "specialty": "Thriller",
-    "excerpt": "Best-seller avec plus de 2 millions d'exemplaires vendus.",
-    "bio": "Best-seller avec plus de 2 millions d'exemplaires vendus.",
-    "image": "https://i.pravatar.cc/300?u=a042581f4e29026704e",
-    "featured": false,
-    "socialLinks": {
-      "website": "#"
-    }
-  },
-  {
-    "id": 8,
-    "name": "Luca Moretti",
-    "slug": "luca-moretti",
-    "role": "Artiste",
-    "specialty": "Calligraphie",
-    "excerpt": "Maître calligraphe spécialisé dans l'art manuscrit médiéval.",
-    "bio": "Maître calligraphe spécialisé dans l'art manuscrit médiéval.",
-    "image": "https://i.pravatar.cc/300?u=a04258114e29026708e",
-    "featured": true,
-    "socialLinks": {
-      "instagram": "#"
     }
   }
 ]

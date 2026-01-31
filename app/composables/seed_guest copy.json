@@ -1,0 +1,55 @@
+[
+  {
+    "id": 1,
+    "name": "Pascal Badre",
+    "slug": "pascal-badre",
+    "role": "Artiste",
+    "bio": "Pascal Badre est un dessinateur et humoriste français.",
+    "excerpt": "Pascal Badre est un dessinateur et humoriste français.",
+    "image": "/img/events/autors/pascal_badre.png",
+    "socialLinks": {
+      "facebook": "https://www.facebook.com/profile.php?id=100002835634820",
+      "x": "https://x.com/bigbohomme",
+      "website": "https://dessin-badre.over-blog.com"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Anne Siegel",
+    "slug": "anne-siegel",
+    "role": "Atelier",
+    "excerpt": "Anne Siegel est une artiste et créatrice française.",
+    "bio": "Anne Siegel est une artiste et créatrice française.",
+    "image": "/img/events/autors/anne_siegel.jpg",
+    "socialLinks": {
+      "facebook": "https://www.facebook.com/reliuresetcreations/",
+      "website": "https://reliures-creations.fr"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Christian Peultier",
+    "slug": "christian-peultier",
+    "role": "Auteur",
+    "bio": "Christian Peultier est un dessinateur et humoriste français.",
+    "excerpt": "Christian Peultier est un dessinateur et humoriste français.",
+    "image": "/img/events/autors/christian_peultier.jpg",
+    "socialLinks": {
+      "facebook": "https://www.facebook.com/reliuresetcreations/",
+      "website": "https://reliures-creations.fr"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Pascal Graffica",
+    "slug": "pascal-graffica",
+    "role": "Auteur",
+    "bio": "Pascal Graffica est un dessinateur et humoriste français.",
+    "excerpt": "Pascal Graffica est un dessinateur et humoriste français.",
+    "image": "/img/events/autors/pascal_graffica.png",
+    "socialLinks": {
+      "facebook": "https://www.facebook.com/pascal.graffica",
+      "website": "https://pascalgraffica.blogspot.com"
+    }
+  }
+]
