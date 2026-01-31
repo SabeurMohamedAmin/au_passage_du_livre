@@ -1,64 +1,74 @@
 <script setup lang="ts">
-const { articles } = useArticles();
-const search = ref('')
-const activeCategory = ref('All')
+  const { articles } = useArticles();
+  const search = ref('');
+  const activeCategory = ref('All');
 
-// Extract unique categories from articles
-const categories = computed(() => {
-  const cats = new Set(articles.value.map(a => a.category))
-  return ['All', ...Array.from(cats)]
-})
+  // Extract unique categories from articles
+  const categories = computed(() => {
+    const cats = new Set(articles.value.map(a => a.category));
+    return ['All', ...Array.from(cats)];
+  })
 
-// Filter Logic: Search + Category
-const filteredArticles = computed(() => {
-  let temp = articles.value
+  // Filter Logic: Search + Category
+  const filteredArticles = computed(() => {
+    let temp = articles.value;
 
-  // 1. Filter by Category
-  if (activeCategory.value !== 'All') {
-    temp = temp.filter(a => a.category === activeCategory.value)
-  }
+    // 1. Filter by Category
+    if (activeCategory.value !== 'All') {
+      temp = temp.filter(a => a.category === activeCategory.value);
+    }
 
-  // 2. Filter by Search
-  if (search.value) {
-    const q = search.value.toLowerCase()
-    temp = temp.filter(a => 
-      a.title.toLowerCase().includes(q) || 
-      a.summary.toLowerCase().includes(q)
-    )
-  }
+    // 2. Filter by Search
+    if (search.value) {
+      const q = search.value.toLowerCase();
+      temp = temp.filter(a => 
+        a.title.toLowerCase().includes(q) || 
+        a.summary.toLowerCase().includes(q)
+      );
+    }
 
-  return temp
-})
+    return temp;
+  })
 
-// The most recent article to show as "Hero" (if searching, hide hero to avoid confusion)
-const heroArticle = computed(() => {
-  return (!search.value && activeCategory.value === 'All') ? articles.value[0] : null
-})
+  // The most recent article to show as "Hero" (if searching, hide hero to avoid confusion)
+  const heroArticle = computed(() => {
+    return (!search.value && activeCategory.value === 'All') ? articles.value[0] : null;
+  })
 
-// The list excluding the hero (if hero exists)
-const listArticles = computed(() => {
-  if (heroArticle.value) {
-    return filteredArticles.value.filter(a => a.id !== heroArticle.value?.id)
-  }
-  return filteredArticles.value
-})
+  // The list excluding the hero (if hero exists)
+  const listArticles = computed(() => {
+    if (heroArticle.value) {
+      return filteredArticles.value.filter(a => a.id !== heroArticle.value?.id);
+    }
+    return filteredArticles.value;
+  })
 
-useHead({ title: 'News & Stories - Our Association' })
+  useHead({ title: 'News & Stories - Our Association' });
 </script>
 
 <template>
-  <v-container class="py-10">
-    <div class="text-center mb-10">
-      <h1 class="text-h3 font-weight-bold text-primary mb-3">Association Journal</h1>
-      <p class="text-subtitle-1 text-grey-darken-1 mx-auto" style="max-width: 700px;">
-        Discover the latest updates from the field, volunteer stories, and upcoming charity events.
+  <v-container class="py-6">
+    <header class="mb-10">
+      <div class="d-flex mb-4">
+        <h2 class="w-100 text-h5 text-sm-h4 font-weight-black opacity-70">
+          Association Journal
+        </h2>
+      </div>
+      <p class="text-subtitle-1 text-medium-emphasis max-w-lg">
+        Discover the latest updates from the field,
+        volunteer stories, and upcoming charity events.
       </p>
-    </div>
+    </header>
 
     <v-row class="mb-8 align-center">
       <v-col cols="12" md="8">
         <v-tabs v-model="activeCategory" color="primary" align-tabs="start">
-          <v-tab v-for="cat in categories" :key="cat" :value="cat" class="text-capitalize">
+          <v-tab
+            v-for="cat in categories" 
+            :key="cat" 
+            :value="cat" 
+            class="text-capitalize"
+          >
             {{ cat }}
           </v-tab>
         </v-tabs>
@@ -66,11 +76,11 @@ useHead({ title: 'News & Stories - Our Association' })
       <v-col cols="12" md="4">
         <v-text-field
           v-model="search"
+          hide-details
+          rounded="lg"
           variant="outlined"
           label="Search articles..."
           prepend-inner-icon="mdi-magnify"
-          hide-details
-          rounded="lg"
         />
       </v-col>
     </v-row>
@@ -83,16 +93,28 @@ useHead({ title: 'News & Stories - Our Association' })
       >
         <v-row no-gutters>
           <v-col cols="12" md="7">
-            <v-img :src="heroArticle.image" height="100%" min-height="400" cover />
+            <v-img 
+              :src="heroArticle.image"
+              min-height="400"
+              height="100%"
+              cover
+            />
           </v-col>
-          <v-col cols="12" md="5" class="bg-primary-darken-1 d-flex flex-column justify-center pa-8">
-            <v-chip color="secondary" class="mb-4 align-self-start font-weight-bold">
+          <v-col
+            cols="12"
+            md="5"
+            class=" d-flex flex-column justify-center pa-8"
+          >
+            <v-chip
+              color="secondary"
+              class="mb-4 align-self-start font-weight-bold"
+            >
               FEATURED STORY
             </v-chip>
             <h2 class="text-h4 font-weight-bold mb-4">
               {{ heroArticle.title }}
             </h2>
-            <p class="text-body-1 mb-6 text-grey-lighten-4">
+            <p class="text-body-1 mb-6">
               {{ heroArticle.summary }}
             </p>
             <div class="d-flex align-center mt-auto">
@@ -103,7 +125,7 @@ useHead({ title: 'News & Stories - Our Association' })
                 <div class="font-weight-bold">
                   {{ heroArticle.author }}
                 </div>
-                <div class="text-caption text-grey-lighten-2">
+                <div class="text-caption">
                   Posted on {{ new Date(heroArticle.date).toLocaleDateString() }}
                 </div>
               </div>
@@ -126,9 +148,13 @@ useHead({ title: 'News & Stories - Our Association' })
     </v-row>
 
     <div v-if="filteredArticles.length === 0" class="text-center py-16">
-      <v-icon icon="mdi-newspaper-variant-outline" size="64" color="grey-lighten-2" class="mb-4" />
-      <h3 class="text-h6 text-grey">No articles found</h3>
-      <p class="text-caption text-grey">Try adjusting your search or category.</p>
+      <v-icon icon="mdi-newspaper-variant-outline" size="64" class="mb-4" />
+      <h3 class="text-h6 ">
+        No articles found
+      </h3>
+      <p class="text-caption">
+        Try adjusting your search or category.
+      </p>
     </div>
   </v-container>
 </template>

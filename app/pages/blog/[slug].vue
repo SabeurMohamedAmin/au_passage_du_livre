@@ -1,33 +1,36 @@
 <script setup lang="ts">
-const route = useRoute()
-const { getArticleBySlug, articles } = useArticles()
-const { slug } = route.params as { slug: string }
+  definePageMeta({
+    name: 'article-details'
+  })
+  const route = useRoute()
+  const { getArticleBySlug, articles } = useArticles()
+  const { slug } = route.params as { slug: string }
 
-// 1. Fetch current article
-const article = computed(() => getArticleBySlug(slug))
+  // 1. Fetch current article
+  const article = computed(() => getArticleBySlug(slug))
 
-// 2. Fetch "Related" articles (Same category, excluding current)
-const relatedArticles = computed(() => {
-  if (!article.value) return []
-  return articles.value
-    .filter(a => a.category === article.value?.category && a.id !== article.value.id)
-    .slice(0, 3) // Limit to 3
-})
+  // 2. Fetch "Related" articles (Same category, excluding current)
+  const relatedArticles = computed(() => {
+    if (!article.value) return []
+    return articles.value
+      .filter(a => a.category === article.value?.category && a.id !== article.value.id)
+      .slice(0, 3) // Limit to 3
+  })
 
-// 3. Social Share Mockup
-const shareLinks = [
-  { icon: 'mdi-facebook', color: 'blue-darken-4' },
-  { icon: 'mdi-twitter', color: 'blue-lighten-1' },
-  { icon: 'mdi-linkedin', color: 'blue-darken-3' },
-  { icon: 'mdi-email', color: 'grey-darken-1' },
-]
-
-useHead({
-  title: article.value ? `${article.value.title}` : 'Article not found',
-  meta: [
-    { name: 'description', content: article.value?.summary }
+  // 3. Social Share Mockup
+  const shareLinks = [
+    { icon: 'mdi-facebook', color: 'blue-darken-4' },
+    { icon: 'mdi-twitter', color: 'blue-lighten-1' },
+    { icon: 'mdi-linkedin', color: 'blue-darken-3' },
+    { icon: 'mdi-email', color: 'grey-darken-1' },
   ]
-})
+
+  useHead({
+    title: article.value ? `${article.value.title}` : 'Article not found',
+    meta: [
+      { name: 'description', content: article.value?.summary }
+    ]
+  })
 </script>
 
 <template>
@@ -130,14 +133,40 @@ useHead({
 <style scoped>
   .bg-glassy {
     background-color: rgba(100, 100, 100, 0.05);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(4px) brightness(80%);
   }
 /* Typography for the injected HTML */
-.article-body :deep(h2) { font-size: 1.75rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; color: #111; }
-.article-body :deep(h3) { font-size: 1.4rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 1rem; }
-.article-body :deep(p) { margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.1rem; }
-.article-body :deep(ul), .article-body :deep(ol) { margin-bottom: 1.5rem; padding-left: 1.5rem; }
-.article-body :deep(blockquote) { border-left: 4px solid var(--v-theme-primary); padding-left: 1rem; font-style: italic; color: #555; background: #f9f9f9; padding: 1rem; border-radius: 0 8px 8px 0; }
+.article-body :deep(h2) {
+  font-size: 1.75rem; 
+  font-weight: 700; 
+  margin-top: 2rem; 
+  margin-bottom: 1rem; 
+  color: #111; 
+}
+.article-body :deep(h3) {
+  font-size: 1.4rem; 
+  font-weight: 600; 
+  margin-top: 1.5rem; 
+  margin-bottom: 1rem; 
+}
+.article-body :deep(p) { 
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  font-size: 1.1rem; 
+}
+.article-body :deep(ul), .article-body :deep(ol) { 
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem; 
+}
+.article-body :deep(blockquote) {
+  border-left: 4px solid var(--v-theme-primary); 
+  padding-left: 1rem; 
+  font-style: italic; 
+  color: #555; 
+  background: #f9f9f9; 
+  padding: 1rem; 
+  border-radius: 0 8px 8px 0; 
+}
 
 .shadow-text {
   text-shadow: 0 2px 4px rgba(0,0,0,0.5);
@@ -156,10 +185,9 @@ useHead({
 .hover-underline:hover { text-decoration: underline; color: rgb(var(--v-theme-primary)); }
 
 .text-transparent-inverse-70 {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.7);
 }
 .text-transparent-70 {
   color: rgba(var(--v-theme-on-surface), 0.70);
-  
 }
 </style>

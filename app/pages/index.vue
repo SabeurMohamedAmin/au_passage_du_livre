@@ -1,92 +1,5 @@
 <script setup lang="ts">
-import { useDisplay } from 'vuetify'
-const { mdAndUp } = useDisplay()
 
-/* -----------------------------
-   MOCK DATA
------------------------------ */
-const selectedDay = ref(0)
-
-const scheduleDays = ref([
-  {
-    title: 'Day 01',
-    day: '20',
-    month: 'Nov',
-    schedules: [
-      {
-        startTime: '09:00',
-        endTime: '10:00',
-        title: 'Registration & Coffee',
-        author: 'Front Desk',
-        description: 'Pick up your badge and grab a coffee.',
-        location: 'Lobby',
-        speakers: [1]
-      },
-      {
-        startTime: '10:00',
-        endTime: '11:30',
-        title: 'The Future of Vue.js',
-        author: 'Evan You',
-        description: 'Deep dive into the new reactivity system.',
-        location: 'Main Hall',
-        speakers: [2, 3]
-      }
-    ]
-  },
-  {
-    title: 'Day 02',
-    day: '21',
-    month: 'Nov',
-    schedules: [
-      {
-        startTime: '09:00',
-        endTime: '10:30',
-        title: 'State of CSS 2026',
-        author: 'Adam Argyle',
-        description: 'What is new in the CSS world?',
-        location: 'Room A',
-        speakers: [4]
-      }
-    ]
-  },
-  {
-    title: 'Day 03',
-    day: '22',
-    month: 'Nov',
-    schedules: [
-      {
-        startTime: '11:00',
-        endTime: '12:00',
-        title: 'Closing Ceremony',
-        author: 'Organizers',
-        description: 'Final remarks and networking.',
-        location: 'Main Hall',
-        speakers: [1, 2, 3, 4]
-      }
-    ]
-  }
-])
-
-const blogPosts = [
-  {
-    title: 'La littérature comme espace de dialogue',
-    excerpt: 'Rencontres, lectures et échanges autour des mots et des idées.',
-    image: 'https://picsum.photos/800/600?random=11',
-    slug: 'litterature-espace-dialogue'
-  },
-  {
-    title: 'Soutenir les artistes locaux',
-    excerpt: 'Un engagement fort pour la création indépendante.',
-    image: 'https://picsum.photos/800/600?random=12',
-    slug: 'soutenir-artistes'
-  },
-  {
-    title: 'Transmettre la culture aux nouvelles générations',
-    excerpt: 'Actions culturelles, ateliers et médiation artistique.',
-    image: 'https://picsum.photos/800/600?random=13',
-    slug: 'transmettre-culture'
-  }
-]
 </script>
 
 <template>
@@ -194,7 +107,7 @@ const blogPosts = [
   <!-- ARTICLES -->
   <section class="py-5 py-md-10 scroll-mt-6 bg_surface_variant">
     <v-container >
-      <articles-slider :blogPosts="blogPosts" />
+      <articles-slider/>
     </v-container>
   </section>
 

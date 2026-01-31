@@ -1,14 +1,5 @@
 <script setup lang="ts">
-type BlogPost = {
-  title:string
-  slug: string
-  image: string
-  excerpt: string
-}
-
-const props = defineProps<{
-  blogPosts: BlogPost[]
-}>()
+  const carouselArticles = useArticles().carouselArticles as Ref<Article[]>;
 </script>
 
 <template>
@@ -44,25 +35,24 @@ const props = defineProps<{
       <!-- 2️⃣ Removed the <template> slots for arrows -->
       <!-- We style the default buttons directly via CSS instead of replacing them -->
       
-      <v-carousel-item v-for="(post, i) in props.blogPosts" :key="i">
+      <v-carousel-item v-for="(article, index) in carouselArticles" :key="index">
         <v-card class="fill-height rounded-xl overflow-hidden elevation-6">
-          <v-img cover :src="post.image" class="fill-height">
+          <v-img cover :src="article.image" class="fill-height">
             <div class="bg-gradient-to-t fill-height d-flex align-end pa-8">
               <div class="bg-transparent-gradient pa-2 rounded-xl">
-                <h3 class="text-h5 font-weight-black mb-2">
-                  {{ post.title }}
+                <h3 class="text-transparent-70 text-h5 font-weight-black mb-2">
+                  {{ article.title }}
                 </h3>
-                <p class="text-body-1 opacity-90 mb-6 max-w-600">
-                  {{ post.excerpt }}
+                <p class="text-transparent-70 text-body-1 opacity-90 mb-6 max-w-600">
+                  {{ article.summary }}
                 </p>
                 <v-btn
                   color="primary"
                   rounded="pill"
                   class="font-weight-bold"
-                  :to="$localePath({name:'article-details' , slug:post.slug})"
-                >
-                  Lire l’article
-                </v-btn>
+                  :to="$localePath({name:'article-details' , params:{slug:article.slug}})"
+                  text="Lire l’article"
+                />
               </div>
             </div>
           </v-img>
@@ -134,8 +124,14 @@ const props = defineProps<{
 /* --- Helper Classes --- */
 .bg-transparent-gradient {
   width: 100%;
-  background-color: rgba(166, 166, 166, 0.25);
-  backdrop-filter: blur(4px);
+  background-color: rgba(100, 100, 100, 0.5);
+  backdrop-filter: blur(4px) brightness(80%);
 }
 
+.text-transparent-inverse-70 {
+  color: rgba(139, 139, 139, 0.7);
+}
+.text-transparent-70 {
+  color: rgba(var(--v-theme-on-surface), 0.70);
+}
 </style>
