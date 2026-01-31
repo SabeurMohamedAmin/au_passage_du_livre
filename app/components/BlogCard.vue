@@ -2,20 +2,20 @@
 const props = defineProps<{
   article: Article
   loading?: boolean
-}>()
+}>();
 
 // Calculate reading time (approx 200 words per minute)
 const readingTime = computed(() => {
   const words = props.article.content.split(/\s+/).length
   const minutes = Math.ceil(words / 200)
   return `${minutes} min read`
-})
+});
 
 const formatDate = (dateString: string) => {
   return new Date(dateString).toLocaleDateString('en-US', { 
     month: 'short', day: 'numeric', year: 'numeric' 
   })
-}
+};
 </script>
 
 <template>
@@ -65,19 +65,16 @@ const formatDate = (dateString: string) => {
       <v-card-text class="text-body-2 text-medium-emphasis">
         {{ article.summary }}
       </v-card-text>
-
       <v-spacer />
-
-      <v-divider></v-divider>
-
+      <v-divider/>
       <v-card-actions class="px-4 py-3">
         <v-avatar size="32" class="mr-2">
           <v-img :src="article.authorImage || '/default-avatar.png'" />
         </v-avatar>
-        <span class="text-caption font-weight-medium">{{ article.author }}</span>
-        
-        <v-spacer/>
-        
+        <span class="text-caption font-weight-medium">
+          {{ article.author }}
+        </span>
+        <v-spacer/>        
         <nuxt-link
           :to="$localePath(`/blog/${article.slug}`)"
           class="px-2 text-decoration-none text-primary text-button text-capitalize font-weight-bold"
