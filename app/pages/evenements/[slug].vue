@@ -293,14 +293,13 @@
 
 <style scoped>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Libre+Baskerville&display=swap');
-
+  
   .bg-glassy {
     margin: 0 -10px;
     padding: 10px;
     background-color: rgba(100, 100, 100, 0.05);
     backdrop-filter: blur(2px);
   }
-
   .serif {
     font-family: 'Playfair Display', serif;
   }

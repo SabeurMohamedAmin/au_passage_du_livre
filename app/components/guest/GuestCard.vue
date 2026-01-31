@@ -51,15 +51,19 @@ const getRoleColor = (role: GuestRole) => roleColors[role]
     </v-img>
 
     <v-card-actions class="pa-4">
-      <v-btn
-        variant="tonal"
-        color="primary"
-        rounded="lg"
-        block
-        :to="`/guests/${guest.slug}`"
+      <nuxt-link 
+        :to="$localePath({name: 'guest-profile', params: {slug: guest.slug}})"
+        class="text-decoration-none w-100"
       >
-        Voir le profil
-      </v-btn>
+        <v-btn
+          variant="tonal"
+          color="primary"
+          rounded="lg"
+          block
+        >
+          Voir le profil
+        </v-btn>
+      </nuxt-link>
     </v-card-actions>
   </v-card>
 </template>

@@ -212,13 +212,17 @@ const activeSlide = ref(0)
             </v-img>
 
             <v-card-actions class="pa-4 pt-2">
+              <nuxt-link 
+                :to="$localePath({name: 'guest-profile', params: {slug: guest.slug}})"
+                class="text-decoration-none w-100"
+                >
               <v-btn
                 size="small" variant="tonal" color="primary" 
                 rounded="lg" block
-                @click.stop="console.log('hi')"
               >
                 Voir le profil
               </v-btn>
+              </nuxt-link>
             </v-card-actions>
           </v-card>
         </v-slide-group-item>
