@@ -55,7 +55,7 @@
           cols="12"
           md="5"
           lg="6"
-          class="event-img-reight-section position-relative pa-5 mt-12 mt-md-0 rounded-lg"
+          class="event-img-reight-section position-relative pa-md-5 mt-md-12 mt-md-0 rounded-lg"
         >
           <v-row dense justify="space-between">
             <v-col cols="6" class="mt-2 mt-md-12">
