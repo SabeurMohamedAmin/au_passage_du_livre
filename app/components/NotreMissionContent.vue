@@ -42,7 +42,7 @@
         text: 'Des temps privilégiés pour échanger avec des auteurs et des illustrateurs, découvrir leur univers, leurs inspirations et mieux comprendre les processus de création.',
         slug: 'rencontres-dialogue',
         button: { label: 'En savoir plus', color: '#4E8098' },
-        image: '/img/avatars/pat thiebaut author.jpeg'
+        image: '/img/avatars/Pat Thiebaut author.jpeg'
       }
     },
     {
