@@ -11,10 +11,10 @@
       <v-row class="mb-12 align-start">
         <v-col cols="12" md="8">
           <h2 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70">
-            Event Schedule
+            Programme des événements
           </h2>
           <p class="text-medium-emphasis">
-            To download the full 2025 events catalog please click on download PDF.
+            Pour télécharger le catalogue complet des événements 2025, veuillez cliquer sur « Télécharger PDF ».
           </p>
         </v-col>
 
@@ -30,7 +30,7 @@
               rounded="pill"
               class="font-weight-bold px-6 border-opacity-25"
             >
-              Download PDF
+              Télécharger PDF
             </v-btn>
           </NuxtLink>
         </v-col>
