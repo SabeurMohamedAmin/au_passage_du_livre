@@ -243,9 +243,11 @@ onUnmounted(() => {
     <!-- ================= EVENTS HEADER ================= -->
     <div class="d-flex align-center justify-space-between mb-6 flex-wrap gap-4">
       <div class="d-flex align-center gap-3">
-        <span class="text-h5 font-weight-black">{{ selectedYear }}</span>
+        <span class="text-h5 font-weight-black me-2">
+          {{ selectedYear }}
+        </span>
         <v-chip size="small" variant="outlined" color="primary">
-          {{ filteredEvents.length }} événement{{ filteredEvents.length !== 1 ? 's' : '' }}
+          {{ filteredEvents.length }} événement {{ filteredEvents.length !== 1 ? 's' : '' }}
         </v-chip>
       </div>
 
