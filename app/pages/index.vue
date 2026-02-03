@@ -12,7 +12,7 @@
           cols="12"
           md="7"
           lg="6"
-          class="d-flex flex-column justify-space-evenly align-baseline text-column"
+          class="d-flex flex-column justify-space-around align-baseline text-column"
         >
           <h1 class="d-flex flex-column text-lg-h3 text-md-h4 text-sm-h5 text-h6 font-weight-black text-transparent-4 lh-1 mb-6">
             <span class="mb-4 mb-sm-8">Évènements culturels</span>
@@ -20,13 +20,13 @@
             <span class="text-primary">Transmettre la culture</span>
           </h1>
 
-          <p class="text-h6 text-medium-emphasis font-weight-regular mb-10 line-height-lg pe-md-12 pe-lg-0">
+          <p class="flex-grow-1 text-h6 text-medium-emphasis font-weight-regular mb-10 line-height-lg pe-md-12 pe-lg-0">
             Une association strasbourgeoise engagée pour le livre et les arts narratifs —
             5ᵉ art (littérature), 7ᵉ art (cinéma) et 9ᵉ art (bande dessinée) —
             dans le Grand Est.
           </p>
 
-          <div class="d-flex align-start flex-column flex-sm-row align-md-center gap-md-2">
+          <div class="d-flex align-start flex-column flex-sm-row flex-grow-1 align-md-center gap-md-2">
             <v-btn
               size="large"
               color="primary"
