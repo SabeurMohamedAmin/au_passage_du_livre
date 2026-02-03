@@ -17,8 +17,7 @@
     image: string
     alt?: string
     url: string
-  }
-
+  };
 
   // Content Configuration
   const content = {
@@ -44,8 +43,7 @@
       { value: '15+', label: 'Publications partenaires' },
       { value: '200k+', label: 'Lecteurs touchés' }
     ]
-  }
-
+  };
 
   // Sample Data
   const pressArticles: PressArticle[] = [
@@ -116,8 +114,7 @@
       image: 'https://images.unsplash.com/photo-1544928147-79a2af1f3a94?q=80&w=600&auto=format&fit=crop',
       url: '#'
     }
-  ]
-
+  ];
 
   // Helper for chip colors
   const getCategoryColor = (category: string) => {
@@ -128,7 +125,8 @@
       case 'Event Coverage': return 'purple-darken-1'
       default: return 'grey'
     }
-  }
+  };
+
 </script>
 
 <template>
@@ -144,12 +142,11 @@
         {{ content.hero.subtitle }}
       </p>
     </div>
-    
+
     <!-- FEATURED PRESS ARTICLE -->
     <section class="mb-14">
       <press-hero-section/>
     </section>
-
 
     <!-- PRESS GRID -->
     <v-row>
@@ -173,8 +170,8 @@
             cover
             class="align-end"
             gradient="to top, rgba(0,0,0,0.05), transparent"
-          ></v-img>
- 
+          />
+
           <div class="d-flex flex-column flex-grow-1">
             <!-- Title & Category Area -->
             <v-card-title class="pt-5 pb-2" style="line-height: 1.5rem;">
@@ -192,7 +189,7 @@
                 {{ article.title }}
               </div>
             </v-card-title>
- 
+
             <!-- Publisher & Date Row -->
             <v-card-subtitle class="pb-3 pt-1">
               <div class="d-flex align-center">
@@ -200,46 +197,45 @@
                   <v-img :src="article.publisherLogo" :alt="article.publisher"></v-img>
                 </v-avatar>
                 <span class="font-weight-medium text-grey-darken-2">{{ article.publisher }}</span>
-                <v-spacer></v-spacer>
+                <v-spacer/>
                 <span class="text-caption text-medium-emphasis font-weight-medium">{{ article.date }}</span>
               </div>
             </v-card-subtitle>
- 
+
             <!-- Excerpt: Replaced .line-clamp-3 with inline style -->
             <v-card-text class="pt-0 pb-2">
-              <p
-                class="text-body-2 text-medium-emphasis mb-0"
-                style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"
-              >
+              <p class="text-body-2 text-medium-emphasis mb-0 text-clamp">
                 {{ article.excerpt }}
               </p>
             </v-card-text>
- 
             <v-spacer/>
- 
             <!-- Action Button -->
             <v-card-actions class="px-4 pb-4 pt-2">
                 <v-btn
                   :href="article.url"
                   target="_blank"
                   variant="tonal"
-                  color="#143c28"
-                  size="small"
+                  color="primary"
                   class="font-weight-bold px-4"
                   rounded="pill"
+                  text="Lire la suite"
+                  prepend-icon="mdi-open-in-new"
                   block
-                >
-                  Lire la suite
-                  <v-icon end icon="mdi-open-in-new" size="small" class="ml-2"></v-icon>
-                </v-btn>
+                />
             </v-card-actions>
           </div>
         </v-card>
       </v-col>
     </v-row>
- 
-    <!-- BOTTOM ACTIONS -->
-    <v-row class="mt-16">
-    </v-row>
   </v-container>
 </template>
+
+<style scoped>
+  .text-clamp {
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

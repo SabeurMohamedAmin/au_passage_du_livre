@@ -299,7 +299,7 @@
           >
           <nuxt-link
             :to="$localePath({ name: 'event-details', hash: '#guests', params: { slug: content.hero.slug } })"
-            class="decoration-none text-color-default"
+            class="text-decoration-none text-h5 text-center"
           >
             Voir tous les invités
           </nuxt-link>

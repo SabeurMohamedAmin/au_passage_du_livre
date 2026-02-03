@@ -12,49 +12,54 @@
       <v-row align="start" justify="space-between">
 
         <!-- LEFT TEXT -->
-        <v-col cols="12" md="5">
-          <v-fade-transition appear>
-            <section>
-              <h1 class="d-flex flex-column text-lg-h4 text-md-h5 text-sm-h3 text-h4 font-weight-black text-transparent-4 lh-1 mb-6">
-                <span class="mb-4 mb-sm-8">Évènements culturels</span>
-                <span class="mb-4 mb-sm-8">Soutien aux artistes</span>
-                <span class="text-primary ">Transmettre la culture</span>
-              </h1>
-
-              <p class="text-h6 text-medium-emphasis font-weight-regular mb-10 line-height-lg">
-                The world's most influential creative conference.
-                Join 5,000+ designers and developers for 3 days of inspiration.
-              </p>
-
-              <div class="d-flex align-start flex-column flex-sm-row align-md-center gap-md-2 ">
-                <v-btn
-                  size="large"
-                  color="primary"
-                  rounded="pill"
-                  class="font-weight-bold elevation-6 h-auto me-2 py-4 mb-4 mb-md-0"
-                  :to="$localePath('/evenements')"
-                >
-                  See our events
-                </v-btn>
-
-                <v-btn
-                  size="large"
-                  color="primary"
-                  rounded="pill"
-                  class="font-weight-bold elevation-6 h-auto py-4"
-                  :to="$localePath('/about-us')"
-                >
-                  Découvrir l'association
-                </v-btn>
-              </div>
-            </section>
-          </v-fade-transition>
+        <v-col cols="12" md="7" lg="6" class="d-flex flex-column justify-space-evenly align-baseline text-column">
+          <h1 class="d-flex flex-column text-lg-h3 text-md-h4 text-sm-h5 text-h6  font-weight-black text-transparent-4 lh-1 mb-6">
+            <span class="mb-4 mb-sm-8">
+              Évènements culturels
+            </span>
+            <span class="mb-4 mb-sm-8">
+              Soutien aux artistes
+            </span>
+            <span class="text-primary ">
+              Transmettre la culture
+            </span>
+          </h1>
+    
+          <p class="text-h6 text-medium-emphasis font-weight-regular mb-10 line-height-lg pe-md-12 pe-lg-0">
+            Une association strasbourgeoise engagée pour le livre et les arts narratifs —
+            5ᵉ art (littérature), 7ᵉ art (cinéma) et 9ᵉ art (bande dessinée) —
+            dans le Grand Est.
+          </p>
+    
+          <div class="d-flex align-start flex-column flex-sm-row align-md-center gap-md-2 ">
+            <v-btn
+              size="large"
+              color="primary"
+              rounded="pill"
+              class="font-weight-bold elevation-6 h-auto me-2 py-4 mb-4 mb-md-0"
+              :to="$localePath('/evenements')"
+            >
+              See our events
+            </v-btn>
+    
+            <v-btn
+              size="large"
+              color="primary"
+              rounded="pill"
+              variant="outlined"
+              class="font-weight-bold elevation-6 h-auto py-4"
+              :to="$localePath('/about-us')"
+            >
+              Découvrir l'association
+            </v-btn>
+          </div>
         </v-col>
 
         <!-- RIGHT IMAGES -->
         <v-col
           cols="12"
-          md="6"
+          md="5"
+          lg="6"
           class="event-img-reight-section position-relative pa-5 mt-12 mt-md-0 rounded-lg"
         >
           <v-row dense justify="space-between">
@@ -85,7 +90,6 @@
             </v-col>
           </v-row>
         </v-col>
-
       </v-row>
     </v-container>
   </section>
@@ -157,81 +161,74 @@
 </template>
 
 <style scoped>
-/* --------------------------------
-   HERO FIXES
--------------------------------- */
-.hero-section {
-  overflow-x: hidden;
-}
 
-.hero-bg-shape {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 50%;
-  max-width: 600px;
-  background-color: rgb(var(--v-theme-primary));
-  opacity: 0.7;
-  border-radius: 50% 0 0 50%;
-  pointer-events: none;
-}
+  .hero-section { overflow-x: hidden }
 
-.hero-container {
-  max-width: 1400px;
-  margin-inline: auto;
-}
+  .hero-bg-shape {
+    top: 0;
+    right: 0;
+    width: 50%;
+    opacity: 0.7;
+    height: 100%;
+    max-width: 600px;
+    position: absolute;
+    pointer-events: none;
+    border-radius: 50% 0 0 50%;
+    background-color: rgb(var(--v-theme-primary));
+  }
 
-/* --------------------------------
-   IMAGE SAFETY
--------------------------------- */
-.hero-img-top-left,
-.hero-img-top-right,
-.hero-img-bottom-left,
-.hero-img-bottom-right {
-  max-width: 100%;
-}
+  .hero-container {
+    max-width: 1400px;
+    margin-inline: auto;
+  }
 
-/* --------------------------------
-   ORIGINAL STYLES (UNCHANGED)
--------------------------------- */
-.bg_surface_variant {
-  backdrop-filter: contrast(90%);
-}
+  .text-column {
+    height: calc(100lvh - 80px);
+  }
 
-.event-img-reight-section {
-  backdrop-filter: blur(12px);
-  border: 1px solid #46444420;
-}
+  /* --------------------------------
+    IMAGE SAFETY
+  -------------------------------- */
+  .hero-img-top-left,
+  .hero-img-top-right,
+  .hero-img-bottom-left,
+  .hero-img-bottom-right {
+    max-width: 100%;
+  }
 
-.text-transparent-4 {
-  opacity: 0.8;
-  letter-spacing: -0.02em;
-  text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.08),
-    0 4px 12px rgba(0, 0, 0, 0.12);
-}
+  /* --------------------------------
+    ORIGINAL STYLES (UNCHANGED)
+  -------------------------------- */
+  .bg_surface_variant {
+    backdrop-filter: contrast(90%);
+  }
 
-.lh-1 {
-  line-height: 1.1;
-}
+  .event-img-reight-section {
+    backdrop-filter: blur(12px);
+    border: 1px solid #46444420;
+  }
 
-.hover-up {
-  transition: transform 0.3s ease;
-}
-.hover-up:hover {
-  transform: translateY(-10px);
-}
+  .text-transparent-4 {
+    opacity: 0.8;
+    letter-spacing: -0.02em;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.08),
+      0 4px 12px rgba(0, 0, 0, 0.12);
+  }
 
-.hero-img-top-right,
-.hero-img-bottom-left {
-  aspect-ratio: 1 / 1;
-  object-fit: fill;
-}
+  .lh-1 { line-height: 1.1 }
+  .hover-up { transition: transform 0.3s ease }
+  .hover-up:hover { transform: translateY(-10px) }
 
-.hero-img-bottom-right,
-.hero-img-top-left {
-  aspect-ratio: 2 / 3;
-  object-fit: fill;
-}
+  .hero-img-top-right,
+  .hero-img-bottom-left {
+    aspect-ratio: 1 / 1;
+    object-fit: fill;
+  }
+
+  .hero-img-bottom-right,
+  .hero-img-top-left {
+    aspect-ratio: 2 / 3;
+    object-fit: fill;
+  }
 </style>

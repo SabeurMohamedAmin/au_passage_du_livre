@@ -29,7 +29,7 @@
           class="font-weight-bold text-body-1 rounded-xl"
           :to="$localePath('/about-us/our-history')"
         >
-          Voir tous Notre Missions
+          voir nos missions
           <v-icon end icon="mdi-arrow-right"/>
         </v-btn>
       </v-col>

@@ -126,15 +126,11 @@
             class="h-100 rounded-xl d-flex align-center justify-center"
             flat
             >
-            <nuxt-link :to="$localePath('/artistes-et-intervenants')">
-              <v-icon
-                class="rounded-lg pa-10 opacity-60"                                
-                title="see all artistes and intervenants" 
-                :class="{'border elevation-1': isHovering}" 
-                size="72"
-              >
-                mdi-arrow-right-bottom
-              </v-icon>
+            <nuxt-link 
+              :to="$localePath('/artistes-et-intervenants')"
+              class="text-decoration-none text-h5 text-center"
+            >
+              see all artistes and intervenants
             </nuxt-link>
           </v-card>
       </v-hover>
