@@ -1,37 +1,32 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
   <!-- HERO SECTION -->
   <section class="hero-section position-relative overflow-hidden mb-5 mb-md-10 pt-2 pt-md-4 pb-md-24">
-    <!-- Background Shape (FIXED) -->
+    <!-- Background Shape -->
     <div class="hero-bg-shape d-none d-md-block"></div>
 
     <v-container class="hero-container scroll-mt-5">
       <v-row align="start" justify="space-between">
 
         <!-- LEFT TEXT -->
-        <v-col cols="12" md="7" lg="6" class="d-flex flex-column justify-space-evenly align-baseline text-column">
-          <h1 class="d-flex flex-column text-lg-h3 text-md-h4 text-sm-h5 text-h6  font-weight-black text-transparent-4 lh-1 mb-6">
-            <span class="mb-4 mb-sm-8">
-              Évènements culturels
-            </span>
-            <span class="mb-4 mb-sm-8">
-              Soutien aux artistes
-            </span>
-            <span class="text-primary ">
-              Transmettre la culture
-            </span>
+        <v-col
+          cols="12"
+          md="7"
+          lg="6"
+          class="d-flex flex-column justify-space-evenly align-baseline text-column"
+        >
+          <h1 class="d-flex flex-column text-lg-h3 text-md-h4 text-sm-h5 text-h6 font-weight-black text-transparent-4 lh-1 mb-6">
+            <span class="mb-4 mb-sm-8">Évènements culturels</span>
+            <span class="mb-4 mb-sm-8">Soutien aux artistes</span>
+            <span class="text-primary">Transmettre la culture</span>
           </h1>
-    
+
           <p class="text-h6 text-medium-emphasis font-weight-regular mb-10 line-height-lg pe-md-12 pe-lg-0">
             Une association strasbourgeoise engagée pour le livre et les arts narratifs —
             5ᵉ art (littérature), 7ᵉ art (cinéma) et 9ᵉ art (bande dessinée) —
             dans le Grand Est.
           </p>
-    
-          <div class="d-flex align-start flex-column flex-sm-row align-md-center gap-md-2 ">
+
+          <div class="d-flex align-start flex-column flex-sm-row align-md-center gap-md-2">
             <v-btn
               size="large"
               color="primary"
@@ -41,7 +36,7 @@
             >
               See our events
             </v-btn>
-    
+
             <v-btn
               size="large"
               color="primary"
@@ -90,6 +85,7 @@
             </v-col>
           </v-row>
         </v-col>
+
       </v-row>
     </v-container>
   </section>
@@ -97,61 +93,28 @@
   <!-- MISSIONS -->
   <section class="my-5 my-md-10 scroll-mt-6 bg_surface_variant">
     <v-container class="py-10">
-      <we-do-best />
+      <notre-mission />
     </v-container>
   </section>
 
   <!-- SPEAKERS -->
   <section class="py-5 my-md-10 scroll-mt-6">
-    <v-container >
+    <v-container>
       <speakers-grid />
     </v-container>
   </section>
 
   <!-- ARTICLES -->
   <section class="py-5 py-md-10 scroll-mt-6 bg_surface_variant">
-    <v-container >
-      <articles-slider/>
-    </v-container>
-  </section>
-
-  <!-- 6. SCHEDULE SECTION -->
-  <section id="schedule" class="my-5 my-md-10 scroll-mt-6 ">
     <v-container>
-      <v-row class="mb-12 align-start">
-        <v-col cols="12" md="8">
-          <h2 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70">
-            Event Schedule
-          </h2>
-          <p>
-            To download the full 2025 events catalog please click on download PDF.
-          </p>
-        </v-col>
-        <v-col cols="12" md="4" class="text-md-right">
-          <nuxt-link
-            to="/documents/events/aupassagedulivre-catalogue-2025.pdf"
-            target="_blank"
-            download="aupassagedulivre-event-2025.pdf"
-          >
-            <v-btn
-              append-icon="mdi-download" 
-              variant="outlined" rounded="pill" 
-              class="font-weight-bold px-6 border-opacity-25"
-            >
-              Download PDF
-            </v-btn>
-          </nuxt-link>
-        </v-col>
-      </v-row>
-
-      <v-col cols="12" class="px-0">
-         <!-- TABBED COMPONENT -->
-         <v-card class="elevation-0 rounded-xl border bg-white">
-         </v-card>
-      </v-col>
+      <articles-slider />
     </v-container>
   </section>
-  
+
+  <!-- SCHEDULE -->
+  <section id="schedule" class="my-5 my-md-10 scroll-mt-6">
+    <EventScheduleDownload />
+  </section>
   <!-- 5. ARTICLES et ACTUALITIES -->
   <!--
     <section class="my-5 my-md-10 scroll-mt-6 bg_surface_variant">
@@ -161,74 +124,81 @@
 </template>
 
 <style scoped>
+.hero-section {
+  overflow-x: hidden;
+}
 
-  .hero-section { overflow-x: hidden }
+.hero-bg-shape {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  max-width: 600px;
+  height: 100%;
+  opacity: 0.7;
+  pointer-events: none;
+  border-radius: 50% 0 0 50%;
+  background-color: rgb(var(--v-theme-primary));
+}
 
-  .hero-bg-shape {
-    top: 0;
-    right: 0;
-    width: 50%;
-    opacity: 0.7;
-    height: 100%;
-    max-width: 600px;
-    position: absolute;
-    pointer-events: none;
-    border-radius: 50% 0 0 50%;
-    background-color: rgb(var(--v-theme-primary));
-  }
+.hero-container {
+  max-width: 1400px;
+  margin-inline: auto;
+}
 
-  .hero-container {
-    max-width: 1400px;
-    margin-inline: auto;
-  }
+.text-column {
+  height: calc(100lvh - 80px);
+}
 
-  .text-column {
-    height: calc(100lvh - 80px);
-  }
+/* IMAGE SAFETY */
+.hero-img-top-left,
+.hero-img-top-right,
+.hero-img-bottom-left,
+.hero-img-bottom-right {
+  max-width: 100%;
+}
 
-  /* --------------------------------
-    IMAGE SAFETY
-  -------------------------------- */
-  .hero-img-top-left,
-  .hero-img-top-right,
-  .hero-img-bottom-left,
-  .hero-img-bottom-right {
-    max-width: 100%;
-  }
+/* SURFACE */
+.bg_surface_variant {
+  backdrop-filter: contrast(90%);
+}
 
-  /* --------------------------------
-    ORIGINAL STYLES (UNCHANGED)
-  -------------------------------- */
-  .bg_surface_variant {
-    backdrop-filter: contrast(90%);
-  }
+.event-img-reight-section {
+  backdrop-filter: blur(12px);
+  border: 1px solid #46444420;
+}
 
-  .event-img-reight-section {
-    backdrop-filter: blur(12px);
-    border: 1px solid #46444420;
-  }
+/* TEXT */
+.text-transparent-4 {
+  opacity: 0.8;
+  letter-spacing: -0.02em;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.12);
+}
 
-  .text-transparent-4 {
-    opacity: 0.8;
-    letter-spacing: -0.02em;
-    text-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.08),
-      0 4px 12px rgba(0, 0, 0, 0.12);
-  }
+.lh-1 {
+  line-height: 1.1;
+}
 
-  .lh-1 { line-height: 1.1 }
-  .hover-up { transition: transform 0.3s ease }
-  .hover-up:hover { transform: translateY(-10px) }
+/* INTERACTIONS */
+.hover-up {
+  transition: transform 0.3s ease;
+}
+.hover-up:hover {
+  transform: translateY(-10px);
+}
 
-  .hero-img-top-right,
-  .hero-img-bottom-left {
-    aspect-ratio: 1 / 1;
-    object-fit: fill;
-  }
+/* ASPECT RATIOS */
+.hero-img-top-right,
+.hero-img-bottom-left {
+  aspect-ratio: 1 / 1;
+  object-fit: fill;
+}
 
-  .hero-img-bottom-right,
-  .hero-img-top-left {
-    aspect-ratio: 2 / 3;
-    object-fit: fill;
-  }
+.hero-img-bottom-right,
+.hero-img-top-left {
+  aspect-ratio: 2 / 3;
+  object-fit: fill;
+}
 </style>

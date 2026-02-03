@@ -3,13 +3,16 @@
 </script>
 
 <template>
-  <v-row class="mb-2" align="center" justify="space-between">
+  <v-row class="mb-2" justify="space-between">
       <v-col class="text-left" cols="12" md="8">
         <h2 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70">
           Articles & Actualités
         </h2>
+        <p class="text-body-1 text-medium-emphasis">
+          Suivez l’actualité d’Au Passage du Livre : événements à venir, temps forts du festival, projets en cours et initiatives culturelles portées par l’association.
+        </p>
       </v-col>
-      <v-col class="d-flex justify-start justify-md-end mt-0" cols="12" md="4">
+      <v-col class="d-flex justify-start justify-md-end mt-0 justify-items-start " cols="12" md="4">
         <v-btn
           class="font-weight-bold text-body-1"
           :to="$localePath('/blog')"
