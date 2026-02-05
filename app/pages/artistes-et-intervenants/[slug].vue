@@ -234,7 +234,6 @@
 </template>
 
 <style scoped>
-  /* THE OFFSET BACKGROUND LOGIC */
   .image-container {
     position: relative;
     max-width: 300px; 
@@ -252,7 +251,6 @@
     transition: transform 0.3s ease;
   }
 
-  /* Image Card Enhancements */
   .image-card {
     border: 1px solid rgba(0,0,0,0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -263,12 +261,11 @@
     box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
   }
 
-  .hover-lift:hover + .offset-bg, /* This selector won't work due to DOM order, so we rely on container hover if needed, or just animate card */
+  .hover-lift:hover + .offset-bg, 
   .image-container:hover .offset-bg {
-    transform: translate(-5px, 5px); /* Move background opposite way slightly for depth */
+    transform: translate(-5px, 5px);
   }
 
-  /* Typography tweaks */
   .line-height-tight {
     line-height: 1.1 !important;
   }
@@ -291,7 +288,6 @@
     transform: translateX(5px);
   }
 
-  /* Responsive adjustments */
   @media (max-width: 600px) {
     .offset-bg {
       left: -10px;
