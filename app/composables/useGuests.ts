@@ -1,5 +1,7 @@
+//useGuests.ts
 import { ref, computed } from 'vue'
 import { useDisplay } from 'vuetify'
+import seedGuest from '@/composables/seed_guest.json'
 
 /* ============================================================================
    TYPES (copied, not reinvented)
@@ -18,6 +20,16 @@ export interface Guest {
     website?: string
     twitter?: string
     instagram?: string
+  },
+  details: {
+    title: string
+    subtitle: string
+    date: string
+    time: string
+    location: string
+    description: string
+    longDescription: string
+    image: string
   }
 }
 
@@ -29,11 +41,11 @@ export interface FilterCategory {
 /* ============================================================================
    COMPOSABLE
 ============================================================================ */
-export function useGuests(guestsSeed: Guest[]) {
+export function useGuests() {
   /* --------------------------------------------------------------------------
    STATE
   -------------------------------------------------------------------------- */
-  const guests = ref<Guest[]>(guestsSeed)
+  const guests = ref<Guest[]>(seedGuest as Guest[])
   const selectedFilter = ref<FilterCategory['value']>('all')
   const searchQuery = ref('')
 
