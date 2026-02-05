@@ -30,10 +30,10 @@
 <template>
   <v-container class="py-12">
     <v-row v-if="author">
-      
       <v-col cols="12" sm="5" md="4" lg="3" class="position-relative mb-8 mb-sm-0">
         <div class="image-container mx-auto mx-sm-0">
-          <div class="offset-bg rounded-lg"></div>
+          <div class="offset-bg rounded-lg">
+          </div>
           
           <v-card class="image-card rounded-lg elevation-4 hover-lift" color="white">
             <v-img 
@@ -42,21 +42,20 @@
               cover
               class="bg-grey-lighten-2"
             >
-               <v-chip 
-                  color="error" 
-                  class="position-absolute top-0 left-0 ma-2 font-weight-bold text-uppercase elevation-2" 
-                  label 
-                  size="small"
-                >
-                  Invité
-               </v-chip>
+              <v-chip 
+                label
+                color="error"
+                class="position-absolute top-0 left-0 ma-2 font-weight-bold text-uppercase elevation-2"
+                size="small"
+              >
+                Invité
+              </v-chip>
             </v-img>
           </v-card>
         </div>
         </v-col>
 
       <v-col cols="12" sm="7" md="8" lg="9" class="pl-sm-8 pl-md-12">
-        
         <div class="d-flex justify-space-between align-start mb-1">
           <span class="text-caption font-weight-bold text-uppercase text-grey-darken-1 tracking-wide">
             Auteur / Intervenant
@@ -107,9 +106,8 @@
 
         <v-card 
           flat
-          color="amber-lighten-5" 
-          class="pa-5 mb-10 border-s-lg" 
-          style="border-color: #FFC107 !important; border-left-width: 6px !important;"
+          class="pa-5 mb-10 border-s-xl border-amber-lighten-5 bg-amber-lighten-5"
+          
         >
           <div class="d-flex flex-wrap align-center justify-space-between gap-4">
             <div>
@@ -129,7 +127,7 @@
               class="text-black font-weight-bold px-6"
               rounded="lg"
               elevation="0"
-              :to="$localePath(`/evenements`)"
+              :to="$localePath('/evenements')"
             >
               Plus d'infos
               <v-icon end icon="mdi-arrow-right"/>
@@ -235,8 +233,9 @@
 
 <style scoped>
   .image-container {
-    position: relative;
-    max-width: 300px; 
+    position: sticky;
+    max-width: 360px; 
+    top: 72px;
     z-index: 1;
   }
 
@@ -244,11 +243,11 @@
     position: absolute;
     top: 20px;    
     left: -20px;  
-    width: 80%;   
+    width: 100%;   
     height: 100%;  
     background-color: #FFCA28; 
-    z-index: -1;  
     transition: transform 0.3s ease;
+    z-index: -1;
   }
 
   .image-card {
