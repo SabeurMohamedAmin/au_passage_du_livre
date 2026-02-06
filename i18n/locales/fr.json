@@ -12,6 +12,38 @@
   "upcoming events heading": "Événements à venir",
   "upcoming events description": "Découvrez nos prochains rendez-vous littéraires, notamment des lectures, des discussions et des expériences culturelles à apprécier et à partager.",
   "intervenants": "Intervenants",
+  "cultural events": "Évènements culturels",
+  "support artists": "Soutien aux artistes",
+  "passing on culture": "Transmettre la culture",
+  "association tagline": "Une association strasbourgeoise engagée pour le livre et les arts narratifs — 5ᵉ art (littérature), 7ᵉ art (cinéma) et 9ᵉ art (bande dessinée) — dans le Grand Est.",
+  "see our events": "Voir nos événements",
+  "discover the association": "Découvrir l’association",
+  "our missions in action": "Nos missions en action",
+  "association vision sentence": "Au Passage du Livre crée des espaces où les mots, les images et les idées circulent librement.",
+  "association mission sentence": "Rencontres, ateliers et actions culturelles pour transmettre le goût de la lecture, soutenir la création et rassembler tous les publics.",
+  "see our missions": "Voir nos missions",
+
+  "mission_1_title": "Génération Créative",
+  "mission_1_description": "Nous connectons la jeunesse aux acteurs du livre à travers des expériences concrètes qui rendent la littérature vivante et accessible.",
+  "mission_1_card_title": "Éveiller l’imaginaire",
+  "mission_1_card_text": "Créer des rencontres et des expériences sensibles pour ouvrir les jeunes à la littérature, stimuler leur créativité et encourager leur regard sur le monde.",
+
+  "mission_2_title": "Rencontres & dialogue",
+  "mission_2_description": "Créer des moments d’échange entre les auteurs, les artistes et le public, pour favoriser le dialogue, la transmission et la découverte des œuvres et des parcours créatifs.",
+  "mission_2_card_title": "Rencontres avec des auteurs",
+  "mission_2_card_text": "Des temps privilégiés pour échanger avec des auteurs et des illustrateurs, découvrir leur univers, leurs inspirations et mieux comprendre les processus de création.",
+
+  "mission_3_title": "Création & illustration",
+  "mission_3_description": "Mettre en lumière les arts visuels et narratifs à travers des expositions, des rencontres et des temps de création.",
+  "mission_3_card_title": "Illustration & arts visuels",
+  "mission_3_card_text": "Découvrir le travail des illustrateurs et artistes visuels, explorer les liens entre image et récit et valoriser la création graphique contemporaine.",
+
+  "learn_more": "En savoir plus",
+
+
+  "guests_title": "Intervenants et artistes",
+  "guests_description": "Découvrez les intervenants et artistes qui participent à nos événements culturels.",
+  "see_all_guests": "Voir tous les intervenants",
 
   "login": "Connexion",
   "logout": "Déconnexion",

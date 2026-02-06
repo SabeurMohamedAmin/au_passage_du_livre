@@ -6,6 +6,39 @@
   "contact us": "Bize ulaşın",
   "events": "Etkinlikler",
   "upcoming events": "Yaklaşan etkinlikler",
+  "cultural events": "Kültürel etkinlikler",
+  "support artists": "Sanatçılara destek",
+  "passing on culture": "Kültürü aktarmak",
+  "association tagline": "Strazburg merkezli, kitap ve anlatı sanatlarına adanmış bir dernek — 5. sanat (edebiyat), 7. sanat (sinema) ve 9. sanat (çizgi roman) — Grand Est bölgesinde.",
+  "see our events": "Etkinliklerimizi görün",
+  "discover the association": "Derneği keşfedin",
+  "our missions in action": "Misyonlarımız sahada",
+  "association vision sentence": "Au Passage du Livre, kelimelerin, imgelerin ve fikirlerin özgürce dolaştığı alanlar yaratır.",
+  "association mission sentence": "Okuma sevgisini aşılamak, yaratımı desteklemek ve tüm kesimleri bir araya getirmek için buluşmalar, atölyeler ve kültürel faaliyetler.",
+  "see our missions": "Misyonlarımızı görün",
+
+  "mission_1_title": "Yaratıcı Nesil",
+  "mission_1_description": "Gençleri, edebiyatı canlı ve erişilebilir kılan somut deneyimler aracılığıyla kitap dünyasıyla buluşturuyoruz.",
+  "mission_1_card_title": "Hayal gücünü uyandırmak",
+  "mission_1_card_text": "Gençleri edebiyata açmak, yaratıcılıklarını geliştirmek ve dünyaya bakışlarını zenginleştirmek için buluşmalar ve duyusal deneyimler yaratmak.",
+
+  "mission_2_title": "Buluşmalar ve diyalog",
+  "mission_2_description": "Yazarlar, sanatçılar ve izleyiciler arasında diyalog, aktarım ve yaratıcı yolculukların keşfi için paylaşım alanları oluşturmak.",
+  "mission_2_card_title": "Yazarlarla buluşmalar",
+  "mission_2_card_text": "Yazarlar ve çizerlerle ayrıcalıklı anlar paylaşarak onların dünyalarını, ilhamlarını ve yaratım süreçlerini keşfetmek.",
+
+  "mission_3_title": "Yaratım ve illüstrasyon",
+  "mission_3_description": "Sergiler, buluşmalar ve yaratıcı zamanlar aracılığıyla görsel ve anlatı sanatlarını öne çıkarmak.",
+  "mission_3_card_title": "İllüstrasyon ve görsel sanatlar",
+  "mission_3_card_text": "Çizerlerin ve görsel sanatçıların çalışmalarını keşfetmek, görsel ile anlatı arasındaki bağları incelemek ve çağdaş grafik üretimi desteklemek.",
+
+  "learn_more": "Daha fazla bilgi",
+
+
+  "guests_title": "Konuşmacılar ve sanatçılar",
+  "guests_description": "Kültürel etkinliklerimize katılan konuşmacıları ve sanatçıları keşfedin.",
+  "see_all_guests": "Tüm konuşmacıları gör",
+
 
   "events heading": "Gelecek ve Geçmiş Etkinlikler.",
   "events description": "Geçmiş ve gelecekteki tüm edebi etkinliklerimizi ve faaliyetlerimizi keşfedin — keşfedilecek ve yeniden ziyaret edilecek sohbetler, okumalar ve kültürel deneyimler.",

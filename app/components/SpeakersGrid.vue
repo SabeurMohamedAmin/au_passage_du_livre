@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-  import { useDisplay } from 'vuetify'
+  import { useDisplay } from 'vuetify';
+  
+  const { iconArrowRight } = useRtlIcons();
   const { sm, md, lgAndUp } = useDisplay()
   
   const {authors} = useEventHeroContent().content;
@@ -24,10 +26,10 @@
     <!-- Title -->
     <v-col cols="12" md="8">
       <h2 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70">
-        Intervenants et artistes
+        {{$t('guests_title')}}
       </h2>
       <p class="text-body-1 text-medium-emphasis">
-        Découvrez les intervenants et artistes qui participent à nos événements culturels.
+        {{$t('guests_description')}}
       </p>
     </v-col>
   
@@ -43,8 +45,8 @@
         class="font-weight-bold text-body-1 rounded-xl"
         :to="$localePath('/artistes-et-intervenants')"
       >
-        Voir tous les intervenants
-        <v-icon end icon="mdi-arrow-right" />
+        {{$t('see_all_guests')}}
+        <v-icon end :icon="iconArrowRight" />
       </v-btn>
     </v-col>
   </v-row>
@@ -73,8 +75,7 @@
               <div
                 v-if="isHovering"
                 class="position-absolute bottom-0 w-100 pa-4 d-flex justify-center gap-2 bg-gradient-to-t"
-              >
-  
+              >  
                 <nuxt-link 
                  :to="author.website"
                   target="_blank"

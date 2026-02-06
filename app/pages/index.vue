@@ -1,29 +1,33 @@
+<script setup>
+import { useLocale } from 'vuetify'
+
+const { isRtl } = useLocale()
+</script>
+
 <template>
-  <!-- HERO SECTION -->
-  <section class="hero-section position-relative overflow-hidden mb-5 mb-md-10 pt-2 pt-md-4 pb-md-24">
-    <!-- Background Shape -->
+  <section 
+    class="hero-section position-relative overflow-hidden mb-5 mb-md-10 pt-2 pt-md-4 pb-md-24"
+    :class="{ 'rtl-mode': isRtl }"
+  >
     <div class="hero-bg-shape d-none d-md-block"></div>
 
     <v-container class="hero-container scroll-mt-5">
       <v-row align="start" justify="space-between">
 
-        <!-- LEFT TEXT -->
         <v-col
           cols="12"
           md="7"
           lg="6"
-          class="d-flex flex-column justify-space-around align-baseline text-column"
+          class="d-flex flex-column justify-space-around text-column text-start"
         >
           <h1 class="d-flex flex-column text-lg-h3 text-md-h4 text-sm-h5 text-h6 font-weight-black text-transparent-4 lh-1 mb-6">
-            <span class="mb-4 mb-sm-8">Évènements culturels</span>
-            <span class="mb-4 mb-sm-8">Soutien aux artistes</span>
-            <span class="text-primary">Transmettre la culture</span>
+            <span class="mb-4 mb-sm-8">{{ $t("cultural events") }}</span>
+            <span class="mb-4 mb-sm-8">{{ $t("support artists") }}</span>
+            <span class="text-primary">{{ $t("passing on culture") }}</span>
           </h1>
 
           <p class="flex-grow-1 text-h6 text-medium-emphasis font-weight-regular mb-10 line-height-lg pe-md-12 pe-lg-0">
-            Une association strasbourgeoise engagée pour le livre et les arts narratifs —
-            5ᵉ art (littérature), 7ᵉ art (cinéma) et 9ᵉ art (bande dessinée) —
-            dans le Grand Est.
+            {{ $t("association tagline") }}
           </p>
 
           <div class="d-flex align-start flex-column flex-sm-row flex-grow-1 align-md-center gap-md-2">
@@ -34,7 +38,7 @@
               class="font-weight-bold elevation-6 h-auto me-2 py-4 mb-4 mb-md-0"
               :to="$localePath('/evenements')"
             >
-              See our events
+              {{ $t("see our events") }}
             </v-btn>
 
             <v-btn
@@ -45,17 +49,16 @@
               class="font-weight-bold elevation-6 h-auto py-4"
               :to="$localePath('/about-us')"
             >
-              Découvrir l'association
+              {{ $t("discover the association") }}
             </v-btn>
           </div>
         </v-col>
 
-        <!-- RIGHT IMAGES -->
         <v-col
           cols="12"
           md="5"
           lg="6"
-          class="event-img-reight-section position-relative pa-md-5 mt-md-12 mt-md-0 rounded-lg"
+          class="event-img-right-section position-relative pa-md-5 mt-md-12 mt-md-0 rounded-lg"
         >
           <v-row dense justify="space-between">
             <v-col cols="6" class="mt-2 mt-md-12">
@@ -90,37 +93,27 @@
     </v-container>
   </section>
 
-  <!-- MISSIONS -->
   <section class="my-5 my-md-10 scroll-mt-6 bg_surface_variant">
     <v-container class="py-10">
       <notre-mission />
     </v-container>
   </section>
 
-  <!-- SPEAKERS -->
   <section class="py-5 my-md-10 scroll-mt-6">
     <v-container>
       <speakers-grid />
     </v-container>
   </section>
 
-  <!-- ARTICLES -->
   <section class="py-5 py-md-10 scroll-mt-6 bg_surface_variant">
     <v-container>
       <articles-slider />
     </v-container>
   </section>
 
-  <!-- SCHEDULE -->
   <section id="schedule" class="my-5 my-md-10 scroll-mt-6">
     <EventScheduleDownload />
   </section>
-  <!-- 5. ARTICLES et ACTUALITIES -->
-  <!--
-    <section class="my-5 my-md-10 scroll-mt-6 bg_surface_variant">
-      <small-slider/>
-    </section>
-  -->
 </template>
 
 <style scoped>
@@ -128,17 +121,33 @@
     overflow-x: hidden;
   }
 
+  /* * BACKGROUND SHAPE LOGIC
+   * Default (LTR): Placed on Right, curved towards left.
+   */
   .hero-bg-shape {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 0; /* Default LTR position */
+    left: auto;
     width: 50%;
     max-width: 600px;
     height: 100%;
     opacity: 0.7;
     pointer-events: none;
-    border-radius: 50% 0 0 50%;
     background-color: rgb(var(--v-theme-primary));
+    border-radius: 50% 0 0 50%; /* Curve points Left */
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* * RTL OVERRIDE
+   * triggered by the JS class .rtl-mode
+   * 1. Move to Left
+   * 2. Flip the curve using scaleX(-1) - simpler and more robust than border-radius
+   */
+  .hero-section.rtl-mode .hero-bg-shape {
+    right: auto;
+    left: 0;
+    transform: scaleX(-1); /* Flips the shape horizontally */
   }
 
   .hero-container {
@@ -163,7 +172,7 @@
     backdrop-filter: contrast(90%);
   }
 
-  .event-img-reight-section {
+  .event-img-right-section {
     backdrop-filter: blur(12px);
     border: 1px solid #46444420;
   }

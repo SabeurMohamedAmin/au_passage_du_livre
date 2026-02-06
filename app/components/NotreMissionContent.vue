@@ -20,11 +20,11 @@
   const missions: Mission[] = [
     {
       id: 1,
-      title: 'Génération Créative',
-      description: 'Nous connectons la jeunesse aux acteurs du livre à travers des expériences concrètes qui rendent la littérature vivante et accessible.',
+      title: 'mission_1_title',
+      description: 'mission_1_description',
       card: {
-        title: "Éveiller l'Imaginaire",
-        text: 'Créer des rencontres et des expériences sensibles pour ouvrir les jeunes à la littérature, stimuler leur créativité et encourager leur regard sur le monde.',
+        title: "mission_1_card_title",
+        text: 'mission_1_card_text',
         image: '/img/avatars/Fiona Homann design_graphic.jpg',
         slug: 'notre-mission',
         button: { 
@@ -35,11 +35,11 @@
     },
     {
       id: 2,
-      title: 'Rencontres & Dialogue',
-      description: 'Créer des moments d’échange entre les auteurs, les artistes et le public, pour favoriser le dialogue, la transmission et la découverte des œuvres et des parcours créatifs.',
+      title: 'mission_2_title',
+      description: 'mission_2_description',
       card: {
-        title: 'Rencontres avec des auteurs',
-        text: 'Des temps privilégiés pour échanger avec des auteurs et des illustrateurs, découvrir leur univers, leurs inspirations et mieux comprendre les processus de création.',
+        title: 'mission_2_card_title',
+        text: 'mission_2_card_text',
         slug: 'rencontres-dialogue',
         button: { label: 'En savoir plus', color: '#4E8098' },
         image: '/img/avatars/Pat Thiebaut author.jpeg'
@@ -47,11 +47,11 @@
     },
     {
       id: 3,
-      title: 'Création & Illustration',
-      description: 'Mettre en lumière les arts visuels et narratifs à travers des expositions, des rencontres et des temps de création.',
+      title: 'mission_3_title',
+      description: 'mission_3_description',
       card: {
-        title: 'Illustration & arts visuels',
-        text: 'Découvrir le travail des illustrateurs et artistes visuels, explorer les liens entre image et récit et valoriser la création graphique contemporaine.',
+        title: 'mission_3_card_title',
+        text: 'mission_3_card_text',
         image: '/img/avatars/Taga Mely photogaphe.jpeg',
         slug: 'notre-mission',
         button: { 
@@ -62,9 +62,11 @@
     }
   ]
 
+
   /* ==========================================================================
     LOGIC
     ========================================================================== */
+  const { iconArrowRight } = useRtlIcons();
   const activeIndex = ref(0)
   const activeMission = computed(() => missions[activeIndex.value])
   let intervalId: NodeJS.Timeout | null = null
@@ -108,10 +110,11 @@
           <v-fade-transition mode="out-in">
             <div :key="activeMission?.id">
               <h1 class="d-flex flex-column text-dynamicText gap-4 text-h5 text-transparent-3 lh-1 mb-2">
-                {{ activeMission?.title }}
+                {{ $t(activeMission?.title || '') }}
+                
               </h1>
               <p class="text-h6 text-dynamicText font-weight-regular description-text">
-                {{ activeMission?.description }}
+                {{ $t(activeMission?.description || '') }}
               </p>
             </div>
           </v-fade-transition>
@@ -133,10 +136,10 @@
               <v-row align="center" no-gutters>
                 <v-col cols="12" sm="7" class="pr-sm-4 d-flex flex-column align-start">
                   <h3 class="text-clamp-2 text-h5 text-lg-h4 font-weight-bold text-dynamicText mb-4">
-                    {{ activeMission?.card.title }}
+                    {{ $t(activeMission?.card.title || '') }}
                   </h3>
                   <p class="card-text-clamp text-body-1 text-dynamicText mb-6 card-text-min-height">
-                    {{ activeMission?.card.text }}
+                    {{ $t(activeMission?.card.text || '') }}
                   </p>
                   
                   <!-- NUXT FEATURE: Fixed Button Nesting -->
@@ -147,15 +150,15 @@
                     variant="outlined"
                     color="primary"
                   >
-                    {{ activeMission?.card.button.label }}
-                    <v-icon icon="mdi-arrow-right" class="ms-2" size="small" />
+                    {{ $t('learn_more') }}
+                    <v-icon :icon="iconArrowRight" class="ms-2" size="small" />
                   </v-btn>
                 </v-col>
 
                 <v-col cols="12" sm="5" class="d-flex justify-end mt-4 mt-sm-0">
                   <v-img
                     :src="activeMission?.card.image"
-                    :alt="activeMission?.card.title"
+                    :alt="$t(activeMission?.card.title || '')"
                     width="180"
                     height="240"
                     class="rounded-lg transform-rotate"
