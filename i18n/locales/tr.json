@@ -38,7 +38,38 @@
   "guests_title": "Konuşmacılar ve sanatçılar",
   "guests_description": "Kültürel etkinliklerimize katılan konuşmacıları ve sanatçıları keşfedin.",
   "see_all_guests": "Tüm konuşmacıları gör",
+  "blog_title": "Makaleler & Haberler",
+  "blog_description": "Au Passage du Livre’den en son gelişmeleri takip edin: yaklaşan etkinlikler, festivalin önemli anları, devam eden projeler ve derneğin yürüttüğü kültürel girişimler.",
+  "see_all_articles": "Tüm makaleleri gör",
 
+  "events_program_title": "Etkinlik Programı",
+  "events_program_description": "2025 etkinliklerinin tam kataloğunu indirmek için lütfen “PDF indir” seçeneğine tıklayın.",
+  "download_pdf": "PDF indir",
+
+  "next_event_title": "Bir Sonraki Etkinliğimiz",
+  "next_event_description": "Sizi bir sonraki etkinliğimize davet ediyoruz. İlginizi çekiyorsa, daha fazla bilgi için detaylara göz atın.",
+
+  "event_guests": "Etkinlik Konukları",
+
+  "archived_events_title": "Arşivlenen Etkinlikler",
+  "archived_events_description": "Derneğin yaşamına yön veren geçmiş etkinliklerimizi keşfedin: okumalar, tartışmalar ve kültürel deneyimler.",
+
+  "fe_2026_title": "Avrupa Fuarı 2026",
+  "fe_2026_subtitle": "Au Passage du Livre",
+  "fe_2026_tagline": "Avrupa’ya Açılıyor",
+  "fe_2026_description": "Edebiyat, kültür ve paylaşım dolu unutulmaz üç gün için derneğimize Avrupa’nın kalbinde katılın.",
+
+  "event_when_label": "Ne zaman?",
+  "event_when_date": "4-14 Eylül 2026",
+  "event_when_time": "10:00 – 20:00",
+
+  "event_where_label": "Nerede?",
+  "event_where_address": "Avenue Herrenschmidt, Strasbourg",
+  "event_where_hall": "Salon 5",
+
+  "event_what_label": "Ne var?",
+  "event_what_line_1": "İmza Seansları, Paneller &",
+  "event_what_line_2": "Özel Atölyeler",
 
   "events heading": "Gelecek ve Geçmiş Etkinlikler.",
   "events description": "Geçmiş ve gelecekteki tüm edebi etkinliklerimizi ve faaliyetlerimizi keşfedin — keşfedilecek ve yeniden ziyaret edilecek sohbetler, okumalar ve kültürel deneyimler.",
@@ -46,6 +77,16 @@
   "upcoming events description": "Okumalar, söyleşiler ve birlikte keyfini çıkarıp paylaşabileceğiniz kültürel deneyimler dahil olmak üzere yaklaşan edebiyat buluşmalarımızı keşfedin.",
   "intervenants": "Konuşmacılar",
   
+  "view_all_guests": "Tüm konukları görüntüle",
+
+  "event": "Etkinlik",
+
+  "event_speakers_title": "Konuşmacılar ve sanatçılar",
+  "event_speakers_description": "Kültürel etkinliklerimize katılan konuşmacıları ve sanatçıları keşfedin.",
+  "upcoming_event_guests": "Yaklaşan Etkinliğin Konukları",
+  "see_all": "Tümünü Gör",
+
+
   "login": "Giriş yap",
   "logout": "Çıkış yap",
   "register": "Kayıt ol",

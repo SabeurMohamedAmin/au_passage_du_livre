@@ -17,7 +17,7 @@
   "association mission sentence": "لقاءات وورش عمل ومبادرات ثقافية لنقل حبّ القراءة، ودعم الإبداع، وجمع مختلف فئات الجمهور.",
   "see our missions": "اطّلع على مهامّنا",
 
-"mission_1_title": "الجيل المبدع",
+  "mission_1_title": "الجيل المبدع",
   "mission_1_description": "نربط الشباب بعالم الكتاب من خلال تجارب ملموسة تجعل الأدب حيًّا ومتاحًا للجميع.",
   "mission_1_card_title": "إيقاظ الخيال",
   "mission_1_card_text": "ابتكار لقاءات وتجارب حسّية تفتح الشباب على الأدب، وتنمّي إبداعهم، وتوسّع نظرتهم إلى العالم.",
@@ -37,7 +37,18 @@
   "guests_title": "المشاركون والفنانون",
   "guests_description": "اكتشف المشاركين والفنانين الذين يشاركون في فعالياتنا الثقافية.",
   "see_all_guests": "عرض جميع المشاركين",
+  "blog_title": "مقالات وأخبار",
+  "blog_description": "تابعوا أخبار «أو باساج دو ليفر»: الفعاليات القادمة، أبرز محطات المهرجان، المشاريع الجارية والمبادرات الثقافية التي تقودها الجمعية.",
+  "see_all_articles": "عرض جميع المقالات",
 
+  "events_program_title": "برنامج الفعاليات",
+  "events_program_description": "لتحميل الكتالوج الكامل لفعاليات 2025، يُرجى الضغط على « تحميل PDF ».",
+  "download_pdf": "تحميل PDF",
+
+  "next_event_title": "فعاليتنا القادمة",
+  "next_event_description": "ندعوكم للانضمام إلينا في فعاليتنا القادمة. إذا كنتم مهتمين، يرجى الاطلاع على التفاصيل لمعرفة المزيد.",
+
+  "event_guests": "ضيوف الفعالية",
 
 
   "events heading": "الفعاليات القادمة والماضية.",
@@ -45,6 +56,9 @@
   "upcoming events heading": "الفعاليات القادمة",
   "upcoming events description": "اكتشف لقاءاتنا الأدبية القادمة، بما في ذلك قراءات ونقاشات وتجارب ثقافية للاستمتاع بها ومشاركتها.",
   "intervenants": "المتحدثون",
+
+  "archived_events_title": "أرشيف الفعاليات",
+  "archived_events_description": "اكتشف فعالياتنا السابقة: قراءات ونقاشات وتجارب ثقافية تركت بصمتها في مسيرة الجمعية.",
 
 
   "login": "تسجيل الدخول",
@@ -59,6 +73,23 @@
   "create account using your google mail": "إنشاء حساب باستخدام جوجل",
   "create account using your microsoft mail": "إنشاء حساب باستخدام مايكروسوفت",
 
+  "fe_2026_title": "المعرض الأوروبي 2026",
+  "fe_2026_subtitle": "Au Passage du Livre",
+  "fe_2026_tagline": "يتجه نحو أوروبا",
+  "fe_2026_description": "انضموا إلى جمعيتنا لثلاثة أيام لا تُنسى من الأدب والثقافة والتبادل في قلب أوروبا.",
+
+ "event_when_label": "متى؟",
+  "event_when_date": "من 4 إلى 14 سبتمبر 2026",
+  "event_when_time": "10:00 – 20:00",
+
+  "event_where_label": "أين؟",
+  "event_where_address": "Avenue Herrenschmidt, Strasbourg",
+  "event_where_hall": "القاعة 5",
+
+  "event_what_label": "ماذا؟",
+  "event_what_line_1": "توقيعات كتب، حلقات نقاش و",
+  "event_what_line_2": "ورش عمل حصرية",
+
   "login page": "صفحة تسجيل الدخول",
   "signup page": "صفحة التسجيل",
   "recover password": "استعادة كلمة المرور",
@@ -68,6 +99,15 @@
   "false alert": "عفواً! إنذار خاطئ؟",
 
   "for authentication and create new user": "للمصادقة وإنشاء مستخدم جديد",
+  "view_all_guests": "عرض جميع الضيوف",
+
+  "event": "فعالية",
+
+  "event_speakers_title": "المتحدثون والفنانون",
+  "event_speakers_description": "اكتشفوا المتحدثين والفنانين المشاركين في فعالياتنا الثقافية.",
+  "upcoming_event_guests": "ضيوف الفعالية القادمة",
+  "see_all": "عرض الكل",
+
   "login to account": "تسجيل الدخول إلى حسابك",
   "login using your credentials": "تسجيل الدخول باستخدام بيانات الاعتماد الخاصة بك",
   "login using your facebook account": "تسجيل الدخول باستخدام فيسبوك",

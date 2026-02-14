@@ -49,11 +49,13 @@ export default defineNuxtPlugin((nuxtApp) => {
       themes: {
         light: {
           colors: {
+            primary: '#8a5a44',
             dynamicText: '#6D4C41',
           },
         },
         dark: {
           colors: {
+            primary: '#B68D5D',
             dynamicText: '#8D6E63',
           },
         },

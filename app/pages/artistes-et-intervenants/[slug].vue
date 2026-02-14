@@ -106,7 +106,7 @@
 
         <v-card 
           flat
-          class="pa-5 mb-10 border-s-xl border-amber-lighten-5 bg-amber-lighten-5"
+          class="pa-5 mb-10 border-s-xl border-warning"
           
         >
           <div class="d-flex flex-wrap align-center justify-space-between gap-4">
@@ -115,7 +115,7 @@
                 <v-icon icon="mdi-calendar-star" size="small" start />
                 Prochain Événement
               </div>
-              <div class="font-weight-bold text-h6 text-grey-darken-4">
+              <div class="font-weight-bold text-h6 text-grey-darken-1 py-2">
                 {{ author.details.title }}
               </div>
             </div>
@@ -123,7 +123,7 @@
             <!-- TODO: Add link to PROCHAINE event -->
             <v-btn 
               flat 
-              color="amber" 
+              color="#f6d7a8" 
               class="text-black font-weight-bold px-6"
               rounded="lg"
               elevation="0"
@@ -137,11 +137,11 @@
 
         <div>
           <div class="d-flex mb-0">
-            <div class="bg-amber px-8 py-2 font-weight-bold text-body-2 rounded-t-lg elevation-1" style="z-index: 1;">
+            <div class="px-8 text-grey-darken-4 py-2 font-weight-bold text-body-2 rounded-t-lg elevation-1" style="z-index: 1; background-color: #f6d7a8;">
               DÉTAILS
             </div>
           </div>
-          <div class="border-b-md mb-6" style="border-color: #FFC107 !important;"></div>
+          <div class="border-b-md mb-6" style="border-color: #f6d7a8 !important;"></div>
 
           <v-row dense class="text-body-2 row-hover-effect">
             <v-col cols="4" sm="3" md="2" class="font-weight-bold text-grey-darken-3 pt-2">
@@ -173,8 +173,9 @@
                 to="https://maps.app.goo.gl/DhSrMBgyJEEUiGdeA" 
                 target="_blank"
               >
-                <v-icon icon="mdi-map-marker-outline" size="x-small" class="me-1 mb-1"/>
+                <v-icon icon="mdi-map-marker-outline" size="small" class="me-1 mb-1"/>
                 {{ author.details.location }}
+                <v-icon icon="mdi-map" size="small" class="me-1 mb-1  line-height-tight"/>
               </nuxt-link>
             </v-col>
             <v-col cols="12">
@@ -208,7 +209,7 @@
             <h3 class="text-h5 font-weight-black text-uppercase text-grey-darken-3">
               Dans la même collection
             </h3>
-            <div class="border-b-sm border-amber" style="width: 60px; height: 4px; background: #FFC107;">
+            <div class="border-b-sm border-amber" style="width: 60px; height: 4px; background: #f6d7a8;">
             </div>
         </v-col>
         <v-col v-for="event in relatedEvents" :key="event.id" cols="12" sm="6" md="4">
@@ -245,7 +246,7 @@
     left: -20px;  
     width: 100%;   
     height: 100%;  
-    background-color: #FFCA28; 
+    background-color: #f6d7a8; 
     transition: transform 0.3s ease;
     z-index: -1;
   }
@@ -283,7 +284,7 @@
 
   .hover-card:hover {
     border-color: #DE8642 !important;
-    background-color: #fff8e1;
+    background-color: #f6d7a8;
     transform: translateX(5px);
   }
 

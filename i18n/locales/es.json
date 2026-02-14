@@ -38,13 +38,57 @@
   "guests_title": "Ponentes y artistas",
   "guests_description": "Descubra a los ponentes y artistas que participan en nuestros eventos culturales.",
   "see_all_guests": "Ver todos los ponentes",
+  "blog_title": "Artículos y Actualidad",
+  "blog_description": "Siga la actualidad de Au Passage du Livre: próximos eventos, momentos destacados del festival, proyectos en curso e iniciativas culturales impulsadas por la asociación.",
+  "see_all_articles": "Ver todos los artículos",
 
 
+  "events_program_title": "Programa de eventos",
+  "events_program_description": "Para descargar el catálogo completo de eventos 2025, haga clic en « Descargar PDF ».",
+  "download_pdf": "Descargar PDF",
+
+  "next_event_title": "Nuestro próximo evento",
+  "next_event_description": "Le invitamos a unirse a nuestro próximo evento. Si está interesado, consulte los detalles para obtener más información.",
+
+  "event_guests": "Invitados del evento",
+
+  "archived_events_title": "Eventos archivados",
+  "archived_events_description": "Descubra nuestros eventos pasados: lecturas, debates y experiencias culturales que han marcado la vida de la asociación.",
+
+  "fe_2026_title": "Feria Europea 2026",
+  "fe_2026_subtitle": "Au Passage du Livre",
+  "fe_2026_tagline": "Se vuelve europea",
+  "fe_2026_description": "Únase a nuestra asociación para vivir tres días inolvidables de literatura, cultura e intercambio en el corazón de Europa.",
+
+  "event_when_label": "¿Cuándo?",
+  "event_when_date": "Del 4 al 14 de septiembre de 2026",
+  "event_when_time": "10:00 – 20:00",
+
+  "event_where_label": "¿Dónde?",
+  "event_where_address": "Avenue Herrenschmidt, Estrasburgo",
+  "event_where_hall": "Pabellón 5",
+
+  "event_what_label": "¿Qué?",
+  "event_what_line_1": "Firmas de libros, mesas redondas y",
+  "event_what_line_2": "talleres exclusivos",
+
+  
   "events heading": "Eventos próximos y pasados.",
   "events description": "Descubre todos nuestros eventos y actividades literarias, pasados y próximos — conversaciones, lecturas y experiencias culturales para explorar y revisitar.",
   "upcoming events heading": "Próximos eventos",
   "upcoming events description": "Descubre nuestros próximos encuentros literarios, incluidas lecturas, debates y experiencias culturales para disfrutar y compartir.",
   "intervenants": "Ponentes",
+
+  "view_all_guests": "Ver todos los invitados",
+
+  "event": "Evento",
+
+  "event_speakers_title": "Speakers and artists",
+  "event_speakers_description": "Discover the speakers and artists taking part in our cultural events.",
+  "upcoming_event_guests": "Invitados del próximo evento",
+    "see_all": "Ver todos",
+
+
 
   "login": "Iniciar sesión",
   "logout": "Cerrar sesión",

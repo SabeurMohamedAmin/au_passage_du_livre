@@ -38,11 +38,51 @@
   "guests_description": "Discover the speakers and artists taking part in our cultural events.",
   "see_all_guests": "See all speakers",
 
+  "blog_title": "Articles & News",
+  "blog_description": "Follow the latest news from Au Passage du Livre: upcoming events, festival highlights, ongoing projects, and cultural initiatives led by the association.",
+  "see_all_articles": "See all articles",
+
+  "events_program_title": "Events Program",
+  "events_program_description": "To download the complete 2025 events catalog, please click on 'Download PDF'.",
+  "download_pdf": "Download PDF",
+
+  "archived_events_title": "Archived Events",
+  "archived_events_description": "Discover our past events: readings, discussions, and cultural experiences that have shaped the life of the association.",
+
+  "fe_2026_title": "European Fair 2026",
+  "fe_2026_subtitle": "Au Passage du Livre",
+  "fe_2026_tagline": "Goes European",
+  "fe_2026_description": "Join our association for three unforgettable days of literature, culture, and exchange at the heart of Europe.",
+
+  "event_when_label": "When ?",
+  "event_when_date": "From September 4 to 14, 2026",
+  "event_when_time": "10:00 AM – 8:00 PM",
+
+  "event_where_label": "Where ?",
+  "event_where_address": "Avenue Herrenschmidt, Strasbourg",
+  "event_where_hall": "Hall 5",
+
+  "event_what_label": "What ?",
+  "event_what_line_1": "Book Signings, Panels &",
+  "event_what_line_2": "Exclusive Workshops",
+  
+  "next_event_title": "Our Next Event",
+  "next_event_description": "We invite you to join us at our upcoming event. If you're interested, please check the details to learn more.",
+  "event_guests": "Event Guests",
+
   "events heading": "Upcoming and Past Events.",
   "events description": "Discover all of our literary events and activities, past and upcoming — conversations, readings, and cultural experiences to explore and revisit.",
   "upcoming events heading": "Upcoming Events",
   "upcoming events description": "Discover our upcoming literary gatherings, including readings, discussions, and cultural experiences to enjoy and share.",
   "intervenants": "Speakers",
+  "view_all_guests": "View all guests",
+
+  "event": "Event",
+
+  "event_speakers_title": "Speakers and artists",
+  "event_speakers_description": "Discover the speakers and artists taking part in our cultural events.",
+  "upcoming_event_guests": "Upcoming Event Guests",
+  "see_all": "See all",
 
 
   "login": "Log in",

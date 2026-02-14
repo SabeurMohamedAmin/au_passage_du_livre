@@ -40,6 +40,18 @@
   "guests_description": "Entdecken Sie die Referent:innen und Künstler:innen, die an unseren kulturellen Veranstaltungen teilnehmen.",
   "see_all_guests": "Alle Mitwirkenden ansehen",
 
+  "blog_title": "Artikel & Neuigkeiten",
+  "blog_description": "Verfolgen Sie die Neuigkeiten von Au Passage du Livre: bevorstehende Veranstaltungen, Festivalhöhepunkte, laufende Projekte und kulturelle Initiativen des Vereins.",
+  "see_all_articles": "Alle Artikel ansehen",
+
+  "events_program_title": "Veranstaltungsprogramm",
+  "events_program_description": "Um den vollständigen Veranstaltungskatalog 2025 herunterzuladen, klicken Sie bitte auf „PDF herunterladen“.",
+  "download_pdf": "PDF herunterladen",
+
+  "next_event_title": "Unsere nächste Veranstaltung",
+  "next_event_description": "Wir laden Sie herzlich zu unserer nächsten Veranstaltung ein. Wenn Sie interessiert sind, finden Sie weitere Informationen in den Details.",
+
+  "event_guests": "Mitwirkende der Veranstaltung",
 
 
   "events description": "Entdecken Sie alle unsere literarischen Veranstaltungen und Aktivitäten, vergangene und kommende — Gespräche, Lesungen und kulturelle Erlebnisse zum Erkunden und Wiederentdecken.",
@@ -47,6 +59,34 @@
   "upcoming events heading": "Kommende Veranstaltungen",
   "upcoming events description": "Entdecken Sie unsere kommenden literarischen Treffen, darunter Lesungen, Diskussionen und kulturelle Erlebnisse zum Genießen und Teilen.",
   "intervenants": "Referenten",
+
+  "archived_events_title": "Archivierte Veranstaltungen",
+  "archived_events_description": "Entdecken Sie unsere vergangenen Veranstaltungen: Lesungen, Diskussionen und kulturelle Erlebnisse, die das Leben des Vereins geprägt haben.",
+
+  "fe_2026_title": "Europäische Messe 2026",
+  "fe_2026_subtitle": "Au Passage du Livre",
+  "fe_2026_tagline": "Wird europäisch",
+  "fe_2026_description": "Begleiten Sie unseren Verein bei drei unvergesslichen Tagen voller Literatur, Kultur und Austausch im Herzen Europas.",
+
+"event_when_label": "Wann?",
+  "event_when_date": "4. bis 14. September 2026",
+  "event_when_time": "10:00 – 20:00",
+
+  "event_where_label": "Wo?",
+  "event_where_address": "Avenue Herrenschmidt, Straßburg",
+  "event_where_hall": "Halle 5",
+
+  "event_what_label": "Was?",
+  "event_what_line_1": "Signierstunden, Podiumsdiskussionen &",
+  "event_what_line_2": "exklusive Workshops",
+  "view_all_guests": "Alle Gäste anzeigen",
+
+  "event": "Veranstaltung",
+
+  "event_speakers_title": "Referenten und Künstler",
+  "event_speakers_description": "Entdecken Sie die Referenten und Künstler, die an unseren kulturellen Veranstaltungen teilnehmen.",
+  "upcoming_event_guests": "Gäste der kommenden Veranstaltung",
+  "see_all": "Alle anzeigen",
 
 
   "login": "Anmelden",

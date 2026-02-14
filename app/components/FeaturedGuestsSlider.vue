@@ -1,14 +1,6 @@
 <script setup lang="ts">
   import { useDisplay } from 'vuetify';
 
-  const pageContent = {
-    header: {
-      title: 'Artistes et Intervenants',
-      subtitle:
-        'Découvrez les talents qui feront vivre notre événement. Des auteurs renommés, des artistes passionnés et des intervenants inspirants vous attendent.'
-    }
-  };
-
   const guestsSeed: Guest[] = [
     {
       id: 1,
@@ -112,11 +104,11 @@
     <header class="mb-10">
       <div class="d-flex mb-4">
         <h2 class="w-100 text-h5 text-sm-h4 font-weight-black opacity-70">
-          {{ pageContent.header.title }}
+          {{ $t('event_speakers_title') }}
         </h2>
       </div>
       <p class="text-subtitle-1 text-medium-emphasis max-w-lg mx-auto">
-        {{ pageContent.header.subtitle }}
+        {{ $t('event_speakers_description') }}
       </p>
     </header>
     <!-- ===========================
@@ -125,10 +117,10 @@
     <section class="mb-12">
       <div class="d-flex align-center justify-space-between mb-6">
         <h2 class="text-h5 text-md-h4 font-weight-bold">
-          Invités Vedettes
+          {{$t('upcoming_event_guests')}}
         </h2>
         <v-btn :to="{ hash: '#all_guest' }" variant="text" color="primary" append-icon="mdi-arrow-right">
-          Voir tous
+          {{$t('see_all')}}
         </v-btn>
       </div>
 

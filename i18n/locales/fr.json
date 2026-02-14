@@ -44,6 +44,48 @@
   "guests_title": "Intervenants et artistes",
   "guests_description": "Découvrez les intervenants et artistes qui participent à nos événements culturels.",
   "see_all_guests": "Voir tous les intervenants",
+  "blog_title": "Articles & Actualités",
+  "blog_description": "Suivez l’actualité d’Au Passage du Livre : événements à venir, temps forts du festival, projets en cours et initiatives culturelles portées par l’association.",
+  "see_all_articles": "Voir tous les articles",
+
+  "events_program_title": "Programme des événements",
+  "events_program_description": "Pour télécharger le catalogue complet des événements 2025, veuillez cliquer sur « Télécharger PDF ».",
+  "download_pdf": "Télécharger PDF",
+
+  "next_event_title": "Notre prochain événement",
+  "next_event_description": "Nous vous invitons à nous rejoindre lors de notre prochain événement. Si vous êtes intéressé, consultez les détails pour en savoir plus.",
+  "event_guests": "Intervenants de l’événement",
+
+  "archived_events_title": "Archives des événements",
+  "archived_events_description": "Découvrez nos événements passés : lectures, discussions et expériences culturelles qui ont marqué la vie de l’association.",
+
+  "fe_2026_title": "Foire Européenne 2026",
+  "fe_2026_subtitle": "Au Passage du Livre",
+  "fe_2026_tagline": "Goes European",
+  "fe_2026_description": "Rejoignez notre association pour trois journées inoubliables de littérature, de culture et d’échanges au cœur de l’Europe.",
+
+
+  "event_when_label": "Quand ?",
+  "event_when_date": "Du 4 au 14 septembre 2026",
+  "event_when_time": "10:00 – 20:00",
+
+  "event_where_label": "Où ?",
+  "event_where_address": "Avenue Herrenschmidt, Strasbourg",
+  "event_where_hall": "Hall 5",
+
+  "event_what_label": "Quoi ?",
+  "event_what_line_1": "Dédicaces, tables rondes et",
+  "event_what_line_2": "ateliers exclusifs",
+
+  "view_all_guests": "Voir tous les invités",
+
+  "event": "Événement",
+
+  "event_speakers_title": "Artistes et intervenants",
+  "event_speakers_description": "Découvrez les talents qui feront vivre notre événement. Des auteurs renommés, des artistes passionnés et des intervenants inspirants vous attendent.",
+  "upcoming_event_guests": "Invités du prochain événement",
+  "see_all": "Voir tout",
+
 
   "login": "Connexion",
   "logout": "Déconnexion",

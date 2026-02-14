@@ -11,17 +11,18 @@
 <template>
   <header class="mb-10">
     <!-- Title -->
-    <div class="mb-4 text-center text-md-left">
+    <div class="mb-4 text-left">
       <h1 class="text-h5 text-md-h4 font-weight-bold mb-2">
-        {{ pageContent.header.title }}
+        Artistes et Intervenants
       </h1>
 
-      <p
-        v-if="pageContent.header.subtitle"
-        class="text-body-1 text-medium-emphasis mx-auto mx-md-0"
+      <p v-if="pageContent.header.subtitle"
+        class="text-body-1 text-medium-emphasis"
         style="max-width: 720px;"
       >
-        {{ pageContent.header.subtitle }}
+        Découvrez les talents qui feront vivre notre événement. 
+        <br>
+        Des auteurs renommés, des artistes passionnés et des intervenants inspirants vous attendent.
       </p>
     </div>
   </header>

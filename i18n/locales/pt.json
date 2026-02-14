@@ -16,7 +16,7 @@
   "association vision sentence": "Au Passage du Livre cria espaços onde as palavras, as imagens e as ideias circulam livremente.",
   "association mission sentence": "Encontros, oficinas e ações culturais para transmitir o gosto pela leitura, apoiar a criação e reunir todos os públicos.",
   "see our missions": "Ver as nossas missões",
-"mission_1_title": "Geração criativa",
+  "mission_1_title": "Geração criativa",
   "mission_1_description": "Conectamos os jovens ao universo do livro através de experiências concretas que tornam a literatura viva e acessível.",
   "mission_1_card_title": "Despertar o imaginário",
   "mission_1_card_text": "Criar encontros e experiências sensíveis para abrir os jovens à literatura, estimular a criatividade e enriquecer o seu olhar sobre o mundo.",
@@ -36,12 +36,57 @@
   "guests_title": "Intervenientes e artistas",
   "guests_description": "Descubra os intervenientes e artistas que participam nos nossos eventos culturais.",
   "see_all_guests": "Ver todos os intervenientes",
+  "blog_title": "Artigos & Atualidades",
+  "blog_description": "Acompanhe as novidades da Au Passage du Livre: próximos eventos, destaques do festival, projetos em andamento e iniciativas culturais promovidas pela associação.",
+  "see_all_articles": "Ver todos os artigos",
+
+  "events_program_title": "Programa de eventos",
+  "events_program_description": "Para descarregar o catálogo completo dos eventos de 2025, clique em « Descarregar PDF ».",
+  "download_pdf": "Descarregar PDF",
+
+  "next_event_title": "O nosso próximo evento",
+  "next_event_description": "Convidamo-lo a participar no nosso próximo evento. Se estiver interessado, consulte os detalhes para saber mais.",
+
+  "event_guests": "Convidados do evento",
+
+
 
   "events heading": "Eventos futuros e passados.",
   "events description": "Descubra todos os nossos eventos e atividades literárias, passados e futuros — conversas, leituras e experiências culturais para explorar e revisitar.",
   "upcoming events heading": "Eventos futuros",
   "upcoming events description": "Descubra os nossos próximos encontros literários, incluindo leituras, debates e experiências culturais para desfrutar e partilhar.",
   "intervenants": "Oradores",
+
+  "archived_events_title": "Eventos arquivados",
+  "archived_events_description": "Descubra os nossos eventos passados: leituras, debates e experiências culturais que marcaram a vida da associação.",
+
+
+  "fe_2026_title": "Feira Europeia 2026",
+  "fe_2026_subtitle": "Au Passage du Livre",
+  "fe_2026_tagline": "Torna-se europeia",
+  "fe_2026_description": "Junte-se à nossa associação para três dias inesquecíveis de literatura, cultura e partilha no coração da Europa.",
+
+
+  "event_when_label": "Quando?",
+  "event_when_date": "De 4 a 14 de setembro de 2026",
+  "event_when_time": "10:00 – 20:00",
+
+  "event_where_label": "Onde?",
+  "event_where_address": "Avenue Herrenschmidt, Estrasburgo",
+  "event_where_hall": "Pavilhão 5",
+
+  "event_what_label": "O quê?",
+  "event_what_line_1": "Sessões de autógrafos, painéis e",
+  "event_what_line_2": "workshops exclusivos",
+
+  "view_all_guests": "Ver todos os convidados",
+
+  "event": "Evento",
+
+  "event_speakers_title": "Artistas e Oradores",
+  "event_speakers_description": "Descubra os talentos que darão vida ao nosso evento. Autores renomados, artistas apaixonados e oradores inspiradores esperam por você.",
+  "upcoming_event_guests": "Convidados do próximo evento",
+  "see_all": "Ver todos",
 
 
   "login": "Entrar",

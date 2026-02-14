@@ -11,10 +11,10 @@
       <v-row class="mb-12 align-start">
         <v-col cols="12" md="8">
           <h2 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70">
-            Programme des événements
+            {{ $t('events_program_title') }}
           </h2>
           <p class="text-medium-emphasis">
-            Pour télécharger le catalogue complet des événements 2025, veuillez cliquer sur « Télécharger PDF ».
+            {{ $t('events_program_description') }}
           </p>
         </v-col>
 
@@ -30,7 +30,7 @@
               rounded="pill"
               class="font-weight-bold px-6 border-opacity-25"
             >
-              Télécharger PDF
+              {{ $t('download_pdf') }}
             </v-btn>
           </NuxtLink>
         </v-col>

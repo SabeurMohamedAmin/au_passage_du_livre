@@ -61,11 +61,11 @@
     <header class="mb-10">
       <div class="d-flex mb-4">
         <h2 class="w-100 text-h5 text-sm-h4 font-weight-black opacity-70">
-          {{ content.header.title }}
+          {{ $t('next_event_title') }}
         </h2>
       </div>
       <p class="text-subtitle-1 text-medium-emphasis max-w-lg">
-        {{ content.header.subtitle }}
+        {{ $t('next_event_description') }}
       </p>
     </header>
 
@@ -94,15 +94,15 @@
                   rounded="xl"
                   label
                 >
-                  {{ content.hero.badge }}
+                  {{ content.hero.title }}
                 </v-chip>
               </v-col>
 
               <v-col cols="12">
                 <h1 class="text-h5 text-md-h4 font-weight-black line-height-tight mb-2" >
-                  {{ content.hero.title }} <br />
+                  {{ content.hero.subtitle }} <br />
                   <span class="text-primary">
-                    {{ content.hero.subtitle }}
+                    {{ content.hero.tagline }}
                   </span>
                 </h1>
               </v-col>
@@ -138,7 +138,7 @@
     <v-row class="mb-10 mt-2 min-w-250" dense>
       <!-- When -->
       <v-col cols="6" sm="4">
-        <v-sheet class="rounded-xl pa-4 border-thin px-5">
+        <v-sheet class="rounded-xl pa-4 border-thin px-5 h-100">
           <v-row dense align="center" justify="center">
             <v-col cols="4" lg="3">
               <v-avatar
@@ -173,7 +173,7 @@
 
       <!-- Where -->
       <v-col cols="6" sm="4">
-        <v-sheet class="rounded-xl pa-4 border-thin px-5">
+        <v-sheet class="rounded-xl pa-4 border-thin px-5 h-100">
           <v-row dense align="center" justify="center">
             <v-col cols="4" lg="3">
               <v-avatar
@@ -209,7 +209,7 @@
 
       <!-- What -->
       <v-col cols="6" sm="4">
-        <v-sheet class="rounded-xl pa-4 border-thin px-5">
+        <v-sheet class="rounded-xl pa-4 border-thin px-5 h-100">
           <v-row dense align="center" justify="center">
             <v-col cols="4" lg="3">
               <v-avatar
@@ -246,7 +246,7 @@
     <div class="mb-15">
       <div class="flex-column flex-sm-row d-flex align-start justify-space-between mb-6">
         <h3 class="text-h5 font-weight-bold mb-2 mb-sm-0">
-          Special Guests
+          {{$t("event_guests")}}
         </h3>
       </div>
 
@@ -301,7 +301,7 @@
             :to="$localePath({ name: 'event-details', hash: '#guests', params: { slug: content.hero.slug } })"
             class="text-decoration-none text-h5 text-center"
           >
-            Voir tous les invités
+            {{ $t("event_guests") }}
           </nuxt-link>
           </v-card>
         </v-slide-group-item>

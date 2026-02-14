@@ -10,13 +10,13 @@
     <v-row justify="start" class="gap-0 mb-15">
       <v-col cols="12" lg="11" xl="10">
         <h3 class="w-100 text-h5 font-weight-black opacity-70">
-          Archives events
+          {{$t("archived_events_title")}}
         </h3>
       </v-col>
 
       <v-col cols="12" lg="11" xl="10">
         <p class="text-h6 text-medium-emphasis">
-          {{ $t("upcoming events description") }}
+          {{ $t("archived_events_description") }}
         </p>
       </v-col>
     </v-row>

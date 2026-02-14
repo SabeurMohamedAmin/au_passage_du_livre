@@ -20,14 +20,10 @@ export interface GuestAuthor {
 }
 
 export interface EventHeroContent {
-  header: {
-    title: string
-    subtitle: string
-  }
   hero: {
-    badge: string
     title: string
     subtitle: string
+    tagline: string
     description: string
     slug: string
     cta: string
@@ -44,6 +40,7 @@ export interface EventHeroContent {
    Composable
 ------------------------------------ */
 export function useEventHeroContent() {
+  const { t } = useI18n() // Access the translation function
   /**
    * Hero background image
    * - Keep as absolute path (Nuxt public/)
@@ -56,34 +53,29 @@ export function useEventHeroContent() {
    * Acts as a mini CMS
    */
   const content: EventHeroContent = {
-    header: {
-      title: 'Our Next Event',
-      subtitle: 'We invite you all to visit us on our next event — if you are interested please check for more details.',
-    },
-
     hero: {
-      badge: 'Foire Européenne 2026',
-      title: 'Au Passage du Livre',
-      subtitle: 'Goes European',
-      description: 'Join our association for three unforgettable days of literature, culture, and exchange at the heart of Europe.',
+      title: t('fe_2026_title'),
+      subtitle: t('fe_2026_subtitle'),
+      tagline: t('fe_2026_tagline'),
+      description: t('fe_2026_description'),
       slug: 'foire-europeenne-2026',
-      cta: 'Learn More',
+      cta: t('learn_more'),
     },
     logistics: {
       when: {
-        title: 'When ?',
-        desc: 'September 4 jusque 14, 2026',
-        sub: '10:00  – 20:00',
+        title: t('event_when_label'),
+        desc: t('event_when_date'),
+        sub: t('event_when_time'),
       },
       where: {
-        title: 'Where ?',
-        desc: 'Avenue Herrenschmidt, Strasbourg',
-        sub: 'Hall 5',
+        title: t('event_where_label'),
+        desc: t('event_where_address'),
+        sub: t('event_where_hall'),
       },
       what: {
-        title: 'What ?',
-        desc: 'Book Signings, Panels &',
-        sub: 'Exclusive Workshops',
+        title: t('event_what_label'),
+        desc: t('event_what_line_1'),
+        sub: t('event_what_line_2'),
       },
     },
     authors: [

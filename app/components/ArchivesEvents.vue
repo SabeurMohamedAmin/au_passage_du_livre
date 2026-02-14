@@ -247,7 +247,7 @@ onUnmounted(() => {
           {{ selectedYear }}
         </span>
         <v-chip size="small" variant="outlined" color="primary">
-          {{ filteredEvents.length }} événement {{ filteredEvents.length !== 1 ? 's' : '' }}
+          {{ filteredEvents.length }} {{ $t('event') }} {{ filteredEvents.length !== 1 ? 's' : '' }}
         </v-chip>
       </div>
 
@@ -258,7 +258,7 @@ onUnmounted(() => {
         prepend-icon="mdi-file-pdf-box"
         rounded="lg"
       >
-        Télécharger le catalogue
+        {{$t('download_pdf')}}
       </v-btn>
     </div>
 
