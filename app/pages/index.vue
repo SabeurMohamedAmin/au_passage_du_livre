@@ -35,7 +35,7 @@ const { isRtl } = useLocale()
               size="large"
               color="primary"
               rounded="pill"
-              class="font-weight-bold elevation-6 h-auto me-2 py-4 mb-4 mb-md-0"
+              class="text-body-1 text-sm-button font-weight-bold elevation-6 h-auto me-2 py-4 mb-4 mb-md-0"
               :to="$localePath('/evenements')"
             >
               {{ $t("see our events") }}
@@ -46,7 +46,7 @@ const { isRtl } = useLocale()
               color="primary"
               rounded="pill"
               variant="outlined"
-              class="font-weight-bold elevation-6 h-auto py-4"
+              class="text-body-1 text-sm-button font-weight-bold elevation-6 h-auto py-4"
               :to="$localePath('/about-us')"
             >
               {{ $t("discover the association") }}
