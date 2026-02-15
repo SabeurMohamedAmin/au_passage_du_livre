@@ -86,7 +86,21 @@ const baseMenu: MenuItem[] = [
     else{
       return "pa-1 px-2 text-caption";
     }
-  })
+  });
+
+  const router = useRouter()
+
+  const handleDoubleClick = () => {
+    // 1. Force navigation to Home (in case the single click didn't catch it yet)
+    router.push(localePath('/'))
+
+    // 2. Scroll to the top of the window
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth' // Adds a nice scrolling animation
+    })
+  }
 </script>
 
 <template>
@@ -113,21 +127,21 @@ const baseMenu: MenuItem[] = [
         </v-col>
 
         <!-- on desktop left / on Mobile Center: Logo -->
-        <v-col class="d-flex justify-center" cols="2" md="1">
+        <v-col class="d-flex justify-center justify-md-start" cols="2" md="1">
           <NuxtLink
             :to="localePath('/')"
             class="topnav-logo-link v-btn--variant-tonal"
+            @click="handleDoubleClick"
           >
-            <!-- Replace with your logo component or v-img -->
-          <nuxt-img
-            :src="logoSrc"
-            alt="Au Passage du Livre – Association culturelle"
-            class="topnav-logo-icon"
-            height="90"
-            width="90"
-            contain
-            eager
-          />
+            <nuxt-img
+              :src="logoSrc"
+              alt="Au Passage du Livre – Association culturelle"
+              class="topnav-logo-icon"
+              height="90"
+              width="90"
+              contain
+              eager
+            />
           </NuxtLink>
         </v-col>
         
