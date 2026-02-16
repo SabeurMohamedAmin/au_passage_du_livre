@@ -13,7 +13,7 @@
     publisher: string
     publisherLogo: string // Using placeholder text for logos
     date: string
-    category: 'Article' | 'Interview' | 'Review' | 'Culture'
+    category: 'article' | 'interview' | 'review' | 'culture'
     image: string
     alt?: string
     url: string
@@ -22,19 +22,19 @@
   // Content Configuration
   const content = {
     hero: {
-      title: 'Presse & Actualités',
-      subtitle: 'Articles, interviews et mentions médiatiques consacrés à Au Passage du Livre et à ses actions culturelles.'
+      title: $t('press_news_title'),
+      subtitle: $t('press_news_description')
     },
     featured: <PressArticle>{
       id: 0,
-      title: 'Livres, jeux et figurines pour un vrai "Village culturel"',
-      excerpt: 'Après une première en 2024, le livre revient à la Foire européenne de Strasbourg. Cette fois entouré de jeux de société et de figurines… ',
+      title: $t('press_article_title'),
+      excerpt: $t('press_article_excerpt'),
       publisher: 'DNA',
       publisherLogo: 'https://ui-avatars.com/api/?name=DNA&background=e60000&color=fff&size=64',
       date: '07 Sept 2025',
-      category: 'Culture',
+      category: $t('culture'),
       image: 'https://cdn-s-www.dna.fr/images/125FCFE5-9691-406A-BAD5-0085D74BCED6/NW_raw/pour-que-le-salon-du-livre-devienne-village-culturel-des-figurines-sont-exposees-le-collectionneur-tintinophile-remy-waeldin-transporte-en-syldavie-photo-thomas-toussaint-1757270458.jpg',
-      alt: 'Livres, jeux et figurines pour un vrai "Village culturel"',
+      alt: $t('press_article_title'),
       localUrl: 'livres-jeux-et-figurines-pour-un-vrai-village-culturel',
       url: 'https://www.dna.fr/culture-loisirs/2025/09/07/livres-jeux-et-figurines-pour-un-vrai-village-culturel'
     },
@@ -49,14 +49,14 @@
   const pressArticles: PressArticle[] = [
     {
       id: 1,
-      title: 'Livres, jeux et figurines pour un vrai "Village culturel"',
-      excerpt: 'Après une première en 2024, le livre revient à la Foire européenne de Strasbourg. Cette fois entouré de jeux de société et de figurines… ',
+      title: $t('press_article_title'),
+      excerpt: $t('press_article_excerpt'),
       publisher: 'DNA',
       publisherLogo: 'https://ui-avatars.com/api/?name=DNA&background=e60000&color=fff&size=64',
       date: '15 Jan 2026',
-      category: 'Culture',
+      category: $t('culture') as PressArticle['category'],
       image: 'https://cdn-s-www.dna.fr/images/125FCFE5-9691-406A-BAD5-0085D74BCED6/NW_raw/pour-que-le-salon-du-livre-devienne-village-culturel-des-figurines-sont-exposees-le-collectionneur-tintinophile-remy-waeldin-transporte-en-syldavie-photo-thomas-toussaint-1757270458.jpg',
-      alt: 'Livres, jeux et figurines pour un vrai "Village culturel"',
+      alt: $t('press_article_title'),
       url: 'https://www.dna.fr/culture-loisirs/2025/09/07/livres-jeux-et-figurines-pour-un-vrai-village-culturel'
     },
     {
@@ -66,7 +66,7 @@
       publisher: 'France Bleu',
       publisherLogo: 'https://ui-avatars.com/api/?name=FB&background=0055ff&color=fff&size=64',
       date: '28 Déc 2025',
-      category: 'Interview',
+      category: $t('interview')as PressArticle['category'],
       image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600&auto=format&fit=crop',
       url: '#'
     },
@@ -77,7 +77,7 @@
       publisher: 'Culture Mag',
       publisherLogo: 'https://ui-avatars.com/api/?name=CM&background=143c28&color=fff&size=64',
       date: '10 Nov 2025',
-      category: 'Article',
+      category: $t('article')as PressArticle['category'],
       image: 'https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?q=80&w=600&auto=format&fit=crop',
       url: '#'
     },
@@ -88,7 +88,7 @@
       publisher: 'Le Figaro',
       publisherLogo: 'https://ui-avatars.com/api/?name=LF&background=000&color=fff&size=64',
       date: '05 Oct 2025',
-      category: 'Article',
+      category: $t('article')as PressArticle['category'],
       image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600&auto=format&fit=crop',
       url: '#'
     },
@@ -99,7 +99,7 @@
       publisher: 'Web News',
       publisherLogo: 'https://ui-avatars.com/api/?name=WN&background=666&color=fff&size=64',
       date: '28 Sep 2025',
-      category: 'Review',
+      category: $t('review')as PressArticle['category'],
       image: 'https://images.unsplash.com/photo-1507842217159-a28f26809398?q=80&w=600&auto=format&fit=crop',
       url: '#'
     },
@@ -110,7 +110,7 @@
       publisher: 'Strasbourg.eu',
       publisherLogo: 'https://ui-avatars.com/api/?name=SX&background=9c27b0&color=fff&size=64',
       date: '01 Sep 2025',
-      category: 'Culture',
+      category: $t('culture')as PressArticle['category'],
       image: 'https://images.unsplash.com/photo-1544928147-79a2af1f3a94?q=80&w=600&auto=format&fit=crop',
       url: '#'
     }
@@ -218,7 +218,7 @@
                   color="primary"
                   class="font-weight-bold px-4"
                   rounded="pill"
-                  text="Lire la suite"
+                  :text="$t('read_article')"
                   prepend-icon="mdi-open-in-new"
                   block
                 />

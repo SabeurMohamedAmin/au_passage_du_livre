@@ -107,6 +107,32 @@
   "event_speakers_description": "اكتشفوا المتحدثين والفنانين المشاركين في فعالياتنا الثقافية.",
   "upcoming_event_guests": "ضيوف الفعالية القادمة",
   "see_all": "عرض الكل",
+  "artists_speakers_title": "الفنانون والمتحدثون",
+  "artists_speakers_description": "اكتشفوا المواهب التي ستمنح فعاليتنا الحياة. كتّاب مشهورون، فنانون شغوفون ومتحدثون ملهمون بانتظاركم.",
+
+  "search_by_name_specialty": "ابحث بالاسم أو التخصص...",
+  "all_guests": "جميع الضيوف",
+
+  "no_event": "لا توجد فعاليات",
+  "no_archive_available": "لا توجد أرشيفات متاحة في الوقت الحالي",
+
+
+  "all": "الكل",
+  "authors": "المؤلفون",
+  "artists": "الفنانون",
+  "speakers": "المتحدثون",
+  "artisans": "الحرفيون",
+
+  "press_news_title": "الصحافة والأخبار",
+  "press_news_description": "مقالات ومقابلات وتغطيات إعلامية مخصصة لجمعية Au Passage du Livre وأنشطتها الثقافية.",
+
+  "press_article_title": "كتب وألعاب ومجسمات لقرية ثقافية حقيقية",
+  "press_article_excerpt": "بعد نسخة أولى في عام 2024، يعود الكتاب إلى المعرض الأوروبي في ستراسبورغ، وهذه المرة محاطاً بألعاب الطاولة والمجسمات…",
+  "read_article": "اقرأ المقال",
+  "culture": "ثقافة",
+  "article": "مقال",
+  "interview": "مقابلة",
+  "review": "مراجعة",
 
   "login to account": "تسجيل الدخول إلى حسابك",
   "login using your credentials": "تسجيل الدخول باستخدام بيانات الاعتماد الخاصة بك",

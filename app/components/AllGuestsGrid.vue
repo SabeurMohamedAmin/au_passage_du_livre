@@ -12,11 +12,11 @@
   }
 
   const filterCategories: FilterCategory[] = [
-    { label: 'Tous', value: 'all' },
-    { label: 'Auteurs', value: 'author' },
-    { label: 'Artistes', value: 'artist' },
-    { label: 'Conférenciers', value: 'speaker' },
-    { label: 'Artisans', value: 'artisan' }
+    { label: 'all', value: 'all' },
+    { label: 'authors', value: 'author' },
+    { label: 'artists', value: 'artist' },
+    { label: 'speakers', value: 'speaker' },
+    { label: 'artisans', value: 'artisan' }
   ]
 
 
@@ -73,7 +73,7 @@
       <!-- Title -->
       <div class="mb-6">
         <h2 class="text-h5 font-weight-bold mb-2">
-          Tous les Invités
+          {{$t('all_guests')}}
           <v-chip size="small" class="ms-4 rounded-lg">
             {{ filteredGuests.length }}
           </v-chip>

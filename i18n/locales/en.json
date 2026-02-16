@@ -83,7 +83,33 @@
   "event_speakers_description": "Discover the speakers and artists taking part in our cultural events.",
   "upcoming_event_guests": "Upcoming Event Guests",
   "see_all": "See all",
+  "no_event": "No events",
+  "no_archive_available": "No archives available at the moment",
 
+
+
+  "artists_speakers_title": "Artists & Speakers",
+  "artists_speakers_description": "Discover the talents who will bring our event to life. Renowned authors, passionate artists, and inspiring speakers await you.",
+
+  "search_by_name_specialty": "Search by name, specialty...",
+  "all_guests": "All Guests",
+
+  "all": "All",
+  "authors": "Authors",
+  "artists": "Artists",
+  "speakers": "Speakers",
+  "artisans": "Artisans",
+
+  "press_news_title": "Press & News",
+  "press_news_description": "Articles, interviews, and media coverage dedicated to Au Passage du Livre and its cultural initiatives.",
+
+  "press_article_title": "Books, Games and Figurines for a True \"Cultural Village\"",
+  "press_article_excerpt": "After its first edition in 2024, books return to the European Fair of Strasbourg, this time surrounded by board games and figurines…",
+  "read_article": "Read the article",
+  "culture": "Culture",
+  "article": "Article",
+  "interview": "Interview",
+  "review": "Review",
 
   "login": "Log in",
   "logout": "Log out",

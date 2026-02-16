@@ -85,6 +85,32 @@
   "event_speakers_description": "Découvrez les talents qui feront vivre notre événement. Des auteurs renommés, des artistes passionnés et des intervenants inspirants vous attendent.",
   "upcoming_event_guests": "Invités du prochain événement",
   "see_all": "Voir tout",
+  
+  "no_event": "Aucun événement",
+  "no_archive_available": "Aucune archive disponible pour le moment",
+
+  "artists_speakers_title": "Artistes et intervenants",
+  "artists_speakers_description": "Découvrez les talents qui feront vivre notre événement. Des auteurs renommés, des artistes passionnés et des intervenants inspirants vous attendent.",
+
+  "search_by_name_specialty": "Rechercher par nom, spécialité...",
+  "all_guests": "Tous les invités",
+
+  "all": "Tous",
+  "authors": "Auteurs",
+  "artists": "Artistes",
+  "speakers": "Conférenciers",
+  "artisans": "Artisans",
+  
+  "press_news_title": "Presse & Actualités",
+  "press_news_description": "Articles, interviews et mentions médiatiques consacrés à Au Passage du Livre et à ses actions culturelles.",
+
+  "press_article_title": "Livres, jeux et figurines pour un vrai « Village culturel »",
+  "press_article_excerpt": "Après une première en 2024, le livre revient à la Foire européenne de Strasbourg. Cette fois entouré de jeux de société et de figurines…",
+  "read_article": "Lire l’article",
+  "culture": "Culture",
+  "article": "Article",
+  "interview": "Interview",
+  "review": "Critique",
 
 
   "login": "Connexion",

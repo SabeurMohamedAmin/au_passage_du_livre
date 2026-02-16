@@ -86,6 +86,32 @@
   "upcoming_event_guests": "Yaklaşan Etkinliğin Konukları",
   "see_all": "Tümünü Gör",
 
+  "no_event": "Etkinlik yok",
+  "no_archive_available": "Şu anda arşiv bulunmamaktadır",
+
+
+  "artists_speakers_title": "Sanatçılar ve Konuşmacılar",
+  "artists_speakers_description": "Etkinliğimize hayat verecek yetenekleri keşfedin. Ünlü yazarlar, tutkulu sanatçılar ve ilham verici konuşmacılar sizi bekliyor.",
+
+  "search_by_name_specialty": "İsim veya uzmanlığa göre ara...",
+  "all_guests": "Tüm Konuklar",
+
+  "all": "Tümü",
+  "authors": "Yazarlar",
+  "artists": "Sanatçılar",
+  "speakers": "Konuşmacılar",
+  "artisans": "Zanaatkârlar",
+
+  "press_news_title": "Basın & Haberler",
+  "press_news_description": "Au Passage du Livre ve kültürel faaliyetleri hakkında makaleler, röportajlar ve medya haberleri.",
+
+  "press_article_title": "Gerçek bir \"Kültür Köyü\" için Kitaplar, Oyunlar ve Figürler",
+  "press_article_excerpt": "2024’teki ilk edisyonun ardından kitaplar Strasbourg Avrupa Fuarı’na geri dönüyor; bu kez masa oyunları ve figürlerle birlikte…",
+  "read_article": "Haberi oku",
+  "culture": "Kültür",
+  "article": "Makale",
+  "interview": "Röportaj",
+  "review": "İnceleme",
 
   "login": "Giriş yap",
   "logout": "Çıkış yap",

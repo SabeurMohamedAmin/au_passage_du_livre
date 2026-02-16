@@ -27,14 +27,14 @@
     },
     featured: <PressArticle>{
       id: 0,
-      title: 'Livres, jeux et figurines pour un vrai "Village culturel"',
-      excerpt: 'Après une première en 2024, le livre revient à la Foire européenne de Strasbourg. Cette fois entouré de jeux de société et de figurines… ',
+      title: $t('press_article_title'),
+      excerpt: $t('press_article_excerpt'),
       publisher: 'DNA',
       publisherLogo: 'https://ui-avatars.com/api/?name=DNA&background=e60000&color=fff&size=64',
       date: '07 Sept 2025',
-      category: 'Culture',
+      category: $t('culture'),
       image: 'https://cdn-s-www.dna.fr/images/125FCFE5-9691-406A-BAD5-0085D74BCED6/NW_raw/pour-que-le-salon-du-livre-devienne-village-culturel-des-figurines-sont-exposees-le-collectionneur-tintinophile-remy-waeldin-transporte-en-syldavie-photo-thomas-toussaint-1757270458.jpg',
-      alt: 'Livres, jeux et figurines pour un vrai "Village culturel"',
+      alt: $t('press_article_title'),
       url: 'https://www.dna.fr/culture-loisirs/2025/09/07/livres-jeux-et-figurines-pour-un-vrai-village-culturel'
     }
   }
@@ -98,7 +98,7 @@
               rounded="xl"
               prepend-icon="mdi-information-outline"
             >
-              Lire l’article
+              {{$t('read_article')}}
               <v-icon end icon="mdi-arrow-right" />
             </v-btn>
           </v-col>

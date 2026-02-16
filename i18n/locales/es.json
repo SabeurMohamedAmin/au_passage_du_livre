@@ -86,9 +86,34 @@
   "event_speakers_title": "Speakers and artists",
   "event_speakers_description": "Discover the speakers and artists taking part in our cultural events.",
   "upcoming_event_guests": "Invitados del próximo evento",
-    "see_all": "Ver todos",
+  "see_all": "Ver todos",
+  "no_event": "No hay eventos",
+  "no_archive_available": "No hay archivos disponibles por el momento",
 
 
+  "artists_speakers_title": "Artistas y Ponentes",
+  "artists_speakers_description": "Descubra los talentos que darán vida a nuestro evento. Autores reconocidos, artistas apasionados y ponentes inspiradores le esperan.",
+
+  "search_by_name_specialty": "Buscar por nombre o especialidad...",
+  "all_guests": "Todos los invitados",
+
+
+  "all": "Todos",
+  "authors": "Autores",
+  "artists": "Artistas",
+  "speakers": "Ponentes",
+  "artisans": "Artesanos",
+
+  "press_news_title": "Prensa y Actualidad",
+  "press_news_description": "Artículos, entrevistas y cobertura mediática dedicados a Au Passage du Livre y a sus iniciativas culturales.",
+
+  "press_article_title": "Libros, juegos y figuras para un verdadero \"Pueblo cultural\"",
+  "press_article_excerpt": "Tras una primera edición en 2024, el libro regresa a la Feria Europea de Estrasburgo, esta vez acompañado de juegos de mesa y figuras…",
+  "read_article": "Leer el artículo",
+  "culture": "Cultura",
+  "article": "Artículo",
+  "interview": "Entrevista",
+  "review": "Reseña",
 
   "login": "Iniciar sesión",
   "logout": "Cerrar sesión",

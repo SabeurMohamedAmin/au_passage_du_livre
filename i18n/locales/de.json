@@ -88,6 +88,33 @@
   "upcoming_event_guests": "Gäste der kommenden Veranstaltung",
   "see_all": "Alle anzeigen",
 
+  "no_event": "Keine Veranstaltungen",
+  "no_archive_available": "Derzeit keine Archive verfügbar",
+
+
+  "artists_speakers_title": "Künstler und Mitwirkende",
+  "artists_speakers_description": "Entdecken Sie die Talente, die unsere Veranstaltung zum Leben erwecken. Renommierte Autoren, leidenschaftliche Künstler und inspirierende Mitwirkende erwarten Sie.",
+
+  "search_by_name_specialty": "Nach Name oder Fachgebiet suchen...",
+  "all_guests": "Alle Gäste",
+
+  "all": "Alle",
+  "authors": "Autoren",
+  "artists": "Künstler",
+  "speakers": "Referenten",
+  "artisans": "Handwerker",
+
+  "press_news_title": "Presse & Nachrichten",
+  "press_news_description": "Artikel, Interviews und Medienberichte über Au Passage du Livre und seine kulturellen Aktivitäten.",
+
+  "press_article_title": "Bücher, Spiele und Figuren für ein echtes „Kulturdorf“",
+  "press_article_excerpt": "Nach einer ersten Ausgabe im Jahr 2024 kehrt das Buch zur Europäischen Messe in Straßburg zurück – diesmal umgeben von Gesellschaftsspielen und Figuren…",
+  "read_article": "Artikel lesen",
+  "culture": "Kultur",
+  "article": "Artikel",
+  "interview": "Interview",
+  "review": "Rezension",
+
 
   "login": "Anmelden",
   "logout": "Abmelden",

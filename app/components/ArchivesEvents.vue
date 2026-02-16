@@ -304,10 +304,10 @@ onUnmounted(() => {
               mdi-archive-off-outline
             </v-icon>
             <div class="text-h6 mb-1">
-              Aucun événement
+              {{$t('no_event')}}
             </div>
             <div class="text-body-2 text-medium-emphasis">
-              Aucun archive disponible pour {{ selectedYear }}.
+              {{$t('no_archive_available')}} {{ selectedYear }}.
             </div>
           </v-sheet>
         </v-col>

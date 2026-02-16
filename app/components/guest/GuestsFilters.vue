@@ -39,7 +39,7 @@
             :model-value="modelValueSearch"
             @update:model-value="updateSearch"
             prepend-inner-icon="mdi-magnify"
-            placeholder="Rechercher par nom, spécialité..."
+            :placeholder="$t('search_by_name_specialty')"
             variant="outlined"
             density="comfortable"
             rounded="lg"
@@ -61,7 +61,7 @@
               class="cursor-pointer"
               @click="updateFilter(category.value)"
             >
-              {{ category.label }}
+              {{ $t(category.label) }}
             </v-chip>
             <!-- Reset -->
             <v-icon
