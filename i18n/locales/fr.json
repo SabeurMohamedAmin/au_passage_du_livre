@@ -112,6 +112,52 @@
   "interview": "Interview",
   "review": "Critique",
 
+  "contact_cta_paragraph": "Une question sur le festival ? Envie de nous rejoindre ou de devenir partenaire ? Notre équipe est à votre écoute.",
+  "address_label": "Adresse",
+
+  "email_label": "Email",
+  "message_sent": "Message envoyé",
+  "message_sent_description": "Merci de nous avoir contactés. Nous reviendrons vers vous très prochainement.",
+  "send_another_message": "Envoyer un autre message",
+  "contact_us": "Contactez-nous",
+  "data_consent": "J'accepte que mes données soient traitées pour répondre à ma demande.",
+  "send_message": "Envoyer le message",
+
+  "full_name": "Nom complet",
+  "email_address": "Adresse e-mail",
+  "subject_request": "Sujet de votre demande",
+  "subject_general": "Information générale",
+  "subject_sponsor": "Devenir sponsor",
+  "subject_volunteer": "Bénévolat",
+  "subject_other": "Autre",
+  "your_message": "Votre message",
+
+  "association_journal_title": "Journal de l’Association",
+  "association_journal_description": "Découvrez les dernières actualités sur le terrain, les témoignages de bénévoles et les prochains événements solidaires.",
+  "search_articles": "Rechercher des articles...",
+  "no_articles_found": "Aucun article trouvé",
+  "adjust_search_or_category": "Essayez d'ajuster votre recherche ou catégorie.",
+
+  "events": "Événements",
+  "community": "Communauté",
+  "news": "Actualités",
+
+  "hero_events": "Événements culturels",
+  "hero_support_artists": "Soutien aux artistes",
+  "hero_transmit_culture": "Transmettre la culture",
+
+  "footer_support": "Support",
+  "footer_privacy": "Politique de confidentialité",
+  "footer_faq": "FAQ",
+  "footer_terms": "Conditions générales",
+  "copyright": "Au Passage du Livre. Tous droits réservés.",
+
+  "footer_explore": "Explorer",
+  "footer_about": "À propos",
+  "footer_schedule": "Programme",
+  "footer_speakers": "Intervenants",
+  "footer_blog": "Blog",
+
 
   "login": "Connexion",
   "logout": "Déconnexion",

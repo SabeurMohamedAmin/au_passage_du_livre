@@ -25,8 +25,8 @@
             Au passage du livre
           </span>
         </div>
-        <p class="text-grey-lighten-1 mb-6 text-body-2">
-          Évènements culturels Soutien aux artistes Transmettre la culture.
+        <p class="text-start text-grey-lighten-1 mb-6 text-body-2">
+          {{$t('hero_events')}} {{$t('hero_support_artists')}} {{$t('hero_transmit_culture')}}
         </p>
         <div class="d-flex gap-4 justify-center justify-md-start">
           <!-- Link to socials media -->
@@ -61,38 +61,38 @@
       
       <v-col cols="6" md="2">
         <div class="text-subtitle-1 font-weight-bold mb-6">
-          Explore
+          {{$t('footer_explore')}}
         </div>
         <div class="d-flex flex-column gap-2 text-body-2">
           <nuxt-link :to="$localePath('/about-us')" class="rounded-lg py-1 hover-btn text-decoration-none opacity-70">
-            About Us
+            {{$t('footer_about')}}
           </nuxt-link>
           <nuxt-link :to="$localePath('/evenements#future_events')" class="rounded-lg py-1 hover-btn text-decoration-none text-surface-intervan opacity-70">
-            Schedule
+            {{$t('footer_schedule')}}
           </nuxt-link>
           <nuxt-link :to="$localePath('/artistes-et-intervenants')" class="rounded-lg py-1 hover-btn text-decoration-none opacity-70">
-            Speakers
+            {{$t('footer_speakers')}}
           </nuxt-link>
           <nuxt-link :to="$localePath('/blog')" class="rounded-lg py-1 hover-btn text-decoration-none opacity-70">
-            Blog
+            {{$t('footer_blog')}}
           </nuxt-link>
         </div>
       </v-col>
 
       <v-col cols="6" md="2">
-        <div class="text-subtitle-1 font-weight-bold mb-6">Support</div>
+        <div class="text-subtitle-1 font-weight-bold mb-6">{{$t('footer_support')}}</div>
         <div class="d-flex flex-column gap-2 text-body-2">
           <nuxt-link :to="$localePath('/contactez-nous')" class="rounded-lg py-1 hover-btn text-decoration-none opacity-70">
-            Contact
+            {{$t('contact us')}}
           </nuxt-link>
           <nuxt-link :to="$localePath('/about-us')" class="rounded-lg py-1 hover-btn text-decoration-none opacity-70">
-            FAQ
+            {{$t('footer_faq')}}
           </nuxt-link>
           <nuxt-link :to="$localePath('/about-us')" class="rounded-lg py-1 hover-btn text-decoration-none opacity-70">
-            Privacy Policy
+            {{$t('footer_privacy')}}
           </nuxt-link>
           <nuxt-link :to="$localePath('/about-us')" class="rounded-lg py-1 hover-btn text-decoration-none  opacity-70">
-            Terms
+            {{$t('footer_terms')}}
           </nuxt-link>
         </div>
       </v-col>
@@ -126,7 +126,7 @@
     <v-divider class="my-12 border-opacity-25"/>
           
     <div class="text-center text-caption text-grey">
-      &copy; {{new Date().getFullYear()}} Au passage du livre. Tous droits réservés.
+      &copy; {{new Date().getFullYear()}} {{ $t('copyright') }}
     </div>
   </v-container>
           

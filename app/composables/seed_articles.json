@@ -9,7 +9,7 @@
       "author": "Jane Doe",
       "authorImage": "https://picsum.photos/id/12/800/400",
       "date": "2023-10-15",
-      "category": "Events"
+      "category": "events"
     },
     {
       "id": "2",
@@ -21,7 +21,7 @@
       "author": "John Smith",
       "authorImage": "https://picsum.photos/id/20/800/400",
       "date": "2023-11-02",
-      "category": "Community"
+      "category": "community"
     },
     {
       "id": "3",
@@ -33,7 +33,7 @@
       "author": "Sarah Lee",
       "authorImage": "https://picsum.photos/id/29/800/400",
       "date": "2023-12-01",
-      "category": "News"
+      "category": "news"
     },
     {
       "id": "4",
@@ -45,7 +45,7 @@
       "author": "Jane Doe",
       "authorImage": "https://picsum.photos/id/12/800/400",
       "date": "2023-10-15",
-      "category": "Events"
+      "category": "events"
     },
     {
       "id": "5",
@@ -57,7 +57,7 @@
       "author": "John Smith",
       "authorImage": "https://picsum.photos/id/20/800/400",
       "date": "2023-11-02",
-      "category": "Community"
+      "category": "community"
     },
     {
       "id": "6",
@@ -69,6 +69,6 @@
       "author": "Sarah Lee",
       "authorImage": "https://picsum.photos/id/29/800/400",
       "date": "2023-12-01",
-      "category": "News"
+      "category": "news"
     }
   ]

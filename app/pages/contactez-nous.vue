@@ -1,4 +1,12 @@
 <script setup lang="ts">
+
+/**
+ *** IMPORTANT NOTE
+ * KEEP NOTE THAT THERE SOMETHING TO FIX WITH THE FORM
+ * SUBJECT OF THE EMAIL AND TRANSLATION
+ * 
+ */
+
 /* ─────────────────────────────────────────────
    FORM STATE
    ───────────────────────────────────────────── */
@@ -9,7 +17,7 @@ const submitted = ref(false)
 /* ─────────────────────────────────────────────
    FORM DATA
    ───────────────────────────────────────────── */
-const form = reactive({
+const form = useState('contact-form', () => ({
   name: '',
   email: '',
   subject: 'Information Générale',
@@ -17,89 +25,91 @@ const form = reactive({
   consent: false,
   company:'',
   website:''
-})
+}))
 
 /* ─────────────────────────────────────────────
-   VALIDATION RULES
-   Simple & readable
-   ───────────────────────────────────────────── */
-const rules = {
-  required: (v: any) => !!v || 'Champ requis',
+  VALIDATION RULES
+  Simple & readable
+  ───────────────────────────────────────────── */
+  const rules = {
+    required: (v: any) => !!v || 'Champ requis',
 
-  name: (v: string) =>
-    (!!v && v.length >= 2) || 'Le nom doit comporter au moins 2 caractères',
+    name: (v: string) =>
+      (!!v && v.length >= 2) || 'Le nom doit comporter au moins 2 caractères',
 
-  email: (v: string) =>
-    /.+@.+\..+/.test(v) || 'E-mail non valide',
+    email: (v: string) =>
+      /.+@.+\..+/.test(v) || 'E-mail non valide',
 
-  consent: (v: boolean) =>
-    v || 'Vous devez accepter pour continuer',
-}
+    consent: (v: boolean) =>
+      v || 'Vous devez accepter pour continuer',
+  }
 
 /* ─────────────────────────────────────────────
-   SELECT OPTIONS
-   ───────────────────────────────────────────── */
-const subjects = [
-  'Information Générale',
-  'Devenir Sponsor',
-  'Bénévolat',
-  'Autre',
-]
+  SELECT OPTIONS (Computed)
+  ───────────────────────────────────────────── */
+const { t } = useI18n();
+const subjects = computed(() => [
+  { title: t('subject_general'),   value: 'Information Générale' },
+  { title: t('subject_sponsor'),   value: 'Devenir Sponsor' },
+  { title: t('subject_volunteer'), value: 'Bénévolat' },
+  { title: t('subject_other'),     value: 'Autre' },
+])
 
 /* ─────────────────────────────────────────────
    SUBMIT HANDLER (mock)
    ───────────────────────────────────────────── */
-const handleSubmit = async () => {
-  if (!valid.value) return
+  const handleSubmit = async () => {
+    if (!valid.value) return
 
-  loading.value = true
+    loading.value = true
 
-  try {
-    await $fetch('/api/contact', {
-      method: 'POST',
-      body: {
-        name: form.name,
-        email: form.email,
-        subject: form.subject,
-        message: form.message,
-         // 1.
-        company: '', 
-        website: '', 
-      },
-    })
+    try {
+      await $fetch('/api/contact', {
+        method: 'POST',
+        body: {
+          name: form.value.name,
+          email: form.value.email,
+          subject: form.value.subject,
+          message: form.value.message,
+          // 1.
+          company: '', 
+          website: '', 
+        },
+      })
 
-    submitted.value = true
-  } catch (error) {
-    console.error(error)
-    alert('Erreur lors de l’envoi du message')
-  } finally {
-    formReset();
-    loading.value = false
+      submitted.value = true
+    } catch (error) {
+      console.error(error)
+      alert('Erreur lors de l’envoi du message')
+    } finally {
+      formReset();
+      loading.value = false
+    }
   }
-}
 
-const formReset = ()=>{
-  form.company = ''
-  form.consent = false
-  form.email = ''
-  form.message = ''
-  form.name= ''
-  form.subject= ''
-  form.website= ''
-}
+  const formReset = ()=>{
+    form.value.company = ''
+    form.value.consent = false
+    form.value.email = ''
+    form.value.message = ''
+    form.value.name= ''
+    form.value.subject= ''
+    form.value.website= ''
+  }
 
 /* ─────────────────────────────────────────────
    SOCIAL LINKS
    ───────────────────────────────────────────── */
-const socials = {
-  facebook: 'https://www.facebook.com/profile.php?id=61577974919681',
-  instagram: 'https://www.facebook.com/profile.php?id=61577974919681',
-  youtube: 'https://www.facebook.com/profile.php?id=61577974919681',
-}
+  const socials = {
+    facebook: 'https://www.facebook.com/profile.php?id=61577974919681',
+    instagram: 'https://www.facebook.com/profile.php?id=61577974919681',
+    youtube: 'https://www.facebook.com/profile.php?id=61577974919681',
+  }
 
-definePageMeta({
-  layout: "only-topnav"
-})
+  definePageMeta({
+    layout: "only-topnav",
+    keepalive: true
+  });
 </script>
 
 <template>
@@ -135,9 +145,7 @@ definePageMeta({
             </div>
 
             <p class="text-body-1 font-weight-light mb-8 opacity-90">
-              Une question sur le festival ?  
-              Envie de nous rejoindre ou de devenir partenaire ?  
-              Notre équipe est à votre écoute.
+              {{ $t('contact_cta_paragraph') }}
             </p>
 
             <v-list lines="two" bg-color="transparent" class="pa-0">
@@ -147,7 +155,7 @@ definePageMeta({
                 </template>
 
                 <v-list-item-title class="font-weight-bold">
-                  Adresse
+                  {{$t('address_label')}}
                 </v-list-item-title>
 
                 <v-list-item-subtitle class="opacity-80 mt-1">
@@ -161,7 +169,7 @@ definePageMeta({
                 </template>
 
                 <v-list-item-title class="font-weight-bold">
-                  Email
+                  {{$t('email_label')}}
                 </v-list-item-title>
 
                 <v-list-item-subtitle class="opacity-80 mt-1">
@@ -203,22 +211,21 @@ definePageMeta({
           >
             <v-icon color="success" icon="mdi-check-circle-outline" size="80" class="mb-4"/>
             <h3 class="text-h4 font-weight-bold mb-2">
-              Message envoyé !
+              {{$t('message_sent')}}
             </h3>
             <p class="text-body-1 text-medium-emphasis mb-6">
-              Merci de nous avoir contactés.  
-              Nous reviendrons vers vous très prochainement.
+              {{$t('message_sent_description')}}
             </p>
 
             <v-btn size="large" @click="submitted = false">
-              Envoyer un autre message
+              {{$t('send_another_message')}}
             </v-btn>
           </div>
 
           <!-- FORM -->
           <div v-else>
             <h3 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70 text-uppercase">
-              Contactez-nous
+              {{$t('contact_us')}}
             </h3>
 
             <v-form v-model="valid" @submit.prevent="handleSubmit">
@@ -226,7 +233,7 @@ definePageMeta({
                 <v-col cols="12" md="6">
                   <v-text-field
                     v-model="form.name"
-                    label="Nom complet"
+                    :label="$t('full_name')"
                     :rules="[rules.required, rules.name]"
                     variant="outlined"
                     rounded="lg"
@@ -239,7 +246,7 @@ definePageMeta({
                 <v-col cols="12" md="6">
                   <v-text-field
                     v-model="form.email"
-                    label="Adresse E-mail"
+                    :label="$t('email_address')"
                     :rules="[rules.required, rules.email]"
                     variant="outlined"
                     rounded="lg"
@@ -275,8 +282,10 @@ definePageMeta({
                   <v-select
                     v-model="form.subject"
                     :items="subjects"
-                    label="Sujet de votre demande"
+                    :label="$t('subject_request')"
                     :rules="[rules.required]"
+                    item-title="title" 
+                    item-value="value"
                     variant="outlined"
                     rounded="lg"
                     color="primary"
@@ -288,7 +297,7 @@ definePageMeta({
                 <v-col cols="12">
                   <v-textarea
                     v-model="form.message"
-                    label="Votre message"
+                    :label="$t('your_message')"
                     :rules="[rules.required]"
                     variant="outlined"
                     rounded="lg"
@@ -310,8 +319,7 @@ definePageMeta({
                   >
                     <template #label>
                       <span class="text-subtitle-2">
-                        J'accepte que mes données soient traitées
-                        pour répondre à ma demande.
+                        {{$t('data_consent')}}
                       </span>
                     </template>
                   </v-checkbox>
@@ -328,7 +336,7 @@ definePageMeta({
                     :loading="loading"
                     :disabled="!valid"
                   >
-                    Envoyer le message
+                    {{$t('send_message')}}
                     <v-icon end icon="mdi-arrow-right" class="ml-2" />
                   </v-btn>
                 </v-col>

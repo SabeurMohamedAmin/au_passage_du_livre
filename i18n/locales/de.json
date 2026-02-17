@@ -115,6 +115,51 @@
   "interview": "Interview",
   "review": "Rezension",
 
+  "contact_cta_paragraph": "Haben Sie eine Frage zum Festival? Möchten Sie uns beitreten oder Partner werden? Unser Team steht Ihnen gerne zur Verfügung.",
+  "address_label": "Adresse",
+
+  "email_label": "E-Mail",
+  "message_sent": "Nachricht gesendet",
+  "message_sent_description": "Vielen Dank für Ihre Kontaktaufnahme. Wir werden uns sehr bald bei Ihnen melden.",
+  "send_another_message": "Weitere Nachricht senden",
+  "contact_us": "Kontaktieren Sie uns",
+  "data_consent": "Ich stimme zu, dass meine Daten zur Bearbeitung meiner Anfrage verarbeitet werden.",
+  "send_message": "Nachricht senden",
+
+    "full_name": "Vollständiger Name",
+  "email_address": "E-Mail-Adresse",
+  "subject_request": "Betreff Ihrer Anfrage",
+  "subject_general": "Allgemeine Informationen",
+  "subject_sponsor": "Sponsor werden",
+  "subject_volunteer": "Freiwilligenarbeit",
+  "subject_other": "Sonstiges",
+  "your_message": "Ihre Nachricht",
+
+  "association_journal_title": "Vereinsjournal",
+  "association_journal_description": "Entdecken Sie die neuesten Berichte aus dem Feld, Geschichten von Freiwilligen und bevorstehende Wohltätigkeitsveranstaltungen.",
+  "search_articles": "Artikel suchen...",
+  "no_articles_found": "Keine Artikel gefunden",
+  "adjust_search_or_category": "Versuchen Sie, Ihre Suche oder Kategorie anzupassen.",
+
+  "community": "Community",
+  "news": "Neuigkeiten",
+
+  "hero_events": "Kulturelle Veranstaltungen",
+  "hero_support_artists": "Unterstützung für Künstler",
+  "hero_transmit_culture": "Kultur vermitteln",
+
+  "footer_support": "Support",
+  "footer_privacy": "Datenschutzrichtlinie",
+  "footer_faq": "FAQ",
+  "footer_terms": "Nutzungsbedingungen",
+
+  "footer_explore": "Entdecken",
+  "footer_about": "Über uns",
+  "footer_schedule": "Programm",
+  "footer_speakers": "Referenten",
+  "footer_blog": "Blog",
+  "copyright": "Au Passage du Livre. Alle Rechte vorbehalten.",
+
 
   "login": "Anmelden",
   "logout": "Abmelden",

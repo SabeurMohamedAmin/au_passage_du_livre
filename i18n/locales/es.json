@@ -115,6 +115,52 @@
   "interview": "Entrevista",
   "review": "Reseña",
 
+  "contact_cta_paragraph": "¿Tiene alguna pregunta sobre el festival? ¿Le gustaría unirse a nosotros o convertirse en socio? Nuestro equipo está a su disposición.",
+  "address_label": "Dirección",
+
+    "email_label": "Correo electrónico",
+  "message_sent": "Mensaje enviado",
+  "message_sent_description": "Gracias por contactarnos. Nos pondremos en contacto con usted muy pronto.",
+  "send_another_message": "Enviar otro mensaje",
+  "contact_us": "Contáctenos",
+  "data_consent": "Acepto que mis datos sean tratados para responder a mi solicitud.",
+  "send_message": "Enviar mensaje",
+
+  "full_name": "Nombre completo",
+  "email_address": "Correo electrónico",
+  "subject_request": "Asunto de su solicitud",
+  "subject_general": "Información general",
+  "subject_sponsor": "Convertirse en patrocinador",
+  "subject_volunteer": "Voluntariado",
+  "subject_other": "Otro",
+  "your_message": "Su mensaje",
+
+  "association_journal_title": "Diario de la Asociación",
+  "association_journal_description": "Descubra las últimas novedades sobre el terreno, historias de voluntarios y próximos eventos solidarios.",
+  "search_articles": "Buscar artículos...",
+  "no_articles_found": "No se encontraron artículos",
+  "adjust_search_or_category": "Intente ajustar su búsqueda o categoría.",
+
+  "community": "Comunidad",
+  "news": "Noticias",
+
+  "hero_events": "Eventos culturales",
+  "hero_support_artists": "Apoyo a los artistas",
+  "hero_transmit_culture": "Transmitir la cultura",
+
+  "footer_support": "Soporte",
+  "footer_privacy": "Política de privacidad",
+  "footer_faq": "FAQ",
+  "footer_terms": "Términos",
+
+  "footer_explore": "Explorar",
+  "footer_about": "Sobre nosotros",
+  "footer_schedule": "Programa",
+  "footer_speakers": "Ponentes",
+  "footer_blog": "Blog",
+  "copyright": "Au Passage du Livre. Todos los derechos reservados.",
+
+
   "login": "Iniciar sesión",
   "logout": "Cerrar sesión",
   "register": "Registrarse",

@@ -113,6 +113,52 @@
   "interview": "Röportaj",
   "review": "İnceleme",
 
+  "contact_cta_paragraph": "Festival hakkında bir sorunuz mu var? Bize katılmak ya da partner olmak ister misiniz? Ekibimiz size yardımcı olmaktan memnuniyet duyar.",
+  "address_label": "Adres",
+
+  "email_label": "E-posta",
+  "message_sent": "Mesaj gönderildi",
+  "message_sent_description": "Bizimle iletişime geçtiğiniz için teşekkür ederiz. En kısa sürede size geri döneceğiz.",
+  "send_another_message": "Başka bir mesaj gönder",
+  "contact_us": "Bize ulaşın",
+  "data_consent": "Talebime yanıt verilmesi için verilerimin işlenmesini kabul ediyorum.",
+  "send_message": "Mesajı gönder",
+
+  "full_name": "Ad Soyad",
+  "email_address": "E-posta adresi",
+  "subject_request": "Talebinizin konusu",
+  "subject_general": "Genelss bilgi",
+  "subject_sponsor": "Sponsor olmak",
+  "subject_volunteer": "Gönüllülük",
+  "subject_other": "Diğer",
+  "your_message": "Mesajınız",
+
+  "association_journal_title": "Dernek Günlüğü",
+  "association_journal_description": "Sahadan en son gelişmeleri, gönüllü hikayelerini ve yaklaşan yardım etkinliklerini keşfedin.",
+  "search_articles": "Makaleleri ara...",
+  "no_articles_found": "Makale bulunamadı",
+  "adjust_search_or_category": "Aramanızı veya kategorinizi değiştirmeyi deneyin.",
+
+  "community": "Topluluk",
+  "news": "Haberler",
+
+
+    "hero_events": "Kültürel Etkinlikler",
+  "hero_support_artists": "Sanatçılara Destek",
+  "hero_transmit_culture": "Kültürü Aktarmak",
+
+  "footer_support": "Destek",
+  "footer_privacy": "Gizlilik Politikası",
+  "footer_faq": "SSS",
+  "footer_terms": "Şartlar",
+
+  "footer_explore": "Keşfet",
+  "footer_about": "Hakkımızda",
+  "footer_schedule": "Program",
+  "footer_speakers": "Konuşmacılar",
+  "footer_blog": "Blog",
+  "copyright": "Au Passage du Livre. Tüm hakları saklıdır.",
+
   "login": "Giriş yap",
   "logout": "Çıkış yap",
   "register": "Kayıt ol",

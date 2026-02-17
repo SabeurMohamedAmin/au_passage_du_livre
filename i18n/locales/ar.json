@@ -134,6 +134,52 @@
   "interview": "مقابلة",
   "review": "مراجعة",
 
+  "contact_cta_paragraph": "هل لديكم سؤال حول المهرجان؟ هل ترغبون في الانضمام إلينا أو أن تصبحوا شركاء؟ فريقنا في خدمتكم.",
+  "address_label": "العنوان",
+  "email_label": "البريد الإلكتروني",
+  "message_sent": "تم إرسال الرسالة",
+  "message_sent_description": "شكراً لتواصلكم معنا. سنعود إليكم في أقرب وقت ممكن.",
+  "send_another_message": "إرسال رسالة أخرى",
+  "contact_us": "اتصل بنا",
+  "data_consent": "أوافق على معالجة بياناتي للرد على طلبي.",
+  "send_message": "إرسال الرسالة",
+
+  "full_name": "الاسم الكامل",
+  "email_address": "عنوان البريد الإلكتروني",
+  "subject_request": "موضوع طلبكم",
+  "subject_general": "معلومات عامة",
+  "subject_sponsor": "أن تصبح راعياً",
+  "subject_volunteer": "التطوع",
+  "subject_other": "أخرى",
+  "your_message": "رسالتكم",
+
+  "association_journal_title": "مجلة الجمعية",
+  "association_journal_description": "اكتشفوا آخر المستجدات من الميدان، قصص المتطوعين والفعاليات الخيرية القادمة.",
+  "search_articles": "ابحث في المقالات...",
+  "no_articles_found": "لم يتم العثور على مقالات",
+  "adjust_search_or_category": "حاول تعديل البحث أو الفئة.",
+
+
+  "community": "المجتمع",
+  "news": "الأخبار",
+
+  "hero_events": "فعاليات ثقافية",
+  "hero_support_artists": "دعم الفنانين",
+  "hero_transmit_culture": "نقل الثقافة",
+
+  "footer_support": "الدعم",
+  "footer_privacy": "سياسة الخصوصية",
+  "footer_faq": "الأسئلة الشائعة",
+  "footer_terms": "الشروط",
+
+  "footer_explore": "استكشاف",
+  "footer_about": "من نحن",
+  "footer_schedule": "البرنامج",
+  "footer_speakers": "المتحدثون",
+  "footer_blog": "المدونة",
+  "copyright": "Au Passage du Livre. جميع الحقوق محفوظة.",
+
+
   "login to account": "تسجيل الدخول إلى حسابك",
   "login using your credentials": "تسجيل الدخول باستخدام بيانات الاعتماد الخاصة بك",
   "login using your facebook account": "تسجيل الدخول باستخدام فيسبوك",

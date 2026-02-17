@@ -1,12 +1,12 @@
 <script setup lang="ts">
   const { articles } = useArticles();
   const search = ref('');
-  const activeCategory = ref('All');
+  const activeCategory = ref('all');
 
   // Extract unique categories from articles
   const categories = computed(() => {
-    const cats = new Set(articles.value.map(a => a.category));
-    return ['All', ...Array.from(cats)];
+    const cats = ['all', 'events', 'news', 'community'];
+    return cats;
   })
 
   // Filter Logic: Search + Category
@@ -14,7 +14,7 @@
     let temp = articles.value;
 
     // 1. Filter by Category
-    if (activeCategory.value !== 'All') {
+    if (activeCategory.value !== 'all') {
       temp = temp.filter(a => a.category === activeCategory.value);
     }
 
@@ -51,12 +51,11 @@
     <header class="mb-10">
       <div class="d-flex mb-4">
         <h2 class="w-100 text-h5 text-sm-h4 font-weight-black opacity-70">
-          Association Journal
+          {{$t('association_journal_title')}}
         </h2>
       </div>
       <p class="text-subtitle-1 text-medium-emphasis max-w-lg">
-        Discover the latest updates from the field,
-        volunteer stories, and upcoming charity events.
+        {{$t('association_journal_description')}}
       </p>
     </header>
 
@@ -69,7 +68,7 @@
             :value="cat" 
             class="text-capitalize"
           >
-            {{ cat }}
+            {{ $t(cat) }}
           </v-tab>
         </v-tabs>
       </v-col>
@@ -79,7 +78,7 @@
           hide-details
           rounded="lg"
           variant="outlined"
-          label="Search articles..."
+          :label="$t('search_articles')"
           prepend-inner-icon="mdi-magnify"
         />
       </v-col>
@@ -159,10 +158,10 @@
     <div v-if="filteredArticles.length === 0" class="text-center py-16">
       <v-icon icon="mdi-newspaper-variant-outline" size="64" class="mb-4" />
       <h3 class="text-h6 ">
-        No articles found
+        {{$t('no_articles_found')}}
       </h3>
       <p class="text-caption">
-        Try adjusting your search or category.
+        {{$t('adjust_search_or_category')}}
       </p>
     </div>
   </v-container>
