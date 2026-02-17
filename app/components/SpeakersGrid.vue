@@ -129,9 +129,9 @@
             >
             <nuxt-link 
               :to="$localePath('/artistes-et-intervenants')"
-              class="text-decoration-none text-h5 text-center"
+              class="text-decoration-none text-h6 text-center mx-2"
             >
-              see all artistes and intervenants
+              {{$t('see_all_artists_speakers')}}
             </nuxt-link>
           </v-card>
       </v-hover>
