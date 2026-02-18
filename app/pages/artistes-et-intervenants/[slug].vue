@@ -61,16 +61,7 @@
             Auteur / Intervenant
           </span>
           <div class="d-flex gap-2">
-            <v-btn 
-              icon="mdi-share-variant-outline" 
-              variant="text" density="comfortable" 
-              color="grey-darken-1" size="small"
-            />
-            <v-btn 
-              icon="mdi-heart-outline" variant="text"
-              density="comfortable" color="grey-darken-1"
-              size="small"
-            />
+            <ShareNav :guest-name="author.name" />
           </div>
         </div>
 
