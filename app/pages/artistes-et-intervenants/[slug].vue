@@ -16,11 +16,23 @@
 
   // Assuming these composables exist in your project
   const { guests } = useGuests();
-  const { slug }  = useRoute().params
-  const author = computed(() => {
-    return guests.value.find((guest) => guest.slug === slug);
-  });
+  const { slug }  = useRoute().params;
 
+  // useFetch uses top-level await by default in Nuxt setup
+  const { data: author, error } = await useFetch(`/api/guest-profile`, {
+    params:{
+      slug: slug
+    }
+  });
+  watchEffect(()=>{
+    if(error.value){
+      throw createError({
+        statusCode: 404,
+        statusMessage: 'Guest not found!!',
+      });
+    }
+  })
+  
   const relatedEvents = ref<RelatedEvent[]>([
     { id: 1, title: 'Atelier d\'écriture : Le Polar', image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1000&auto=format&fit=crop', link: '#' },
     { id: 2, title: 'Conférence : L\'histoire du papier', image: 'https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?q=80&w=1000&auto=format&fit=crop', link: '#' }
@@ -61,7 +73,7 @@
             Auteur / Intervenant
           </span>
           <div class="d-flex gap-2">
-            <ShareNav :guest-name="author.name" />
+            <ShareNav :title="author.name" />
           </div>
         </div>
 

@@ -39,7 +39,7 @@
               class="hover-bg-light"
             />
           </nuxt-link>
-          <nuxt-link to="https://www.facebook.com/profile.php?id=61577974919681é" class="text-primary text-decoration-none opacity-70">
+          <nuxt-link rel="noopener noreferrer" target="_blank" to="https://www.facebook.com/profile.php?id=61577974919681" class="text-primary text-decoration-none opacity-70">
             <v-btn
               icon="mdi-facebook"
               variant="tonal"
