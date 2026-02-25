@@ -46,7 +46,12 @@ export function useEventHeroContent() {
    * - Keep as absolute path (Nuxt public/)
    * - SSR & production safe
    */
-  const HERO_IMAGE_URL = '/img/home/foire-europeenne-2.png'
+  const HERO_IMAGE_URL = {
+    desktop: '/img/home/foire-europeenne-desk.jpg',
+    laptop: '/img/home/foire-europeenne-laptop.jpg',
+    tablet: '/img/home/foire-europeenne-tablet.jpg',
+    mobile: '/img/home/foire-europeenne-mobile.jpg'
+  }
 
   /**
    * Page content
