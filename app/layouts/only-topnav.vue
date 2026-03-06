@@ -165,7 +165,7 @@ const baseMenu: MenuItem[] = [
   <!-- Mobile Drawer -->
     <v-navigation-drawer v-if="!mdAndUp" v-model="isMobileOpen" temporary width="300" :class="{'the_drawer': isScrolled && isMobileOpen}">
       <v-list density="comfortable" class="d-flex flex-column mx-2 ga-2">
-        <BaseThemeToggle class="justify-start mb-4" />
+        <base-theme-toggle class="justify-start mb-4" />
         <v-list-item
           @click="isMobileOpen = false"
           v-for="item in baseMenu"
