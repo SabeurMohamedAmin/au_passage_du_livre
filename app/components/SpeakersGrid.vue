@@ -1,6 +1,13 @@
 <script lang="ts" setup>
   import { useDisplay } from 'vuetify';
   
+  const props = defineProps<{
+    title: string;
+    description: string;
+    seeAllLabel: string;
+    seeAllLink: string;
+  }>();
+
   const { iconArrowRight } = useRtlIcons();
   const { sm, md, lgAndUp } = useDisplay()
   
@@ -26,10 +33,10 @@
     <!-- Title -->
     <v-col cols="12" md="8">
       <h2 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70">
-        {{$t('guests_title')}}
+        {{title}}
       </h2>
       <p class="text-body-1 text-medium-emphasis">
-        {{$t('guests_description')}}
+        {{description}}
       </p>
     </v-col>
   
@@ -43,9 +50,9 @@
         color="primary"
         variant="outlined"
         class="font-weight-bold text-body-1 rounded-xl"
-        :to="$localePath('/artistes-et-intervenants')"
+        :to="$localePath(seeAllLink)"
       >
-        {{$t('see_all_guests')}}
+        {{seeAllLabel}}
         <v-icon end :icon="iconArrowRight" />
       </v-btn>
     </v-col>

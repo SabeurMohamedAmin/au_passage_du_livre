@@ -4,7 +4,7 @@
 
 <template>
   <v-row class="mb-2" justify="space-between">
-      <v-col class="text-left" cols="12" md="8">
+      <v-col cols="12" md="8">
         <h2 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70">
           {{$t('blog_title')}}
         </h2>

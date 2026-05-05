@@ -176,10 +176,10 @@ watch(locale, () => homeStore.fetchHomePage())
   <section class="py-5 my-md-10 scroll-mt-6">
     <v-container>
       <speakers-grid
-        :title="content?.speakersTitle"
-        :description="content?.speakersDescription"
-        :see-all-label="content?.speakersSeeAllLabel"
-        :see-all-link="content?.speakersSeeAllLink"
+        :title="content?.speakersTitle ?? ''"
+        :description="content?.speakersDescription ?? ''"
+        :see-all-label="content?.speakersSeeAllLabel ?? ''"
+        :see-all-link="content?.speakersSeeAllLink ?? ''"
       />
     </v-container>
   </section>
