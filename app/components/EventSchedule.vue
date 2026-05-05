@@ -102,7 +102,7 @@
                   >
                     <!-- HEADER -->
                     <v-expansion-panel-title class="pa-4 border">
-                      <v-row no-gutters align="center" class="w-75">
+                      <v-row density="compact" align="center" class="w-75">
                         <!-- TIME -->
                         <v-col
                           cols="12" sm="3" md="2" 

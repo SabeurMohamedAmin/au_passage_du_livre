@@ -75,7 +75,7 @@
   <div class="transition-all" :class="theme.global.current.value.dark ? 'bg-texture-dark' : 'bg-texture-paper'">
 
     <!-- Nos missions -->
-    <v-container class="py-18">
+    <v-container class="py-18 container-with-90">
       <v-row 
         v-for="(mission, index) in missions" 
         :key="mission.id"

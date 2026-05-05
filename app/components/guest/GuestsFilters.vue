@@ -32,7 +32,7 @@
 <template>
   <v-card class="background-opacity-sticky rounded-xl border-thin mb-8">
     <v-card-text class="pa-4 pa-md-6">
-      <v-row align="center" dense>
+      <v-row align="center" density="comfortable">
         <!-- Search -->
         <v-col cols="12" md="6">
           <v-text-field

@@ -59,7 +59,7 @@
 
       <!-- Layer 2: Content -->
       <div class="content-layer pa-6 h-100 d-flex flex-column">
-        <v-row dense>
+        <v-row density="comfortable">
           <v-col cols="12">
 
             <!-- Publisher Badge -->

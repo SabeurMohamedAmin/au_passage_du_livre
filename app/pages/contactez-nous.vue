@@ -121,7 +121,7 @@ const subjects = computed(() => [
       elevation="2"
       rounded="lg"
     >
-      <v-row no-gutters>
+      <v-row density="compact">
         <!-- LEFT COLUMN : INFO -->
         <v-col
           cols="12"
@@ -229,7 +229,7 @@ const subjects = computed(() => [
             </h3>
 
             <v-form v-model="valid" @submit.prevent="handleSubmit">
-              <v-row dense>
+              <v-row density="comfortable">
                 <v-col cols="12" md="6">
                   <v-text-field
                     v-model="form.name"

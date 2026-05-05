@@ -47,7 +47,7 @@
 </script>
 
 <template>
-  <v-container class="py-6">
+  <v-container class="py-6 container-with-90">
     <header class="mb-10">
       <div class="d-flex mb-4">
         <h2 class="w-100 text-h5 text-sm-h4 font-weight-black opacity-70">
@@ -89,7 +89,7 @@
         class="rounded-xl overflow-hidden" 
         elevation="4"
       >
-        <v-row no-gutters>
+        <v-row density="compact">
           <v-col cols="12" md="7">
             <v-img 
               :src="heroArticle.image"

@@ -1,136 +1,156 @@
 <script setup lang="ts">
-  /* ============================================================
-    PRESSE & ACTUALITÉS - FINAL MERGE
-    - Clean Editorial Hero
-    - Rich Data Cards (Chips, Logos)
-    - Stats & Contact sections included
-    ============================================================ */
-  // Press articles data definition
-  interface PressArticle {
-    id: number
-    title: string
-    excerpt: string
-    publisher: string
-    publisherLogo: string // Using placeholder text for logos
-    date: string
-    category: 'article' | 'interview' | 'review' | 'culture'
-    image: string
-    alt?: string
-    url: string
-  };
+/* ============================================================
+  PRESSE & ACTUALITÉS
+  - Improved typing
+  - Cleaner article/category handling
+  - Same layout and styling spirit
+============================================================ */
 
-  // Content Configuration
-  const content = {
-    hero: {
-      title: $t('press_news_title'),
-      subtitle: $t('press_news_description')
-    },
-    featured: <PressArticle>{
-      id: 0,
-      title: $t('press_article_title'),
-      excerpt: $t('press_article_excerpt'),
-      publisher: 'DNA',
-      publisherLogo: 'https://ui-avatars.com/api/?name=DNA&background=e60000&color=fff&size=64',
-      date: '07 Sept 2025',
-      category: $t('culture'),
-      image: 'https://cdn-s-www.dna.fr/images/125FCFE5-9691-406A-BAD5-0085D74BCED6/NW_raw/pour-que-le-salon-du-livre-devienne-village-culturel-des-figurines-sont-exposees-le-collectionneur-tintinophile-remy-waeldin-transporte-en-syldavie-photo-thomas-toussaint-1757270458.jpg',
-      alt: $t('press_article_title'),
-      localUrl: 'livres-jeux-et-figurines-pour-un-vrai-village-culturel',
-      url: 'https://www.dna.fr/culture-loisirs/2025/09/07/livres-jeux-et-figurines-pour-un-vrai-village-culturel'
-    },
-    stats: [
-      { value: '50+', label: 'Mentions dans la presse' },
-      { value: '15+', label: 'Publications partenaires' },
-      { value: '200k+', label: 'Lecteurs touchés' }
-    ]
-  };
+type PressCategory = 'article' | 'interview' | 'review' | 'culture'
 
-  // Sample Data
-  const pressArticles: PressArticle[] = [
-    {
-      id: 1,
-      title: $t('press_article_title'),
-      excerpt: $t('press_article_excerpt'),
-      publisher: 'DNA',
-      publisherLogo: 'https://ui-avatars.com/api/?name=DNA&background=e60000&color=fff&size=64',
-      date: '15 Jan 2026',
-      category: $t('culture') as PressArticle['category'],
-      image: 'https://cdn-s-www.dna.fr/images/125FCFE5-9691-406A-BAD5-0085D74BCED6/NW_raw/pour-que-le-salon-du-livre-devienne-village-culturel-des-figurines-sont-exposees-le-collectionneur-tintinophile-remy-waeldin-transporte-en-syldavie-photo-thomas-toussaint-1757270458.jpg',
-      alt: $t('press_article_title'),
-      url: 'https://www.dna.fr/culture-loisirs/2025/09/07/livres-jeux-et-figurines-pour-un-vrai-village-culturel'
-    },
-    {
-      id: 2,
-      title: 'Quand la littérature crée du lien social : Interview',
-      excerpt: 'Rencontre avec Michel Amiet qui nous explique la vision solidaire de l\'association.',
-      publisher: 'France Bleu',
-      publisherLogo: 'https://ui-avatars.com/api/?name=FB&background=0055ff&color=fff&size=64',
-      date: '28 Déc 2025',
-      category: $t('interview')as PressArticle['category'],
-      image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600&auto=format&fit=crop',
-      url: '#'
-    },
-    {
-      id: 3,
-      title: 'Une vision moderne de l’engagement culturel',
-      excerpt: 'Analyse des nouvelles méthodes de promotion de la lecture en région Grand Est.',
-      publisher: 'Culture Mag',
-      publisherLogo: 'https://ui-avatars.com/api/?name=CM&background=143c28&color=fff&size=64',
-      date: '10 Nov 2025',
-      category: $t('article')as PressArticle['category'],
-      image: 'https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?q=80&w=600&auto=format&fit=crop',
-      url: '#'
-    },
-    {
-      id: 4,
-      title: 'Les bienfaits de la lecture pour les jeunes',
-      excerpt: 'L\'association intervient dans les écoles pour sensibiliser les plus petits.',
-      publisher: 'Le Figaro',
-      publisherLogo: 'https://ui-avatars.com/api/?name=LF&background=000&color=fff&size=64',
-      date: '05 Oct 2025',
-      category: $t('article')as PressArticle['category'],
-      image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600&auto=format&fit=crop',
-      url: '#'
-    },
-    {
-      id: 5,
-      title: 'L\'association lance son nouveau site web',
-      excerpt: 'Une plateforme numérique repensée pour mieux servir les adhérents et le public.',
-      publisher: 'Web News',
-      publisherLogo: 'https://ui-avatars.com/api/?name=WN&background=666&color=fff&size=64',
-      date: '28 Sep 2025',
-      category: $t('review')as PressArticle['category'],
-      image: 'https://images.unsplash.com/photo-1507842217159-a28f26809398?q=80&w=600&auto=format&fit=crop',
-      url: '#'
-    },
-    {
-      id: 6,
-      title: 'Agenda : Les sorties culturelles de la rentrée',
-      excerpt: 'Ne manquez pas les prochains marchés aux livres organisés par l\'équipe.',
-      publisher: 'Strasbourg.eu',
-      publisherLogo: 'https://ui-avatars.com/api/?name=SX&background=9c27b0&color=fff&size=64',
-      date: '01 Sep 2025',
-      category: $t('culture')as PressArticle['category'],
-      image: 'https://images.unsplash.com/photo-1544928147-79a2af1f3a94?q=80&w=600&auto=format&fit=crop',
-      url: '#'
-    }
-  ];
+interface PressArticle {
+  id: number
+  title: string
+  excerpt: string
+  publisher: string
+  publisherLogo: string
+  date: string
+  category: PressCategory
+  image: string
+  alt?: string
+  url: string
+  localUrl?: string
+}
 
-  // Helper for chip colors
-  const getCategoryColor = (category: string) => {
-    switch(category) {
-      case 'Article': return 'blue-darken-1'
-      case 'Interview': return 'orange-darken-1'
-      case 'Review': return 'green-darken-1'
-      case 'Event Coverage': return 'purple-darken-1'
-      default: return 'grey'
-    }
-  };
+const categoryLabels: Record<PressCategory, string> = {
+  article: $t('article'),
+  interview: $t('interview'),
+  review: $t('review'),
+  culture: $t('culture'),
+}
 
+const content = {
+  hero: {
+    title: $t('press_news_title'),
+    subtitle: $t('press_news_description'),
+  },
+  featured: {
+    id: 0,
+    title: $t('press_article_title'),
+    excerpt: $t('press_article_excerpt'),
+    publisher: 'DNA',
+    publisherLogo: 'https://ui-avatars.com/api/?name=DNA&background=e60000&color=fff&size=64',
+    date: '07 Sept 2025',
+    category: 'culture' as PressCategory,
+    image:
+      'https://cdn-s-www.dna.fr/images/125FCFE5-9691-406A-BAD5-0085D74BCED6/NW_raw/pour-que-le-salon-du-livre-devienne-village-culturel-des-figurines-sont-exposees-le-collectionneur-tintinophile-remy-waeldin-transporte-en-syldavie-photo-thomas-toussaint-1757270458.jpg',
+    alt: $t('press_article_title'),
+    localUrl: 'livres-jeux-et-figurines-pour-un-vrai-village-culturel',
+    url: 'https://www.dna.fr/culture-loisirs/2025/09/07/livres-jeux-et-figurines-pour-un-vrai-village-culturel',
+  } satisfies PressArticle,
+  stats: [
+    { value: '50+', label: 'Mentions dans la presse' },
+    { value: '15+', label: 'Publications partenaires' },
+    { value: '200k+', label: 'Lecteurs touchés' },
+  ],
+}
+
+const pressArticles: PressArticle[] = [
+  {
+    id: 1,
+    title: $t('press_article_title'),
+    excerpt: $t('press_article_excerpt'),
+    publisher: 'DNA',
+    publisherLogo: 'https://ui-avatars.com/api/?name=DNA&background=e60000&color=fff&size=64',
+    date: '15 Jan 2026',
+    category: 'culture',
+    image:
+      'https://cdn-s-www.dna.fr/images/125FCFE5-9691-406A-BAD5-0085D74BCED6/NW_raw/pour-que-le-salon-du-livre-devienne-village-culturel-des-figurines-sont-exposees-le-collectionneur-tintinophile-remy-waeldin-transporte-en-syldavie-photo-thomas-toussaint-1757270458.jpg',
+    alt: $t('press_article_title'),
+    url: 'https://www.dna.fr/culture-loisirs/2025/09/07/livres-jeux-et-figurines-pour-un-vrai-village-culturel',
+  },
+  {
+    id: 2,
+    title: 'Quand la littérature crée du lien social : Interview',
+    excerpt: "Rencontre avec Michel Amiet qui nous explique la vision solidaire de l'association.",
+    publisher: 'France Bleu',
+    publisherLogo: 'https://ui-avatars.com/api/?name=FB&background=0055ff&color=fff&size=64',
+    date: '28 Déc 2025',
+    category: 'interview',
+    image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600&auto=format&fit=crop',
+    alt: 'Interview autour de la littérature et du lien social',
+    url: '#',
+  },
+  {
+    id: 3,
+    title: 'Une vision moderne de l’engagement culturel',
+    excerpt: 'Analyse des nouvelles méthodes de promotion de la lecture en région Grand Est.',
+    publisher: 'Culture Mag',
+    publisherLogo: 'https://ui-avatars.com/api/?name=CM&background=143c28&color=fff&size=64',
+    date: '10 Nov 2025',
+    category: 'article',
+    image: 'https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?q=80&w=600&auto=format&fit=crop',
+    alt: 'Article sur la promotion culturelle et la lecture',
+    url: '#',
+  },
+  {
+    id: 4,
+    title: 'Les bienfaits de la lecture pour les jeunes',
+    excerpt: "L'association intervient dans les écoles pour sensibiliser les plus petits.",
+    publisher: 'Le Figaro',
+    publisherLogo: 'https://ui-avatars.com/api/?name=LF&background=000&color=fff&size=64',
+    date: '05 Oct 2025',
+    category: 'article',
+    image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600&auto=format&fit=crop',
+    alt: 'Lecture jeunesse et sensibilisation en milieu scolaire',
+    url: '#',
+  },
+  {
+    id: 5,
+    title: "L'association lance son nouveau site web",
+    excerpt: 'Une plateforme numérique repensée pour mieux servir les adhérents et le public.',
+    publisher: 'Web News',
+    publisherLogo: 'https://ui-avatars.com/api/?name=WN&background=666&color=fff&size=64',
+    date: '28 Sep 2025',
+    category: 'review',
+    image: 'https://images.unsplash.com/photo-1507842217159-a28f26809398?q=80&w=600&auto=format&fit=crop',
+    alt: 'Lancement du nouveau site web de l’association',
+    url: '#',
+  },
+  {
+    id: 6,
+    title: 'Agenda : Les sorties culturelles de la rentrée',
+    excerpt: "Ne manquez pas les prochains marchés aux livres organisés par l'équipe.",
+    publisher: 'Strasbourg.eu',
+    publisherLogo: 'https://ui-avatars.com/api/?name=SX&background=9c27b0&color=fff&size=64',
+    date: '01 Sep 2025',
+    category: 'culture',
+    image: 'https://images.unsplash.com/photo-1544928147-79a2af1f3a94?q=80&w=600&auto=format&fit=crop',
+    alt: 'Agenda culturel de rentrée',
+    url: '#',
+  },
+]
+
+const getCategoryColor = (category: PressCategory) => {
+  switch (category) {
+    case 'article':
+      return 'blue-darken-1'
+    case 'interview':
+      return 'orange-darken-1'
+    case 'review':
+      return 'green-darken-1'
+    case 'culture':
+      return 'purple-darken-1'
+    default:
+      return 'grey'
+  }
+}
+
+const getCategoryLabel = (category: PressCategory) => categoryLabels[category]
 </script>
 
 <template>
-  <v-container class="py-6">
+  <v-container class="py-6 container-with-90">
     <!-- Sharp Modern Header -->
     <div class="mb-10">
       <div class="d-flex mb-4">
@@ -145,7 +165,7 @@
 
     <!-- FEATURED PRESS ARTICLE -->
     <section class="mb-14">
-      <press-hero-section/>
+      <press-hero-section />
     </section>
 
     <!-- PRESS GRID -->
@@ -157,7 +177,6 @@
         sm="6"
         md="4"
       >
-        <!-- Replaced .hover-lift with 'hover' prop -->
         <v-card
           hover
           class="rounded-xl overflow-hidden h-100 d-flex flex-column border-0"
@@ -166,6 +185,7 @@
           <!-- Card Image -->
           <v-img
             :src="article.image"
+            :alt="article.alt || article.title"
             height="220"
             cover
             class="align-end"
@@ -182,9 +202,10 @@
                   label
                   class="font-weight-bold text-uppercase"
                 >
-                  {{ article.category }}
+                  {{ getCategoryLabel(article.category) }}
                 </v-chip>
               </div>
+
               <div class="text-h6 font-weight-bold text-wrap" style="line-height: 1.3;">
                 {{ article.title }}
               </div>
@@ -194,34 +215,44 @@
             <v-card-subtitle class="pb-3 pt-1">
               <div class="d-flex align-center">
                 <v-avatar size="24" class="mr-2 border">
-                  <v-img :src="article.publisherLogo" :alt="article.publisher"></v-img>
+                  <v-img :src="article.publisherLogo" :alt="article.publisher" />
                 </v-avatar>
-                <span class="font-weight-medium text-grey-darken-2">{{ article.publisher }}</span>
-                <v-spacer/>
-                <span class="text-caption text-medium-emphasis font-weight-medium">{{ article.date }}</span>
+
+                <span class="font-weight-medium text-grey-darken-2">
+                  {{ article.publisher }}
+                </span>
+
+                <v-spacer />
+
+                <span class="text-caption text-medium-emphasis font-weight-medium">
+                  {{ article.date }}
+                </span>
               </div>
             </v-card-subtitle>
 
-            <!-- Excerpt: Replaced .line-clamp-3 with inline style -->
+            <!-- Excerpt -->
             <v-card-text class="pt-0 pb-2">
               <p class="text-body-2 text-medium-emphasis mb-0 text-clamp">
                 {{ article.excerpt }}
               </p>
             </v-card-text>
-            <v-spacer/>
+
+            <v-spacer />
+
             <!-- Action Button -->
             <v-card-actions class="px-4 pb-4 pt-2">
-                <v-btn
-                  :href="article.url"
-                  target="_blank"
-                  variant="tonal"
-                  color="primary"
-                  class="font-weight-bold px-4"
-                  rounded="pill"
-                  :text="$t('read_article')"
-                  prepend-icon="mdi-open-in-new"
-                  block
-                />
+              <v-btn
+                :href="article.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="tonal"
+                color="primary"
+                class="font-weight-bold px-4"
+                rounded="pill"
+                :text="$t('read_article')"
+                prepend-icon="mdi-open-in-new"
+                block
+              />
             </v-card-actions>
           </div>
         </v-card>
@@ -231,11 +262,11 @@
 </template>
 
 <style scoped>
-  .text-clamp {
-    display: -webkit-box;
-    line-clamp: 3;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+.text-clamp {
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 </style>

@@ -133,7 +133,7 @@
               elevation="4"
               border
             >
-              <v-row align="center" no-gutters>
+              <v-row align="center" density="compact">
                 <v-col cols="12" sm="7" class="pr-sm-4 d-flex flex-column align-start">
                   <h3 class="text-clamp-2 text-h5 text-lg-h4 font-weight-bold text-dynamicText mb-4">
                     {{ $t(activeMission?.card.title || '') }}

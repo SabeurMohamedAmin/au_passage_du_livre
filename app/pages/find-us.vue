@@ -85,7 +85,7 @@ const cardElevation = computed(() => (mdAndUp.value ? 4 : 2))
     </v-row>
 
     <!-- Key Info Grid -->
-    <v-row class="mb-10" dense>
+    <v-row class="mb-10" density="comfortable">
       <v-col cols="12" sm="6" md="4">
         <v-sheet
           class="rounded-xl py-6 px-4 bg-surface-light border-thin h-100 d-flex flex-column align-center text-center"
@@ -197,7 +197,7 @@ const cardElevation = computed(() => (mdAndUp.value ? 4 : 2))
             🔗 Liens Utiles
           </v-card-title>
           <v-card-text>
-            <v-list nav dense>
+            <v-list nav density="comfortable">
               <v-list-item
                 v-for="(link, i) in usefulLinks"
                 :key="i"

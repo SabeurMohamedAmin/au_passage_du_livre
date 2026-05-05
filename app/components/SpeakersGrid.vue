@@ -13,10 +13,10 @@
   const hasMoreAuthors = computed(()=>true)
 
   const customDanse = computed(()=>{
-    if(lgAndUp.value){return false}
-    if(md.value){return true}
-    if(sm.value){return false}
-    else{return true}
+    if(lgAndUp.value){return 'comfortable'}
+    if(md.value){return 'default'}
+    if(sm.value){return 'default'}
+    else{return 'default'}
   });
 </script>
 
@@ -51,7 +51,7 @@
     </v-col>
   </v-row>
   
-  <v-row :dense="customDanse" class="w-100 min-width-340">
+  <v-row :density="customDanse" class="w-100 min-width-340">
     <v-col
       v-for="(author, index) in visibleAuthors"
       :key="index" cols="6" md="3"

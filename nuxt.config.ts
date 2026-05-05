@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     'nuxt-swiper',
     'nuxt-protected-mailto',
+    'nuxt-auth-utils',
   ],
 
   runtimeConfig: {
@@ -34,7 +35,7 @@ export default defineNuxtConfig({
     plugins: [
       vuetify({
         autoImport: true,
-      }),
+      })as any,
     ],
     vue: {
       template: {

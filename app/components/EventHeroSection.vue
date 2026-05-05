@@ -100,7 +100,7 @@ const hasMoreAuthors = computed(() =>
 
           <!-- Layer 2: Content -->
           <div class="content-layer pa-6 h-100 d-flex flex-column">
-            <v-row dense>
+            <v-row density="comfortable">
               <v-col cols="12">
                 <v-chip
                   color="primary"
@@ -150,11 +150,11 @@ const hasMoreAuthors = computed(() =>
     <!-- ======================
       SECTION 3: KEY INFO GRID
     ======================= -->
-    <v-row class="mb-10 mt-2 min-w-250" dense>
+    <v-row class="mb-10 mt-2 min-w-250" density="comfortable">
       <!-- When -->
       <v-col cols="6" sm="4">
         <v-sheet class="rounded-xl pa-4 border-thin px-5 h-100">
-          <v-row dense align="center" justify="center">
+          <v-row density="comfortable" align="center" justify="center">
             <v-col cols="4" lg="3">
               <v-avatar color="primary" variant="tonal" :size="responsiveSize.avatar" class="mb-4 rounded-lg">
                 <v-icon :size="responsiveSize.icon" icon="mdi-calendar-clock" />
@@ -176,7 +176,7 @@ const hasMoreAuthors = computed(() =>
       <!-- Where -->
       <v-col cols="6" sm="4">
         <v-sheet class="rounded-xl pa-4 border-thin px-5 h-100">
-          <v-row dense align="center" justify="center">
+          <v-row density="comfortable" align="center" justify="center">
             <v-col cols="4" lg="3">
               <v-avatar color="secondary" variant="tonal" :size="responsiveSize.avatar" class="mb-4 rounded-lg">
                 <v-icon :size="responsiveSize.icon" icon="mdi-map-marker-radius" />
@@ -198,7 +198,7 @@ const hasMoreAuthors = computed(() =>
       <!-- What -->
       <v-col cols="6" sm="4">
         <v-sheet class="rounded-xl pa-4 border-thin px-5 h-100">
-          <v-row dense align="center" justify="center">
+          <v-row density="comfortable" align="center" justify="center">
             <v-col cols="4" lg="3">
               <v-avatar color="success" variant="tonal" :size="responsiveSize.avatar" class="mb-4 rounded-lg">
                 <v-icon :size="responsiveSize.icon" icon="mdi-book-open-page-variant" />

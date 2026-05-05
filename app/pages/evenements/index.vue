@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <v-container class="py-6">
+  <v-container class="py-6 container-with-90">
     <EventHeroSection />
     <v-divider class="mb-15"/>
 

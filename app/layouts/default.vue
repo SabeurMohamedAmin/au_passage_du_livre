@@ -86,7 +86,7 @@
     :class="['topnav-bar', { 'topnav-bar--scrolled': isScrolled }]"
   >
     <v-container class="topnav-container">
-      <v-row align="center" no-gutters>
+      <v-row align="center" density="compact">
 
         <!-- MOBILE MENU BUTTON -->
         <v-col cols="5" class="d-flex d-md-none">

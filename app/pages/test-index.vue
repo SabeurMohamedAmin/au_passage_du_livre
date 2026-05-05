@@ -61,7 +61,7 @@
     </div>
 
     <!-- Modern Bento Grid -->
-    <v-row dense>
+    <v-row density="comfortable">
       <v-col
         v-for="(feat, i) in features"
         :key="i"

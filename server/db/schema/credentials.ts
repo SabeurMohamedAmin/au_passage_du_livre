@@ -1,5 +1,7 @@
 import { sqliteTable, text, integer, primaryKey } from "drizzle-orm/sqlite-core";
 import type { WebAuthnCredential } from "#auth-utils"
+import { users } from "./users";
+
 
 // --------------------------------------------------------------------------
 // 3. Credentials Table (WebAuthn / Passkeys)
@@ -8,7 +10,7 @@ export const credentials = sqliteTable("credentials", {
     
   // FIX: Changed from integer to text to match users.id
   userId: text("user_id")
-    .references(() => schema.users.id, { onDelete: 'cascade' })
+    .references(() => users.id, { onDelete: 'cascade' })
     .notNull(),
     
   id: text("id").notNull().unique(), 

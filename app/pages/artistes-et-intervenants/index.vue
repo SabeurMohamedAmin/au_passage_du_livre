@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <v-container class="py-6">
+  <v-container class="py-6 container-with-90">
     <featured-guests-slider/>
     
     <!-- SECTION ALL GUESTS GRID -->

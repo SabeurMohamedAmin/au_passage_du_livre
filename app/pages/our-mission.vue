@@ -144,7 +144,7 @@ onUnmounted(() => {
               elevation="4"
               border
             >
-              <v-row align="center" no-gutters>
+              <v-row align="center" density="compact">
                 <!-- Card Text -->
                 <v-col cols="12" sm="7" class="pr-sm-4">
                   <h3 class="text-h4 font-weight-bold text-brown-darken-4 mb-4 serif-font">

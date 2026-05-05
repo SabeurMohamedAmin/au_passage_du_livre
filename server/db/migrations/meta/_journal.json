@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1773921507612,
+      "tag": "0000_big_expediter",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1777826303021,
+      "tag": "0001_white_mach_iv",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1777872343956,
+      "tag": "0002_conscious_chimera",
+      "breakpoints": true
+    }
+  ]
+}

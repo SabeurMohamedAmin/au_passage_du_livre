@@ -50,6 +50,14 @@ useHead({
 </template>
 
 <style>
+/* Container with 90% width */
+@media (min-width: 960px) {
+  .container-with-90{
+    max-width: 90% !important;
+  }
+}
+
+
   .min-width-app {
     min-width: 350px !important;
   }

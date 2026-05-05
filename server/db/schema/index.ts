@@ -5,3 +5,5 @@ export * from "./credentials";
 export * from "./login-attempts";
 export * from "./user-preferences";
 export * from "./relations";
+export * from "./sponsors";
+export * from './home';

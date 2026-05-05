@@ -146,7 +146,7 @@
           </div>
           <div class="border-b-md mb-6" style="border-color: #f6d7a8 !important;"></div>
 
-          <v-row dense class="text-body-2 row-hover-effect">
+          <v-row density="comfortable" class="text-body-2 row-hover-effect">
             <v-col cols="4" sm="3" md="2" class="font-weight-bold text-grey-darken-3 pt-2">
               Type
             </v-col>
