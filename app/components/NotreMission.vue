@@ -1,5 +1,11 @@
 <script setup lang="ts">
   const { iconArrowRight } = useRtlIcons();
+  defineProps<{
+    title: string;
+    description: string;
+    seeAllLabel: string;
+    seeAllLink: string; 
+  }>();
 </script>
 
 <template>
@@ -7,13 +13,11 @@
     <v-row class="mb-12">
       <v-col cols="12" md="9" lg="8">
         <h2 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70">
-          {{$t('our missions in action')}}
+          {{$t(title)}}
         </h2>
 
-        <p class="text-h6 text-medium-emphasis mt-2 font-weight-regular">
-          {{$t('association vision sentence')}}
-          <br />
-          {{$t('association mission sentence')}}
+        <p class="text-h6 text-medium-emphasis mt-2 font-weight-regular" v-html="$t(description)">
+         
         </p>
       </v-col>
 

@@ -83,7 +83,6 @@ i started with:
 *- then sends a
 *- Resend email with a UUID-suffixed subject and HTML template to the site owner.
 
-------> Right Now Im Here...
 2- Sponsors API endpoints:
 *- get all active sponsors.
 *- get sponsor by slug.
@@ -94,3 +93,19 @@ i started with:
 *- delete sponsor.
 *- get all sponsors.
 *- get sponsor by id.
+
+------> Right Now Im Here...
+
+
+*- Home page API endpoints:
+*- get all home page data from DB for all languages.
+*- get home page data from DB for one language.
+
+*- Home page/Admin:
+*- Patch/Update section hero. [V]
+*- Patch/Update section Missions. [V]
+*- Patch/Update section Speakers. [...waiting]
+*- Patch/Update section Articles & News. [...waiting]
+*- Patch/Update section Events / Program. [...waiting]
+*- Patch/Update home page images. [...waiting]
+

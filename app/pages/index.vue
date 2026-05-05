@@ -165,10 +165,10 @@ watch(locale, () => homeStore.fetchHomePage())
   <section class="my-5 my-md-10 scroll-mt-6 bg_surface_variant">
     <v-container class="py-10">
       <notre-mission
-        :title="content?.missionsTitle"
-        :description="content?.missionsDescription"
-        :see-all-label="content?.missionsSeeAllLabel"
-        :see-all-link="content?.missionsSeeAllLink"
+        :title="content?.missionsTitle ?? ''"
+        :description="content?.missionsDescription ?? ''"
+        :see-all-label="content?.missionsSeeAllLabel ?? ''"
+        :see-all-link="content?.missionsSeeAllLink ?? ''"
       />
     </v-container>
   </section>
