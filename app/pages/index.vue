@@ -11,14 +11,16 @@ const { page } = storeToRefs(homeStore)
 
 await useAsyncData('home-page', () => homeStore.fetchHomePage())
 
+// const content = computed(() => homeStore.getTranslation(locale.value))
 const content = computed(() => homeStore.getTranslation(locale.value))
+
 
 // ✅ safe — returns undefined instead of crashing when page not loaded yet
 const img = (slot: 'hero_top_left' | 'hero_bottom_left' | 'hero_top_right' | 'hero_bottom_right') =>
   page.value?.images?.find(i => i.slot === slot)
 
 // ✅ true only when page + images are loaded
-const isReady = computed(() => !!page.value?.images)
+const isReady = computed(() => page.value !== null)
 
 watch(locale, () => homeStore.fetchHomePage())
 </script>

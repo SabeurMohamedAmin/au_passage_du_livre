@@ -11,28 +11,29 @@ await useAsyncData('admin-home', () => homeStore.fetchHomePage())
 
 const editingLocale = ref(locale.value)
 
-const form = computed({
-  get: () => homeStore.getTranslation(editingLocale.value) ?? {} as any,
-  set: () => {},
-})
-
 const availableLocales = computed(() =>
   (locales.value as any[]).map((l) => ({ code: l.code, name: l.name }))
 )
 
-const saving      = ref(false)
-const savingImages = ref(false)
-const snackbar    = ref(false)
+const saving          = ref(false)
+const savingImages    = ref(false)
+const snackbar        = ref(false)
 const snackbarMessage = ref('')
 const snackbarColor   = ref<'success' | 'error'>('success')
-const formRef  = ref()
-const activeTab = ref('Hero')
-const tabs = ['Hero', 'Missions', 'Speakers', 'Articles', 'Events']
+const formRef         = ref()
+const activeTab       = ref('Hero')
+const tabs            = ['Hero', 'Missions', 'Speakers', 'Articles', 'Events']
 
-const localForm = ref({ ...form.value })
+// ── Deep clone — fully detaches localForm from the store ──────────────────────
+function cloneTranslation(loc: string) {
+  const t = homeStore.getTranslation(loc)
+  return t ? JSON.parse(JSON.stringify(t) as string) : {}
+}
 
-watch(editingLocale, () => {
-  localForm.value = { ...homeStore.getTranslation(editingLocale.value) } as any
+const localForm = ref(cloneTranslation(editingLocale.value))
+
+watch([editingLocale, page], () => {
+  localForm.value = cloneTranslation(editingLocale.value)
 })
 
 // ── Image management ──────────────────────────────────────────────────────────
@@ -53,7 +54,6 @@ const imageForm = ref<Record<ImageSlot, { url: string; alt: string }>>({
   hero_bottom_right: { url: '', alt: '' },
 })
 
-// track per-slot upload loading state
 const uploading = ref<Record<ImageSlot, boolean>>({
   hero_top_left:     false,
   hero_bottom_left:  false,
@@ -61,13 +61,13 @@ const uploading = ref<Record<ImageSlot, boolean>>({
   hero_bottom_right: false,
 })
 
-// hidden file input refs, one per slot
-const fileInputs = ref<Record<ImageSlot, HTMLInputElement | null>>({
+// Plain (non-reactive) object — fixes v-for ref assignment in Vue 3
+const fileInputs: Record<ImageSlot, HTMLInputElement | null> = {
   hero_top_left:     null,
   hero_bottom_left:  null,
   hero_top_right:    null,
   hero_bottom_right: null,
-})
+}
 
 watchEffect(() => {
   if (!page.value?.images) return
@@ -80,12 +80,10 @@ watchEffect(() => {
   }
 })
 
-/** Opens the hidden file picker for a given slot. */
 function triggerUpload(slot: ImageSlot) {
-  fileInputs.value[slot]?.click()
+  fileInputs[slot]?.click()
 }
 
-/** Uploads the selected file and sets the URL in the form. */
 async function onFileSelected(slot: ImageSlot, event: Event) {
   const file = (event.target as HTMLInputElement).files?.[0]
   if (!file) return
@@ -106,12 +104,10 @@ async function onFileSelected(slot: ImageSlot, event: Event) {
     showSnackbar('Upload failed — check file size/type', 'error')
   } finally {
     uploading.value[slot] = false
-    // reset so the same file can be re-selected if needed
-    if (fileInputs.value[slot]) fileInputs.value[slot]!.value = ''
+    if (fileInputs[slot]) fileInputs[slot]!.value = ''
   }
 }
 
-/** Clears the image for a slot (does not delete the file from disk). */
 function clearImage(slot: ImageSlot) {
   imageForm.value[slot].url = ''
 }
@@ -129,7 +125,6 @@ async function saveImages() {
         })),
       },
     })
-    await homeStore.fetchHomePage()
     showSnackbar('Images saved successfully', 'success')
   } catch {
     showSnackbar('Failed to save images', 'error')
@@ -215,16 +210,16 @@ function showSnackbar(message: string, color: 'success' | 'error') {
                 </p>
                 <v-row dense>
                   <v-col cols="12" md="4">
-                    <v-text-field v-model="localForm.heroTitle1" label="Title line 1" variant="outlined" density="compact" :rules="[rules.required]" />
+                    <v-text-field v-model="localForm.heroTitle1" label="Hero Title line 1" variant="outlined" density="compact" :rules="[rules.required]" />
                   </v-col>
                   <v-col cols="12" md="4">
-                    <v-text-field v-model="localForm.heroTitle2" label="Title line 2" variant="outlined" density="compact" :rules="[rules.required]" />
+                    <v-text-field v-model="localForm.heroTitle2" label="Hero Title line 2" variant="outlined" density="compact" :rules="[rules.required]" />
                   </v-col>
                   <v-col cols="12" md="4">
-                    <v-text-field v-model="localForm.heroTitle3" label="Title line 3 (accent color)" variant="outlined" density="compact" :rules="[rules.required]" />
+                    <v-text-field v-model="localForm.heroTitle3" label="Hero Sub Title (accent color)" variant="outlined" density="compact" :rules="[rules.required]" />
                   </v-col>
                   <v-col cols="12">
-                    <v-textarea v-model="localForm.heroDescription" label="Description" variant="outlined" density="compact" rows="3" auto-grow :rules="[rules.required]" />
+                    <v-textarea v-model="localForm.heroDescription" label="Hero Description" variant="outlined" density="compact" rows="3" auto-grow :rules="[rules.required]" />
                   </v-col>
                   <v-col cols="12"><v-divider class="mb-4" /></v-col>
                   <v-col cols="12" sm="6">
@@ -278,7 +273,7 @@ function showSnackbar(message: string, color: 'success' | 'error') {
                   >
                     <!-- Hidden native file input -->
                     <input
-                      :ref="el => fileInputs[slot] = el as HTMLInputElement"
+                      :ref="(el) => { fileInputs[slot] = el as HTMLInputElement }"
                       type="file"
                       accept="image/jpeg,image/png,image/webp,image/gif"
                       class="d-none"
@@ -443,6 +438,7 @@ function showSnackbar(message: string, color: 'success' | 'error') {
         </v-window-item>
 
       </v-window>
+      <!-- TODO: the section 2 after page main hero -->
     </v-form>
 
     <v-snackbar v-model="snackbar" :color="snackbarColor" rounded="lg" timeout="3000" location="bottom right">

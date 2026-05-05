@@ -169,7 +169,11 @@ export const useHomeStore = defineStore('home', () => {
   ): Promise<boolean> {
     const res = await apiFetch<{ ok: boolean; data: HomePage }>(
       '/api/admin/home',
-      { method: 'PATCH', body: { locale, ...data } }
+      { 
+        method: 'PATCH', 
+        // ✅ Fix: Spread data first, so the passed `locale` overrides any fallback locale
+        body: { ...data, locale } 
+      }
     )
     if (res?.ok && res.data) {
       page.value = res.data
