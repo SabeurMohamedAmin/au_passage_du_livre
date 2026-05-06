@@ -16,13 +16,10 @@ const availableLocales = computed(() =>
 )
 
 const saving          = ref(false)
-const savingImages    = ref(false)
 const snackbar        = ref(false)
 const snackbarMessage = ref('')
 const snackbarColor   = ref<'success' | 'error'>('success')
 const formRef         = ref()
-const activeTab       = ref('Hero')
-const tabs            = ['Hero', 'Missions', 'Speakers', 'Articles', 'Events']
 
 // ── Deep clone — fully detaches localForm from the store ──────────────────────
 function cloneTranslation(loc: string) {
@@ -112,8 +109,28 @@ function clearImage(slot: ImageSlot) {
   imageForm.value[slot].url = ''
 }
 
-async function saveImages() {
-  savingImages.value = true
+// ── Unified Save (Text & Images) ──────────────────────────────────────────────
+
+const rules = {
+  required: (v: string) => !!v?.trim() || 'Required',
+  url: (v: string) => !v || /^(https?:\/\/|\/)/.test(v) || 'Must be a valid URL or path',
+}
+
+async function save() {
+  const result = await formRef.value?.validate()
+  if (!result?.valid) {
+    showSnackbar('Please fill in all required fields correctly', 'error')
+    return
+  }
+
+  saving.value = true
+  let hasError = false
+
+  // 1. Save Text
+  const textOk = await homeStore.updateHomePage(editingLocale.value, localForm.value)
+  if (!textOk) hasError = true
+
+  // 2. Save Images
   try {
     await $fetch('/api/admin/home/images', {
       method: 'PATCH',
@@ -125,29 +142,17 @@ async function saveImages() {
         })),
       },
     })
-    showSnackbar('Images saved successfully', 'success')
   } catch {
-    showSnackbar('Failed to save images', 'error')
-  } finally {
-    savingImages.value = false
+    hasError = true
   }
-}
 
-// ── Text save ─────────────────────────────────────────────────────────────────
-
-const rules = {
-  required: (v: string) => !!v?.trim() || 'Required',
-  url: (v: string) => !v || /^(https?:\/\/|\/)/.test(v) || 'Must be a valid URL or path',
-}
-
-async function save() {
-  const result = await formRef.value?.validate()
-  if (!result?.valid) return
-
-  saving.value = true
-  const ok = await homeStore.updateHomePage(editingLocale.value, localForm.value)
   saving.value = false
-  showSnackbar(ok ? 'Saved successfully' : 'Failed to save', ok ? 'success' : 'error')
+
+  if (!hasError) {
+    showSnackbar('All changes saved successfully', 'success')
+  } else {
+    showSnackbar('Failed to save some changes', 'error')
+  }
 }
 
 function showSnackbar(message: string, color: 'success' | 'error') {
@@ -158,297 +163,286 @@ function showSnackbar(message: string, color: 'success' | 'error') {
 </script>
 
 <template>
-  <v-container fluid class="pa-6">
-    <div class="d-flex align-center justify-space-between mb-6">
-      <div>
-        <h1 class="text-h5 font-weight-black">Home Page</h1>
-        <p class="text-body-2 text-medium-emphasis mt-1">
-          Edit the content displayed on the public home page.
-        </p>
-      </div>
-      <div class="d-flex align-center gap-3">
-        <v-select
-          v-model="editingLocale"
-          :items="availableLocales"
-          item-title="name"
-          item-value="code"
-          label="Editing locale"
-          variant="outlined"
-          density="compact"
-          hide-details
-          rounded="lg"
-          style="min-width: 160px"
-          prepend-inner-icon="mdi-translate"
-        />
-        <v-btn
-          color="primary" variant="flat"
-          prepend-icon="mdi-content-save-outline"
-          rounded="lg" :loading="saving"
-          @click="save"
-        >
-          Save changes
-        </v-btn>
+  <v-container fluid class="pa-0">
+
+    <!-- ── Sticky Page Header ───────────────────────────────────────────────── -->
+    <div class="page-header mb-6 mx-auto rounded-lg">
+      <div class="d-flex align-center justify-space-between px-4 py-4">
+        <div>
+          <h1 class="text-h6 text-md-h5 font-weight-black">Home Page</h1>
+          <p class="text-subtitle text-md-body-1 text-medium-emphasis mt-1">
+            Edit the content displayed on the public home page.
+          </p>
+        </div>
+
+        <div class="d-flex flex-column flex-md-row justify-end ga-3">
+          <v-select
+            v-model="editingLocale"
+            :items="availableLocales"
+            item-title="name"
+            item-value="code"
+            label="Language"
+            variant="outlined"
+            density="compact"
+            hide-details
+            rounded="lg"
+            prepend-inner-icon="mdi-translate"
+          />
+          <v-btn
+            color="primary"
+            variant="flat"
+            prepend-icon="mdi-content-save-outline"
+            rounded="lg"
+            :loading="saving"
+            @click="save"
+          >
+            Save changes
+          </v-btn>
+        </div>
       </div>
     </div>
 
-    <v-form ref="formRef">
-      <v-tabs v-model="activeTab" color="primary" class="mb-4">
-        <v-tab v-for="tab in tabs" :key="tab" :value="tab">{{ tab }}</v-tab>
-      </v-tabs>
+    <!-- ── Stacked Form Sections ────────────────────────────────────────────── -->
+    <v-form ref="formRef" class="px-6 pb-12">
+      <div class="d-flex flex-column" style="gap: 48px; max-width: 1400px;">
 
-      <v-window v-model="activeTab">
-
-        <!-- ── Hero ─────────────────────────────────────────────────────────── -->
-        <v-window-item value="Hero">
+        <!-- ── 1. Hero ──────────────────────────────────────────────────────── -->
+        <section>
+          <div class="d-flex align-center gap-3 mb-4">
+            <v-avatar color="primary" variant="tonal" size="32" class="font-weight-bold">1</v-avatar>
+            <h2 class="text-h6 font-weight-bold mb-0">Hero Section</h2>
+          </div>
+          
           <v-row dense>
-
-            <!-- Text content card (unchanged) -->
+            <!-- Text content -->
             <v-col cols="12">
               <v-card flat rounded="lg" border class="pa-6 mb-4">
                 <p class="text-caption font-weight-bold text-uppercase text-medium-emphasis mb-4">
                   Hero Text Content
                 </p>
+
                 <v-row dense>
                   <v-col cols="12" md="4">
-                    <v-text-field v-model="localForm.heroTitle1" label="Hero Title line 1" variant="outlined" density="compact" :rules="[rules.required]" />
+                    <v-text-field v-model="localForm.heroTitle1" label="Title — line 1" variant="outlined" density="compact" :rules="[rules.required]" />
                   </v-col>
                   <v-col cols="12" md="4">
-                    <v-text-field v-model="localForm.heroTitle2" label="Hero Title line 2" variant="outlined" density="compact" :rules="[rules.required]" />
+                    <v-text-field v-model="localForm.heroTitle2" label="Title — line 2" variant="outlined" density="compact" :rules="[rules.required]" />
                   </v-col>
                   <v-col cols="12" md="4">
-                    <v-text-field v-model="localForm.heroTitle3" label="Hero Sub Title (accent color)" variant="outlined" density="compact" :rules="[rules.required]" />
+                    <v-text-field v-model="localForm.heroTitle3" label="Title — line 3 (accent color)" variant="outlined" density="compact" :rules="[rules.required]" />
                   </v-col>
                   <v-col cols="12">
-                    <v-textarea v-model="localForm.heroDescription" label="Hero Description" variant="outlined" density="compact" rows="3" auto-grow :rules="[rules.required]" />
+                    <v-textarea v-model="localForm.heroDescription" label="Description" variant="outlined" density="compact" rows="3" no-resize  :rules="[rules.required]" />
                   </v-col>
-                  <v-col cols="12"><v-divider class="mb-4" /></v-col>
-                  <v-col cols="12" sm="6">
-                    <v-text-field v-model="localForm.heroCta1Label" label="Primary button label" variant="outlined" density="compact" prepend-inner-icon="mdi-button-cursor" />
-                  </v-col>
-                  <v-col cols="12" sm="6">
-                    <v-text-field v-model="localForm.heroCta1Link" label="Primary button link" variant="outlined" density="compact" :rules="[rules.url]" prepend-inner-icon="mdi-link" />
-                  </v-col>
-                  <v-col cols="12" sm="6">
-                    <v-text-field v-model="localForm.heroCta2Label" label="Secondary button label" variant="outlined" density="compact" prepend-inner-icon="mdi-button-cursor" />
+
+                  <v-col cols="12"><v-divider class="mb-2" /></v-col>
+
+                  <!-- Primary CTA -->
+                  <v-col cols="12">
+                    <p class="text-caption font-weight-medium text-medium-emphasis mb-2">Primary button</p>
                   </v-col>
                   <v-col cols="12" sm="6">
-                    <v-text-field v-model="localForm.heroCta2Link" label="Secondary button link" variant="outlined" density="compact" :rules="[rules.url]" prepend-inner-icon="mdi-link" />
+                    <v-text-field v-model="localForm.heroCta1Label" label="Label" variant="outlined" density="compact" prepend-inner-icon="mdi-button-cursor" />
+                  </v-col>
+                  <v-col cols="12" sm="6">
+                    <v-text-field v-model="localForm.heroCta1Link" label="Link" variant="outlined" density="compact" :rules="[rules.url]" prepend-inner-icon="mdi-link" />
+                  </v-col>
+
+                  <!-- Secondary CTA -->
+                  <v-col cols="12">
+                    <p class="text-caption font-weight-medium text-medium-emphasis mb-2">Secondary button</p>
+                  </v-col>
+                  <v-col cols="12" sm="6">
+                    <v-text-field v-model="localForm.heroCta2Label" label="Label" variant="outlined" density="compact" prepend-inner-icon="mdi-button-cursor" />
+                  </v-col>
+                  <v-col cols="12" sm="6">
+                    <v-text-field v-model="localForm.heroCta2Link" label="Link" variant="outlined" density="compact" :rules="[rules.url]" prepend-inner-icon="mdi-link" />
                   </v-col>
                 </v-row>
               </v-card>
             </v-col>
 
-            <!-- ── Image upload card ──────────────────────────────────────── -->
+            <!-- Image upload -->
             <v-col cols="12">
               <v-card flat rounded="lg" border class="pa-6">
-
-                <!-- Header -->
-                <div class="d-flex align-center justify-space-between mb-2">
-                  <div>
-                    <p class="text-caption font-weight-bold text-uppercase text-medium-emphasis">
-                      Hero Images
-                    </p>
-                    <p class="text-caption text-medium-emphasis mt-1">
-                      JPG, PNG or WebP · max 5MB per image · recommended 700×700px minimum
-                    </p>
-                  </div>
-                  <v-btn
-                    color="primary" variant="tonal" size="small"
-                    prepend-icon="mdi-content-save-outline"
-                    rounded="lg" :loading="savingImages"
-                    @click="saveImages"
-                  >
-                    Save images
-                  </v-btn>
+                <div class="mb-4">
+                  <p class="text-caption font-weight-bold text-uppercase text-medium-emphasis">Hero Images</p>
+                  <p class="text-caption text-medium-emphasis mt-1">
+                    JPG, PNG or WebP · max 5 MB · recommended 700 × 700 px minimum
+                  </p>
                 </div>
-
                 <v-divider class="mb-5" />
 
-                <!-- 4 image slots in a horizontal row (like the screenshot) -->
                 <div class="image-slots-row">
-                  <div
-                    v-for="{ slot, label, aspectRatio } in IMAGE_SLOTS"
-                    :key="slot"
-                    class="image-slot"
-                  >
-                    <!-- Hidden native file input -->
-                    <input
-                      :ref="(el) => { fileInputs[slot] = el as HTMLInputElement }"
-                      type="file"
-                      accept="image/jpeg,image/png,image/webp,image/gif"
-                      class="d-none"
-                      @change="onFileSelected(slot, $event)"
-                    />
-
-                    <!-- Image preview box — click to upload -->
-                    <div
-                      class="slot-preview"
-                      :style="{ aspectRatio }"
-                      :class="{ 'has-image': !!imageForm[slot].url }"
-                      @click="triggerUpload(slot)"
-                    >
-                      <!-- Uploading spinner -->
+                  <div v-for="{ slot, label, aspectRatio } in IMAGE_SLOTS" :key="slot" class="image-slot">
+                    <input :ref="(el) => { fileInputs[slot] = el as HTMLInputElement }" type="file" accept="image/jpeg,image/png,image/webp,image/gif" class="d-none" @change="onFileSelected(slot, $event)" />
+                    
+                    <div class="slot-preview" :style="{ aspectRatio }" :class="{ 'has-image': !!imageForm[slot].url }" @click="triggerUpload(slot)">
                       <div v-if="uploading[slot]" class="slot-overlay">
                         <v-progress-circular indeterminate color="white" size="32" />
                       </div>
-
-                      <!-- Image -->
-                      <img
-                        v-else-if="imageForm[slot].url"
-                        :src="imageForm[slot].url"
-                        :alt="imageForm[slot].alt || label"
-                        class="slot-img"
-                      />
-
-                      <!-- Empty state -->
+                      <img v-else-if="imageForm[slot].url" :src="imageForm[slot].url" :alt="imageForm[slot].alt || label" class="slot-img" />
                       <div v-else class="slot-empty">
                         <v-icon icon="mdi-image-plus-outline" size="28" color="medium-emphasis" />
-                        <span class="text-caption text-medium-emphasis mt-1">Upload</span>
+                        <span class="text-caption text-medium-emphasis mt-1">Click to upload</span>
                       </div>
-
-                      <!-- Remove button (top-right corner like the screenshot) -->
-                      <button
-                        v-if="imageForm[slot].url && !uploading[slot]"
-                        class="slot-remove"
-                        title="Remove image"
-                        @click.stop="clearImage(slot)"
-                      >
+                      <button v-if="imageForm[slot].url && !uploading[slot]" class="slot-remove" title="Remove image" @click.stop="clearImage(slot)">
                         <v-icon icon="mdi-close" size="14" color="white" />
                       </button>
-
-                      <!-- Re-upload overlay on hover -->
                       <div v-if="imageForm[slot].url && !uploading[slot]" class="slot-hover-overlay">
                         <v-icon icon="mdi-camera-retake-outline" size="20" color="white" />
                       </div>
                     </div>
 
-                    <!-- Slot label + status chip -->
                     <div class="d-flex align-center gap-1 mt-2">
                       <span class="text-caption font-weight-medium">{{ label }}</span>
-                      <v-chip
-                        size="x-small" variant="tonal"
-                        :color="imageForm[slot].url ? 'success' : 'default'"
-                      >
-                        {{ imageForm[slot].url ? 'set' : 'empty' }}
+                      <v-chip size="x-small" variant="tonal" :color="imageForm[slot].url ? 'success' : 'default'">
+                        {{ imageForm[slot].url ? 'Set' : 'Empty' }}
                       </v-chip>
                     </div>
-
-                    <!-- Alt text -->
-                    <v-text-field
-                      v-model="imageForm[slot].alt"
-                      label="Alt text"
-                      variant="outlined"
-                      density="compact"
-                      class="mt-2"
-                      placeholder="Describe the image…"
-                      prepend-inner-icon="mdi-image-text"
-                      hide-details
-                    />
+                    <v-text-field v-model="imageForm[slot].alt" label="Alt text" variant="outlined" density="compact" class="mt-2" placeholder="Describe the image…" prepend-inner-icon="mdi-image-text" hide-details />
                   </div>
                 </div>
-
               </v-card>
             </v-col>
-
           </v-row>
-        </v-window-item>
+        </section>
 
-        <!-- ── Missions ──────────────────────────────────────────────────────── -->
-        <v-window-item value="Missions">
+        <!-- ── 2. Missions ──────────────────────────────────────────────────── -->
+        <section>
+          <div class="d-flex align-center gap-3 mb-4">
+            <v-avatar color="primary" variant="tonal" size="32" class="font-weight-bold">2</v-avatar>
+            <h2 class="text-h6 font-weight-bold mb-0">Missions</h2>
+          </div>
+
           <v-card flat rounded="lg" border class="pa-6">
-            <p class="text-caption font-weight-bold text-uppercase text-medium-emphasis mb-4">Missions Section</p>
             <v-row dense>
               <v-col cols="12">
                 <v-text-field v-model="localForm.missionsTitle" label="Section title" variant="outlined" density="compact" :rules="[rules.required]" />
               </v-col>
               <v-col cols="12">
-                <v-textarea v-model="localForm.missionsDescription" label="Description" variant="outlined" density="compact" rows="3" auto-grow />
+                <v-textarea v-model="localForm.missionsDescription"  label="Description" variant="outlined" density="compact" rows="3" no-resize  />
+              </v-col>
+              <v-col cols="12">
+                <p class="text-caption font-weight-medium text-medium-emphasis mb-2">"See all" link</p>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field v-model="localForm.missionsSeeAllLabel" label="See all label" variant="outlined" density="compact" prepend-inner-icon="mdi-button-cursor" />
+                <v-text-field v-model="localForm.missionsSeeAllLabel" class="scrolable" label="Button label" variant="outlined" density="compact" prepend-inner-icon="mdi-button-cursor" />
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field v-model="localForm.missionsSeeAllLink" label="See all link" variant="outlined" density="compact" :rules="[rules.url]" prepend-inner-icon="mdi-link" />
+                <v-text-field v-model="localForm.missionsSeeAllLink" label="URL" variant="outlined" density="compact" :rules="[rules.url]" prepend-inner-icon="mdi-link" />
               </v-col>
             </v-row>
           </v-card>
-        </v-window-item>
+        </section>
 
-        <!-- ── Speakers ──────────────────────────────────────────────────────── -->
-        <v-window-item value="Speakers">
+        <!-- ── 3. Speakers ──────────────────────────────────────────────────── -->
+        <section>
+          <div class="d-flex align-center gap-3 mb-4">
+            <v-avatar color="primary" variant="tonal" size="32" class="font-weight-bold">3</v-avatar>
+            <h2 class="text-h6 font-weight-bold mb-0">Speakers</h2>
+          </div>
+
           <v-card flat rounded="lg" border class="pa-6">
-            <p class="text-caption font-weight-bold text-uppercase text-medium-emphasis mb-4">Speakers Section</p>
             <v-row dense>
               <v-col cols="12">
                 <v-text-field v-model="localForm.speakersTitle" label="Section title" variant="outlined" density="compact" :rules="[rules.required]" />
               </v-col>
               <v-col cols="12">
-                <v-textarea v-model="localForm.speakersDescription" label="Description" variant="outlined" density="compact" rows="2" auto-grow />
+                <v-textarea v-model="localForm.speakersDescription" label="Description" variant="outlined" density="compact" rows="3" no-resize  />
+              </v-col>
+              <v-col cols="12">
+                <p class="text-caption font-weight-medium text-medium-emphasis mb-2">"See all" link</p>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field v-model="localForm.speakersSeeAllLabel" label="See all label" variant="outlined" density="compact" prepend-inner-icon="mdi-button-cursor" />
+                <v-text-field v-model="localForm.speakersSeeAllLabel" label="Button label" variant="outlined" density="compact" prepend-inner-icon="mdi-button-cursor" />
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field v-model="localForm.speakersSeeAllLink" label="See all link" variant="outlined" density="compact" :rules="[rules.url]" prepend-inner-icon="mdi-link" />
+                <v-text-field v-model="localForm.speakersSeeAllLink" label="URL" variant="outlined" density="compact" :rules="[rules.url]" prepend-inner-icon="mdi-link" />
               </v-col>
             </v-row>
           </v-card>
-        </v-window-item>
+        </section>
 
-        <!-- ── Articles ──────────────────────────────────────────────────────── -->
-        <v-window-item value="Articles">
+        <!-- ── 4. Articles ──────────────────────────────────────────────────── -->
+        <section>
+          <div class="d-flex align-center gap-3 mb-4">
+            <v-avatar color="primary" variant="tonal" size="32" class="font-weight-bold">4</v-avatar>
+            <h2 class="text-h6 font-weight-bold mb-0">Articles & News</h2>
+          </div>
+
           <v-card flat rounded="lg" border class="pa-6">
-            <p class="text-caption font-weight-bold text-uppercase text-medium-emphasis mb-4">Articles & News Section</p>
             <v-row dense>
               <v-col cols="12">
                 <v-text-field v-model="localForm.articlesTitle" label="Section title" variant="outlined" density="compact" :rules="[rules.required]" />
               </v-col>
               <v-col cols="12">
-                <v-textarea v-model="localForm.articlesDescription" label="Description" variant="outlined" density="compact" rows="2" auto-grow />
+                <v-textarea v-model="localForm.articlesDescription" label="Description" variant="outlined" density="compact" rows="3" no-resize  />
+              </v-col>
+              <v-col cols="12">
+                <p class="text-caption font-weight-medium text-medium-emphasis mb-2">"See all" link</p>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field v-model="localForm.articlesSeeAllLabel" label="See all label" variant="outlined" density="compact" prepend-inner-icon="mdi-button-cursor" />
+                <v-text-field v-model="localForm.articlesSeeAllLabel" label="Button label" variant="outlined" density="compact" prepend-inner-icon="mdi-button-cursor" />
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field v-model="localForm.articlesSeeAllLink" label="See all link" variant="outlined" density="compact" :rules="[rules.url]" prepend-inner-icon="mdi-link" />
+                <v-text-field v-model="localForm.articlesSeeAllLink" label="URL" variant="outlined" density="compact" :rules="[rules.url]" prepend-inner-icon="mdi-link" />
               </v-col>
             </v-row>
           </v-card>
-        </v-window-item>
+        </section>
 
-        <!-- ── Events ────────────────────────────────────────────────────────── -->
-        <v-window-item value="Events">
+        <!-- ── 5. Events ────────────────────────────────────────────────────── -->
+        <section>
+          <div class="d-flex align-center gap-3 mb-4">
+            <v-avatar color="primary" variant="tonal" size="32" class="font-weight-bold">5</v-avatar>
+            <h2 class="text-h6 font-weight-bold mb-0">Events Program</h2>
+          </div>
+
           <v-card flat rounded="lg" border class="pa-6">
-            <p class="text-caption font-weight-bold text-uppercase text-medium-emphasis mb-4">Events Program Section</p>
             <v-row dense>
               <v-col cols="12">
                 <v-text-field v-model="localForm.eventsTitle" label="Section title" variant="outlined" density="compact" :rules="[rules.required]" />
               </v-col>
               <v-col cols="12">
-                <v-textarea v-model="localForm.eventsDescription" label="Description" variant="outlined" density="compact" rows="2" auto-grow />
+                <v-textarea v-model="localForm.eventsDescription" label="Description" variant="outlined" density="compact" rows="3" no-resize  />
+              </v-col>
+              <v-col cols="12">
+                <p class="text-caption font-weight-medium text-medium-emphasis mb-2">Download button</p>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field v-model="localForm.eventsDownloadLabel" label="Download button label" variant="outlined" density="compact" prepend-inner-icon="mdi-download" />
+                <v-text-field v-model="localForm.eventsDownloadLabel" label="Button label" variant="outlined" density="compact" prepend-inner-icon="mdi-download" />
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field v-model="localForm.eventsDownloadLink" label="PDF link" variant="outlined" density="compact" :rules="[rules.url]" prepend-inner-icon="mdi-file-pdf-box" />
+                <v-text-field v-model="localForm.eventsDownloadLink" label="PDF URL" variant="outlined" density="compact" :rules="[rules.url]" prepend-inner-icon="mdi-file-pdf-box" />
               </v-col>
             </v-row>
           </v-card>
-        </v-window-item>
+        </section>
 
-      </v-window>
-      <!-- TODO: the section 2 after page main hero -->
+      </div>
     </v-form>
 
+    <!-- ── Snackbar ──────────────────────────────────────────────────────────── -->
     <v-snackbar v-model="snackbar" :color="snackbarColor" rounded="lg" timeout="3000" location="bottom right">
       <v-icon :icon="snackbarColor === 'success' ? 'mdi-check-circle-outline' : 'mdi-alert-circle-outline'" class="mr-2" />
       {{ snackbarMessage }}
     </v-snackbar>
+
   </v-container>
 </template>
 
 <style scoped>
+/* ── Sticky Header (Keeps the save button always accessible) ─────────────── */
+.page-header {
+  position: sticky;
+  max-width: 98dvw;
+  top: 65px;
+  z-index: 10;
+  background: rgb(var(--v-theme-surface));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
 /* ── Image slots row (matches screenshot layout) ─────────────────────────── */
 .image-slots-row {
   display: flex;
@@ -461,7 +455,10 @@ function showSnackbar(message: string, color: 'success' | 'error') {
   min-width: 140px;
   max-width: 220px;
 }
-
+.scrollable {
+  overflow-y: auto;
+  max-height: 100px;
+}
 /* The clickable preview box */
 .slot-preview {
   position: relative;
@@ -504,7 +501,7 @@ function showSnackbar(message: string, color: 'success' | 'error') {
   padding: 16px;
 }
 
-/* Red remove button — top right corner, like the screenshot */
+/* Red remove button */
 .slot-remove {
   position: absolute;
   top: 6px;

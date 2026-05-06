@@ -13,10 +13,10 @@
     <v-row class="mb-12">
       <v-col cols="12" md="9" lg="8">
         <h2 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70">
-          {{$t(title)}}
+          {{title}}
         </h2>
 
-        <p class="text-h6 text-medium-emphasis mt-2 font-weight-regular" v-html="$t(description)">
+        <p class="text-h6 text-medium-emphasis mt-2 font-weight-regular" v-html="description">
          
         </p>
       </v-col>
@@ -31,9 +31,9 @@
           color="primary"
           variant="outlined"
           class="font-weight-bold text-body-1 rounded-xl"
-          :to="$localePath('/about-us/our-history')"
+          :to="$localePath(seeAllLink)"
         >
-          {{$t('see our missions')}}
+          {{seeAllLabel}}
           <v-icon end :icon="iconArrowRight"/>
         </v-btn>
       </v-col>
