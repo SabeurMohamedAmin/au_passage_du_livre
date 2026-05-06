@@ -1,26 +1,33 @@
 <script setup lang="ts">
   const carouselArticles = useArticles().carouselArticles as Ref<Article[]>;
+  defineProps<{
+    title: string;
+    description: string;
+    linkLabel: string;
+    linkUrl: string;
+  }>()
+
 </script>
 
 <template>
   <v-row class="mb-2" justify="space-between">
       <v-col cols="12" md="8">
         <h2 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70">
-          {{$t('blog_title')}}
+          {{title}}
         </h2>
         <p class="text-body-1 text-medium-emphasis">
-          {{$t('blog_description')}}
+          {{description}}
         </p>
       </v-col>
       <v-col class="d-flex justify-start justify-md-end mt-0 justify-items-start " cols="12" md="4">
         <v-btn
           class="font-weight-bold text-body-1"
-          :to="$localePath('/blog')"
+          :to="$localePath(linkUrl)"
           color="primary"
           variant="outlined"
           rounded="pill"
         >
-          {{$t('see_all_articles')}}
+          {{linkLabel}}
           <v-icon end icon="mdi-arrow-right" />
         </v-btn>
       </v-col>

@@ -1,6 +1,12 @@
 <script setup lang="ts">
 // Aucun état requis pour l’instant
 // Le composant reste prêt pour évoluer (tabs, async data, etc.)
+  defineProps<{
+    title: string;
+    description: string;
+    downloadLabel: string;
+    downloadLink: string;
+  }>()
 </script>
 
 <template>
@@ -11,18 +17,18 @@
       <v-row class="mb-12 align-start">
         <v-col cols="12" md="8">
           <h2 class="mb-4 text-h5 text-sm-h4 font-weight-black opacity-70">
-            {{ $t('events_program_title') }}
+            {{ title }}
           </h2>
           <p class="text-medium-emphasis">
-            {{ $t('events_program_description') }}
+            {{ description }}
           </p>
         </v-col>
 
-        <v-col cols="12" md="4" class="text-md-right">
+        <v-col cols="12" md="4" class="text-start text-md-end">
           <NuxtLink
-            to="/documents/events/aupassagedulivre-catalogue-2025.pdf"
+            :to="downloadLink"
             target="_blank"
-            download="aupassagedulivre-event-2025.pdf"
+            :download="downloadLink"
           >
             <v-btn
               append-icon="mdi-download"
@@ -30,7 +36,7 @@
               rounded="pill"
               class="font-weight-bold px-6 border-opacity-25"
             >
-              {{ $t('download_pdf') }}
+              {{ downloadLabel }}
             </v-btn>
           </NuxtLink>
         </v-col>

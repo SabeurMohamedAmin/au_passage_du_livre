@@ -187,20 +187,20 @@ watch(locale, () => homeStore.fetchHomePage())
   <section class="py-5 py-md-10 scroll-mt-6 bg_surface_variant">
     <v-container>
       <articles-slider
-        :title="content?.articlesTitle"
-        :description="content?.articlesDescription"
-        :see-all-label="content?.articlesSeeAllLabel"
-        :see-all-link="content?.articlesSeeAllLink"
+        :title="content?.articlesTitle ?? ''"
+        :description="content?.articlesDescription ?? ''"
+        :link-label="content?.articlesSeeAllLabel ?? ''"
+        :link-url="content?.articlesSeeAllLink ?? ''"
       />
     </v-container>
   </section>
 
   <section id="schedule" class="my-5 my-md-10 scroll-mt-6">
     <EventScheduleDownload
-      :title="content?.eventsTitle"
-      :description="content?.eventsDescription"
-      :download-label="content?.eventsDownloadLabel"
-      :download-link="content?.eventsDownloadLink"
+      :title="content?.eventsTitle?? ''"
+      :description="content?.eventsDescription?? ''"
+      :download-label="content?.eventsDownloadLabel?? ''"
+      :download-link="content?.eventsDownloadLink?? ''"
     />
   </section>
 </template>
