@@ -104,8 +104,11 @@ i started with:
 *- Home page/Admin:
 *- Patch/Update section hero. [V]
 *- Patch/Update section Missions. [V]
-*- Patch/Update section Speakers. [...waiting]
-*- Patch/Update section Articles & News. [...waiting]
-*- Patch/Update section Events / Program. [...waiting]
-*- Patch/Update home page images. [...waiting]
+*- Patch/Update section Speakers. [V]
+*- Patch/Update section Articles & News. [V]
+*- Patch/Update section Events / Program. [V]
+*- Patch/Update home page images. [V]
+_____
+*- Events page/Admin:
+
 
