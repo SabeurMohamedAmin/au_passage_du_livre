@@ -488,14 +488,14 @@ const rules = {
                     <v-divider class="mb-4" />
                   </v-col>
                   <v-col v-if="form.translations[editingLocale]" cols="12" md="4">
-                    <v-text-field v-model="form.translations[editingLocale].title" label="Titre *" variant="outlined" :rules="[rules.required]" />
+                    <v-text-field v-model="form.translations[editingLocale]!.title" label="Titre *" variant="outlined" :rules="[rules.required]" />
                   </v-col>
                   <v-col v-if="form.translations[editingLocale]" cols="12" md="4">
-                    <v-text-field v-model="form.translations[editingLocale].subtitle" label="Sous-titre" variant="outlined" />
+                    <v-text-field v-model="form.translations[editingLocale]!.subtitle" label="Sous-titre" variant="outlined" />
                   </v-col>
                   <v-col v-if="form.translations[editingLocale]" cols="12" md="4">
                     <v-text-field
-                      v-model="form.translations[editingLocale].slug" label="Slug" variant="outlined"
+                      v-model="form.translations[editingLocale]!.slug" label="Slug" variant="outlined"
                       :placeholder="autoSlug" persistent-placeholder
                       hint="Laissez vide pour générer automatiquement depuis le titre."
                       persistent-hint
@@ -541,13 +541,13 @@ const rules = {
                     <v-text-field v-model="form.website" label="Site Web" variant="outlined" :rules="[rules.url]" placeholder="https://..." />
                   </v-col>
                   <v-col v-if="form.translations[editingLocale]" cols="12">
-                    <v-textarea v-model="form.translations[editingLocale].shortSummary" label="Résumé court" variant="outlined" rows="2" />
+                    <v-textarea v-model="form.translations[editingLocale]!.shortSummary" label="Résumé court" variant="outlined" rows="2" />
                   </v-col>
                   <v-col v-if="form.translations[editingLocale]" cols="12">
-                    <v-textarea v-model="form.translations[editingLocale].about" label="À propos" variant="outlined" rows="4" />
+                    <v-textarea v-model="form.translations[editingLocale]!.about" label="À propos" variant="outlined" rows="4" />
                   </v-col>
                   <v-col v-if="form.translations[editingLocale]" cols="12">
-                    <v-textarea v-model="form.translations[editingLocale].highlights" label="Points forts du programme" variant="outlined" rows="3"
+                    <v-textarea v-model="form.translations[editingLocale]!.highlights" label="Points forts du programme" variant="outlined" rows="3"
                       placeholder="Un point par ligne" />
                   </v-col>
                 </v-row>
@@ -587,10 +587,10 @@ const rules = {
                           <v-text-field v-model="s.location" label="Lieu / Salle" variant="outlined" density="comfortable" />
                         </v-col>
                         <v-col v-if="s.translations[editingLocale]" cols="12">
-                          <v-text-field v-model="s.translations[editingLocale].title" label="Titre" variant="outlined" density="comfortable" />
+                          <v-text-field v-model="s.translations[editingLocale]!.title" label="Titre" variant="outlined" density="comfortable" />
                         </v-col>
                         <v-col v-if="s.translations[editingLocale]" cols="12">
-                          <v-textarea v-model="s.translations[editingLocale].description" label="Description" variant="outlined" density="comfortable" rows="3" />
+                          <v-textarea v-model="s.translations[editingLocale]!.description" label="Description" variant="outlined" density="comfortable" rows="3" />
                         </v-col>
                         <v-col cols="12">
                           <v-select v-model="s.intervenantIds" :items="speakerOptions" item-title="name" item-value="id"
