@@ -4,7 +4,7 @@
   "press": "Press",
   "sponsors": "Sponsors",
   "contact us": "Contact us",
-  "about us" : "About us",
+  "about us": "About us",
   "events": "Events",
   "share_page": "Share page",
   "copy_link": "Copy link",
@@ -20,94 +20,71 @@
   "association vision sentence": "Au Passage du Livre creates spaces where words, images, and ideas circulate freely.",
   "association mission sentence": "Meetings, workshops, and cultural initiatives to foster a love of reading, support creativity, and bring all audiences together.",
   "see our missions": "See our missions",
-
   "mission_1_title": "Creative Generation",
   "mission_1_description": "We connect young people with the world of books through hands-on experiences that make literature lively and accessible.",
   "mission_1_card_title": "Awakening the imagination",
   "mission_1_card_text": "Creating encounters and meaningful experiences to open young minds to literature, stimulate creativity, and encourage a curious view of the world.",
-
   "mission_2_title": "Encounters & dialogue",
   "mission_2_description": "Creating spaces for exchange between authors, artists, and audiences to encourage dialogue, transmission, and the discovery of creative journeys.",
   "mission_2_card_title": "Meetings with authors",
   "mission_2_card_text": "Special moments to engage with authors and illustrators, explore their worlds and inspirations, and better understand creative processes.",
-
   "mission_3_title": "Creation & illustration",
   "mission_3_description": "Highlighting visual and narrative arts through exhibitions, meetings, and creative moments.",
   "mission_3_card_title": "Illustration & visual arts",
   "mission_3_card_text": "Discovering the work of illustrators and visual artists, exploring the relationship between image and storytelling, and showcasing contemporary graphic creation.",
-
   "learn_more": "Learn more",
-
   "guests_title": "Speakers and artists",
   "guests_description": "Discover the speakers and artists taking part in our cultural events.",
   "see_all_guests": "See all speakers",
-
   "blog_title": "Articles & News",
   "blog_description": "Follow the latest news from Au Passage du Livre: upcoming events, festival highlights, ongoing projects, and cultural initiatives led by the association.",
   "see_all_articles": "See all articles",
-
   "events_program_title": "Events Program",
   "events_program_description": "To download the complete 2025 events catalog, please click on 'Download PDF'.",
   "download_pdf": "Download PDF",
-
   "archived_events_title": "Archived Events",
   "archived_events_description": "Discover our past events: readings, discussions, and cultural experiences that have shaped the life of the association.",
   "see_all_artists_speakers": "See all artists and speakers",
-
   "fe_2026_title": "European Fair 2026",
   "fe_2026_subtitle": "Au Passage du Livre",
   "fe_2026_tagline": "Goes European",
   "fe_2026_description": "Join our association for three unforgettable days of literature, culture, and exchange at the heart of Europe.",
-
   "event_when_label": "When ?",
   "event_when_date": "From September 4 to 14, 2026",
   "event_when_time": "10:00 AM – 8:00 PM",
-
   "event_where_label": "Where ?",
   "event_where_address": "Avenue Herrenschmidt, Strasbourg",
   "event_where_hall": "Hall 5",
-
   "event_what_label": "What ?",
   "event_what_line_1": "Book Signings, Panels &",
   "event_what_line_2": "Exclusive Workshops",
-  
   "next_event_title": "Our Next Event",
   "next_event_description": "We invite you to join us at our upcoming event. If you're interested, please check the details to learn more.",
   "event_guests": "Event Guests",
-
   "events heading": "Upcoming and Past Events.",
   "events description": "Discover all of our literary events and activities, past and upcoming — conversations, readings, and cultural experiences to explore and revisit.",
   "upcoming events heading": "Upcoming Events",
   "upcoming events description": "Discover our upcoming literary gatherings, including readings, discussions, and cultural experiences to enjoy and share.",
   "intervenants": "Speakers",
   "view_all_guests": "View all guests",
-
   "event": "Event",
-
   "event_speakers_title": "Speakers and artists",
   "event_speakers_description": "Discover the speakers and artists taking part in our cultural events.",
   "upcoming_event_guests": "Upcoming Event Guests",
   "see_all": "See all",
   "no_event": "No events",
   "no_archive_available": "No archives available at the moment",
-
-
-
   "artists_speakers_title": "Artists & Speakers",
   "artists_speakers_description": "Discover the talents who will bring our event to life. Renowned authors, passionate artists, and inspiring speakers await you.",
-
   "search_by_name_specialty": "Search by name, specialty...",
   "all_guests": "All Guests",
-
   "all": "All",
   "authors": "Authors",
   "artists": "Artists",
   "speakers": "Speakers",
   "artisans": "Artisans",
-
   "press_news_title": "Press & News",
   "press_news_description": "Articles, interviews, and media coverage dedicated to Au Passage du Livre and its cultural initiatives.",
-
   "press_article_title": "Books, Games and Figurines for a True \"Cultural Village\"",
   "press_article_excerpt": "After its first edition in 2024, books return to the European Fair of Strasbourg, this time surrounded by board games and figurines…",
   "read_article": "Read the article",
@@ -115,10 +92,8 @@
   "article": "Article",
   "interview": "Interview",
   "review": "Review",
-
   "contact_cta_paragraph": "Have a question about the festival? Would you like to join us or become a partner? Our team is here to help.",
   "address_label": "Address",
-
   "email_label": "Email",
   "message_sent": "Message sent",
   "message_sent_description": "Thank you for contacting us. We will get back to you very soon.",
@@ -126,8 +101,7 @@
   "contact_us": "Contact us",
   "data_consent": "I agree that my data may be processed to respond to my request.",
   "send_message": "Send message",
-
-    "full_name": "Full name",
+  "full_name": "Full name",
   "email_address": "Email address",
   "subject_request": "Subject of your request",
   "subject_general": "General information",
@@ -135,60 +109,48 @@
   "subject_volunteer": "Volunteering",
   "subject_other": "Other",
   "your_message": "Your message",
-
   "association_journal_title": "Association Journal",
   "association_journal_description": "Discover the latest updates from the field, volunteer stories, and upcoming charity events.",
   "search_articles": "Search articles...",
   "no_articles_found": "No articles found",
   "adjust_search_or_category": "Try adjusting your search or category.",
-
   "community": "Community",
   "news": "News",
-
-    "hero_events": "Cultural Events",
+  "hero_events": "Cultural Events",
   "hero_support_artists": "Support for Artists",
   "hero_transmit_culture": "Sharing Culture",
-
   "footer_support": "Support",
   "footer_privacy": "Privacy Policy",
   "footer_faq": "FAQ",
   "footer_terms": "Terms",
-
   "footer_explore": "Explore",
   "footer_about": "About Us",
   "footer_schedule": "Schedule",
   "footer_speakers": "Speakers",
   "footer_blog": "Blog",
   "copyright": "Au Passage du Livre. All rights reserved.",
-
-
   "login": "Log in",
   "logout": "Log out",
   "register": "Sign up",
-
   "login here": "Log in here",
-
   "create account": "Create an account",
   "create account using your credentials": "Create an account using your credentials",
   "create account using your facebook": "Create an account with Facebook",
   "create account using your google mail": "Create an account with Google",
   "create account using your microsoft mail": "Create an account with Microsoft",
-
   "login page": "Login page",
-  "signup page" : "Signup page",
+  "signup page": "Signup page",
   "recover password": "Recover password",
   "follow the instuctions sent to your email address": "Follow the instructions sent to your email address",
   "password reset email sent": "An email has been sent to you with instructions on how to reset your password.",
   "no reset email received": "If you don't receive an email, please check your spam folder. If you still don't receive an email, that means you don't have an account.",
   "false alert": "Oops! False alert?",
-
   "for authentication and create new user": "For authentication and create new user",
   "login to account": "Log in to your account",
   "login using your credentials": "Log in using your credentials",
   "login using your facebook account": "Log in with Facebook",
   "login using your google mail account": "Log in with Google",
   "login using your microsoft mail account": "Log in with Microsoft",
-
   "user": "User",
   "first name": "First name",
   "last name": "Last name",
@@ -196,29 +158,24 @@
   "email address": "Email address",
   "password": "Password",
   "confirm password": "Confirm password",
-
   "back to home": "Back to home",
   "already have account ?": "Already have an account?",
-
   "welcome to": "Welcome to",
   "or continue with": "Or continue with",
   "let's start by creating your account": "Let’s start by creating your account",
-
   "no need to waste time on this page, let's take you back to your account": "No need to waste time on this page — let’s take you back to your account",
-
   "for authentication and sign in": "For authentication and sign-in",
-
   "a valid email is required": "A valid email address is required",
   "a password is required": "A password is required",
-
   "authentication error": "Authentication error",
   "Please create an account before logging in and try again.": "Please create an account before logging in and try again.",
-
   "already have an account": "Already have an account",
   "login with credentials or your social media": "Log in with your credentials or social media",
-
   "or": "or",
   "forgot your password ?": "Forgot your password?",
-  "don't have an account ?": "Don’t have an account?"
-  
+  "don't have an account ?": "Don’t have an account?",
+  "Entrée gratuite": "Free entry",
+  "Entrée payante": "Paid entry",
+  "Sur invitation": "By invitation",
+  "Sur inscription": "Registration required"
 }

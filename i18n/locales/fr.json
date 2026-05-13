@@ -10,7 +10,6 @@
   "share_page": "Partager la page",
   "copy_link": "Copier le lien",
   "link_copied": "Lien copié !",
-  
   "events heading": "Événements à venir et passés.",
   "events description": "Découvrez tous nos événements et activités littéraires, passés et à venir — conversations, lectures et expériences culturelles à explorer et revisiter.",
   "upcoming events heading": "Événements à venir",
@@ -26,25 +25,19 @@
   "association vision sentence": "Au Passage du Livre crée des espaces où les mots, les images et les idées circulent librement.",
   "association mission sentence": "Rencontres, ateliers et actions culturelles pour transmettre le goût de la lecture, soutenir la création et rassembler tous les publics.",
   "see our missions": "Voir nos missions",
-
   "mission_1_title": "Génération Créative",
   "mission_1_description": "Nous connectons la jeunesse aux acteurs du livre à travers des expériences concrètes qui rendent la littérature vivante et accessible.",
   "mission_1_card_title": "Éveiller l’imaginaire",
   "mission_1_card_text": "Créer des rencontres et des expériences sensibles pour ouvrir les jeunes à la littérature, stimuler leur créativité et encourager leur regard sur le monde.",
-
   "mission_2_title": "Rencontres & dialogue",
   "mission_2_description": "Créer des moments d’échange entre les auteurs, les artistes et le public, pour favoriser le dialogue, la transmission et la découverte des œuvres et des parcours créatifs.",
   "mission_2_card_title": "Rencontres avec des auteurs",
   "mission_2_card_text": "Des temps privilégiés pour échanger avec des auteurs et des illustrateurs, découvrir leur univers, leurs inspirations et mieux comprendre les processus de création.",
-
   "mission_3_title": "Création & illustration",
   "mission_3_description": "Mettre en lumière les arts visuels et narratifs à travers des expositions, des rencontres et des temps de création.",
   "mission_3_card_title": "Illustration & arts visuels",
   "mission_3_card_text": "Découvrir le travail des illustrateurs et artistes visuels, explorer les liens entre image et récit et valoriser la création graphique contemporaine.",
-
   "learn_more": "En savoir plus",
-
-
   "guests_title": "Intervenants et artistes",
   "guests_description": "Découvrez les intervenants et artistes qui participent à nos événements culturels.",
   "see_all_guests": "Voir tous les intervenants",
@@ -52,64 +45,46 @@
   "blog_description": "Suivez l’actualité d’Au Passage du Livre : événements à venir, temps forts du festival, projets en cours et initiatives culturelles portées par l’association.",
   "see_all_articles": "Voir tous les articles",
   "see_all_artists_speakers": "Voir tous les artistes et intervenants",
-
-
   "events_program_title": "Programme des événements",
   "events_program_description": "Pour télécharger le catalogue complet des événements 2025, veuillez cliquer sur « Télécharger PDF ».",
   "download_pdf": "Télécharger PDF",
-
   "next_event_title": "Notre prochain événement",
   "next_event_description": "Nous vous invitons à nous rejoindre lors de notre prochain événement. Si vous êtes intéressé, consultez les détails pour en savoir plus.",
   "event_guests": "Intervenants de l’événement",
-
   "archived_events_title": "Archives des événements",
   "archived_events_description": "Découvrez nos événements passés : lectures, discussions et expériences culturelles qui ont marqué la vie de l’association.",
-
   "fe_2026_title": "Foire Européenne 2026",
   "fe_2026_subtitle": "Au Passage du Livre",
   "fe_2026_tagline": "Goes European",
   "fe_2026_description": "Rejoignez notre association pour trois journées inoubliables de littérature, de culture et d’échanges au cœur de l’Europe.",
-
-
   "event_when_label": "Quand ?",
   "event_when_date": "Du 4 au 14 septembre 2026",
   "event_when_time": "10:00 – 20:00",
-
   "event_where_label": "Où ?",
   "event_where_address": "Avenue Herrenschmidt, Strasbourg",
   "event_where_hall": "Hall 5",
-
   "event_what_label": "Quoi ?",
   "event_what_line_1": "Dédicaces, tables rondes et",
   "event_what_line_2": "ateliers exclusifs",
-
   "view_all_guests": "Voir tous les invités",
-
   "event": "Événement",
-
   "event_speakers_title": "Artistes et intervenants",
   "event_speakers_description": "Découvrez les talents qui feront vivre notre événement. Des auteurs renommés, des artistes passionnés et des intervenants inspirants vous attendent.",
   "upcoming_event_guests": "Invités du prochain événement",
   "see_all": "Voir tout",
-  
   "no_event": "Aucun événement",
   "no_archive_available": "Aucune archive disponible pour le moment",
-
   "artists_speakers_title": "Artistes et intervenants",
   "artists_speakers_description": "Découvrez les talents qui feront vivre notre événement. Des auteurs renommés, des artistes passionnés et des intervenants inspirants vous attendent.",
-
   "search_by_name_specialty": "Rechercher par nom, spécialité...",
   "all_guests": "Tous les invités",
-
   "all": "Tous",
   "authors": "Auteurs",
   "artists": "Artistes",
   "speakers": "Conférenciers",
   "artisans": "Artisans",
-  
   "press_news_title": "Presse & Actualités",
   "press_news_description": "Articles, interviews et mentions médiatiques consacrés à Au Passage du Livre et à ses actions culturelles.",
-
   "press_article_title": "Livres, jeux et figurines pour un vrai « Village culturel »",
   "press_article_excerpt": "Après une première en 2024, le livre revient à la Foire européenne de Strasbourg. Cette fois entouré de jeux de société et de figurines…",
   "read_article": "Lire l’article",
@@ -117,10 +92,8 @@
   "article": "Article",
   "interview": "Interview",
   "review": "Critique",
-
   "contact_cta_paragraph": "Une question sur le festival ? Envie de nous rejoindre ou de devenir partenaire ? Notre équipe est à votre écoute.",
   "address_label": "Adresse",
-
   "email_label": "Email",
   "message_sent": "Message envoyé",
   "message_sent_description": "Merci de nous avoir contactés. Nous reviendrons vers vous très prochainement.",
@@ -128,7 +101,6 @@
   "contact_us": "Contactez-nous",
   "data_consent": "J'accepte que mes données soient traitées pour répondre à ma demande.",
   "send_message": "Envoyer le message",
-
   "full_name": "Nom complet",
   "email_address": "Adresse e-mail",
   "subject_request": "Sujet de votre demande",
@@ -137,46 +109,36 @@
   "subject_volunteer": "Bénévolat",
   "subject_other": "Autre",
   "your_message": "Votre message",
-
   "association_journal_title": "Journal de l’Association",
   "association_journal_description": "Découvrez les dernières actualités sur le terrain, les témoignages de bénévoles et les prochains événements solidaires.",
   "search_articles": "Rechercher des articles...",
   "no_articles_found": "Aucun article trouvé",
   "adjust_search_or_category": "Essayez d'ajuster votre recherche ou catégorie.",
-
   "events": "Événements",
   "community": "Communauté",
   "news": "Actualités",
-
   "hero_events": "Événements culturels",
   "hero_support_artists": "Soutien aux artistes",
   "hero_transmit_culture": "Transmettre la culture",
-
   "footer_support": "Support",
   "footer_privacy": "Politique de confidentialité",
   "footer_faq": "FAQ",
   "footer_terms": "Conditions générales",
   "copyright": "Au Passage du Livre. Tous droits réservés.",
-
   "footer_explore": "Explorer",
   "footer_about": "À propos",
   "footer_schedule": "Programme",
   "footer_speakers": "Intervenants",
   "footer_blog": "Blog",
-
-
   "login": "Connexion",
   "logout": "Déconnexion",
   "register": "Inscription",
-  
   "login here": "Se connecter ici",
-
   "create account": "Créer un compte",
   "create account using your credentials": "Créer un compte avec vos identifiants",
   "create account using your facebook": "Créer un compte avec Facebook",
   "create account using your google mail": "Créer un compte avec Google",
   "create account using your microsoft mail": "Créer un compte avec Microsoft",
-
   "login page": "Page de connexion",
   "signup page": "Page d’inscription",
   "password reset email sent": "Un e-mail vous a été envoyé avec des instructions pour réinitialiser votre mot de passe.",
@@ -190,7 +152,6 @@
   "login using your facebook account": "Connectez-vous avec Facebook",
   "login using your google mail account": "Connectez-vous avec Google",
   "login using your microsoft mail account": "Connectez-vous avec Microsoft",
-
   "user": "Utilisateur",
   "first name": "Prénom",
   "last name": "Nom",
@@ -198,28 +159,24 @@
   "email address": "Adresse e-mail",
   "password": "Mot de passe",
   "confirm password": "Confirmer le mot de passe",
-
   "back to home": "Retour à l’accueil",
   "already have account ?": "Vous avez déjà un compte ?",
-
   "welcome to": "Bienvenue sur",
   "or continue with": "Ou continuer avec",
   "let's start by creating your account": "Commençons par créer votre compte",
-
   "no need to waste time on this page, let's take you back to your account": "Inutile de perdre du temps sur cette page, retournons à votre compte",
-
   "for authentication and sign in": "Page d’authentification et de connexion",
-
   "a valid email is required": "Une adresse e-mail valide est requise",
   "a password is required": "Un mot de passe est requis",
-
   "authentication error": "Erreur d’authentification",
   "Please create an account before logging in and try again.": "Veuillez créer un compte avant de vous connecter et réessayer.",
-
   "already have an account": "Vous avez déjà un compte",
   "login with credentials or your social media": "Connectez-vous avec vos identifiants ou vos réseaux sociaux",
-
   "or": "ou",
   "forgot your password ?": "Mot de passe oublié ?",
-  "don't have an account ?": "Vous n’avez pas de compte ?"
+  "don't have an account ?": "Vous n’avez pas de compte ?",
+  "Entrée gratuite": "Entrée gratuite",
+  "Entrée payante": "Entrée payante",
+  "Sur invitation": "Sur invitation",
+  "Sur inscription": "Sur inscription"
 }

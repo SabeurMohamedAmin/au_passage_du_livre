@@ -20,98 +20,71 @@
   "association vision sentence": "Au Passage du Livre crea espacios donde las palabras, las imágenes y las ideas circulan libremente.",
   "association mission sentence": "Encuentros, talleres y acciones culturales para transmitir el gusto por la lectura, apoyar la creación y reunir a todos los públicos.",
   "see our missions": "Ver nuestras misiones",
-
-
   "mission_1_title": "Generación creativa",
   "mission_1_description": "Conectamos a los jóvenes con el mundo del libro a través de experiencias concretas que hacen la literatura viva y accesible.",
   "mission_1_card_title": "Despertar la imaginación",
   "mission_1_card_text": "Crear encuentros y experiencias sensibles para abrir a los jóvenes a la literatura, estimular su creatividad y enriquecer su mirada sobre el mundo.",
-
   "mission_2_title": "Encuentros y diálogo",
   "mission_2_description": "Crear espacios de intercambio entre autores, artistas y público para fomentar el diálogo, la transmisión y el descubrimiento de trayectorias creativas.",
   "mission_2_card_title": "Encuentros con autores",
   "mission_2_card_text": "Momentos privilegiados para dialogar con autores e ilustradores, descubrir sus universos, inspiraciones y procesos creativos.",
-
   "mission_3_title": "Creación e ilustración",
   "mission_3_description": "Poner en valor las artes visuales y narrativas a través de exposiciones, encuentros y momentos de creación.",
   "mission_3_card_title": "Ilustración y artes visuales",
   "mission_3_card_text": "Descubrir el trabajo de ilustradores y artistas visuales, explorar los vínculos entre imagen y relato y valorizar la creación gráfica contemporánea.",
-
   "learn_more": "Saber más",
-
   "guests_title": "Ponentes y artistas",
   "guests_description": "Descubra a los ponentes y artistas que participan en nuestros eventos culturales.",
   "see_all_guests": "Ver todos los ponentes",
   "blog_title": "Artículos y Actualidad",
   "blog_description": "Siga la actualidad de Au Passage du Livre: próximos eventos, momentos destacados del festival, proyectos en curso e iniciativas culturales impulsadas por la asociación.",
   "see_all_articles": "Ver todos los artículos",
-
-
   "events_program_title": "Programa de eventos",
   "events_program_description": "Para descargar el catálogo completo de eventos 2025, haga clic en « Descargar PDF ».",
   "download_pdf": "Descargar PDF",
-
   "next_event_title": "Nuestro próximo evento",
   "next_event_description": "Le invitamos a unirse a nuestro próximo evento. Si está interesado, consulte los detalles para obtener más información.",
   "see_all_artists_speakers": "Ver todos los artistas y ponentes",
-
   "event_guests": "Invitados del evento",
-
   "archived_events_title": "Eventos archivados",
   "archived_events_description": "Descubra nuestros eventos pasados: lecturas, debates y experiencias culturales que han marcado la vida de la asociación.",
-
   "fe_2026_title": "Feria Europea 2026",
   "fe_2026_subtitle": "Au Passage du Livre",
   "fe_2026_tagline": "Se vuelve europea",
   "fe_2026_description": "Únase a nuestra asociación para vivir tres días inolvidables de literatura, cultura e intercambio en el corazón de Europa.",
-
   "event_when_label": "¿Cuándo?",
   "event_when_date": "Del 4 al 14 de septiembre de 2026",
   "event_when_time": "10:00 – 20:00",
-
   "event_where_label": "¿Dónde?",
   "event_where_address": "Avenue Herrenschmidt, Estrasburgo",
   "event_where_hall": "Pabellón 5",
-
   "event_what_label": "¿Qué?",
   "event_what_line_1": "Firmas de libros, mesas redondas y",
   "event_what_line_2": "talleres exclusivos",
-
-  
   "events heading": "Eventos próximos y pasados.",
   "events description": "Descubre todos nuestros eventos y actividades literarias, pasados y próximos — conversaciones, lecturas y experiencias culturales para explorar y revisitar.",
   "upcoming events heading": "Próximos eventos",
   "upcoming events description": "Descubre nuestros próximos encuentros literarios, incluidas lecturas, debates y experiencias culturales para disfrutar y compartir.",
   "intervenants": "Ponentes",
-
   "view_all_guests": "Ver todos los invitados",
-
   "event": "Evento",
-
   "event_speakers_title": "Speakers and artists",
   "event_speakers_description": "Discover the speakers and artists taking part in our cultural events.",
   "upcoming_event_guests": "Invitados del próximo evento",
   "see_all": "Ver todos",
   "no_event": "No hay eventos",
   "no_archive_available": "No hay archivos disponibles por el momento",
-
-
   "artists_speakers_title": "Artistas y Ponentes",
   "artists_speakers_description": "Descubra los talentos que darán vida a nuestro evento. Autores reconocidos, artistas apasionados y ponentes inspiradores le esperan.",
-
   "search_by_name_specialty": "Buscar por nombre o especialidad...",
   "all_guests": "Todos los invitados",
-
-
   "all": "Todos",
   "authors": "Autores",
   "artists": "Artistas",
   "speakers": "Ponentes",
   "artisans": "Artesanos",
-
   "press_news_title": "Prensa y Actualidad",
   "press_news_description": "Artículos, entrevistas y cobertura mediática dedicados a Au Passage du Livre y a sus iniciativas culturales.",
-
   "press_article_title": "Libros, juegos y figuras para un verdadero \"Pueblo cultural\"",
   "press_article_excerpt": "Tras una primera edición en 2024, el libro regresa a la Feria Europea de Estrasburgo, esta vez acompañado de juegos de mesa y figuras…",
   "read_article": "Leer el artículo",
@@ -119,18 +92,15 @@
   "article": "Artículo",
   "interview": "Entrevista",
   "review": "Reseña",
-
   "contact_cta_paragraph": "¿Tiene alguna pregunta sobre el festival? ¿Le gustaría unirse a nosotros o convertirse en socio? Nuestro equipo está a su disposición.",
   "address_label": "Dirección",
-
-    "email_label": "Correo electrónico",
+  "email_label": "Correo electrónico",
   "message_sent": "Mensaje enviado",
   "message_sent_description": "Gracias por contactarnos. Nos pondremos en contacto con usted muy pronto.",
   "send_another_message": "Enviar otro mensaje",
   "contact_us": "Contáctenos",
   "data_consent": "Acepto que mis datos sean tratados para responder a mi solicitud.",
   "send_message": "Enviar mensaje",
-
   "full_name": "Nombre completo",
   "email_address": "Correo electrónico",
   "subject_request": "Asunto de su solicitud",
@@ -139,45 +109,35 @@
   "subject_volunteer": "Voluntariado",
   "subject_other": "Otro",
   "your_message": "Su mensaje",
-
   "association_journal_title": "Diario de la Asociación",
   "association_journal_description": "Descubra las últimas novedades sobre el terreno, historias de voluntarios y próximos eventos solidarios.",
   "search_articles": "Buscar artículos...",
   "no_articles_found": "No se encontraron artículos",
   "adjust_search_or_category": "Intente ajustar su búsqueda o categoría.",
-
   "community": "Comunidad",
   "news": "Noticias",
-
   "hero_events": "Eventos culturales",
   "hero_support_artists": "Apoyo a los artistas",
   "hero_transmit_culture": "Transmitir la cultura",
-
   "footer_support": "Soporte",
   "footer_privacy": "Política de privacidad",
   "footer_faq": "FAQ",
   "footer_terms": "Términos",
-
   "footer_explore": "Explorar",
   "footer_about": "Sobre nosotros",
   "footer_schedule": "Programa",
   "footer_speakers": "Ponentes",
   "footer_blog": "Blog",
   "copyright": "Au Passage du Livre. Todos los derechos reservados.",
-
-
   "login": "Iniciar sesión",
   "logout": "Cerrar sesión",
   "register": "Registrarse",
-
   "login here": "Inicia sesión aquí",
-
   "create account": "Crear una cuenta",
   "create account using your credentials": "Crear una cuenta con tus credenciales",
   "create account using your facebook": "Crear una cuenta con Facebook",
   "create account using your google mail": "Crear una cuenta con Google",
   "create account using your microsoft mail": "Crear una cuenta con Microsoft",
-
   "login page": "Página de inicio de sesión",
   "signup page": "Página de registro",
   "recover password": "Recuperar contraseña",
@@ -191,7 +151,6 @@
   "login using your facebook account": "Inicia sesión con Facebook",
   "login using your google mail account": "Inicia sesión con Google",
   "login using your microsoft mail account": "Inicia sesión con Microsoft",
-
   "user": "Usuario",
   "first name": "Nombre",
   "last name": "Apellido",
@@ -199,28 +158,24 @@
   "email address": "Correo electrónico",
   "password": "Contraseña",
   "confirm password": "Confirmar contraseña",
-
   "back to home": "Volver al inicio",
   "already have account ?": "¿Ya tienes una cuenta?",
-
   "welcome to": "Bienvenido a",
   "or continue with": "O continuar con",
   "let's start by creating your account": "Comencemos creando tu cuenta",
-
   "no need to waste time on this page, let's take you back to your account": "No pierdas tiempo en esta página, volvamos a tu cuenta",
-
   "for authentication and sign in": "Para autenticación e inicio de sesión",
-
   "a valid email is required": "Se requiere un correo electrónico válido",
   "a password is required": "Se requiere una contraseña",
-
   "authentication error": "Error de autenticación",
   "Please create an account before logging in and try again.": "Crea una cuenta antes de iniciar sesión e inténtalo de nuevo.",
-
   "already have an account": "Ya tienes una cuenta",
   "login with credentials or your social media": "Inicia sesión con tus credenciales o redes sociales",
-
   "or": "o",
   "forgot your password ?": "¿Olvidaste tu contraseña?",
-  "don't have an account ?": "¿No tienes una cuenta?"
+  "don't have an account ?": "¿No tienes una cuenta?",
+  "Entrée gratuite": "Entrada gratuita",
+  "Entrée payante": "Entrada de pago",
+  "Sur invitation": "Por invitación",
+  "Sur inscription": "Inscripción obligatoria"
 }

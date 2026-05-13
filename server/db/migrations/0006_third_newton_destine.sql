@@ -1,0 +1,22 @@
+CREATE TABLE `events` (
+	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	`is_next_event` integer DEFAULT false NOT NULL,
+	`title` text NOT NULL,
+	`subtitle` text DEFAULT '' NOT NULL,
+	`cover_image` text DEFAULT '' NOT NULL,
+	`start_date` text NOT NULL,
+	`end_date` text DEFAULT '' NOT NULL,
+	`time` text DEFAULT '' NOT NULL,
+	`location_name` text DEFAULT '' NOT NULL,
+	`address` text DEFAULT '' NOT NULL,
+	`entrance_type` text DEFAULT 'Entrée gratuite' NOT NULL,
+	`website` text DEFAULT '' NOT NULL,
+	`short_summary` text DEFAULT '' NOT NULL,
+	`about` text DEFAULT '' NOT NULL,
+	`highlights` text DEFAULT '' NOT NULL,
+	`speaker_ids` text NOT NULL,
+	`schedule` text NOT NULL,
+	`documents` text NOT NULL,
+	`created_at` integer NOT NULL,
+	`updated_at` integer NOT NULL
+);

@@ -20,81 +20,61 @@
   "association vision sentence": "تُنشئ جمعية «أو باساج دو ليفر» فضاءاتٍ تتداول فيها الكلمات والصور والأفكار بحرية.",
   "association mission sentence": "لقاءات وورش عمل ومبادرات ثقافية لنقل حبّ القراءة، ودعم الإبداع، وجمع مختلف فئات الجمهور.",
   "see our missions": "اطّلع على مهامّنا",
-
   "mission_1_title": "الجيل المبدع",
   "mission_1_description": "نربط الشباب بعالم الكتاب من خلال تجارب ملموسة تجعل الأدب حيًّا ومتاحًا للجميع.",
   "mission_1_card_title": "إيقاظ الخيال",
   "mission_1_card_text": "ابتكار لقاءات وتجارب حسّية تفتح الشباب على الأدب، وتنمّي إبداعهم، وتوسّع نظرتهم إلى العالم.",
-
   "mission_2_title": "لقاءات وحوار",
   "mission_2_description": "خلق فضاءات للتبادل بين الكتّاب والفنانين والجمهور لتعزيز الحوار ونقل المعرفة واكتشاف المسارات الإبداعية.",
   "mission_2_card_title": "لقاءات مع الكتّاب",
   "mission_2_card_text": "لحظات مميّزة للحوار مع الكتّاب والرسّامين، واكتشاف عوالمهم وإلهامهم وفهم عمليات الإبداع بشكل أعمق.",
-
   "mission_3_title": "الإبداع والرسم",
   "mission_3_description": "إبراز الفنون البصرية والسردية من خلال المعارض واللقاءات ولحظات الإبداع.",
   "mission_3_card_title": "الرسم والفنون البصرية",
   "mission_3_card_text": "اكتشاف أعمال الرسّامين والفنانين البصريين، واستكشاف العلاقة بين الصورة والسرد، وتثمين الإبداع الغرافيكي المعاصر.",
-
   "learn_more": "اعرف المزيد",
-
   "guests_title": "المشاركون والفنانون",
   "guests_description": "اكتشف المشاركين والفنانين الذين يشاركون في فعالياتنا الثقافية.",
   "see_all_guests": "عرض جميع المشاركين",
   "blog_title": "مقالات وأخبار",
   "blog_description": "تابعوا أخبار «أو باساج دو ليفر»: الفعاليات القادمة، أبرز محطات المهرجان، المشاريع الجارية والمبادرات الثقافية التي تقودها الجمعية.",
   "see_all_articles": "عرض جميع المقالات",
-
   "events_program_title": "برنامج الفعاليات",
   "events_program_description": "لتحميل الكتالوج الكامل لفعاليات 2025، يُرجى الضغط على « تحميل PDF ».",
   "download_pdf": "تحميل PDF",
-
   "next_event_title": "فعاليتنا القادمة",
   "next_event_description": "ندعوكم للانضمام إلينا في فعاليتنا القادمة. إذا كنتم مهتمين، يرجى الاطلاع على التفاصيل لمعرفة المزيد.",
-
   "event_guests": "ضيوف الفعالية",
   "see_all_artists_speakers": "عرض جميع الفنانين والمتحدثين",
-
-
   "events heading": "الفعاليات القادمة والماضية.",
   "events description": "اكتشف جميع فعالياتنا وأنشطتنا الأدبية، الماضية والقادمة — محادثات وقراءات وتجارب ثقافية لاستكشافها وإعادة زيارتها.",
   "upcoming events heading": "الفعاليات القادمة",
   "upcoming events description": "اكتشف لقاءاتنا الأدبية القادمة، بما في ذلك قراءات ونقاشات وتجارب ثقافية للاستمتاع بها ومشاركتها.",
   "intervenants": "المتحدثون",
-
   "archived_events_title": "أرشيف الفعاليات",
   "archived_events_description": "اكتشف فعالياتنا السابقة: قراءات ونقاشات وتجارب ثقافية تركت بصمتها في مسيرة الجمعية.",
-
-
   "login": "تسجيل الدخول",
   "logout": "تسجيل الخروج",
   "register": "إنشاء حساب",
-
   "login here": "سجل الدخول هنا",
-
   "create account": "إنشاء حساب",
   "create account using your credentials": "إنشاء حساب باستخدام بيانات الاعتماد الخاصة بك",
   "create account using your facebook": "إنشاء حساب باستخدام فيسبوك",
   "create account using your google mail": "إنشاء حساب باستخدام جوجل",
   "create account using your microsoft mail": "إنشاء حساب باستخدام مايكروسوفت",
-
   "fe_2026_title": "المعرض الأوروبي 2026",
   "fe_2026_subtitle": "Au Passage du Livre",
   "fe_2026_tagline": "يتجه نحو أوروبا",
   "fe_2026_description": "انضموا إلى جمعيتنا لثلاثة أيام لا تُنسى من الأدب والثقافة والتبادل في قلب أوروبا.",
-
- "event_when_label": "متى؟",
+  "event_when_label": "متى؟",
   "event_when_date": "من 4 إلى 14 سبتمبر 2026",
   "event_when_time": "10:00 – 20:00",
-
   "event_where_label": "أين؟",
   "event_where_address": "Avenue Herrenschmidt, Strasbourg",
   "event_where_hall": "القاعة 5",
-
   "event_what_label": "ماذا؟",
   "event_what_line_1": "توقيعات كتب، حلقات نقاش و",
   "event_what_line_2": "ورش عمل حصرية",
-
   "login page": "صفحة تسجيل الدخول",
   "signup page": "صفحة التسجيل",
   "recover password": "استعادة كلمة المرور",
@@ -102,35 +82,26 @@
   "password reset email sent": "تم إرسال بريد إلكتروني إليك يحتوي على تعليمات حول كيفية إعادة تعيين كلمة المرور.",
   "no reset email received": "إذا لم تستلم البريد الإلكتروني، يرجى التحقق من مجلد الرسائل غير المرغوب فيها. إذا لم تستلم البريد الإلكتروني بعد ذلك، فهذا يعني أنه ليس لديك حساب.",
   "false alert": "عفواً! إنذار خاطئ؟",
-
   "for authentication and create new user": "للمصادقة وإنشاء مستخدم جديد",
   "view_all_guests": "عرض جميع الضيوف",
-
   "event": "فعالية",
-
   "event_speakers_title": "المتحدثون والفنانون",
   "event_speakers_description": "اكتشفوا المتحدثين والفنانين المشاركين في فعالياتنا الثقافية.",
   "upcoming_event_guests": "ضيوف الفعالية القادمة",
   "see_all": "عرض الكل",
   "artists_speakers_title": "الفنانون والمتحدثون",
   "artists_speakers_description": "اكتشفوا المواهب التي ستمنح فعاليتنا الحياة. كتّاب مشهورون، فنانون شغوفون ومتحدثون ملهمون بانتظاركم.",
-
   "search_by_name_specialty": "ابحث بالاسم أو التخصص...",
   "all_guests": "جميع الضيوف",
-
   "no_event": "لا توجد فعاليات",
   "no_archive_available": "لا توجد أرشيفات متاحة في الوقت الحالي",
-
-
   "all": "الكل",
   "authors": "المؤلفون",
   "artists": "الفنانون",
   "speakers": "المتحدثون",
   "artisans": "الحرفيون",
-
   "press_news_title": "الصحافة والأخبار",
   "press_news_description": "مقالات ومقابلات وتغطيات إعلامية مخصصة لجمعية Au Passage du Livre وأنشطتها الثقافية.",
-
   "press_article_title": "كتب وألعاب ومجسمات لقرية ثقافية حقيقية",
   "press_article_excerpt": "بعد نسخة أولى في عام 2024، يعود الكتاب إلى المعرض الأوروبي في ستراسبورغ، وهذه المرة محاطاً بألعاب الطاولة والمجسمات…",
   "read_article": "اقرأ المقال",
@@ -138,7 +109,6 @@
   "article": "مقال",
   "interview": "مقابلة",
   "review": "مراجعة",
-
   "contact_cta_paragraph": "هل لديكم سؤال حول المهرجان؟ هل ترغبون في الانضمام إلينا أو أن تصبحوا شركاء؟ فريقنا في خدمتكم.",
   "address_label": "العنوان",
   "email_label": "البريد الإلكتروني",
@@ -148,7 +118,6 @@
   "contact_us": "اتصل بنا",
   "data_consent": "أوافق على معالجة بياناتي للرد على طلبي.",
   "send_message": "إرسال الرسالة",
-
   "full_name": "الاسم الكامل",
   "email_address": "عنوان البريد الإلكتروني",
   "subject_request": "موضوع طلبكم",
@@ -157,40 +126,31 @@
   "subject_volunteer": "التطوع",
   "subject_other": "أخرى",
   "your_message": "رسالتكم",
-
   "association_journal_title": "مجلة الجمعية",
   "association_journal_description": "اكتشفوا آخر المستجدات من الميدان، قصص المتطوعين والفعاليات الخيرية القادمة.",
   "search_articles": "ابحث في المقالات...",
   "no_articles_found": "لم يتم العثور على مقالات",
   "adjust_search_or_category": "حاول تعديل البحث أو الفئة.",
-
-
   "community": "المجتمع",
   "news": "الأخبار",
-
   "hero_events": "فعاليات ثقافية",
   "hero_support_artists": "دعم الفنانين",
   "hero_transmit_culture": "نقل الثقافة",
-
   "footer_support": "الدعم",
   "footer_privacy": "سياسة الخصوصية",
   "footer_faq": "الأسئلة الشائعة",
   "footer_terms": "الشروط",
-
   "footer_explore": "استكشاف",
   "footer_about": "من نحن",
   "footer_schedule": "البرنامج",
   "footer_speakers": "المتحدثون",
   "footer_blog": "المدونة",
   "copyright": "Au Passage du Livre. جميع الحقوق محفوظة.",
-
-
   "login to account": "تسجيل الدخول إلى حسابك",
   "login using your credentials": "تسجيل الدخول باستخدام بيانات الاعتماد الخاصة بك",
   "login using your facebook account": "تسجيل الدخول باستخدام فيسبوك",
   "login using your google mail account": "تسجيل الدخول باستخدام جوجل",
   "login using your microsoft mail account": "تسجيل الدخول باستخدام مايكروسوفت",
-
   "user": "المستخدم",
   "first name": "الاسم الأول",
   "last name": "اسم العائلة",
@@ -198,28 +158,24 @@
   "email address": "عنوان البريد الإلكتروني",
   "password": "كلمة المرور",
   "confirm password": "تأكيد كلمة المرور",
-
   "back to home": "العودة إلى الرئيسية",
   "already have account ?": "هل لديك حساب بالفعل؟",
-
   "welcome to": "مرحباً بك في",
   "or continue with": "أو المتابعة باستخدام",
   "let's start by creating your account": "لنبدأ بإنشاء حسابك",
-
   "no need to waste time on this page, let's take you back to your account": "لا داعي لإضاعة الوقت في هذه الصفحة - دعنا نعيدك إلى حسابك",
-
   "for authentication and sign in": "للمصادقة وتسجيل الدخول",
-
   "a valid email is required": "يجب إدخال عنوان بريد إلكتروني صالح",
   "a password is required": "كلمة المرور مطلوبة",
-
   "authentication error": "خطأ في المصادقة",
   "Please create an account before logging in and try again.": "يرجى إنشاء حساب قبل تسجيل الدخول والمحاولة مرة أخرى.",
-
   "already have an account": "هل لديك حساب بالفعل",
   "login with credentials or your social media": "سجل الدخول باستخدام بيانات الاعتماد أو وسائل التواصل الاجتماعي",
-
   "or": "أو",
   "forgot your password ?": "هل نسيت كلمة المرور؟",
-  "don't have an account ?": "ليس لديك حساب؟"
+  "don't have an account ?": "ليس لديك حساب؟",
+  "Entrée gratuite": "دخول مجاني",
+  "Entrée payante": "دخول مدفوع",
+  "Sur invitation": "بدعوة",
+  "Sur inscription": "التسجيل مطلوب"
 }

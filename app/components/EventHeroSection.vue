@@ -1,11 +1,26 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useDisplay } from 'vuetify'
+import { useEventsStore } from '~/stores/events'
 
 /* =====================
   CONFIGURATION
 ===================== */
 const { HERO_IMAGE_URL, content } = useEventHeroContent()
+const eventsStore = useEventsStore()
+
+// Ensure events data is loaded (public fetch, no auth needed)
+if (!eventsStore.items.length) {
+  await eventsStore.fetchPublic()
+}
+
+// Dynamically resolve the hero slug from the actual next event in the DB
+const heroSlug = computed(() => {
+  const nextEvent = eventsStore.nextEvent
+  if (!nextEvent) return content.hero.slug
+  const frTranslation = nextEvent.translations.find(t => t.locale === 'fr')
+  return frTranslation?.slug ?? nextEvent.translations[0]?.slug ?? content.hero.slug
+})
 
 /* ================
   REACTIVE STATE
@@ -129,7 +144,7 @@ const hasMoreAuthors = computed(() =>
               </v-col>
 
               <v-col cols="12" class="mt-auto mb-4">
-                <nuxt-link :to="$localePath({ name: 'event-details', params: { slug: content.hero.slug } })">
+                <nuxt-link :to="$localePath({ name: 'event-details', params: { slug: heroSlug } })">
                   <v-btn
                     variant="outlined"
                     color="white"
@@ -263,7 +278,7 @@ const hasMoreAuthors = computed(() =>
             flat
           >
             <nuxt-link
-              :to="$localePath({ name: 'event-details', hash: '#guests', params: { slug: content.hero.slug } })"
+              :to="$localePath({ name: 'event-details', hash: '#guests', params: { slug: heroSlug } })"
               class="text-decoration-none text-h5 text-center"
             >
               {{ $t('event_guests') }}

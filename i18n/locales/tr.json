@@ -20,96 +20,71 @@
   "association vision sentence": "Au Passage du Livre, kelimelerin, imgelerin ve fikirlerin özgürce dolaştığı alanlar yaratır.",
   "association mission sentence": "Okuma sevgisini aşılamak, yaratımı desteklemek ve tüm kesimleri bir araya getirmek için buluşmalar, atölyeler ve kültürel faaliyetler.",
   "see our missions": "Misyonlarımızı görün",
-
   "mission_1_title": "Yaratıcı Nesil",
   "mission_1_description": "Gençleri, edebiyatı canlı ve erişilebilir kılan somut deneyimler aracılığıyla kitap dünyasıyla buluşturuyoruz.",
   "mission_1_card_title": "Hayal gücünü uyandırmak",
   "mission_1_card_text": "Gençleri edebiyata açmak, yaratıcılıklarını geliştirmek ve dünyaya bakışlarını zenginleştirmek için buluşmalar ve duyusal deneyimler yaratmak.",
-
   "mission_2_title": "Buluşmalar ve diyalog",
   "mission_2_description": "Yazarlar, sanatçılar ve izleyiciler arasında diyalog, aktarım ve yaratıcı yolculukların keşfi için paylaşım alanları oluşturmak.",
   "mission_2_card_title": "Yazarlarla buluşmalar",
   "mission_2_card_text": "Yazarlar ve çizerlerle ayrıcalıklı anlar paylaşarak onların dünyalarını, ilhamlarını ve yaratım süreçlerini keşfetmek.",
-
   "mission_3_title": "Yaratım ve illüstrasyon",
   "mission_3_description": "Sergiler, buluşmalar ve yaratıcı zamanlar aracılığıyla görsel ve anlatı sanatlarını öne çıkarmak.",
   "mission_3_card_title": "İllüstrasyon ve görsel sanatlar",
   "mission_3_card_text": "Çizerlerin ve görsel sanatçıların çalışmalarını keşfetmek, görsel ile anlatı arasındaki bağları incelemek ve çağdaş grafik üretimi desteklemek.",
-
   "learn_more": "Daha fazla bilgi",
-
-
   "guests_title": "Konuşmacılar ve sanatçılar",
   "guests_description": "Kültürel etkinliklerimize katılan konuşmacıları ve sanatçıları keşfedin.",
   "see_all_guests": "Tüm konuşmacıları gör",
   "blog_title": "Makaleler & Haberler",
   "blog_description": "Au Passage du Livre’den en son gelişmeleri takip edin: yaklaşan etkinlikler, festivalin önemli anları, devam eden projeler ve derneğin yürüttüğü kültürel girişimler.",
   "see_all_articles": "Tüm makaleleri gör",
-
   "events_program_title": "Etkinlik Programı",
   "events_program_description": "2025 etkinliklerinin tam kataloğunu indirmek için lütfen “PDF indir” seçeneğine tıklayın.",
   "download_pdf": "PDF indir",
-
   "next_event_title": "Bir Sonraki Etkinliğimiz",
   "next_event_description": "Sizi bir sonraki etkinliğimize davet ediyoruz. İlginizi çekiyorsa, daha fazla bilgi için detaylara göz atın.",
   "see_all_artists_speakers": "Tüm sanatçıları ve konuşmacıları görüntüle",
-
   "event_guests": "Etkinlik Konukları",
-
   "archived_events_title": "Arşivlenen Etkinlikler",
   "archived_events_description": "Derneğin yaşamına yön veren geçmiş etkinliklerimizi keşfedin: okumalar, tartışmalar ve kültürel deneyimler.",
-
   "fe_2026_title": "Avrupa Fuarı 2026",
   "fe_2026_subtitle": "Au Passage du Livre",
   "fe_2026_tagline": "Avrupa’ya Açılıyor",
   "fe_2026_description": "Edebiyat, kültür ve paylaşım dolu unutulmaz üç gün için derneğimize Avrupa’nın kalbinde katılın.",
-
   "event_when_label": "Ne zaman?",
   "event_when_date": "4-14 Eylül 2026",
   "event_when_time": "10:00 – 20:00",
-
   "event_where_label": "Nerede?",
   "event_where_address": "Avenue Herrenschmidt, Strasbourg",
   "event_where_hall": "Salon 5",
-
   "event_what_label": "Ne var?",
   "event_what_line_1": "İmza Seansları, Paneller &",
   "event_what_line_2": "Özel Atölyeler",
-
   "events heading": "Gelecek ve Geçmiş Etkinlikler.",
   "events description": "Geçmiş ve gelecekteki tüm edebi etkinliklerimizi ve faaliyetlerimizi keşfedin — keşfedilecek ve yeniden ziyaret edilecek sohbetler, okumalar ve kültürel deneyimler.",
   "upcoming events heading": "Yaklaşan Etkinlikler",
   "upcoming events description": "Okumalar, söyleşiler ve birlikte keyfini çıkarıp paylaşabileceğiniz kültürel deneyimler dahil olmak üzere yaklaşan edebiyat buluşmalarımızı keşfedin.",
   "intervenants": "Konuşmacılar",
-  
   "view_all_guests": "Tüm konukları görüntüle",
-
   "event": "Etkinlik",
-
   "event_speakers_title": "Konuşmacılar ve sanatçılar",
   "event_speakers_description": "Kültürel etkinliklerimize katılan konuşmacıları ve sanatçıları keşfedin.",
   "upcoming_event_guests": "Yaklaşan Etkinliğin Konukları",
   "see_all": "Tümünü Gör",
-
   "no_event": "Etkinlik yok",
   "no_archive_available": "Şu anda arşiv bulunmamaktadır",
-
-
   "artists_speakers_title": "Sanatçılar ve Konuşmacılar",
   "artists_speakers_description": "Etkinliğimize hayat verecek yetenekleri keşfedin. Ünlü yazarlar, tutkulu sanatçılar ve ilham verici konuşmacılar sizi bekliyor.",
-
   "search_by_name_specialty": "İsim veya uzmanlığa göre ara...",
   "all_guests": "Tüm Konuklar",
-
   "all": "Tümü",
   "authors": "Yazarlar",
   "artists": "Sanatçılar",
   "speakers": "Konuşmacılar",
   "artisans": "Zanaatkârlar",
-
   "press_news_title": "Basın & Haberler",
   "press_news_description": "Au Passage du Livre ve kültürel faaliyetleri hakkında makaleler, röportajlar ve medya haberleri.",
-
   "press_article_title": "Gerçek bir \"Kültür Köyü\" için Kitaplar, Oyunlar ve Figürler",
   "press_article_excerpt": "2024’teki ilk edisyonun ardından kitaplar Strasbourg Avrupa Fuarı’na geri dönüyor; bu kez masa oyunları ve figürlerle birlikte…",
   "read_article": "Haberi oku",
@@ -117,10 +92,8 @@
   "article": "Makale",
   "interview": "Röportaj",
   "review": "İnceleme",
-
   "contact_cta_paragraph": "Festival hakkında bir sorunuz mu var? Bize katılmak ya da partner olmak ister misiniz? Ekibimiz size yardımcı olmaktan memnuniyet duyar.",
   "address_label": "Adres",
-
   "email_label": "E-posta",
   "message_sent": "Mesaj gönderildi",
   "message_sent_description": "Bizimle iletişime geçtiğiniz için teşekkür ederiz. En kısa sürede size geri döneceğiz.",
@@ -128,7 +101,6 @@
   "contact_us": "Bize ulaşın",
   "data_consent": "Talebime yanıt verilmesi için verilerimin işlenmesini kabul ediyorum.",
   "send_message": "Mesajı gönder",
-
   "full_name": "Ad Soyad",
   "email_address": "E-posta adresi",
   "subject_request": "Talebinizin konusu",
@@ -137,45 +109,35 @@
   "subject_volunteer": "Gönüllülük",
   "subject_other": "Diğer",
   "your_message": "Mesajınız",
-
   "association_journal_title": "Dernek Günlüğü",
   "association_journal_description": "Sahadan en son gelişmeleri, gönüllü hikayelerini ve yaklaşan yardım etkinliklerini keşfedin.",
   "search_articles": "Makaleleri ara...",
   "no_articles_found": "Makale bulunamadı",
   "adjust_search_or_category": "Aramanızı veya kategorinizi değiştirmeyi deneyin.",
-
   "community": "Topluluk",
   "news": "Haberler",
-
-
-    "hero_events": "Kültürel Etkinlikler",
+  "hero_events": "Kültürel Etkinlikler",
   "hero_support_artists": "Sanatçılara Destek",
   "hero_transmit_culture": "Kültürü Aktarmak",
-
   "footer_support": "Destek",
   "footer_privacy": "Gizlilik Politikası",
   "footer_faq": "SSS",
   "footer_terms": "Şartlar",
-
   "footer_explore": "Keşfet",
   "footer_about": "Hakkımızda",
   "footer_schedule": "Program",
   "footer_speakers": "Konuşmacılar",
   "footer_blog": "Blog",
   "copyright": "Au Passage du Livre. Tüm hakları saklıdır.",
-
   "login": "Giriş yap",
   "logout": "Çıkış yap",
   "register": "Kayıt ol",
-
   "login here": "Buradan giriş yap",
-
   "create account": "Hesap oluştur",
   "create account using your credentials": "Bilgilerinizle hesap oluşturun",
   "create account using your facebook": "Facebook ile hesap oluştur",
   "create account using your google mail": "Google ile hesap oluştur",
   "create account using your microsoft mail": "Microsoft ile hesap oluştur",
-
   "login page": "Giriş sayfası",
   "signup page": "Kayıt sayfası",
   "recover password": "Şifreyi kurtar",
@@ -189,7 +151,6 @@
   "login using your facebook account": "Facebook ile giriş yap",
   "login using your google mail account": "Google ile giriş yap",
   "login using your microsoft mail account": "Microsoft ile giriş yap",
-
   "user": "Kullanıcı",
   "first name": "Ad",
   "last name": "Soyad",
@@ -197,28 +158,24 @@
   "email address": "E-posta adresi",
   "password": "Şifre",
   "confirm password": "Şifreyi onayla",
-
   "back to home": "Ana sayfaya dön",
   "already have account ?": "Zaten bir hesabınız var mı?",
-
   "welcome to": "Tairo’ya hoş",
   "or continue with": "Veya devam et",
   "let's start by creating your account": "Hesabınızı oluşturarak başlayalım",
-
   "no need to waste time on this page, let's take you back to your account": "Bu sayfada zaman kaybetmeyin, sizi hesabınıza geri götürelim",
-
   "for authentication and sign in": "Kimlik doğrulama ve giriş için",
-
   "a valid email is required": "Geçerli bir e-posta adresi gereklidir",
   "a password is required": "Şifre gereklidir",
-
   "authentication error": "Kimlik doğrulama hatası",
   "Please create an account before logging in and try again.": "Giriş yapmadan önce lütfen bir hesap oluşturun ve tekrar deneyin.",
-
   "already have an account": "Zaten bir hesabınız var",
   "login with credentials or your social media": "Bilgilerinizle veya sosyal medya ile giriş yapın",
-
   "or": "veya",
   "forgot your password ?": "Şifrenizi mi unuttunuz?",
-  "don't have an account ?": "Hesabınız yok mu?"
+  "don't have an account ?": "Hesabınız yok mu?",
+  "Entrée gratuite": "Ücretsiz giriş",
+  "Entrée payante": "Ücretli giriş",
+  "Sur invitation": "Davetiye ile",
+  "Sur inscription": "Kayıt gerekli"
 }

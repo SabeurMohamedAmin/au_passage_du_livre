@@ -1,292 +1,423 @@
 <script setup lang="ts">
+import { ref, reactive, computed } from 'vue'
+import { useEventsStore, type EventWithRelations, type EventPayload } from '~/stores/events'
+import { useIntervenantsStore } from '~/stores/intervenants'
 
-// --- MOCK STORE & STATE ---
-const isLoading = ref(false)
-const saving = ref(false)
-const deleting = ref(false)
+// ── i18n ──────────────────────────────────────────────────────────────────
+const { locales, t } = useI18n()
+const availableLocales = computed(() =>
+  (locales.value as any[]).map(l => ({ code: l.code, name: l.name }))
+)
+const editingLocale = ref('fr')
 
-const snackbar = ref(false)
-const snackbarMessage = ref('')
-const snackbarColor = ref<'success' | 'error'>('success')
+// ── Stores ────────────────────────────────────────────────────────────────
+const eventsStore       = useEventsStore()
+const intervenantsStore = useIntervenantsStore()
 
-const search = ref('')
-const dialog = ref(false)
-const deleteDialog = ref(false)
-const formRef = ref()
+await Promise.all([eventsStore.fetchAll(), intervenantsStore.fetchAll()])
 
-// Event Data Structure based on your UI images
-interface AppEvent {
-  id: string | null;
-  isNextEvent: boolean;
-  title: string;
-  subtitle: string;
-  coverImage: string;
-  
-  // Logistics
-  startDate: string;
-  endDate: string;
-  time: string;
-  locationName: string;
-  address: string;
-  entranceType: string; // e.g., "Entrée libre"
-  website: string;
-  
-  // Content
-  shortSummary: string; // For "Quoi ?" card
-  about: string; // "À propos de l'événement"
-  highlights: string; // "Au programme du salon"
-  
-  // Relationships
-  speakerIds: string[];
+// ── Form type (flat for the UI, converted to EventPayload on save) ────────
+interface SessionTranslationForm {
+  title:       string
+  description: string
+}
+interface SessionForm {
+  tempId:         string
+  date:           string
+  time:           string
+  location:       string
+  translations:   Record<string, SessionTranslationForm>
+  intervenantIds: number[]
+}
+interface DocumentForm {
+  tempId: string
+  label:  string
+  url:    string
+}
+interface TranslationForm {
+  title:        string
+  subtitle:     string
+  slug:         string
+  shortSummary: string
+  about:        string
+  highlights:   string
+}
+interface EventForm {
+  id:             number | null
+  isNextEvent:    boolean
+  coverImage:     string
+  startDate:      string
+  endDate:        string
+  time:           string
+  locationName:   string
+  address:        string
+  entranceType:   string
+  website:        string
+  translations:   Record<string, TranslationForm>
+  intervenantIds: number[]
+  sessions:       SessionForm[]
+  documents:      DocumentForm[]
 }
 
-const defaultForm: AppEvent = {
-  id: null,
-  isNextEvent: false,
-  title: '',
-  subtitle: '',
-  coverImage: '',
-  startDate: '',
-  endDate: '',
-  time: '',
-  locationName: '',
-  address: '',
-  entranceType: '',
-  website: '',
-  shortSummary: '',
-  about: '',
-  highlights: '',
-  speakerIds: [],
-}
-
-const form = ref<AppEvent>({ ...defaultForm })
-const eventToDelete = ref<AppEvent | null>(null)
-
-// --- MOCK DATA ---
-const events = ref<AppEvent[]>([
-  {
-    id: '1',
-    isNextEvent: true,
-    title: 'Au Passage du Livre Goes European',
-    subtitle: 'Foire Européenne 2026',
-    coverImage: 'https://via.placeholder.com/1200x600',
-    startDate: '2026-09-04',
-    endDate: '2026-09-14',
-    time: '10:00 - 20:00',
-    locationName: 'Hall 5',
-    address: 'Avenue Herrenschmidt, Strasbourg',
-    entranceType: 'Entrée payante',
-    website: 'https://foire-europeenne.com',
-    shortSummary: 'Dédicaces, tables rondes et ateliers exclusifs.',
-    about: 'Nous vous invitons à nous rejoindre lors de notre prochain événement. Découvrez nos événements passés : lectures, discussions et expériences culturelles...',
-    highlights: 'Rencontres avec des auteurs\nAteliers de lecture\nSéances de dédicaces',
-    speakerIds: ['spk1', 'spk2'],
-  }
-])
-
-const availableSpeakers = [
-  { id: 'spk1', name: 'Pascal Dedre' },
-  { id: 'spk2', name: 'Anne Siegel' },
-  { id: 'spk3', name: 'Christian Peultier' },
-  { id: 'spk4', name: 'Pascal Graffica' },
-]
-
-const filteredEvents = computed(() => {
-  if (!search.value) return events.value
-  const query = search.value.toLowerCase()
-  return events.value.filter(e => e.title.toLowerCase().includes(query))
+// ── UI state ──────────────────────────────────────────────────────────────
+const ui = reactive({
+  search:       '',
+  dialog:       false,
+  deleteDialog: false,
+  saving:       false,
+  deleting:     false,
+  uploading:    false,
+  activeTab:    'general',
+  snackbar:     { show: false, msg: '', color: 'success' as 'success' | 'error' },
 })
 
-const isEditing = computed(() => !!form.value.id)
+const formRef         = ref()
+const fileInput       = ref<HTMLInputElement | null>(null)
+const eventToDelete   = ref<EventWithRelations | null>(null)
+const pendingDeleteId = ref<string | null>(null)
 
-// --- ACTIONS ---
+// ── Helpers ───────────────────────────────────────────────────────────────
+const tempId = () => Math.random().toString(36).slice(2, 9)
 
-function openAddDialog() {
-  form.value = { ...defaultForm }
-  dialog.value = true
+const emptySessionTranslation = (): SessionTranslationForm => ({
+  title: '', description: '',
+})
+
+function buildEmptySessionTranslations(): Record<string, SessionTranslationForm> {
+  const map: Record<string, SessionTranslationForm> = {}
+  for (const l of availableLocales.value) map[l.code] = emptySessionTranslation()
+  return map
 }
 
-function openEditDialog(item: AppEvent) {
-  form.value = JSON.parse(JSON.stringify(item)) // Deep clone
-  dialog.value = true
+const emptySession = (): SessionForm => ({
+  tempId: tempId(), date: '', time: '', location: '',
+  translations: buildEmptySessionTranslations(), intervenantIds: [],
+})
+
+const emptyDocument = (): DocumentForm => ({
+  tempId: tempId(), label: '', url: '',
+})
+
+const emptyTranslation = (): TranslationForm => ({
+  title: '', subtitle: '', slug: '', shortSummary: '', about: '', highlights: '',
+})
+
+function buildEmptyTranslations(): Record<string, TranslationForm> {
+  const map: Record<string, TranslationForm> = {}
+  for (const l of availableLocales.value) map[l.code] = emptyTranslation()
+  return map
 }
 
-function openDeleteDialog(item: AppEvent) {
-  eventToDelete.value = item
-  deleteDialog.value = true
+const emptyForm = (): EventForm => ({
+  id: null, isNextEvent: false, coverImage: '', startDate: '', endDate: '',
+  time: '', locationName: '', address: '', entranceType: 'Entrée gratuite',
+  website: '', translations: buildEmptyTranslations(),
+  intervenantIds: [], sessions: [], documents: [],
+})
+
+const form = ref<EventForm>(emptyForm())
+
+// ── Options ───────────────────────────────────────────────────────────────
+const entranceOptions = computed(() => [
+  { title: t('Entrée gratuite'), value: 'Entrée gratuite' },
+  { title: t('Entrée payante'), value: 'Entrée payante' },
+  { title: t('Sur invitation'), value: 'Sur invitation' },
+  { title: t('Sur inscription'), value: 'Sur inscription' },
+])
+
+const speakerOptions = computed(() =>
+  intervenantsStore.items.map(i => ({ id: i.id!, name: i.name }))
+)
+
+// ── Computed ──────────────────────────────────────────────────────────────
+const filteredEvents = computed(() => eventsStore.filterBySearch(ui.search))
+const isEditing      = computed(() => form.value.id !== null)
+
+// Auto-generated slug preview from title (used as placeholder)
+function toSlug(text: string): string {
+  return text.toLowerCase().normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '')
+}
+const autoSlug = computed(() =>
+  toSlug(form.value.translations[editingLocale.value]?.title ?? '') || 'mon-evenement',
+)
+const currentTranslation = computed(() =>
+  form.value.translations[editingLocale.value] ?? emptyTranslation(),
+)
+
+// ── Notifications ─────────────────────────────────────────────────────────
+const notify = (msg: string, color: 'success' | 'error' = 'success') => {
+  ui.snackbar = { show: true, msg, color }
 }
 
-const rules = {
-  required: (v: any) => !!v || 'Required',
-  url: (v: string) => !v || /^(https?:\/\/|\/)/.test(v) || 'Must be a valid URL',
-}
-
-async function save() {
-  const result = await formRef.value?.validate()
-  if (!result?.valid) {
-    showSnackbar('Please fill in all required fields correctly', 'error')
-    return
-  }
-
-  saving.value = true
-  try {
-    // MOCK API CALL
-    await new Promise(res => setTimeout(res, 800))
-
-    if (isEditing.value) {
-      const index = events.value.findIndex(e => e.id === form.value.id)
-      if (index !== -1) events.value[index] = { ...form.value }
-      showSnackbar('Event updated successfully', 'success')
-    } else {
-      form.value.id = Math.random().toString(36).substr(2, 9)
-      events.value.unshift({ ...form.value })
-      showSnackbar('Event created successfully', 'success')
+// ── Dialog ────────────────────────────────────────────────────────────────
+function openDialog(event?: EventWithRelations) {
+  if (event) {
+    const translations = buildEmptyTranslations()
+    for (const t of event.translations) {
+      if (translations[t.locale]) {
+        translations[t.locale] = {
+          title: t.title,
+          subtitle: t.subtitle,
+          slug: t.slug,
+          shortSummary: t.shortSummary,
+          about: t.about,
+          highlights: t.highlights,
+        }
+      }
     }
-    dialog.value = false
-  } catch (error) {
-    showSnackbar('An error occurred', 'error')
-  } finally {
-    saving.value = false
+    form.value = {
+      id:             event.id,
+      isNextEvent:    event.isNextEvent,
+      coverImage:     event.coverImage,
+      startDate:      event.startDate,
+      endDate:        event.endDate,
+      time:           event.time,
+      locationName:   event.locationName,
+      address:        event.address,
+      entranceType:   event.entranceType,
+      website:        event.website,
+      translations,
+      intervenantIds: event.intervenants.map(ei => ei.intervenantId),
+      sessions: event.sessions.map(s => {
+        const sessionTranslations = buildEmptySessionTranslations()
+        for (const st of s.translations) {
+          if (sessionTranslations[st.locale]) {
+            sessionTranslations[st.locale] = {
+              title:       st.title,
+              description: st.description,
+            }
+          }
+        }
+        return {
+          tempId:         tempId(),
+          date:           s.date,
+          time:           s.time,
+          location:       s.location,
+          translations:   sessionTranslations,
+          intervenantIds: s.intervenants.map(si => si.intervenantId),
+        }
+      }),
+      documents: event.documents.map(d => ({
+        tempId: tempId(), label: d.label, url: d.url,
+      })),
+    }
+  } else {
+    form.value = emptyForm()
   }
+  editingLocale.value = 'fr'
+  ui.activeTab = 'general'
+  pendingDeleteId.value = null
+  ui.dialog = true
 }
 
-async function confirmDelete() {
-  if (!eventToDelete.value) return
-  deleting.value = true
-  try {
-    // MOCK API CALL
-    await new Promise(res => setTimeout(res, 800))
-    events.value = events.value.filter(e => e.id !== eventToDelete.value?.id)
-    showSnackbar('Event deleted successfully', 'success')
-    deleteDialog.value = false
-  } catch (error) {
-    showSnackbar('Failed to delete event', 'error')
-  } finally {
-    deleting.value = false
-    eventToDelete.value = null
-  }
+function openDelete(event: EventWithRelations) {
+  eventToDelete.value = event
+  ui.deleteDialog = true
+}
+function closeDeleteDialog() {
+  ui.deleteDialog = false
+  eventToDelete.value = null
 }
 
-// --- IMAGE UPLOAD ---
-const fileInput = ref<HTMLInputElement | null>(null)
-const uploading = ref(false)
-
-function triggerUpload() {
-  fileInput.value?.click()
+// ── Session CRUD ──────────────────────────────────────────────────────────
+const addSession    = () => form.value.sessions.push(emptySession())
+const requestRemove = (id: string) => { pendingDeleteId.value = id }
+const cancelRemove  = () => { pendingDeleteId.value = null }
+const confirmRemove = (id: string) => {
+  form.value.sessions = form.value.sessions.filter(s => s.tempId !== id)
+  pendingDeleteId.value = null
 }
 
-async function onFileSelected(event: Event) {
-  const file = (event.target as HTMLInputElement).files?.[0]
+// ── Document CRUD ─────────────────────────────────────────────────────────
+const addDocument    = () => form.value.documents.push(emptyDocument())
+const removeDocument = (id: string) => {
+  form.value.documents = form.value.documents.filter(d => d.tempId !== id)
+}
+
+// ── Cover image (uploads to /api/admin/upload, persists on disk) ──────────
+async function onFileSelected(e: Event) {
+  const file = (e.target as HTMLInputElement).files?.[0]
   if (!file) return
 
-  uploading.value = true
+  ui.uploading = true
   try {
-    // MOCK UPLOAD
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    form.value.coverImage = URL.createObjectURL(file) 
-    showSnackbar('Image uploaded', 'success')
+    const body = new FormData()
+    body.append('file', file)
+    const { url } = await $fetch<{ url: string }>('/api/admin/upload', {
+      method: 'POST',
+      body,
+    })
+    form.value.coverImage = url
   } catch {
-    showSnackbar('Upload failed', 'error')
+    notify('Erreur lors de l\'upload.', 'error')
   } finally {
-    uploading.value = false
+    ui.uploading = false
     if (fileInput.value) fileInput.value.value = ''
   }
 }
 
-function clearImage() {
-  form.value.coverImage = ''
+// ── Build payload from form ───────────────────────────────────────────────
+function buildPayload(): EventPayload {
+  const f = form.value
+  return {
+    isNextEvent:  f.isNextEvent,
+    coverImage:   f.coverImage,
+    startDate:    f.startDate,
+    endDate:      f.endDate,
+    time:         f.time,
+    locationName: f.locationName,
+    address:      f.address,
+    entranceType: f.entranceType,
+    website:      f.website,
+    // Only send translations that have at least a title
+    translations: Object.entries(f.translations)
+      .filter(([, t]) => t.title.trim())
+      .map(([locale, t]) => ({
+        locale,
+        title:        t.title,
+        subtitle:     t.subtitle,
+        slug:         t.slug,
+        shortSummary: t.shortSummary,
+        about:        t.about,
+        highlights:   t.highlights,
+      })),
+    intervenantIds: f.intervenantIds,
+    sessions: f.sessions.map(s => ({
+      date:           s.date,
+      time:           s.time,
+      location:       s.location,
+      // Only send session translations that have at least a title
+      translations:   Object.entries(s.translations)
+        .filter(([, t]) => t.title.trim() || t.description.trim())
+        .map(([locale, t]) => ({
+          locale,
+          title:       t.title,
+          description: t.description,
+        })),
+      intervenantIds: s.intervenantIds,
+    })),
+    documents: f.documents.map(d => ({
+      label: d.label,
+      url:   d.url,
+    })),
+  }
 }
 
-function showSnackbar(message: string, color: 'success' | 'error') {
-  snackbarMessage.value = message
-  snackbarColor.value = color
-  snackbar.value = true
+// ── Save ──────────────────────────────────────────────────────────────────
+async function saveEvent() {
+  // Only validate the French title as mandatory, not all locales
+  const frTitle = form.value.translations['fr']?.title?.trim()
+  if (!frTitle) {
+    editingLocale.value = 'fr'
+    ui.activeTab = 'general'
+    return notify('Le titre en français est requis.', 'error')
+  }
+  if (!form.value.startDate) {
+    ui.activeTab = 'general'
+    return notify('La date de début est requise.', 'error')
+  }
+
+  ui.saving = true
+  try {
+    const payload = buildPayload()
+    if (isEditing.value && form.value.id !== null) {
+      await eventsStore.update(form.value.id, payload)
+      notify('Événement mis à jour.')
+    } else {
+      await eventsStore.create(payload)
+      notify('Événement publié.')
+    }
+    ui.dialog = false
+  } catch {
+    notify('Erreur lors de la sauvegarde.', 'error')
+  } finally {
+    ui.saving = false
+  }
+}
+
+// ── Delete ────────────────────────────────────────────────────────────────
+async function confirmDelete() {
+  if (!eventToDelete.value) return
+  ui.deleting = true
+  try {
+    await eventsStore.remove(eventToDelete.value.id)
+    closeDeleteDialog()
+    notify('Événement supprimé.')
+  } catch {
+    notify('Impossible de supprimer.', 'error')
+  } finally {
+    ui.deleting = false
+  }
+}
+
+// ── Validation ────────────────────────────────────────────────────────────
+const rules = {
+  required: (v: any) => !!v || 'Ce champ est requis',
+  url:      (v: string) => !v || /^(https?:\/\/|\/)/.test(v) || 'URL invalide',
 }
 </script>
 
 <template>
   <v-container fluid class="pa-0">
-    
-    <!-- ── Header & Global Actions ──────────────────────────────────────── -->
+
+    <!-- Header -->
     <div class="page-header d-flex flex-column flex-md-row align-md-center justify-space-between pa-6 mx-auto mb-4 rounded-b-lg">
       <div class="mb-4 mb-md-0">
-        <h1 class="text-h4 font-weight-black text-primary">Events</h1>
-        <p class="text-body-1 text-medium-emphasis mt-1">
-          Manage your association's events, agendas, and speakers.
-        </p>
+        <h1 class="text-h4 font-weight-black text-primary">Événements</h1>
+        <p class="text-body-1 text-medium-emphasis">Gérer les événements et intervenants.</p>
       </div>
-
       <div class="d-flex align-center gap-4">
         <v-text-field
-          v-model="search"
-          placeholder="Search events..."
-          prepend-inner-icon="mdi-magnify"
-          variant="outlined"
-          density="comfortable"
-          hide-details
-          bg-color="surface"
-          style="min-width: 260px"
+          v-model="ui.search" placeholder="Rechercher..." prepend-inner-icon="mdi-magnify"
+          variant="outlined" density="comfortable" hide-details bg-color="surface" style="min-width: 260px"
         />
-        <v-btn
-          color="primary"
-          variant="flat"
-          prepend-icon="mdi-plus"
-          rounded="lg"
-          class="font-weight-bold"
-          @click="openAddDialog"
-        >
-          Add Event
+        <v-btn color="primary" variant="flat" prepend-icon="mdi-plus" rounded="lg" class="font-weight-bold" @click="openDialog()">
+          Ajouter
         </v-btn>
       </div>
     </div>
 
-    <!-- ── Events List ──────────────────────────────────────────────────────── -->
+    <!-- Events Grid -->
     <div class="px-6 pb-12 mx-auto" style="max-width: 1400px;">
-      
       <div v-if="filteredEvents.length === 0" class="d-flex flex-column align-center justify-center py-16 text-medium-emphasis">
         <v-icon icon="mdi-calendar-blank" size="64" class="mb-4 opacity-50" />
-        <h3 class="text-h6 font-weight-medium">No events found</h3>
-        <p class="text-body-2 mt-1">Click 'Add Event' to create your first event.</p>
+        <h3 class="text-h6">Aucun événement trouvé</h3>
       </div>
 
       <div v-else class="events-grid">
-        <v-card 
-          v-for="event in filteredEvents" 
-          :key="event.id ?? ''" 
-          flat 
-          border 
-          rounded="lg" 
-          class="event-card d-flex flex-column"
-        >
-          <!-- Card Image -->
-          <div class="event-card-img-wrapper border-b">
-            <v-img v-if="event.coverImage" :src="event.coverImage" cover height="160" />
-            <div v-else class="h-100 d-flex align-center justify-center bg-grey-lighten-4">
+        <v-card v-for="ev in filteredEvents" :key="ev.id" flat border rounded="lg" class="event-card d-flex flex-column">
+          <div class="border-b position-relative">
+            <v-img v-if="ev.coverImage" :src="ev.coverImage" cover height="160" />
+            <div v-else class="d-flex align-center justify-center bg-grey-lighten-4" style="height: 160px">
               <v-icon icon="mdi-image-outline" color="grey" size="32" />
             </div>
-            <v-chip v-if="event.isNextEvent" color="primary" variant="flat" size="small" class="font-weight-bold position-absolute top-0 right-0 ma-3">
-              NEXT EVENT
+            <v-chip v-if="ev.isNextEvent" color="primary" variant="flat" size="small" class="font-weight-bold position-absolute top-0 right-0 ma-3">
+              NEXT
             </v-chip>
           </div>
-
-          <!-- Card Content -->
           <div class="pa-4 flex-grow-1 d-flex flex-column">
-            <h3 class="text-h6 font-weight-bold text-truncate mb-1">{{ event.title }}</h3>
-            <p class="text-body-2 text-medium-emphasis mb-4 text-truncate">
-              {{ event.startDate }} &bull; {{ event.locationName || 'Location TBA' }}
+            <h3 class="text-h6 font-weight-bold text-truncate mb-1">{{ eventsStore.frenchTitle(ev) }}</h3>
+            <p class="text-body-2 text-medium-emphasis mb-2 text-truncate">
+              {{ ev.startDate }} → {{ ev.endDate }} &bull; {{ ev.locationName || 'TBA' }}
             </p>
-            
+            <div class="d-flex gap-2 mb-4 flex-wrap">
+              <v-chip size="x-small" variant="tonal">{{ ev.entranceType }}</v-chip>
+              <v-chip v-if="ev.time" size="x-small" variant="tonal" prepend-icon="mdi-clock-outline">{{ ev.time }}</v-chip>
+            </div>
             <v-spacer />
-            
             <v-divider class="mb-3" />
-            
             <div class="d-flex align-center justify-space-between">
-              <span class="text-caption text-medium-emphasis">
-                {{ event.speakerIds.length }} Speakers
-              </span>
+              <div class="d-flex gap-2">
+                <span class="text-caption">{{ ev.intervenants.length }} intervenants</span>
+                <span class="text-caption">&bull;</span>
+                <span class="text-caption">{{ ev.sessions.length }} sessions</span>
+              </div>
               <div class="d-flex gap-1">
-                <v-btn icon="mdi-pencil-outline" variant="text" density="comfortable" color="medium-emphasis" @click="openEditDialog(event)" />
-                <v-btn icon="mdi-trash-can-outline" variant="text" density="comfortable" color="error" @click="openDeleteDialog(event)" />
+                <v-btn icon="mdi-pencil-outline" variant="text" density="comfortable" @click="openDialog(ev)" />
+                <v-btn icon="mdi-trash-can-outline" variant="text" density="comfortable" color="error" @click="openDelete(ev)" />
               </div>
             </div>
           </div>
@@ -294,348 +425,252 @@ function showSnackbar(message: string, color: 'success' | 'error') {
       </div>
     </div>
 
-    <!-- ── Add / Edit Dialog (Full Screen capable) ────────────────────────── -->
-    <v-dialog v-model="dialog" max-width="1000" persistent scrollable>
-      <v-card rounded="xl" class="bg-surface">
-        
-        <!-- Dialog Sticky Header -->
-        <v-card-title class="dialog-header d-flex align-center justify-space-between px-6 py-4 border-b">
-          <div>
-            <span class="text-h5 font-weight-bold d-block">{{ isEditing ? 'Edit Event' : 'Create New Event' }}</span>
-            <span class="text-body-2 text-medium-emphasis d-block mt-1">Configure event details, logistics, and content.</span>
-          </div>
-          <div class="d-flex gap-3">
-            <v-btn variant="tonal" class="font-weight-bold" @click="dialog = false">Cancel</v-btn>
-            <v-btn color="primary" variant="flat" class="font-weight-bold px-6" :loading="saving" @click="save">
-              {{ isEditing ? 'Save Changes' : 'Publish Event' }}
+    <!-- ====== EDIT / CREATE DIALOG ====== -->
+    <v-dialog v-model="ui.dialog" max-width="1100" persistent scrollable>
+      <v-card rounded="xl">
+        <v-card-title class="d-flex align-center justify-space-between px-6 py-4 border-b">
+          <span class="text-h5 font-weight-bold">{{ isEditing ? 'Éditer' : 'Nouvel Événement' }}</span>
+          <div class="d-flex align-center gap-3">
+            <v-select
+              v-model="editingLocale"
+              :items="availableLocales"
+              item-title="name"
+              item-value="code"
+              variant="outlined"
+              density="compact"
+              hide-details
+              style="width: 150px"
+              prepend-inner-icon="mdi-translate"
+            />
+            <v-btn variant="tonal" @click="ui.dialog = false">Annuler</v-btn>
+            <v-btn color="primary" :loading="ui.saving" @click="saveEvent">
+              {{ isEditing ? 'Enregistrer' : 'Publier' }}
             </v-btn>
           </div>
         </v-card-title>
 
-        <!-- Dialog Scrollable Content -->
-        <v-card-text class="pa-0">
-          <v-form ref="formRef" class="pa-6">
-            <div class="d-flex flex-column" style="gap: 56px;">
+        <v-tabs v-model="ui.activeTab" color="primary" class="border-b px-4" style="min-height:48px">
+          <v-tab value="general" prepend-icon="mdi-information-outline">Général</v-tab>
+          <v-tab value="schedule" prepend-icon="mdi-calendar-clock">
+            Programme
+            <v-badge v-if="form.sessions.length" :content="form.sessions.length" color="primary" inline class="ml-1" />
+          </v-tab>
+          <v-tab value="speakers" prepend-icon="mdi-account-group-outline">
+            Intervenants
+            <v-badge v-if="form.intervenantIds.length" :content="form.intervenantIds.length" color="primary" inline class="ml-1" />
+          </v-tab>
+          <v-tab value="documents" prepend-icon="mdi-folder-outline">
+            Documents
+            <v-badge v-if="form.documents.length" :content="form.documents.length" color="primary" inline class="ml-1" />
+          </v-tab>
+        </v-tabs>
 
-              <!-- 1. Highlight / Status -->
-              <section>
-                <div class="d-flex align-center justify-space-between bg-blue-lighten-5 border border-primary-lighten-3 rounded-lg pa-5">
-                  <div>
-                    <h4 class="text-h6 font-weight-bold text-primary mb-1">Mark as "Next Event"</h4>
-                    <p class="text-body-2 text-medium-emphasis mb-0">Setting this to active will display this event in the hero banner of the Events page.</p>
-                  </div>
-                  <v-switch v-model="form.isNextEvent" color="primary" hide-details inset />
-                </div>
-              </section>
+        <v-card-text class="pa-6">
+          <v-form ref="formRef">
+            <v-window v-model="ui.activeTab">
 
-              <!-- 2. General Information -->
-              <section>
-                <div class="d-flex align-center gap-3 mb-6">
-                  <v-avatar color="primary" variant="tonal" size="36" class="font-weight-bold">1</v-avatar>
-                  <h2 class="text-h5 font-weight-bold mb-0">General Information</h2>
-                </div>
-                
-                <v-card flat rounded="lg" border class="pa-6">
-                  <v-row dense>
-                    <v-col cols="12" md="6">
-                      <v-text-field v-model="form.title" label="Event Title" variant="outlined" density="comfortable" :rules="[rules.required]" />
-                    </v-col>
-                    <v-col cols="12" md="6">
-                      <v-text-field v-model="form.subtitle" label="Subtitle (e.g. Foire Européenne 2026)" variant="outlined" density="comfortable" />
-                    </v-col>
-
-                    <!-- Cover Image -->
-                    <v-col cols="12" class="mt-2">
-                      <p class="text-subtitle-2 font-weight-bold text-medium-emphasis mb-3">Cover Image (Banner)</p>
-                      <input ref="fileInput" type="file" accept="image/jpeg,image/png,image/webp" class="d-none" @change="onFileSelected" />
-                      
-                      <div class="slot-preview" :class="{ 'has-image': !!form.coverImage }" @click="triggerUpload">
-                        <div v-if="uploading" class="slot-overlay">
-                          <v-progress-circular indeterminate color="primary" size="48" width="3" />
-                        </div>
-                        
-                        <img v-else-if="form.coverImage" :src="form.coverImage" alt="Cover" class="slot-img" />
-                        
-                        <div v-else class="slot-empty">
-                          <v-icon icon="mdi-image-plus" size="48" color="medium-emphasis" class="mb-3" />
-                          <span class="text-body-1 font-weight-medium">Click to upload cover image</span>
-                          <span class="text-caption text-medium-emphasis mt-1">Recommended: 1200 x 600px (WebP, JPG)</span>
-                        </div>
-
-                        <button v-if="form.coverImage && !uploading" class="slot-remove" title="Remove image" @click.stop="clearImage">
-                          <v-icon icon="mdi-close" size="16" color="white" />
-                        </button>
-                        <div v-if="form.coverImage && !uploading" class="slot-hover-overlay">
-                          <v-icon icon="mdi-camera-retake" size="36" color="white" />
-                        </div>
+              <!-- TAB: GÉNÉRAL -->
+              <v-window-item value="general">
+                <v-row>
+                  <v-col cols="12">
+                    <div class="d-flex align-center justify-space-between border rounded-lg pa-4 mb-2">
+                      <div>
+                        <h4 class="text-primary font-weight-bold">Mettre en avant</h4>
+                        <p class="text-caption mb-0">Affiche cet événement en haut de la page d'accueil.</p>
                       </div>
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </section>
+                      <v-switch v-model="form.isNextEvent" color="primary" hide-details inset />
+                    </div>
+                  </v-col>
+                  <v-col cols="12">
+                    <div class="mb-2 mt-4">
+                      <h4 class="text-h6 font-weight-bold">Textes & Traductions</h4>
+                    </div>
+                    <v-divider class="mb-4" />
+                  </v-col>
+                  <v-col v-if="form.translations[editingLocale]" cols="12" md="4">
+                    <v-text-field v-model="form.translations[editingLocale].title" label="Titre *" variant="outlined" :rules="[rules.required]" />
+                  </v-col>
+                  <v-col v-if="form.translations[editingLocale]" cols="12" md="4">
+                    <v-text-field v-model="form.translations[editingLocale].subtitle" label="Sous-titre" variant="outlined" />
+                  </v-col>
+                  <v-col v-if="form.translations[editingLocale]" cols="12" md="4">
+                    <v-text-field
+                      v-model="form.translations[editingLocale].slug" label="Slug" variant="outlined"
+                      :placeholder="autoSlug" persistent-placeholder
+                      hint="Laissez vide pour générer automatiquement depuis le titre."
+                      persistent-hint
+                    />
+                  </v-col>
+                  <v-col cols="12">
+                    <p class="text-subtitle-2 font-weight-bold mb-2">Image de couverture</p>
+                    <input ref="fileInput" type="file" accept="image/*" class="d-none" @change="onFileSelected" />
+                    <div
+                      class="cover-upload-zone border rounded-lg d-flex align-center justify-center cursor-pointer"
+                      @click="fileInput?.click()"
+                      style="min-height: 200px; position: relative; border: 2px dashed rgba(var(--v-theme-primary), 0.4);"
+                    >
+                      <v-progress-circular v-if="ui.uploading" indeterminate color="primary" size="48" />
+                      <v-img v-else-if="form.coverImage" :src="form.coverImage" cover height="200" class="rounded-lg w-100" />
+                      <div v-else class="text-center pa-6">
+                        <v-icon icon="mdi-image-plus" size="48" color="grey" class="mb-2" />
+                        <p class="text-body-2 text-medium-emphasis mb-0">Cliquez pour ajouter une image</p>
+                      </div>
+                      <v-btn v-if="form.coverImage && !ui.uploading" icon="mdi-close" size="x-small" color="error"
+                        class="position-absolute top-0 right-0 ma-2" @click.stop="form.coverImage = ''" />
+                    </div>
+                  </v-col>
+                  <v-col cols="12" md="4">
+                    <v-text-field v-model="form.startDate" type="date" label="Date de début *" variant="outlined" :rules="[rules.required]" />
+                  </v-col>
+                  <v-col cols="12" md="4">
+                    <v-text-field v-model="form.endDate" type="date" label="Date de fin" variant="outlined" />
+                  </v-col>
+                  <v-col cols="12" md="4">
+                    <v-text-field v-model="form.time" label="Horaires" variant="outlined" placeholder="ex: 10:00 – 20:00" />
+                  </v-col>
+                  <v-col cols="12" md="6">
+                    <v-text-field v-model="form.locationName" label="Nom du lieu" variant="outlined" />
+                  </v-col>
+                  <v-col cols="12" md="6">
+                    <v-text-field v-model="form.address" label="Adresse" variant="outlined" />
+                  </v-col>
+                  <v-col cols="12" md="6">
+                    <v-select v-model="form.entranceType" :items="entranceOptions" label="Type d'entrée" variant="outlined" />
+                  </v-col>
+                  <v-col cols="12" md="6">
+                    <v-text-field v-model="form.website" label="Site Web" variant="outlined" :rules="[rules.url]" placeholder="https://..." />
+                  </v-col>
+                  <v-col v-if="form.translations[editingLocale]" cols="12">
+                    <v-textarea v-model="form.translations[editingLocale].shortSummary" label="Résumé court" variant="outlined" rows="2" />
+                  </v-col>
+                  <v-col v-if="form.translations[editingLocale]" cols="12">
+                    <v-textarea v-model="form.translations[editingLocale].about" label="À propos" variant="outlined" rows="4" />
+                  </v-col>
+                  <v-col v-if="form.translations[editingLocale]" cols="12">
+                    <v-textarea v-model="form.translations[editingLocale].highlights" label="Points forts du programme" variant="outlined" rows="3"
+                      placeholder="Un point par ligne" />
+                  </v-col>
+                </v-row>
+              </v-window-item>
 
-              <!-- 3. Logistics -->
-              <section>
-                <div class="d-flex align-center gap-3 mb-6">
-                  <v-avatar color="primary" variant="tonal" size="36" class="font-weight-bold">2</v-avatar>
-                  <h2 class="text-h5 font-weight-bold mb-0">Logistics</h2>
+              <!-- TAB: PROGRAMME -->
+              <v-window-item value="schedule">
+                <div class="d-flex align-center justify-space-between mb-4">
+                  <h3 class="text-h6 font-weight-bold">Programme détaillé</h3>
+                  <v-btn color="primary" variant="tonal" prepend-icon="mdi-plus" @click="addSession">Ajouter</v-btn>
                 </div>
-                
-                <v-card flat rounded="lg" border class="pa-6">
-                  <v-row dense>
-                    <v-col cols="12" md="4">
-                      <v-text-field v-model="form.startDate" type="date" label="Start Date" variant="outlined" density="comfortable" :rules="[rules.required]" />
-                    </v-col>
-                    <v-col cols="12" md="4">
-                      <v-text-field v-model="form.endDate" type="date" label="End Date" variant="outlined" density="comfortable" />
-                    </v-col>
-                    <v-col cols="12" md="4">
-                      <v-text-field v-model="form.time" label="Time (e.g. 10:00 - 20:00)" variant="outlined" density="comfortable" prepend-inner-icon="mdi-clock-outline" />
-                    </v-col>
-                    
-                    <v-col cols="12"><v-divider class="my-3" /></v-col>
+                <v-expansion-panels variant="accordion" class="mb-2">
+                  <v-expansion-panel v-for="(s, i) in form.sessions" :key="s.tempId" rounded="lg" class="mb-2 border">
+                    <template #title>
+                      <div class="d-flex align-center gap-3 w-100 pr-4">
+                        <v-chip size="small" variant="tonal" color="primary">{{ s.date || 'Aucune date' }}</v-chip>
+                        <v-chip size="small" variant="tonal">{{ s.time || '--:--' }}</v-chip>
+                        <span class="text-truncate font-weight-medium">{{ s.translations[editingLocale]?.title || `Session ${i + 1}` }}</span>
+                        <v-spacer />
+                        <template v-if="pendingDeleteId === s.tempId">
+                          <span class="text-caption text-error font-weight-bold mr-2">Supprimer ?</span>
+                          <v-btn size="small" variant="flat" color="error" class="mr-1" @click.stop="confirmRemove(s.tempId)">Oui</v-btn>
+                          <v-btn size="small" variant="tonal" @click.stop="cancelRemove">Non</v-btn>
+                        </template>
+                        <v-btn v-else icon="mdi-trash-can-outline" variant="text" size="small" color="error" @click.stop="requestRemove(s.tempId)" />
+                      </div>
+                    </template>
+                    <v-expansion-panel-text>
+                      <v-row class="pt-2">
+                        <v-col cols="12" md="4">
+                          <v-text-field v-model="s.date" type="date" label="Date *" variant="outlined" density="comfortable" :rules="[rules.required]" />
+                        </v-col>
+                        <v-col cols="12" md="4">
+                          <v-text-field v-model="s.time" type="time" label="Heure *" variant="outlined" density="comfortable" :rules="[rules.required]" />
+                        </v-col>
+                        <v-col cols="12" md="4">
+                          <v-text-field v-model="s.location" label="Lieu / Salle" variant="outlined" density="comfortable" />
+                        </v-col>
+                        <v-col v-if="s.translations[editingLocale]" cols="12">
+                          <v-text-field v-model="s.translations[editingLocale].title" label="Titre" variant="outlined" density="comfortable" />
+                        </v-col>
+                        <v-col v-if="s.translations[editingLocale]" cols="12">
+                          <v-textarea v-model="s.translations[editingLocale].description" label="Description" variant="outlined" density="comfortable" rows="3" />
+                        </v-col>
+                        <v-col cols="12">
+                          <v-select v-model="s.intervenantIds" :items="speakerOptions" item-title="name" item-value="id"
+                            label="Intervenants" multiple chips closable-chips variant="outlined" density="comfortable" />
+                        </v-col>
+                      </v-row>
+                    </v-expansion-panel-text>
+                  </v-expansion-panel>
+                </v-expansion-panels>
+              </v-window-item>
 
-                    <v-col cols="12" md="6">
-                      <v-text-field v-model="form.locationName" label="Location / Building Name" variant="outlined" density="comfortable" prepend-inner-icon="mdi-domain" />
-                    </v-col>
-                    <v-col cols="12" md="6">
-                      <v-text-field v-model="form.address" label="Full Address" variant="outlined" density="comfortable" prepend-inner-icon="mdi-map-marker-outline" />
-                    </v-col>
+              <!-- TAB: INTERVENANTS -->
+              <v-window-item value="speakers">
+                <h3 class="text-h6 font-weight-bold mb-1">Les Intervenants</h3>
+                <p class="text-caption text-medium-emphasis mb-4">Intervenants principaux de l'événement.</p>
+                <v-select v-model="form.intervenantIds" :items="speakerOptions" item-title="name" item-value="id"
+                  label="Intervenants" multiple chips closable-chips variant="outlined" />
+              </v-window-item>
 
-                    <v-col cols="12"><v-divider class="my-3" /></v-col>
-
-                    <v-col cols="12" md="6">
-                      <v-text-field v-model="form.entranceType" label="Entrance Info (e.g. Entrée libre)" variant="outlined" density="comfortable" prepend-inner-icon="mdi-ticket-confirmation-outline" />
-                    </v-col>
-                    <v-col cols="12" md="6">
-                      <v-text-field v-model="form.website" label="Website Link" variant="outlined" density="comfortable" :rules="[rules.url]" prepend-inner-icon="mdi-link" />
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </section>
-
-              <!-- 4. Content & Agenda -->
-              <section>
-                <div class="d-flex align-center gap-3 mb-6">
-                  <v-avatar color="primary" variant="tonal" size="36" class="font-weight-bold">3</v-avatar>
-                  <h2 class="text-h5 font-weight-bold mb-0">Content & Description</h2>
+              <!-- TAB: DOCUMENTS -->
+              <v-window-item value="documents">
+                <div class="d-flex align-center justify-space-between mb-4">
+                  <h3 class="text-h6 font-weight-bold">Documents & Archives</h3>
+                  <v-btn color="primary" variant="tonal" prepend-icon="mdi-plus" @click="addDocument">Ajouter</v-btn>
                 </div>
-                
-                <v-card flat rounded="lg" border class="pa-6">
-                  <v-row dense>
-                    <v-col cols="12">
-                      <v-textarea 
-                        v-model="form.shortSummary" 
-                        label="Short Summary (Quoi ?)" 
-                        placeholder="Brief overview for cards (e.g., Dédicaces, tables rondes...)"
-                        variant="outlined" 
-                        density="comfortable" 
-                        rows="3" 
-                      />
-                    </v-col>
-                    <v-col cols="12">
-                      <v-textarea 
-                        v-model="form.about" 
-                        label="About the event (À propos)" 
-                        placeholder="Full description of the event..."
-                        variant="outlined" 
-                        density="comfortable" 
-                        rows="4" 
-                      />
-                    </v-col>
-                    <v-col cols="12">
-                      <v-textarea 
-                        v-model="form.highlights" 
-                        label="Program Highlights (Au programme)" 
-                        placeholder="List key activities, one per line..."
-                        variant="outlined" 
-                        density="comfortable" 
-                        rows="4" 
-                      />
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </section>
+                <v-row>
+                  <v-col v-for="doc in form.documents" :key="doc.tempId" cols="12" md="6">
+                    <v-card flat border rounded="lg" class="pa-4">
+                      <div class="d-flex align-start gap-3">
+                        <v-icon icon="mdi-file-pdf-box" color="error" size="32" class="mt-1" />
+                        <div class="flex-grow-1">
+                          <v-text-field v-model="doc.label" label="Libellé" variant="outlined" density="compact" class="mb-2" />
+                          <v-text-field v-model="doc.url" label="URL" variant="outlined" density="compact" :rules="[rules.url]" />
+                        </div>
+                        <v-btn icon="mdi-trash-can-outline" variant="text" color="error" size="small" @click="removeDocument(doc.tempId)" />
+                      </div>
+                    </v-card>
+                  </v-col>
+                </v-row>
+              </v-window-item>
 
-              <!-- 5. Speakers -->
-              <section>
-                <div class="d-flex align-center gap-3 mb-6">
-                  <v-avatar color="primary" variant="tonal" size="36" class="font-weight-bold">4</v-avatar>
-                  <h2 class="text-h5 font-weight-bold mb-0">Speakers (Intervenants)</h2>
-                </div>
-                
-                <v-card flat rounded="lg" border class="pa-6">
-                  <v-select
-                    v-model="form.speakerIds"
-                    :items="availableSpeakers"
-                    item-title="name"
-                    item-value="id"
-                    label="Assign Speakers to Event"
-                    multiple
-                    chips
-                    closable-chips
-                    variant="outlined"
-                    density="comfortable"
-                    prepend-inner-icon="mdi-account-group-outline"
-                  />
-                </v-card>
-              </section>
-
-            </div>
+            </v-window>
           </v-form>
         </v-card-text>
       </v-card>
     </v-dialog>
 
-    <!-- ── Delete Confirmation Dialog ───────────────────────────────────────── -->
-    <v-dialog v-model="deleteDialog" max-width="400">
-      <v-card rounded="xl" class="text-center pa-6">
-        <v-icon icon="mdi-alert-circle-outline" color="error" size="64" class="mx-auto mb-4" />
-        <h3 class="text-h5 font-weight-bold mb-2">Delete Event?</h3>
-        <p class="text-body-1 text-medium-emphasis mb-6">
-          Are you sure you want to delete <strong>{{ eventToDelete?.title }}</strong>? This action cannot be undone.
-        </p>
-        <div class="d-flex gap-3 justify-center">
-          <v-btn variant="tonal" class="px-6 font-weight-bold" @click="deleteDialog = false">Cancel</v-btn>
-          <v-btn color="error" variant="flat" class="px-6 font-weight-bold" :loading="deleting" @click="confirmDelete">Delete</v-btn>
+    <!-- ====== DELETE DIALOG ====== -->
+    <v-dialog v-model="ui.deleteDialog" max-width="480" persistent>
+      <v-card rounded="xl" class="pa-6">
+        <div class="d-flex align-center gap-3 mb-4">
+          <v-icon icon="mdi-alert-circle" color="error" size="36" />
+          <h3 class="text-h5 font-weight-bold">Supprimer ?</h3>
+        </div>
+        <v-alert variant="plain" rounded="lg" class="mb-4 text-body-1">
+          Cette action est <strong>définitive</strong>. Toutes les données liées seront perdues.
+        </v-alert>
+        <div class="d-flex gap-3 justify-end mt-4">
+          <v-btn variant="tonal" @click="closeDeleteDialog">Annuler</v-btn>
+          <v-btn color="error" :loading="ui.deleting" prepend-icon="mdi-trash-can" @click="confirmDelete">
+            Supprimer
+          </v-btn>
         </div>
       </v-card>
     </v-dialog>
 
-    <!-- ── Snackbar ─────────────────────────────────────────────────────────── -->
-    <v-snackbar v-model="snackbar" :color="snackbarColor" rounded="pill" timeout="3000" location="bottom center">
-      <v-icon :icon="snackbarColor === 'success' ? 'mdi-check-circle' : 'mdi-alert-circle'" class="mr-2" />
-      <span class="font-weight-medium">{{ snackbarMessage }}</span>
+    <!-- Snackbar -->
+    <v-snackbar v-model="ui.snackbar.show" :color="ui.snackbar.color" rounded="pill" location="bottom right">
+      {{ ui.snackbar.msg }}
     </v-snackbar>
-
   </v-container>
 </template>
 
 <style scoped>
-/* ── Sticky Headers ─────────────── */
-.page-header {
-  position: sticky;
-  top: 65px;
-  z-index: 5;
-  background: rgba(var(--v-theme-surface), 0.95);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(128, 128, 128, 0.15);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-}
-
-.dialog-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: rgb(var(--v-theme-surface));
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-/* ── Events Grid ──────────── */
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 24px;
 }
-
-.event-card {
-  transition: all 0.2s ease;
-  background: rgb(var(--v-theme-surface));
-}
-.event-card:hover {
-  border-color: rgba(var(--v-theme-primary), 0.4) !important;
-  box-shadow: 0 4px 12px rgba(var(--v-theme-primary), 0.08);
-  transform: translateY(-2px);
-}
-
-.event-card-img-wrapper {
-  position: relative;
-  background: #f5f5f5;
-}
-
-/* ── Image Upload Slot ─────────── */
-.slot-preview {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 21 / 9; /* Wide banner format for events */
-  border-radius: 8px;
-  overflow: hidden;
-  cursor: pointer;
-  background: #f5f5f5;
-  border: 2px dashed #e0e0e0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-}
-
-.slot-preview:hover {
-  border-color: rgba(var(--v-theme-primary), 0.5);
-  background: rgba(var(--v-theme-primary), 0.05);
-}
-
-.slot-preview.has-image {
-  border-color: transparent;
-}
-
-.slot-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.slot-empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-}
-
-.slot-remove {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #e53935;
-  border: 2px solid white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 2;
-  transition: transform 0.15s ease, background 0.15s ease;
-}
-
-.slot-remove:hover {
-  transform: scale(1.15);
-  background: #c62828;
-}
-
-.slot-overlay,
-.slot-hover-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-}
-
-.slot-overlay {
-  background: rgba(255, 255, 255, 0.7);
-}
-
-.slot-hover-overlay {
-  background: rgba(0, 0, 0, 0.4);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.slot-preview:hover .slot-hover-overlay {
-  opacity: 1;
-}
+.cursor-pointer { cursor: pointer; }
+.cover-upload-zone { transition: border-color 0.2s; }
+.cover-upload-zone:hover { border-color: rgb(var(--v-theme-primary)) !important; }
 </style>
