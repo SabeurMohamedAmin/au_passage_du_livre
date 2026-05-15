@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { useDisplay } from 'vuetify'
 import { useEventsStore } from '~/stores/events'
 
 /* =====================
   CONFIGURATION
 ===================== */
-const { HERO_IMAGE_URL, content } = useEventHeroContent()
+const { t, locale } = useI18n()
 const eventsStore = useEventsStore()
 
 // Ensure events data is loaded (public fetch, no auth needed)
@@ -14,44 +14,39 @@ if (!eventsStore.items.length) {
   await eventsStore.fetchPublic()
 }
 
+const nextEvent = computed(() => eventsStore.nextEvent)
+
+const translation = computed(() =>
+  nextEvent.value?.translations.find(t => t.locale === locale.value) ??
+  nextEvent.value?.translations.find(t => t.locale === 'fr') ??
+  nextEvent.value?.translations[0]
+)
+
 // Dynamically resolve the hero slug from the actual next event in the DB
-const heroSlug = computed(() => {
-  const nextEvent = eventsStore.nextEvent
-  if (!nextEvent) return content.hero.slug
-  const frTranslation = nextEvent.translations.find(t => t.locale === 'fr')
-  return frTranslation?.slug ?? nextEvent.translations[0]?.slug ?? content.hero.slug
-})
+const heroSlug = computed(() => translation.value?.slug ?? '')
 
 /* ================
   REACTIVE STATE
 ================ */
-const featuredAuthors = ref<GuestAuthor[]>(content.authors)
+const featuredAuthors = computed(() => {
+  if (!nextEvent.value) return []
+  return nextEvent.value.intervenants.map(ei => ei.intervenant)
+})
+
 const { sm, md, mdAndUp, lgAndUp } = useDisplay()
 
 /* =================
   COMPUTED STYLES
 ================= */
 const heroStyle = computed(() => {
-  // Positions calculées selon l'analyse pixel de chaque image :
-  // Le personnage est à ~77% x / ~55% y sur landscape, et ~47% x / 40% y sur mobile portrait
-  let imageUrl = HERO_IMAGE_URL.mobile
-  let position = '47% 40%'   // mobile portrait : personnage centré, cadrer haut
-
-  if (lgAndUp.value) {
-    imageUrl = HERO_IMAGE_URL.desktop
-    position = '77% 55%'     // desktop  1604×800  – sujet à 77.4% / 55.1%
-  } else if (md.value) {
-    imageUrl = HERO_IMAGE_URL.laptop
-    position = '77% 55%'     // laptop    885×573  – sujet à 77.2% / 54.8%
-  } else if (sm.value) {
-    imageUrl = HERO_IMAGE_URL.tablet
-    position = '77% 54%'     // tablet  1536×1024  – sujet à 76.6% / 53.5%
-  }
-
+  // If nextEvent has a cover image, use it, else fallback to a default
+  let imageUrl = nextEvent.value?.coverImage || '/img/home/foire-europeenne-desktop.jpg'
+  
+  // Basic responsive positions if we still used the old defaults, but with dynamic image we just cover
   return {
     backgroundImage: `url(${imageUrl})`,
     backgroundSize: 'cover',
-    backgroundPosition: position,
+    backgroundPosition: 'center center',
     backgroundRepeat: 'no-repeat',
   }
 })
@@ -84,7 +79,7 @@ const hasMoreAuthors = computed(() =>
 </script>
 
 <template>
-  <div>
+  <div v-if="nextEvent">
     <!-- ===========================
       SECTION 1: PAGE HEADER
     ================================ -->
@@ -124,22 +119,19 @@ const hasMoreAuthors = computed(() =>
                   rounded="xl"
                   label
                 >
-                  {{ content.hero.title }}
+                  {{ translation?.title }}
                 </v-chip>
               </v-col>
 
               <v-col cols="12">
                 <h1 class="text-h5 text-md-h4 font-weight-black line-height-tight mb-2">
-                  {{ content.hero.subtitle }} <br />
-                  <span class="text-primary">
-                    {{ content.hero.tagline }}
-                  </span>
+                  {{ translation?.subtitle }} <br />
                 </h1>
               </v-col>
 
               <v-col cols="11" sm="7" md="8">
                 <p class="text-h6 opacity-90 font-weight-light mb-4 text-shadow-sm">
-                  {{ content.hero.description }}
+                  {{ translation?.shortSummary }}
                 </p>
               </v-col>
 
@@ -152,7 +144,7 @@ const hasMoreAuthors = computed(() =>
                     rounded="xl"
                     prepend-icon="mdi-information-outline"
                   >
-                    {{ content.hero.cta }}
+                    {{ $t('learn_more') }}
                   </v-btn>
                 </nuxt-link>
               </v-col>
@@ -177,12 +169,12 @@ const hasMoreAuthors = computed(() =>
             </v-col>
             <v-col cols="8" lg="9">
               <h3 class="text-subtitle-2 text-sm-h6 font-weight-bold">
-                {{ content.logistics.when.title }}
+                {{ $t('event_when_label') }}
               </h3>
             </v-col>
             <p class="w-100 text-body-2 text-sm-body-1 font-weight-medium mt-1">
-              {{ content.logistics.when.desc }}<br />
-              <span class="text-caption text-medium-emphasis">{{ content.logistics.when.sub }}</span>
+              {{ nextEvent.startDate }} <template v-if="nextEvent.endDate"> → {{ nextEvent.endDate }}</template><br />
+              <span class="text-caption text-medium-emphasis">{{ nextEvent.time }}</span>
             </p>
           </v-row>
         </v-sheet>
@@ -199,12 +191,12 @@ const hasMoreAuthors = computed(() =>
             </v-col>
             <v-col cols="8" lg="9">
               <h3 class="text-subtitle-2 text-sm-h6 font-weight-bold">
-                {{ content.logistics.where.title }}
+                {{ $t('event_where_label') }}
               </h3>
             </v-col>
             <p class="w-100 text-body-2 text-sm-body-1 font-weight-medium mt-1">
-              {{ content.logistics.where.desc }}<br />
-              <span class="text-caption text-medium-emphasis">{{ content.logistics.where.sub }}</span>
+              {{ nextEvent.locationName }}<br />
+              <span class="text-caption text-medium-emphasis">{{ nextEvent.address }}</span>
             </p>
           </v-row>
         </v-sheet>
@@ -221,12 +213,11 @@ const hasMoreAuthors = computed(() =>
             </v-col>
             <v-col cols="8" lg="9">
               <h3 class="text-subtitle-2 text-sm-h6 font-weight-bold">
-                {{ content.logistics.what.title }}
+                {{ $t('event_what_label') }}
               </h3>
             </v-col>
             <p class="w-100 text-body-2 text-sm-body-1 font-weight-medium mt-1">
-              {{ content.logistics.what.desc }}<br />
-              <span class="text-caption text-medium-emphasis">{{ content.logistics.what.sub }}</span>
+              {{ $t(nextEvent.entranceType) }}<br />
             </p>
           </v-row>
         </v-sheet>
@@ -236,7 +227,7 @@ const hasMoreAuthors = computed(() =>
     <!-- =============================
       SECTION 4: GUESTS CAROUSEL
     ============================== -->
-    <div class="mb-15">
+    <div v-if="featuredAuthors.length" class="mb-15">
       <div class="flex-column flex-sm-row d-flex align-start justify-space-between mb-6">
         <h3 class="text-h5 font-weight-bold mb-2 mb-sm-0">
           {{ $t('event_guests') }}
@@ -250,7 +241,7 @@ const hasMoreAuthors = computed(() =>
               class="position-relative d-flex"
               style="width: 100%; aspect-ratio: 2/3;"
             >
-              <nuxt-img :src="author.image" fit="cover" class="guest-image" alt="" />
+              <nuxt-img v-if="author.image" :src="author.image" fit="cover" class="guest-image" alt="" />
 
               <div
                 class="w-100 h-100 d-flex align-end pa-3 position-relative"
@@ -259,7 +250,7 @@ const hasMoreAuthors = computed(() =>
                 <div class="text-white">
                   <nuxt-link
                     class="font-weight-bold text-subtitle-2 guest-profil-link"
-                    :to="$localePath({ name: 'guest-profile', params: { slug: author.slug } })"
+                    :to="$localePath({ name: 'guest-profile', params: { slug: author.slug || author.id } })"
                   >
                     {{ author.name }}
                   </nuxt-link>
@@ -306,7 +297,6 @@ const hasMoreAuthors = computed(() =>
 
   color: white;
   position: relative;
-  /* backgroundImage/Position/Size viennent du :style inline */
 }
 
 /* --- Glassmorphism overlay (une seule déclaration propre) --- */

@@ -9,16 +9,19 @@ const roleColors: Record<GuestRole, string> = {
   Conférencier: 'blue',
 }
 
-const getRoleColor = (role: GuestRole) => roleColors[role]
+const getRoleColor = (role: GuestRole) => roleColors[role] || 'grey'
+
 </script>
 
 <template>
   <v-card
+    :aria-label="`Profil de ${guest.name}, ${guest.role}`"
     class="rounded-xl overflow-hidden featured-card h-100"
     elevation="2"
   >
     <v-img
-      :src="guest.image"
+      :src="guest.image || '/images/placeholder-guest.jpg'"
+      :alt="`Photo de ${guest.name}`"
       height="300"
       cover
       gradient="to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.9) 100%"
@@ -51,19 +54,16 @@ const getRoleColor = (role: GuestRole) => roleColors[role]
     </v-img>
 
     <v-card-actions class="pa-4">
-      <nuxt-link 
-        :to="$localePath({name: 'guest-profile', params: {slug: guest.slug}})"
-        class="text-decoration-none w-100"
-      >
         <v-btn
+          :to="$localePath({ name: 'guest-profile', params: { slug: guest.slug } })"
           variant="tonal"
           color="primary"
           rounded="lg"
           block
+          nuxt
         >
           Voir le profil
         </v-btn>
-      </nuxt-link>
     </v-card-actions>
   </v-card>
 </template>
@@ -71,8 +71,12 @@ const getRoleColor = (role: GuestRole) => roleColors[role]
 <style scoped>
 .line-clamp-2 {
   display: -webkit-box;
+  display: -moz-box;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
+  -moz-box-orient: vertical;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  line-height: 1.4; /* prevents cutting off descenders */
 }
 </style>

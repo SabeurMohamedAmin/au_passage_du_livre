@@ -43,6 +43,19 @@ export const useIntervenantsStore = defineStore('intervenants', () => {
     }
   }
 
+  async function fetchPublic() {
+    loading.value = true
+    error.value   = null
+    try {
+      items.value = await $fetch<Intervenant[]>('/api/intervenants')
+    } catch (e: any) {
+      error.value = e?.data?.message ?? 'Failed to load intervenants'
+      throw e
+    } finally {
+      loading.value = false
+    }
+  }
+
   // Accepts either a plain object or a FormData (when a file is attached)
   async function create(payload: FormData | Omit<Intervenant, 'id' | 'createdAt' | 'updatedAt'>) {
     saving.value = true
@@ -96,5 +109,5 @@ export const useIntervenantsStore = defineStore('intervenants', () => {
     }
   }
 
-  return { items, loading, saving, deleting, error, fetchAll, create, update, remove }
+  return { items, loading, saving, deleting, error, fetchPublic, fetchAll, create, update, remove }
 })

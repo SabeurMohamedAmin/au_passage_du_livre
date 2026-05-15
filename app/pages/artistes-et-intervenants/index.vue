@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import GuestsHeader from '@/components/guest/GuestsHeader.vue';
   import GuestsCTA from '@/components/guest/GuestsCTA.vue';
+  import DbGuestsList from '@/components/guest/DbGuestsList.vue';
   
 </script>
 
@@ -17,5 +18,8 @@
 
     <!-- Become an Intervenant -->
     <GuestsCTA />
+
+    <!-- Database Guests -->
+    <db-guests-list />
   </v-container>
 </template>
