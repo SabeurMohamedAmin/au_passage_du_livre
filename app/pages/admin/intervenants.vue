@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue'
+
+definePageMeta({
+  layout: 'admin'
+})
 import { useIntervenantsStore, type Intervenant } from '~/stores/intervenants'
 
 const store = useIntervenantsStore()

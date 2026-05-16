@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { ref, reactive, computed } from 'vue'
+
+definePageMeta({
+  layout: 'admin'
+})
 import { useEventsStore, type EventWithRelations, type EventPayload } from '~/stores/events'
 import { useIntervenantsStore } from '~/stores/intervenants'
 

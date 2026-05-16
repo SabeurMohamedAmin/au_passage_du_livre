@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
+
+definePageMeta({
+  layout: 'admin'
+})
 import { useHomeStore } from '@/stores/home'
 import type { HomeImage } from '@/stores/home'
 

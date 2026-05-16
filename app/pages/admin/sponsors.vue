@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
+
+definePageMeta({
+  layout: 'admin'
+})
 import type { DataTableHeader } from 'vuetify'
 import { useSponsorsStore, type Sponsor } from '~/stores/sponsors'
 import SponsorFormDialog from '~/components/sponsors/SponsorFormDialog.vue'
