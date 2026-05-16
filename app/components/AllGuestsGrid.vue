@@ -64,7 +64,6 @@
 </script>
 
 <template>
-  <v-container>
     <section>
     <!-- Card Search & Filters -->
       <GuestsFilters
@@ -98,7 +97,6 @@
       </GuestsGrid>
 
     </section>
-  </v-container>
 </template>
 
 <style scoped>
