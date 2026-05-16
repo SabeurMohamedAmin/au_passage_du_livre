@@ -14,16 +14,11 @@
 
   const { mdAndUp } = useDisplay();
 
-  // Assuming these composables exist in your project
-  const { guests } = useGuests();
   const { slug }  = useRoute().params;
 
-  // useFetch uses top-level await by default in Nuxt setup
-  const { data: author, error } = await useFetch(`/api/guest-profile`, {
-    params:{
-      slug: slug
-    }
-  });
+  // Fetch from the real database endpoint
+  const { data: author, error } = await useFetch(`/api/intervenants/${slug}`);
+
   watchEffect(()=>{
     if(error.value){
       throw createError({
@@ -49,7 +44,7 @@
           
           <v-card class="image-card rounded-lg elevation-4 hover-lift" color="white">
             <v-img 
-              :src="author.image" 
+              :src="author.image || '/img/placeholders/author.webp'" 
               aspect-ratio="0.75" 
               cover
               class="bg-grey-lighten-2"
@@ -70,7 +65,7 @@
       <v-col cols="12" sm="7" md="8" lg="9" class="pl-sm-8 pl-md-12">
         <div class="d-flex justify-space-between align-start mb-1">
           <span class="text-caption font-weight-bold text-uppercase text-grey-darken-1 tracking-wide">
-            Auteur / Intervenant
+            {{ author.role }}
           </span>
           <div class="d-flex gap-2">
             <ShareNav :title="author.name" />
@@ -83,7 +78,7 @@
 
         <div class="text-body-1 mb-6 d-flex align-center flex-wrap">
             <span class="text-decoration-underline cursor-pointer font-weight-bold text-primary">
-                {{ author.role }}
+                {{ author.specialty || author.role }}
             </span>
             <span class="text-grey-lighten-1 mx-3">
               |
@@ -93,105 +88,106 @@
             </span>
         </div>
 
-        <p class="text-body-1 text-grey-darken-2 mb-6 font-weight-regular" style="max-width: 800px; line-height: 1.7;">
+        <p class="text-body-1 text-grey-darken-2 mb-6 font-weight-regular" style="max-width: 800px; line-height: 1.7; white-space: pre-line;">
           {{ author.bio }}
         </p>
 
-        <div class="d-flex align-center mb-8 bg-green-lighten-5 d-inline-flex px-3 py-1 rounded-pill border-thin border-success">
-            <v-icon
-              icon="mdi-check-circle" color="success"
-              size="small" class="me-2"
-            />
-            <span class="font-weight-bold text-caption text-success">
-              Présence confirmée
-            </span>
-        </div>
-
-        <v-card 
-          flat
-          class="pa-5 mb-10 border-s-xl border-warning"
-          
-        >
-          <div class="d-flex flex-wrap align-center justify-space-between gap-4">
-            <div>
-              <div class="text-caption font-weight-bold text-uppercase text-amber-darken-4 mb-1">
-                <v-icon icon="mdi-calendar-star" size="small" start />
-                Prochain Événement
-              </div>
-              <div class="font-weight-bold text-h6 text-grey-darken-1 py-2">
-                {{ author.details.title }}
-              </div>
-            </div>
-
-            <!-- TODO: Add link to PROCHAINE event -->
-            <v-btn 
-              flat 
-              color="#f6d7a8" 
-              class="text-black font-weight-bold px-6"
-              rounded="lg"
-              elevation="0"
-              :to="$localePath('/evenements')"
-            >
-              Plus d'infos
-              <v-icon end icon="mdi-arrow-right"/>
-            </v-btn>
+        <!-- Only show these sections if we have details (which the real DB doesn't have yet) -->
+        <template v-if="(author as any).details">
+          <div class="d-flex align-center mb-8 bg-green-lighten-5 d-inline-flex px-3 py-1 rounded-pill border-thin border-success">
+              <v-icon
+                icon="mdi-check-circle" color="success"
+                size="small" class="me-2"
+              />
+              <span class="font-weight-bold text-caption text-success">
+                Présence confirmée
+              </span>
           </div>
-        </v-card>
 
-        <div>
-          <div class="d-flex mb-0">
-            <div class="px-8 text-grey-darken-4 py-2 font-weight-bold text-body-2 rounded-t-lg elevation-1" style="z-index: 1; background-color: #f6d7a8;">
-              DÉTAILS
-            </div>
-          </div>
-          <div class="border-b-md mb-6" style="border-color: #f6d7a8 !important;"></div>
+          <v-card 
+            flat
+            class="pa-5 mb-10 border-s-xl border-warning"
+          >
+            <div class="d-flex flex-wrap align-center justify-space-between gap-4">
+              <div>
+                <div class="text-caption font-weight-bold text-uppercase text-amber-darken-4 mb-1">
+                  <v-icon icon="mdi-calendar-star" size="small" start />
+                  Prochain Événement
+                </div>
+                <div class="font-weight-bold text-h6 text-grey-darken-1 py-2">
+                  {{ (author as any).details.title }}
+                </div>
+              </div>
 
-          <v-row density="comfortable" class="text-body-2 row-hover-effect">
-            <v-col cols="4" sm="3" md="2" class="font-weight-bold text-grey-darken-3 pt-2">
-              Type
-            </v-col>
-            <v-col cols="8" sm="9" md="10" class="pt-2 text-grey-darken-2">
-              Rencontre / Dédicace
-            </v-col>
-            <v-col cols="12">
-              <v-divider class="my-3 border-dashed opacity-40"/>
-            </v-col>                
-            <v-col cols="4" sm="3" md="2" class="font-weight-bold text-grey-darken-3">
-              Date
-            </v-col>
-            <v-col cols="8" sm="9" md="10" class="text-grey-darken-2">
-              <v-icon icon="mdi-calendar-blank" size="x-small" class="me-1 mb-1"/>
-              {{ author.details.date }} à {{ author.details.time }}
-            </v-col>
-            <v-col cols="12">
-              <v-divider class="my-3 border-dashed opacity-40"/>
-            </v-col>                
-            <v-col cols="4" sm="3" md="2" class="font-weight-bold text-grey-darken-3">
-              Lieu
-            </v-col>
-            <v-col cols="8" sm="9" md="10" class="text-grey-darken-2">
-              <nuxt-link 
-                class="text-decoration-none "
-                rel="noopener noreferrer" 
-                to="https://maps.app.goo.gl/DhSrMBgyJEEUiGdeA" 
-                target="_blank"
+              <v-btn 
+                flat 
+                color="#f6d7a8" 
+                class="text-black font-weight-bold px-6"
+                rounded="lg"
+                elevation="0"
+                :to="$localePath('/evenements')"
               >
-                <v-icon icon="mdi-map-marker-outline" size="small" class="me-1 mb-1"/>
-                {{ author.details.location }}
-                <v-icon icon="mdi-map" size="small" class="me-1 mb-1  line-height-tight"/>
-              </nuxt-link>
-            </v-col>
-            <v-col cols="12">
-              <v-divider class="my-3 border-dashed opacity-40"/>
-            </v-col>       
-            <v-col cols="4" sm="3" md="2" class="font-weight-bold text-grey-darken-3">
-              Sujet
-            </v-col>
-            <v-col cols="8" sm="9" md="10" class="text-grey-darken-2">
-              {{ author.details.description }}
-            </v-col>
-          </v-row>
-        </div>
+                Plus d'infos
+                <v-icon end icon="mdi-arrow-right"/>
+              </v-btn>
+            </div>
+          </v-card>
+
+          <div>
+            <div class="d-flex mb-0">
+              <div class="px-8 text-grey-darken-4 py-2 font-weight-bold text-body-2 rounded-t-lg elevation-1" style="z-index: 1; background-color: #f6d7a8;">
+                DÉTAILS
+              </div>
+            </div>
+            <div class="border-b-md mb-6" style="border-color: #f6d7a8 !important;"></div>
+
+            <v-row density="comfortable" class="text-body-2 row-hover-effect">
+              <v-col cols="4" sm="3" md="2" class="font-weight-bold text-grey-darken-3 pt-2">
+                Type
+              </v-col>
+              <v-col cols="8" sm="9" md="10" class="pt-2 text-grey-darken-2">
+                Rencontre / Dédicace
+              </v-col>
+              <v-col cols="12">
+                <v-divider class="my-3 border-dashed opacity-40"/>
+              </v-col>                
+              <v-col cols="4" sm="3" md="2" class="font-weight-bold text-grey-darken-3">
+                Date
+              </v-col>
+              <v-col cols="8" sm="9" md="10" class="text-grey-darken-2">
+                <v-icon icon="mdi-calendar-blank" size="x-small" class="me-1 mb-1"/>
+                {{ (author as any).details.date }} à {{ (author as any).details.time }}
+              </v-col>
+              <v-col cols="12">
+                <v-divider class="my-3 border-dashed opacity-40"/>
+              </v-col>                
+              <v-col cols="4" sm="3" md="2" class="font-weight-bold text-grey-darken-3">
+                Lieu
+              </v-col>
+              <v-col cols="8" sm="9" md="10" class="text-grey-darken-2">
+                <nuxt-link 
+                  class="text-decoration-none "
+                  rel="noopener noreferrer" 
+                  to="https://maps.app.goo.gl/DhSrMBgyJEEUiGdeA" 
+                  target="_blank"
+                >
+                  <v-icon icon="mdi-map-marker-outline" size="small" class="me-1 mb-1"/>
+                  {{ (author as any).details.location }}
+                  <v-icon icon="mdi-map" size="small" class="me-1 mb-1  line-height-tight"/>
+                </nuxt-link>
+              </v-col>
+              <v-col cols="12">
+                <v-divider class="my-3 border-dashed opacity-40"/>
+              </v-col>       
+              <v-col cols="4" sm="3" md="2" class="font-weight-bold text-grey-darken-3">
+                Sujet
+              </v-col>
+              <v-col cols="8" sm="9" md="10" class="text-grey-darken-2">
+                {{ (author as any).details.description }}
+              </v-col>
+            </v-row>
+          </div>
+        </template>
       </v-col>
     </v-row>
 

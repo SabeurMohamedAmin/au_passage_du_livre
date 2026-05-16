@@ -3,8 +3,7 @@
   import GuestsEmptyState from '@/components/guest/GuestsEmptyState.vue';
   import GuestsGrid from '@/components/guest/GuestsGrid.vue';
   import GuestCard from '@/components/guest/GuestCard.vue';
-  import seed_guest from '@/composables/seed_guest.json'
-
+  import { useIntervenantsStore } from '~/stores/intervenants';
 
   interface FilterCategory {
     label: string
@@ -19,8 +18,13 @@
     { label: 'artisans', value: 'artisan' }
   ]
 
+  const store = useIntervenantsStore();
 
-  const guests = ref<Guest[]>(seed_guest as Guest[])
+  if (store.items.length === 0) {
+    await store.fetchPublic()
+  }
+
+  const guests = computed(() => store.items)
   const selectedFilter = ref<FilterCategory['value']>('all')
   const searchQuery = ref('')
 

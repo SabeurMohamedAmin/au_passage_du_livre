@@ -18,8 +18,5 @@
 
     <!-- Become an Intervenant -->
     <GuestsCTA />
-
-    <!-- Database Guests -->
-    <db-guests-list />
   </v-container>
 </template>

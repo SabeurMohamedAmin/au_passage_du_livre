@@ -1,68 +1,19 @@
 <script setup lang="ts">
   import { useDisplay } from 'vuetify';
+  import { computed, ref } from 'vue';
+  import { useIntervenantsStore } from '~/stores/intervenants';
 
-  const guestsSeed: Guest[] = [
-    {
-      id: 1,
-      name: 'Sarah Chen',
-      slug: 'sarah-chen',
-      role: 'Auteur',
-      specialty: 'Science-Fiction',
-      excerpt: 'Auteure primée de la trilogie « Cosmos Éternel », traduite en 25 langues.',
-      bio: 'Auteure primée de la trilogie « Cosmos Éternel », traduite en 25 langues.',
-      image: 'https://i.pravatar.cc/300?u=a042581f4e29026024d',
-      featured: true
-    },
-    {
-      id: 2,
-      name: 'Marc Dubois',
-      slug: 'marc-dubois',
-      role: 'Historien',
-      specialty: 'Histoire Européenne',
-      excerpt: 'Professeur et spécialiste de l\'histoire contemporaine européenne.',
-      bio: "Professeur et spécialiste de l'histoire contemporaine européenne.",
-      image: 'https://i.pravatar.cc/300?u=a042581f4e29026704d',
-      featured: true
-    },
-    {
-      id: 3,
-      name: 'Elena Silva',
-      slug: 'elena-silva',
-      role: 'Auteur',
-      specialty: 'Poésie',
-      excerpt: 'Poétesse et lauréate du Prix International de Poésie 2024.',
-      bio: 'Poétesse et lauréate du Prix International de Poésie 2024.',
-      image: 'https://i.pravatar.cc/300?u=a04258114e29026302d',
-      featured: true
-    },
-    {
-      id: 4,
-      name: 'Amélie Rousseau',
-      slug: 'amelie-rousseau',
-      role: 'Artiste',
-      specialty: 'Illustration',
-      excerpt: 'Illustratrice de livres jeunesse.',
-      bio: 'Illustratrice de livres jeunesse.',
-      image: 'https://i.pravatar.cc/300?u=a042581f4e29026024e',
-      featured: true
-    },
-    {
-      id: 5,
-      name: 'Marc Dubois',
-      slug: 'marc-dubois',
-      role: 'Historien',
-      specialty: 'Histoire Européenne',
-      excerpt: 'Professeur et spécialiste de l\'histoire contemporaine européenne.',
-      bio: "Professeur et spécialiste de l'histoire contemporaine européenne.",
-      image: 'https://i.pravatar.cc/300?u=a042581f4e29026704d',
-      featured: true
-    }
-  ];
+  const store = useIntervenantsStore();
+
+  // Prefetch if empty; works with SSR
+  if (store.items.length === 0) {
+    await store.fetchPublic()
+  }
 
   /* ==========================================================================
     STATE
     ========================================================================== */
-  const guests = ref<Guest[]>(guestsSeed);
+  const guests = computed(() => store.items);
 
   /* ==========================================================================
     DISPLAY
