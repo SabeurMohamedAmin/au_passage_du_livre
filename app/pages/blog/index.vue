@@ -1,5 +1,13 @@
 <script setup lang="ts">
-  const { articles } = useArticles();
+  import { useBlogsStore } from '~/stores/blogs'
+
+  const store = useBlogsStore()
+  
+  if (store.items.length === 0) {
+    await store.fetchPublic()
+  }
+
+  const articles = computed(() => store.items)
   const search = ref('');
   const activeCategory = ref('all');
 
@@ -32,7 +40,7 @@
 
   // The most recent article to show as "Hero" (if searching, hide hero to avoid confusion)
   const heroArticle = computed(() => {
-    return (!search.value && activeCategory.value === 'All') ? articles.value[0] : null;
+    return (!search.value && activeCategory.value === 'all') ? articles.value[0] : null;
   })
 
   // The list excluding the hero (if hero exists)

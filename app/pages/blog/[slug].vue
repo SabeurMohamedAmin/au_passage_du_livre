@@ -1,18 +1,32 @@
 <script setup lang="ts">
+  import { useBlogsStore } from '~/stores/blogs'
+
   definePageMeta({
     name: 'article-details'
   })
   const route = useRoute()
-  const { getArticleBySlug, articles } = useArticles()
   const { slug } = route.params as { slug: string }
+  
+  const { data: article, error } = await useFetch(`/api/blog/${slug}`)
 
-  // 1. Fetch current article
-  const article = computed(() => getArticleBySlug(slug))
+  watchEffect(()=>{
+    if(error.value){
+      throw createError({
+        statusCode: 404,
+        statusMessage: 'Article not found!!',
+      });
+    }
+  })
+
+  const store = useBlogsStore()
+  if (store.items.length === 0) {
+    store.fetchPublic() // don't await so we don't block render of main article
+  }
 
   // 2. Fetch "Related" articles (Same category, excluding current)
   const relatedArticles = computed(() => {
     if (!article.value) return []
-    return articles.value
+    return store.items
       .filter(a => a.category === article.value?.category && a.id !== article.value.id)
       .slice(0, 3) // Limit to 3
   })
