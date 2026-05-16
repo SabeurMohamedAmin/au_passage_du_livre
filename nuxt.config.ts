@@ -23,8 +23,11 @@ export default defineNuxtConfig({
   ],
 
   runtimeConfig: {
-    resendApiKey: process.env.RESEND_API_KEY,
     public: {},
+    resendApiKey: process.env.RESEND_API_KEY,
+    sessionPassword: process.env.NUXT_SESSION_PASSWORD,
+    appUrl:          process.env.APP_URL ?? 'http://localhost:3000',
+    seedSecret:      process.env.SEED_SECRET ?? 'change-me',
   },
 
   build: {

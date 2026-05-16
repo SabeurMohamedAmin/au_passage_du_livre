@@ -78,6 +78,20 @@
       "when": 1778913841747,
       "tag": "0010_amused_nitro",
       "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "6",
+      "when": 1778922020518,
+      "tag": "0011_salty_warpath",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "6",
+      "when": 1778922663920,
+      "tag": "0012_icy_vindicator",
+      "breakpoints": true
     }
   ]
 }
