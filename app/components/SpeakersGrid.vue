@@ -1,30 +1,39 @@
+<!-- components/SpeakersGrid.vue -->
 <script lang="ts" setup>
-  import { useDisplay } from 'vuetify';
-  
-  const props = defineProps<{
-    title: string;
-    description: string;
-    seeAllLabel: string;
-    seeAllLink: string;
-  }>();
+import { useDisplay } from 'vuetify'
+import { useIntervenantsStore } from '@/stores/intervenants'
+import { storeToRefs } from 'pinia'
 
-  const { iconArrowRight } = useRtlIcons();
-  const { sm, md, lgAndUp } = useDisplay()
-  
-  const {authors} = useEventHeroContent().content;
-  const MAX_VISIBLE_AUTHORS = 3;
-  const visibleAuthors = computed(() =>{
-    return authors.slice(0, MAX_VISIBLE_AUTHORS)
-  });
+const props = defineProps<{
+  title:       string
+  description: string
+  seeAllLabel: string
+  seeAllLink:  string
+}>()
 
-  const hasMoreAuthors = computed(()=>true)
+const { iconArrowRight } = useRtlIcons()
+const { sm, md, lgAndUp } = useDisplay()
 
-  const customDanse = computed(()=>{
-    if(lgAndUp.value){return 'comfortable'}
-    if(md.value){return 'default'}
-    if(sm.value){return 'default'}
-    else{return 'default'}
-  });
+/* ── Seul changement : store au lieu de useEventHeroContent ── */
+const store = useIntervenantsStore()
+const { items } = storeToRefs(store)
+
+useAsyncData(
+  'speakers-grid',
+  () => items.value.length === 0 ? store.fetchPublic() : Promise.resolve(),
+  { server: false, lazy: true }
+)
+
+const MAX_VISIBLE_AUTHORS = 3
+const visibleAuthors = computed(() => items.value.slice(0, MAX_VISIBLE_AUTHORS))
+const hasMoreAuthors  = computed(() => true)
+
+const customDanse = computed(() => {
+  if (lgAndUp.value) return 'comfortable'
+  if (md.value)      return 'default'
+  if (sm.value)      return 'default'
+  else               return 'default'
+})
 </script>
 
 <template>
@@ -39,7 +48,7 @@
         {{description}}
       </p>
     </v-col>
-  
+
     <!-- Button -->
     <v-col
       cols="12"
@@ -57,7 +66,7 @@
       </v-btn>
     </v-col>
   </v-row>
-  
+
   <v-row :density="customDanse" class="w-100 min-width-340">
     <v-col
       v-for="(author, index) in visibleAuthors"
@@ -73,8 +82,8 @@
           <div class="overflow-hidden rounded-xl position-relative mb-4">
             <v-img 
               class="transition-transform duration-500"
-              :src="author.image" 
-              height="380" 
+              :src="author.image || '/img/placeholder.jpg'" 
+              height="380"
               cover 
             />
             <!-- Social Icons Overlay -->
@@ -84,21 +93,21 @@
                 class="position-absolute bottom-0 w-100 pa-4 d-flex justify-center gap-2 bg-gradient-to-t"
               >  
                 <nuxt-link 
-                 :to="author.website"
+                  :to="author.socialLinks?.website"
                   target="_blank"
                 >
                   <v-btn icon="mdi-twitter" variant="flat" color="white" density="comfortable"></v-btn>
                 </nuxt-link>
-  
+
                 <nuxt-link 
-                 :to="author.facebook"
+                  :to="author.socialLinks?.facebook"
                   target="_blank"
                 >
                   <v-btn icon="mdi-facebook" variant="flat" color="white" density="comfortable"></v-btn>
                 </nuxt-link>
-  
+
                 <nuxt-link 
-                 :to="author.website"
+                  :to="author.socialLinks?.website"
                   target="_blank"
                 >
                   <v-btn
@@ -113,7 +122,7 @@
             <nuxt-link 
               :to="$localePath({name: 'guest-profile', params: {slug: author.slug}})"
               class="text-decoration-none text-grey-darken-3 text-h6 font-weight-bold"
-              >
+            >
               {{ author.name }}
             </nuxt-link>
             <div class="text-body-2 text-primary font-weight-bold">
@@ -123,24 +132,24 @@
         </v-card>
       </v-hover>
     </v-col>
-  
-    <!-- 2️⃣ More authors indicator (⋯) -->
+
+    <!-- More authors indicator -->
     <v-col cols="6" md="3">
       <v-hover v-slot="{ isHovering, props }">
-          <v-card
-            v-bind="props"
-            :elevation="isHovering ? 10 : 0"
-            v-if="hasMoreAuthors"
-            class="h-100 rounded-xl d-flex align-center justify-center"
-            flat
-            >
-            <nuxt-link 
-              :to="$localePath('/artistes-et-intervenants')"
-              class="text-decoration-none text-h6 text-center mx-2"
-            >
-              {{$t('see_all_artists_speakers')}}
-            </nuxt-link>
-          </v-card>
+        <v-card
+          v-bind="props"
+          :elevation="isHovering ? 10 : 0"
+          v-if="hasMoreAuthors"
+          class="h-100 rounded-xl d-flex align-center justify-center"
+          flat
+        >
+          <nuxt-link 
+            :to="$localePath('/artistes-et-intervenants')"
+            class="text-decoration-none text-h6 text-center mx-2"
+          >
+            {{$t('see_all_artists_speakers')}}
+          </nuxt-link>
+        </v-card>
       </v-hover>
     </v-col>
   </v-row>
@@ -156,10 +165,8 @@
   .tracking-widest { letter-spacing: 2px; }
   .rounded-l-circle { border-radius: 50% 0 0 50%; }
 
-  /* ANIMATIONS */
   .hover-btn, .hover-bg-light { transition: transform 0.3s ease; }
-  .hover-btn:hover { backdrop-filter: contrast(90%);}
-
+  .hover-btn:hover { backdrop-filter: contrast(90%); }
 
   .hover-bg-light:hover {
     transform: scale(1.1);
