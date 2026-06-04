@@ -1,39 +1,28 @@
-import { db } from '~~/server/db'
-import { users } from '~~/server/db/schema/users'
-import { passwordResets } from '~~/server/db/schema/password-resets'
-import { eq, and, gt, isNull } from 'drizzle-orm'
-import { hashPassword, sha256 } from '~~/server/utils/auth'
+// server/api/auth/reset-password.post.ts
+import { resetPassword } from '~~/server/services/password-reset.service'
 
 export default defineEventHandler(async (event) => {
-  const { token, password } = await readBody(event)
-  const now = Math.floor(Date.now() / 1000)
+  const body = await readBody(event)
+  const { token, password } = body
 
-  if (!token || !password || password.length < 8) {
-    throw createError({ statusCode: 400, message: 'Token et mot de passe (8 caractères min) requis.' })
+  if (!token || typeof token !== 'string') {
+    throw createError({ statusCode: 400, message: 'Le token est requis.' })
   }
 
-  const reset = await db.query.passwordResets.findFirst({
-    where: (t, { eq, and, gt, isNull }) =>
-      and(eq(t.token, sha256(token)), gt(t.expiresAt, now), isNull(t.usedAt)),
-  })
-
-  if (!reset) {
-    throw createError({ statusCode: 400, message: 'Lien invalide ou expiré.' })
+  if (!password || typeof password !== 'string' || password.length < 8) {
+    throw createError({ statusCode: 400, message: 'Le mot de passe doit contenir au moins 8 caractères.' })
   }
 
-  const newHash = await hashPassword(password)
-
-  await db.transaction(async (tx) => {
-    await tx
-      .update(users)
-      .set({ hashedPassword: newHash, updatedAt: new Date() })
-      .where(eq(users.id, reset.userId))
-
-    await tx
-      .update(passwordResets)
-      .set({ usedAt: new Date() })
-      .where(eq(passwordResets.id, reset.id))
-  })
-
-  return { ok: true }
+  try {
+    await resetPassword(token, password)
+    return { success: true, message: 'Mot de passe mis à jour avec succès.' }
+  } catch (error: any) {
+    // Mapping des erreurs internes vers des messages utilisateur clairs
+    let message = 'Une erreur est survenue.'
+    if (error.message === 'INVALID_TOKEN') message = 'Lien de réinitialisation invalide.'
+    if (error.message === 'TOKEN_USED') message = 'Ce lien a déjà été utilisé.'
+    if (error.message === 'TOKEN_EXPIRED') message = 'Ce lien a expiré.'
+    
+    throw createError({ statusCode: 400, message })
+  }
 })
