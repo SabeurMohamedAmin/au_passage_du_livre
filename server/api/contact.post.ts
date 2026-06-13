@@ -1,6 +1,6 @@
-import { defineEventHandler, readBody } from '#imports'
+import { defineEventHandler, readBody } from 'h3'
 import { Resend } from 'resend'
-import { randomUUID } from 'node:crypto' // Ensure this is imported
+import { randomUUID } from 'node:crypto'
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()

@@ -154,6 +154,10 @@ export default defineEventHandler(async (event) => {
         sortOrder: i,
       }).returning({ id: eventSessions.id })
 
+      if (!createdSession) {
+        throw createError({ statusCode: 500, message: 'Erreur lors de la création de la session.' })
+      }
+
       const sessionId = createdSession.id
 
       const sessionTranslations: any[] = s.translations ?? []

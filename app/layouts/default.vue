@@ -197,9 +197,7 @@
   <slot class="w-100 px-0 mx-0" />
 
   <!-- FOOTER -->
-  <v-footer class="text-center ">
-    <footer-section />
-  </v-footer>
+  <footer-section />
 </template>
 
 <style scoped>

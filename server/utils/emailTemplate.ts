@@ -5,6 +5,17 @@ interface EmailTemplateData {
   message: string
 }
 
+function escapeHtml(value: string | undefined | null): string {
+  if (!value) return ''
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/\//g, '&#x2F;')
+}
+
 export const getContactEmailHtml = ({ name, email, subject, message }: EmailTemplateData): string => {
   const date = new Date().toLocaleString('fr-FR', {
     timeZone: 'Europe/Paris',
@@ -12,7 +23,16 @@ export const getContactEmailHtml = ({ name, email, subject, message }: EmailTemp
     timeStyle: 'short',
   })
   
+  const safeName = escapeHtml(name)
+  const safeEmail = escapeHtml(email)
+  const safeSubject = escapeHtml(subject || 'Contact Général')
+  const safeMessage = escapeHtml(message)
+  
   const firstName = name.split(' ')[0]
+  const safeFirstName = escapeHtml(firstName)
+
+  const mailtoUrl = `mailto:${encodeURIComponent(email)}?subject=RE: ${encodeURIComponent(subject || 'Votre message')}`
+  const safeMailtoUrl = escapeHtml(mailtoUrl)
 
   return `
 <!DOCTYPE html>
@@ -48,29 +68,29 @@ export const getContactEmailHtml = ({ name, email, subject, message }: EmailTemp
       <div class="meta-grid">
         <div class="meta-item">
           <span class="label">De la part de</span>
-          <div class="value">${name}</div>
+          <div class="value">${safeName}</div>
         </div>
         <div class="meta-item">
           <span class="label">Adresse Email</span>
-          <a href="mailto:${email}" class="value" style="color:#2563eb;">${email}</a>
+          <a href="mailto:${safeEmail}" class="value" style="color:#2563eb;">${safeEmail}</a>
         </div>
       </div>
-
+ 
       <div style="margin-bottom: 24px;">
         <span class="label">Sujet</span>
-        <span class="badge">${subject || 'Contact Général'}</span>
+        <span class="badge">${safeSubject}</span>
       </div>
-
+ 
       <span class="label">Message</span>
-      <div class="message-box">${message}</div>
-
+      <div class="message-box">${safeMessage}</div>
+ 
       <div style="text-align: center;">
-        <a href="mailto:${email}?subject=RE: ${subject || 'Votre message'}" class="btn">
-          Répondre à ${firstName}
+        <a href="${safeMailtoUrl}" class="btn">
+          Répondre à ${safeFirstName}
         </a>
       </div>
     </div>
-
+ 
     <div class="footer">
       <p>Cet email a été envoyé via le formulaire de contact de<br>aupassagedulivre.fr</p>
       <p style="margin-top: 8px;">Reçu le ${date}</p>

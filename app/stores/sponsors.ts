@@ -93,7 +93,7 @@ export const useSponsorsStore = defineStore('sponsors', () => {
 
   async function apiFetch<T>(
     endpoint: string,
-    options: RequestInit = {}
+    options: any = {}
   ): Promise<T | null> {
     setLoading(true)
     setError(null)
